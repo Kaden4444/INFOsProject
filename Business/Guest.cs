@@ -16,5 +16,6 @@ namespace INFOsProject.Business
         string town;
         int postal_code;
         DateTime Booking_date;
+        //Point proven
     }
 }
