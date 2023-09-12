@@ -29,9 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainUI));
             this.projectDatabaseDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.projectDatabaseDataSet = new INFOsProject.ProjectDatabaseDataSet();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
@@ -40,22 +41,10 @@
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
             this.listView1 = new System.Windows.Forms.ListView();
-            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.projectDatabaseDataSetBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.projectDatabaseDataSet)).BeginInit();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // projectDatabaseDataSetBindingSource
-            // 
-            this.projectDatabaseDataSetBindingSource.DataSource = this.projectDatabaseDataSet;
-            this.projectDatabaseDataSetBindingSource.Position = 0;
-            // 
-            // projectDatabaseDataSet
-            // 
-            this.projectDatabaseDataSet.DataSetName = "ProjectDatabaseDataSet";
-            this.projectDatabaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // panel1
             // 
@@ -67,6 +56,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(153, 398);
             this.panel1.TabIndex = 1;
+            // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(18, 151);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(93, 23);
+            this.button2.TabIndex = 4;
+            this.button2.Text = "Submit";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
@@ -100,7 +99,6 @@
             this.radioButton4.Name = "radioButton4";
             this.radioButton4.Size = new System.Drawing.Size(50, 20);
             this.radioButton4.TabIndex = 3;
-            this.radioButton4.TabStop = true;
             this.radioButton4.Text = "Add";
             this.radioButton4.UseVisualStyleBackColor = true;
             this.radioButton4.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
@@ -112,7 +110,6 @@
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(65, 20);
             this.radioButton3.TabIndex = 2;
-            this.radioButton3.TabStop = true;
             this.radioButton3.Text = "Delete";
             this.radioButton3.UseVisualStyleBackColor = true;
             // 
@@ -123,7 +120,6 @@
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(48, 20);
             this.radioButton2.TabIndex = 1;
-            this.radioButton2.TabStop = true;
             this.radioButton2.Text = "Edit";
             this.radioButton2.UseVisualStyleBackColor = true;
             // 
@@ -132,10 +128,9 @@
             this.radioButton1.AutoSize = true;
             this.radioButton1.Location = new System.Drawing.Point(15, 19);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(70, 20);
+            this.radioButton1.Size = new System.Drawing.Size(54, 20);
             this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Browse";
+            this.radioButton1.Text = "View";
             this.radioButton1.UseVisualStyleBackColor = true;
             // 
             // label1
@@ -159,17 +154,7 @@
             this.listView1.TabIndex = 3;
             this.listView1.UseCompatibleStateImageBehavior = false;
             // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(18, 151);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(93, 23);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Submit";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // ClientsUI
+            // MainUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -178,11 +163,11 @@
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
-            this.Name = "ClientsUI";
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "MainUI";
             this.Text = "ClientsUI";
             this.Load += new System.EventHandler(this.ClientsUI_Load);
             ((System.ComponentModel.ISupportInitialize)(this.projectDatabaseDataSetBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.projectDatabaseDataSet)).EndInit();
             this.panel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -193,7 +178,6 @@
 
         #endregion
         private System.Windows.Forms.BindingSource projectDatabaseDataSetBindingSource;
-        private ProjectDatabaseDataSet projectDatabaseDataSet;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;

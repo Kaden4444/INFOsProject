@@ -16,18 +16,11 @@ namespace INFOsProject.Presentation
         {
             InitializeComponent();
         }
-        enum Selection
-        {
-            Guest,
-            Reservation,
-            Room
-        }
-        Selection selection = Selection.Guest;
+
         private void button1_Click(object sender, EventArgs e)
         {
-            MainUI ClientForm = new MainUI(this, selection);
-
-            ClientForm.Show();
+            MainUI ClientUI = new MainUI(this, 0);
+            ClientUI.Show();
             this.Hide();
         }
 
@@ -43,7 +36,16 @@ namespace INFOsProject.Presentation
 
         private void button3_Click(object sender, EventArgs e)
         {
-            .
+            MainUI ReservationsUI = new MainUI(this, 1);
+            ReservationsUI.Show();
+            this.Hide();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            MainUI RoomsUI = new MainUI(this, 2);
+            RoomsUI.Show();
+            this.Hide();
         }
     }
 }
