@@ -9,7 +9,7 @@ namespace INFOsProject.Business
     internal class Room
     {
         int RoomID;
-        Reservation reservation;
+        bool booked;
         float price;
 
         public Room()
