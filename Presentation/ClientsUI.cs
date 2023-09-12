@@ -13,7 +13,7 @@ namespace INFOsProject.Presentation
     public partial class ClientsUI : Form
     {
         Dash d;
-        public ClientsUI(Dash dash)
+        public ClientsUI(Dash dash,)
         {
             InitializeComponent();
             d = dash;
@@ -29,6 +29,11 @@ namespace INFOsProject.Presentation
             
             d.Show();
             this.Hide();
+        }
+
+        private void ClientsUI_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
