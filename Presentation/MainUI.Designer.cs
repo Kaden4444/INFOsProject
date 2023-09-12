@@ -1,6 +1,6 @@
 ﻿namespace INFOsProject.Presentation
 {
-    partial class ClientsUI
+    partial class MainUI
     {
         /// <summary>
         /// Required designer variable.

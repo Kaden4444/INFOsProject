@@ -16,10 +16,16 @@ namespace INFOsProject.Presentation
         {
             InitializeComponent();
         }
-
+        enum Selection
+        {
+            Guest,
+            Reservation,
+            Room
+        }
+        Selection selection = Selection.Guest;
         private void button1_Click(object sender, EventArgs e)
         {
-            ClientsUI ClientForm = new ClientsUI(this);
+            MainUI ClientForm = new MainUI(this, selection);
 
             ClientForm.Show();
             this.Hide();

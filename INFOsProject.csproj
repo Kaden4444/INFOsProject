@@ -65,11 +65,11 @@
     <Compile Include="Business\Reservation.cs" />
     <Compile Include="Business\Room.cs" />
     <Compile Include="Data\DB.cs" />
-    <Compile Include="Presentation\ClientsUI.cs">
+    <Compile Include="Presentation\MainUI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentation\ClientsUI.Designer.cs">
-      <DependentUpon>ClientsUI.cs</DependentUpon>
+    <Compile Include="Presentation\MainUI.Designer.cs">
+      <DependentUpon>MainUI.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentation\Dash.cs">
       <SubType>Form</SubType>
@@ -104,8 +104,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TestDatabaseDataSet.xsd</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Presentation\ClientsUI.resx">
-      <DependentUpon>ClientsUI.cs</DependentUpon>
+    <EmbeddedResource Include="Presentation\MainUI.resx">
+      <DependentUpon>MainUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\Dash.resx">
       <DependentUpon>Dash.cs</DependentUpon>

@@ -90,7 +90,7 @@
             // 
             this.button3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button3.BackgroundImage")));
             this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button3.Location = new System.Drawing.Point(227, 91);
+            this.button3.Location = new System.Drawing.Point(228, 91);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(160, 146);
             this.button3.TabIndex = 3;
