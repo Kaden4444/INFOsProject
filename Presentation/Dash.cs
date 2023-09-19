@@ -27,6 +27,7 @@ namespace INFOsProject.Presentation
         private void Dash_Load(object sender, EventArgs e)
         {
             ActiveControl = null;
+            timer1.Start();
         }
 
         private void label5_Click(object sender, EventArgs e)
@@ -46,6 +47,31 @@ namespace INFOsProject.Presentation
             MainUI RoomsUI = new MainUI(this, 2);
             RoomsUI.Show();
             this.Hide();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            labelDateTime.Text = DateTime.Now.ToString("dd-MM-yyyy hh:mm:ss ");
         }
     }
 }
