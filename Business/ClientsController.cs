@@ -66,15 +66,15 @@ namespace INFOsProject.Business
         #region Search Method
 
 
-        public Client Find(string ID)
+        public Client Find(String ID)
         {
             int index = 0;
-            bool found = (Clients[index].ID == ID);
+            bool found = (Clients[index].getID == ID);
             int count = Clients.Count;
             while (!(found) && (index < Clients.Count - 1))
             {
                 index = index + 1;
-                found = (Clients[index].ID == ID);
+                found = (Clients[index].getID == ID);
             }
             return Clients[index];
         }
@@ -83,11 +83,11 @@ namespace INFOsProject.Business
         {
             int counter = 0;
             bool found = false;
-            found = (aClient.ID == Clients[counter].ID);
+            found = (aClient.getID == Clients[counter].getID);
             while (found == false && counter != Clients.Count - 1)
             {
                 counter++;
-                found = (aClient.ID == Clients[counter].ID);
+                found = (aClient.getID == Clients[counter].getID);
             }
             if (found)
             {
@@ -101,4 +101,5 @@ namespace INFOsProject.Business
         #endregion
 
     }
+}
 

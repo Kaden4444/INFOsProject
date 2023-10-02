@@ -10,7 +10,7 @@ namespace INFOsProject.Business
 {
     public class Client
     {
-        int ID;
+        String ID;
         string Name;
         string StreetAddress;
         string Area;
@@ -21,7 +21,7 @@ namespace INFOsProject.Business
         public Client() { }
 
         #region Property Methods
-        public int getID
+        public String getID
         {
             get { return ID; }
             set { ID = value; }
