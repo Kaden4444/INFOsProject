@@ -61,11 +61,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Business\Guest.cs" />
+    <Compile Include="Business\Client.cs" />
     <Compile Include="Business\Reservation.cs" />
+    <Compile Include="Business\ReservationController.cs" />
     <Compile Include="Business\Room.cs" />
-    <Compile Include="Data\Controller.cs" />
+    <Compile Include="Business\ClientsController.cs" />
+    <Compile Include="Business\RoomController.cs" />
+    <Compile Include="Data\ClientsDB.cs" />
     <Compile Include="Data\DB.cs" />
+    <Compile Include="Data\HotelDB.cs" />
     <Compile Include="Presentation\MainUI.cs">
       <SubType>Form</SubType>
     </Compile>

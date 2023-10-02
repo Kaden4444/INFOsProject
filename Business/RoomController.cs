@@ -6,11 +6,7 @@ using System.Threading.Tasks;
 
 namespace INFOsProject.Business
 {
-    internal class Reservation
+    internal class RoomController
     {
-        Client Guest;
-        Room Room;
-        float Total;
-        int Days_of_Stay;
     }
 }

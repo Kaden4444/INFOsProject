@@ -1,0 +1,118 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using INFOsProject.Business;
+using INFOsProject.Data;
+
+namespace INFOsProject.Data
+{
+    public class ClientsController
+    {
+        #region Data Members
+        public ClientsDB ClientDB;
+        Collection<Client> Clients;
+        #endregion
+
+        #region Properties
+        public Collection<Client> AllClients
+        {
+            get
+            {
+                return Clients;
+            }
+        }
+        #endregion
+
+        #region Constructor
+        public ClientsController()
+        {
+            //***instantiate the ClientDB object to communicate with the database
+            ClientDB = new ClientsDB();
+            Clients = ClientDB.AllClients;
+        }
+        #endregion
+
+        #region Database Communication.
+        public void DataMaintenance(Client aClient, DB.DBOperation operation)
+        {
+            int index = 0;
+
+            switch (operation)
+            {
+                case DB.DBOperation.Add:
+                    Clients.Add(aClient);
+                    break;
+                case DB.DBOperation.Edit:
+                    index = FindIndex(aClient);
+                    Clients[index] = aClient;
+                    break;
+                case DB.DBOperation.Delete:
+                    Clients.Remove(aClient);
+                    break;
+            }
+        }
+
+        public bool FinalizeChanges(Client Client)
+        {
+            return ClientDB.UpdateDataSource(Client);
+        }
+
+        #endregion
+
+        #region Search Method
+
+        public Collection<Client> FindByRole(Collection<Client> emps, Role.RoleType roleVal)
+        {
+            Collection<Client> matches = new Collection<Client>();
+
+            foreach (Client emp in emps)
+            {
+                if (emp.role.getRoleValue == roleVal)
+                {
+                    matches.Add(emp);
+                }
+            }
+            return matches;
+        }
+
+
+        public Client Find(string ID)
+        {
+            int index = 0;
+            bool found = (Clients[index].ID == ID);
+            int count = Clients.Count;
+            while (!(found) && (index < Clients.Count - 1))
+            {
+                index = index + 1;
+                found = (Clients[index].ID == ID);
+            }
+            return Clients[index];
+        }
+
+        public int FindIndex(Client aClient)
+        {
+            int counter = 0;
+            bool found = false;
+            found = (aClient.ID == Clients[counter].ID);
+            while (found == false && counter != Clients.Count - 1)
+            {
+                counter++;
+                found = (aClient.ID == Clients[counter].ID);
+            }
+            if (found)
+            {
+                return counter;
+            }
+            else
+            {
+                return -1;
+            }
+        }
+        #endregion
+
+    }
+
