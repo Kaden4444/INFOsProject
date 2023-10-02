@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace INFOsProject.Business
 {
-    internal class Guest
+    public class Client
     {
         int ID;
         string Name;

@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 using INFOsProject.Business;
 using INFOsProject.Data;
 
-namespace INFOsProject.Data
+namespace INFOsProject.Business
 {
     public class ClientsController
     {
         #region Data Members
-        public ClientsDB ClientDB;
+        ClientsDB ClientDB;
         Collection<Client> Clients;
         #endregion
 
