@@ -37,6 +37,7 @@ namespace INFOsProject.Data
             Add2Collection(table1);
         }
         #endregion
+
         #region Utility Methods
         public DataSet GetDataSet()
         {
@@ -118,6 +119,7 @@ namespace INFOsProject.Data
             return returnValue;
         }
         #endregion
+
         #region Build Parameters, Create Commands & Update database
         private void Build_INSERT_Parameters(Client aClient)
         {
@@ -148,7 +150,6 @@ namespace INFOsProject.Data
             daMain.InsertCommand = new SqlCommand("INSERT into Clients (ID, Name, StreetAddress, Area, Town, PostalCode, BookingDate) VALUES (@ID, @Name, @StreetAddress, @Area, @Town, @PostalCode, @BookingDate)", cnMain);
             Build_INSERT_Parameters(aClient);
         }
-
         private void Build_UPDATE_Parameters(Client aClient)
         {
             SqlParameter param = default(SqlParameter);
@@ -183,6 +184,20 @@ namespace INFOsProject.Data
             param = new SqlParameter("@Original_ID", SqlDbType.NVarChar, 15, "ID");
             param.SourceVersion = DataRowVersion.Original;
             daMain.UpdateCommand.Parameters.Add(param);
+        }
+        private void Create_UPDATE_Command(Client aClient)
+        {
+            daMain.UpdateCommand = new SqlCommand("UPDATE HeadWaiter SET Name =@Name, StreetAdress =@StreetAdress, Area =@Area, Town = @Town, PostalCode = @PostalCode, BookingDate = @BookingDate " + "WHERE ID = @Original_ID", cnMain);
+            Build_UPDATE_Parameters(aClient);
+
+        }
+        public bool UpdateDataSource(Client aClient)
+        {
+            bool success = true;
+            Create_INSERT_Command(aClient);
+            Create_UPDATE_Command(aClient);
+            success = UpdateDataSource(sqlLocal1, table1);
+            return success;
         }
         #endregion
     }
