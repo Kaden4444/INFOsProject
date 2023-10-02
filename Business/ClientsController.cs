@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 using INFOsProject.Business;
 using INFOsProject.Data;
 
-namespace INFOsProject.Data
+namespace INFOsProject.Business
 {
     public class ClientsController
     {
         #region Data Members
-        public ClientsDB ClientDB;
+        ClientsDB ClientDB;
         Collection<Client> Clients;
         #endregion
 
@@ -64,20 +64,6 @@ namespace INFOsProject.Data
         #endregion
 
         #region Search Method
-
-        public Collection<Client> FindByRole(Collection<Client> emps, Role.RoleType roleVal)
-        {
-            Collection<Client> matches = new Collection<Client>();
-
-            foreach (Client emp in emps)
-            {
-                if (emp.role.getRoleValue == roleVal)
-                {
-                    matches.Add(emp);
-                }
-            }
-            return matches;
-        }
 
 
         public Client Find(string ID)
