@@ -10,18 +10,18 @@ namespace INFOsProject.Business
 {
     public class Client
     {
-        String ID;
+        string ID;
         string Name;
         string StreetAddress;
         string Area;
         string Town;
-        int Postal_code;
+        string PostalCode;
         DateTime BookingDate;
 
         public Client() { }
 
         #region Property Methods
-        public String getID
+        public string getID
         {
             get { return ID; }
             set { ID = value; }
@@ -46,10 +46,10 @@ namespace INFOsProject.Business
             get { return Town; }
             set { Town = value; }
         }
-        public int getPostal_code
+        public string getPostal_code
         {
-            get { return Postal_code; }
-            set { Postal_code = value; }    
+            get { return PostalCode; }
+            set { PostalCode = value; }    
         }
 
         public DateTime getBooking
