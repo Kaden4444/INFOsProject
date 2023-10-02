@@ -18,5 +18,7 @@ namespace INFOsProject.Data
         private string sqlLocal3 = "SELECT * FROM Reservations";
 
         #endregion
+
+
     }
 }
