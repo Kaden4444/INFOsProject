@@ -69,7 +69,8 @@
     <Compile Include="Business\RoomController.cs" />
     <Compile Include="Data\ClientsDB.cs" />
     <Compile Include="Data\DB.cs" />
-    <Compile Include="Data\HotelDB.cs" />
+    <Compile Include="Data\ReservationDB.cs" />
+    <Compile Include="Data\RoomDB.cs" />
     <Compile Include="Presentation\MainUI.cs">
       <SubType>Form</SubType>
     </Compile>
