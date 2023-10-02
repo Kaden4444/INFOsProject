@@ -65,20 +65,6 @@ namespace INFOsProject.Business
 
         #region Search Method
 
-        public Collection<Client> FindByRole(Collection<Client> emps, Role.RoleType roleVal)
-        {
-            Collection<Client> matches = new Collection<Client>();
-
-            foreach (Client emp in emps)
-            {
-                if (emp.role.getRoleValue == roleVal)
-                {
-                    matches.Add(emp);
-                }
-            }
-            return matches;
-        }
-
 
         public Client Find(string ID)
         {
