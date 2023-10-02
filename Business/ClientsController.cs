@@ -55,6 +55,25 @@ namespace INFOsProject.Business
                     break;
             }
         }
+        public int FindIndex(Client aClient)
+        {
+            int counter = 0;
+            bool found = false;
+            found = (aClient.getID == Clients[counter].getID);
+            while (found == false && counter != Clients.Count - 1)
+            {
+                counter++;
+                found = (aClient.getID == Clients[counter].getID);
+            }
+            if (found)
+            {
+                return counter;
+            }
+            else
+            {
+                return -1;
+            }
+        }
 
         public bool FinalizeChanges(Client Client)
         {
