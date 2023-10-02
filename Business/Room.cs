@@ -8,7 +8,7 @@ namespace INFOsProject.Business
 {
     public class Room
     {
-        int roomID;
+        string roomID;
         bool booked;
         double price;
 
@@ -18,7 +18,7 @@ namespace INFOsProject.Business
         }
 
         #region Property Methods
-        public int RoomID
+        public string RoomID
         {
             get { return roomID; }
             set { roomID = value; }
