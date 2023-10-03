@@ -21,6 +21,35 @@ namespace INFOsProject.Presentation
             InitializeComponent();
             d = dash;
             State_of_Form = State;
+
+            HidePanels();
+            listView2.Clear();
+            Console.Write("Hi!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            switch (State_of_Form)
+            {
+                case 0:
+                    listView2.Columns.Insert(0, "ClientID", 120, HorizontalAlignment.Left);
+                    listView2.Columns.Insert(1, "Name", 120, HorizontalAlignment.Left);
+                    listView2.Columns.Insert(2, "Address", 150, HorizontalAlignment.Left);
+                    listView2.Columns.Insert(3, "Area", 100, HorizontalAlignment.Left);
+                    listView2.Columns.Insert(4, "Town", 100, HorizontalAlignment.Left);
+                    listView2.Columns.Insert(5, "Postal Code", 100, HorizontalAlignment.Left);
+                    listView2.Columns.Insert(6, "Reservation", 100, HorizontalAlignment.Left);
+                    break;
+
+                case 1:
+                    listView2.Columns.Insert(0, "RoomID", 120, HorizontalAlignment.Left);
+                    listView2.Columns.Insert(1, "Price", 120, HorizontalAlignment.Left);
+                    break;
+
+                case 2:
+                    listView2.Columns.Insert(0, "ReservationID", 120, HorizontalAlignment.Left);
+                    listView2.Columns.Insert(1, "Guest", 120, HorizontalAlignment.Left);
+                    listView2.Columns.Insert(2, "Room", 120, HorizontalAlignment.Left);
+                    listView2.Columns.Insert(3, "Total", 120, HorizontalAlignment.Left);
+                    listView2.Columns.Insert(4, "DaysOfStay", 120, HorizontalAlignment.Left);
+                    break;
+            }
         }
 
         private void HidePanels()
@@ -44,20 +73,32 @@ namespace INFOsProject.Presentation
         private void MainUI_Load(object sender, EventArgs e)
         {
             HidePanels();
-
+            listView2.Clear();
+            Console.Write("Hi!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
             switch (State_of_Form)
             {
                 case 0:
-
-                break;
+                    listView2.Columns.Insert(0, "ClientID", 120, HorizontalAlignment.Left);
+                    listView2.Columns.Insert(1, "Name", 120, HorizontalAlignment.Left);
+                    listView2.Columns.Insert(2, "Address", 150, HorizontalAlignment.Left);
+                    listView2.Columns.Insert(3, "Area", 100, HorizontalAlignment.Left);
+                    listView2.Columns.Insert(4, "Town", 100, HorizontalAlignment.Left);
+                    listView2.Columns.Insert(5, "Postal Code", 100, HorizontalAlignment.Left);
+                    listView2.Columns.Insert(6, "Reservation", 100, HorizontalAlignment.Left);
+                    break;
 
                 case 1:
-                    
-                break;
-                
-                case 2:
+                    listView2.Columns.Insert(0, "RoomID", 120, HorizontalAlignment.Left);
+                    listView2.Columns.Insert(1, "Price", 120, HorizontalAlignment.Left);
+                    break;
 
-                break;
+                case 2:
+                    listView2.Columns.Insert(0, "ReservationID", 120, HorizontalAlignment.Left);
+                    listView2.Columns.Insert(1, "Guest", 120, HorizontalAlignment.Left);
+                    listView2.Columns.Insert(2, "Room", 120, HorizontalAlignment.Left);
+                    listView2.Columns.Insert(3, "Total", 120, HorizontalAlignment.Left);
+                    listView2.Columns.Insert(4, "DaysOfStay", 120, HorizontalAlignment.Left);
+                    break;
             }
         }
 
@@ -75,7 +116,7 @@ namespace INFOsProject.Presentation
         {
             if (viewRadioGroup.Checked)
             {
-
+                ClientPanel.Show();
             }
 
             else if (addRadioGroup.Checked)
@@ -182,28 +223,34 @@ namespace INFOsProject.Presentation
             switch (State_of_Form)
             {
                 case 0:
-                    ListView.Columns.Insert(0, "ClientID", 120, HorizontalAlignment.Left);
-                    ListView.Columns.Insert(1, "Name", 120, HorizontalAlignment.Left);
-                    ListView.Columns.Insert(2, "Address", 150, HorizontalAlignment.Left);
-                    ListView.Columns.Insert(3, "Area", 100, HorizontalAlignment.Left);
-                    ListView.Columns.Insert(3, "Town", 100, HorizontalAlignment.Left);
-                    ListView.Columns.Insert(3, "Postal Code", 100, HorizontalAlignment.Left);
-                    ListView.Columns.Insert(3, "Reservation", 100, HorizontalAlignment.Left);
+                    listView2.Columns.Insert(0, "ClientID", 120, HorizontalAlignment.Left);
+                    listView2.Columns.Insert(1, "Name", 120, HorizontalAlignment.Left);
+                    listView2.Columns.Insert(2, "Address", 150, HorizontalAlignment.Left);
+                    listView2.Columns.Insert(3, "Area", 100, HorizontalAlignment.Left);
+                    listView2.Columns.Insert(4, "Town", 100, HorizontalAlignment.Left);
+                    listView2.Columns.Insert(5, "Postal Code", 100, HorizontalAlignment.Left);
+                    listView2.Columns.Insert(6, "Reservation", 100, HorizontalAlignment.Left);
                     break;
 
                 case 1:
-                    ListView.Columns.Insert(0, "RoomID", 120, HorizontalAlignment.Left);
-                    ListView.Columns.Insert(0, "Price", 120, HorizontalAlignment.Left);
+                    listView2.Columns.Insert(0, "RoomID", 120, HorizontalAlignment.Left);
+                    listView2.Columns.Insert(1, "Price", 120, HorizontalAlignment.Left);
                     break;
 
                 case 2:
-                    ListView.Columns.Insert(0, "ReservationID", 120, HorizontalAlignment.Left);
-                    ListView.Columns.Insert(0, "Guest", 120, HorizontalAlignment.Left);
-                    ListView.Columns.Insert(0, "Room", 120, HorizontalAlignment.Left);
-                    ListView.Columns.Insert(0, "Total", 120, HorizontalAlignment.Left);
+                    listView2.Columns.Insert(0, "ReservationID", 120, HorizontalAlignment.Left);
+                    listView2.Columns.Insert(1, "Guest", 120, HorizontalAlignment.Left);
+                    listView2.Columns.Insert(2, "Room", 120, HorizontalAlignment.Left);
+                    listView2.Columns.Insert(3, "Total", 120, HorizontalAlignment.Left);
+                    listView2.Columns.Insert(4, "DaysOfStay", 120, HorizontalAlignment.Left);
                     break;
             }
             
+        }
+
+        private void ReservationPanel_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
