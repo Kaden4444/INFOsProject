@@ -17,7 +17,6 @@ namespace INFOsProject.Data
         private string sqlLocal1 = "SELECT * FROM Reservations";
         private Collection<Reservation> Reservations;
         private Reservation aReservation;
-
         #endregion
 
         public Collection<Reservation> AllClients
@@ -27,7 +26,6 @@ namespace INFOsProject.Data
                 return Reservations;
             }
         }
-        #endregion
 
         #region Constructor
         public ReservationDB() : base()
@@ -82,10 +80,10 @@ namespace INFOsProject.Data
                     aReservation.getArea = Convert.ToString(myRow["Area"]).TrimEnd();
                     aReservation.getPostal_code = Convert.ToString(myRow["PostalCode"]).TrimEnd();
                     aReservation.getBooking = Convert.ToDateTime(myRow["BookingDate"]);
-                    }
-                Reservations.Add(aReservation);
                 }
+                Reservations.Add(aReservation);
             }
+        }
 
         private void FillRow(DataRow aRow, Reservation aReservation, DB.DBOperation operation)
         {
@@ -107,15 +105,15 @@ namespace INFOsProject.Data
             int returnValue = -1;
 
             foreach (DataRow myRow_loopvariable in dsMain.Tables[table].Rows)
-        {
+            {
                 myRow = myRow_loopvariable;
                 if (myRow.RowState != DataRowState.Deleted)
                     if (aReservation.getID == Convert.ToString(dsMain.Tables[table].Rows[rowIndex]["ID"]))
-            {
+                    {
                         returnValue = rowIndex;
-            }
+                    }
                 rowIndex++;
-        }
+            }
             return returnValue;
         }
         #endregion
@@ -123,12 +121,8 @@ namespace INFOsProject.Data
         #region Build Parameters, Create Commands & Update database
         private void Build_INSERT_Parameters(Reservation aReservation)
         {
-            //Create Parameters to communicate with SQL INSERT...add the input parameter and set its properties.
             SqlParameter param = default(SqlParameter);
             param = new SqlParameter("@ID", SqlDbType.NVarChar, 15, "ID");
-            daMain.InsertCommand.Parameters.Add(param);//Add the parameter to the Parameters collection.
-
-            param = new SqlParameter("@EMPID", SqlDbType.NVarChar, 10, "EMPID");
             daMain.InsertCommand.Parameters.Add(param);
 
             param = new SqlParameter("@Name", SqlDbType.NVarChar, 10, "Name");
@@ -139,71 +133,70 @@ namespace INFOsProject.Data
 
             param = new SqlParameter("@Area", SqlDbType.NVarChar, 15, "Area");
             daMain.InsertCommand.Parameters.Add(param);
-            switch (anEmp.role.getRoleValue)
-            {
-                case Role.RoleType.Headwaiter:
-                    param = new SqlParameter("@Salary", SqlDbType.Money, 8, "Salary");
-                    daMain.InsertCommand.Parameters.Add(param);
-                    break;
-                case Role.RoleType.Waiter:
-                    param = new SqlParameter("@Tips", SqlDbType.Money, 8, "Tips");
-                    daMain.InsertCommand.Parameters.Add(param);
 
-                    param = new SqlParameter("@DayRate", SqlDbType.Money, 8, "DayRate");
-                    daMain.InsertCommand.Parameters.Add(param);
+            param = new SqlParameter("@Town", SqlDbType.NVarChar, 10, "Town");
+            daMain.InsertCommand.Parameters.Add(param);
 
-                    param = new SqlParameter("@NoOfShifts", SqlDbType.SmallInt, 4, "NoOfShifts");
-                    daMain.InsertCommand.Parameters.Add(param);
-                    break;
-                case Role.RoleType.Runner:
-                    param = new SqlParameter("@DayRate", SqlDbType.Money, 8, "DayRate");
-                    daMain.InsertCommand.Parameters.Add(param);
+            param = new SqlParameter("@PostalCode", SqlDbType.NVarChar, 10, "PostalCode");
+            daMain.InsertCommand.Parameters.Add(param);
 
-                    param = new SqlParameter("@NoOfShifts", SqlDbType.SmallInt, 4, "NoOfShifts");
-                    daMain.InsertCommand.Parameters.Add(param);
-                    break;
-            }
-            //***https://msdn.microsoft.com/en-za/library/ms179882.aspx
+            param = new SqlParameter("@BookingDate", SqlDbType.DateTime, 10, "BookingDate");
+            daMain.InsertCommand.Parameters.Add(param);
         }
-
-        private void Create_INSERT_Command(Reservation anEmp)
+        private void Create_INSERT_Command(Reservation aReservation)
         {
-            //Create the command that must be used to insert values into the Books table..
-            switch (anEmp.role.getRoleValue)
-            {
-                case Role.RoleType.Headwaiter:
-                    daMain.InsertCommand = new SqlCommand("INSERT into HeadWaiter (ID, EMPID, Name, Phone, Role, Salary) VALUES (@ID, @EmpID, @Name, @Phone, @Role, @Salary)", cnMain);
-                    break;
-                case Role.RoleType.Waiter:
-                    daMain.InsertCommand = new SqlCommand("INSERT into Waiter (ID, EMPID, Name, Phone, Role, Tips, DayRate, NoOfShifts) VALUES (@ID, @EmpID, @Name, @Phone, @Role, @Tips, @DayRate, @NoOfShifts)", cnMain);
-                    break;
-                case Role.RoleType.Runner:
-                    daMain.InsertCommand = new SqlCommand("INSERT into Runner (ID, EMPID, Name, Phone, Role, DayRate, NoOfShifts) VALUES (@ID, @EmpID, @Name, @Phone, @Role, @DayRate, @NoOfShifts)", cnMain);
-                    break;
-            }
-            Build_INSERT_Parameters(anEmp);
+            daMain.InsertCommand = new SqlCommand("INSERT into Reservations (ID, Name, StreetAddress, Area, Town, PostalCode, BookingDate) VALUES (@ID, @Name, @StreetAddress, @Area, @Town, @PostalCode, @BookingDate)", cnMain);
+            Build_INSERT_Parameters(aReservation);
         }
+        private void Build_UPDATE_Parameters(Reservation aReservation)
+        {
+            SqlParameter param = default(SqlParameter);
+            param = new SqlParameter("@Name", SqlDbType.NVarChar, 100, "Name");
+            param.SourceVersion = DataRowVersion.Current;
+            daMain.UpdateCommand.Parameters.Add(param);
 
-        public bool UpdateDataSource(Reservation anEmp)
+            param = new SqlParameter("@StreetAddress", SqlDbType.NVarChar, 15, "StreetAddress");
+            param.SourceVersion = DataRowVersion.Current;
+            daMain.UpdateCommand.Parameters.Add(param);
+
+            param = new SqlParameter("@Area", SqlDbType.NVarChar, 10, "Area");
+            param.SourceVersion = DataRowVersion.Current;
+            daMain.UpdateCommand.Parameters.Add(param);
+
+            param = new SqlParameter("@Area", SqlDbType.NVarChar, 10, "Area");
+            param.SourceVersion = DataRowVersion.Current;
+            daMain.UpdateCommand.Parameters.Add(param);
+
+            param = new SqlParameter("@Town", SqlDbType.NVarChar, 10, "Town");
+            param.SourceVersion = DataRowVersion.Current;
+            daMain.UpdateCommand.Parameters.Add(param);
+
+            param = new SqlParameter("@PostalCode", SqlDbType.NVarChar, 10, "PostalCode");
+            param.SourceVersion = DataRowVersion.Current;
+            daMain.UpdateCommand.Parameters.Add(param);
+
+            param = new SqlParameter("@BookingDate", SqlDbType.DateTime, 10, "BookingDate");
+            param.SourceVersion = DataRowVersion.Current;
+            daMain.UpdateCommand.Parameters.Add(param);
+
+            param = new SqlParameter("@Original_ID", SqlDbType.NVarChar, 15, "ID");
+            param.SourceVersion = DataRowVersion.Original;
+            daMain.UpdateCommand.Parameters.Add(param);
+        }
+        private void Create_UPDATE_Command(Reservation aReservation)
+        {
+            daMain.UpdateCommand = new SqlCommand("UPDATE HeadWaiter SET Name =@Name, StreetAdress =@StreetAdress, Area =@Area, Town = @Town, PostalCode = @PostalCode, BookingDate = @BookingDate " + "WHERE ID = @Original_ID", cnMain);
+            Build_UPDATE_Parameters(aReservation);
+
+        }
+        public bool UpdateDataSource(Reservation aReservation)
         {
             bool success = true;
-            Create_INSERT_Command(anEmp);
-            switch (anEmp.role.getRoleValue)
-            {
-                case Role.RoleType.Headwaiter:
-                    success = UpdateDataSource(sqlLocal1, table);
-                    break;
-                case Role.RoleType.Waiter:
-                    success = UpdateDataSource(sqlLocal2, table2);
-                    break;
-                case Role.RoleType.Runner:
-                    success = UpdateDataSource(sqlLocal3, table3);
-                    break;
-            }
+            Create_INSERT_Command(aReservation);
+            Create_UPDATE_Command(aReservation);
+            success = UpdateDataSource(sqlLocal1, table1);
             return success;
         }
-
         #endregion
-
     }
 }
