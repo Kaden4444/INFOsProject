@@ -13,13 +13,13 @@ namespace INFOsProject.Data
     public class ReservationDB:DB
     {
         #region  Data members        
-        private string table1 = "Reservations";
-        private string sqlLocal1 = "SELECT * FROM Reservations";
+        private string table = "Reservations";
+        private string sqlLocal = "SELECT * FROM Reservations";
         private Collection<Reservation> Reservations;
         private Reservation aReservation;
         #endregion
 
-        public Collection<Reservation> AllClients
+        public Collection<Reservation> AllReservations
         {
             get
             {
@@ -31,8 +31,8 @@ namespace INFOsProject.Data
         public ReservationDB() : base()
         {
             Reservations = new Collection<Reservation>();
-            FillDataSet(sqlLocal1, table1);
-            Add2Collection(table1);
+            FillDataSet(sqlLocal, table);
+            Add2Collection(table);
         }
         #endregion
 
@@ -73,13 +73,11 @@ namespace INFOsProject.Data
                 {
                     aReservation = new Reservation();
                     aReservation.ReservationID = Convert.ToString(myRow["ID"]).TrimEnd();
-                    aReservation. = Convert.ToString(myRow["Name"]).TrimEnd();
-                    aReservation.getStreetAddress = Convert.ToString(myRow["StreetAddress"]).TrimEnd();
-                    aReservation.getArea = Convert.ToString(myRow["Area"]).TrimEnd();
-                    aReservation.getTown = Convert.ToString(myRow["Town"]).TrimEnd();
-                    aReservation.getArea = Convert.ToString(myRow["Area"]).TrimEnd();
-                    aReservation.getPostal_code = Convert.ToString(myRow["PostalCode"]).TrimEnd();
-                    aReservation.getBooking = Convert.ToDateTime(myRow["BookingDate"]);
+                    aReservation.Guest = Convert.ToString(myRow["Guest"]); // Issue: Converting to a class type
+                    aReservation.Room = Convert.ToString(myRow["Room"]).TrimEnd(); //Issue: Converting to a class type
+                    aReservation.Total = Convert.ToDouble(myRow["Total"]);
+                    aReservation.Days = Convert.ToInt32(myRow["days_of_Stay"]);
+
                 }
                 Reservations.Add(aReservation);
             }
@@ -89,13 +87,12 @@ namespace INFOsProject.Data
         {
             if (operation == DBOperation.Add)
             {
-                aRow["ID"] = aReservation.getID;  //NOTE square brackets to indicate index of collections of fields in row.
-                aRow["Name"] = aReservation.getName;
-                aRow["StreetAddress"] = aReservation.getStreetAddress;
-                aRow["Area"] = aReservation.getArea;
-                aRow["Town"] = aReservation.getTown;
-                aRow["PostalCode"] = aReservation.getPostal_code;
-                aRow["BookingDate"] = aReservation.getBooking;
+                aRow["ID"] = aReservation.ReservationID;  //NOTE square brackets to indicate index of collections of fields in row.
+                aRow["Guest"] = aReservation.Guest;
+                aRow["Room"] = aReservation.Room;
+                aRow["Total"] = aReservation.Total;
+                aRow["days_of_stay"] = aReservation.Days;
+
             }
         }
         private int FindRow(Reservation aReservation, String table)
@@ -108,7 +105,7 @@ namespace INFOsProject.Data
             {
                 myRow = myRow_loopvariable;
                 if (myRow.RowState != DataRowState.Deleted)
-                    if (aReservation.getID == Convert.ToString(dsMain.Tables[table].Rows[rowIndex]["ID"]))
+                    if (aReservation.ReservationID == Convert.ToString(dsMain.Tables[table].Rows[rowIndex]["ID"]))
                     {
                         returnValue = rowIndex;
                     }
@@ -150,42 +147,35 @@ namespace INFOsProject.Data
         }
         private void Build_UPDATE_Parameters(Reservation aReservation)
         {
+            //string reservationID;
+            //Client guest;
+            //Room room;
+            //double total;
+            //int days_of_Stay;
             SqlParameter param = default(SqlParameter);
-            param = new SqlParameter("@Name", SqlDbType.NVarChar, 100, "Name");
+            param = new SqlParameter("@Guest", SqlDbType.Int, 50, "Guest");
             param.SourceVersion = DataRowVersion.Current;
             daMain.UpdateCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@StreetAddress", SqlDbType.NVarChar, 15, "StreetAddress");
+            param = new SqlParameter("@Room", SqlDbType.NVarChar, 15, "Room");
             param.SourceVersion = DataRowVersion.Current;
             daMain.UpdateCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@Area", SqlDbType.NVarChar, 10, "Area");
+            param = new SqlParameter("@Total", SqlDbType.Money, 50, "Total");
             param.SourceVersion = DataRowVersion.Current;
             daMain.UpdateCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@Area", SqlDbType.NVarChar, 10, "Area");
+            param = new SqlParameter("@days_of_stay", SqlDbType.Int, 10, "days_of_stay");
             param.SourceVersion = DataRowVersion.Current;
             daMain.UpdateCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@Town", SqlDbType.NVarChar, 10, "Town");
-            param.SourceVersion = DataRowVersion.Current;
-            daMain.UpdateCommand.Parameters.Add(param);
-
-            param = new SqlParameter("@PostalCode", SqlDbType.NVarChar, 10, "PostalCode");
-            param.SourceVersion = DataRowVersion.Current;
-            daMain.UpdateCommand.Parameters.Add(param);
-
-            param = new SqlParameter("@BookingDate", SqlDbType.DateTime, 10, "BookingDate");
-            param.SourceVersion = DataRowVersion.Current;
-            daMain.UpdateCommand.Parameters.Add(param);
-
-            param = new SqlParameter("@Original_ID", SqlDbType.NVarChar, 15, "ID");
+            param = new SqlParameter("@Original_ID", SqlDbType.Int, 15, "ID");
             param.SourceVersion = DataRowVersion.Original;
             daMain.UpdateCommand.Parameters.Add(param);
         }
         private void Create_UPDATE_Command(Reservation aReservation)
         {
-            daMain.UpdateCommand = new SqlCommand("UPDATE HeadWaiter SET Name =@Name, StreetAdress =@StreetAdress, Area =@Area, Town = @Town, PostalCode = @PostalCode, BookingDate = @BookingDate " + "WHERE ID = @Original_ID", cnMain);
+            daMain.UpdateCommand = new SqlCommand("UPDATE Reservations SET Guest =@Guest, Room =@Room, Total =@Total, days_of_stay = @days_of_stay " + "WHERE ID = @Original_ID", cnMain);
             Build_UPDATE_Parameters(aReservation);
 
         }
@@ -194,7 +184,7 @@ namespace INFOsProject.Data
             bool success = true;
             Create_INSERT_Command(aReservation);
             Create_UPDATE_Command(aReservation);
-            success = UpdateDataSource(sqlLocal1, table1);
+            success = UpdateDataSource(sqlLocal, table);
             return success;
         }
         #endregion
