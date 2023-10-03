@@ -73,10 +73,10 @@ namespace INFOsProject.Data
                 {
                     aReservation = new Reservation();
                     aReservation.ReservationID = Convert.ToString(myRow["ID"]).TrimEnd();
-                    aReservation.Guest = Convert.ToString(myRow["Guest"]); // Issue: Converting to a class type
-                    aReservation.Room = Convert.ToString(myRow["Room"]).TrimEnd(); //Issue: Converting to a class type
+                    aReservation.Client = Convert.ToInt32(myRow["Guest"]);
+                    aReservation.Room = Convert.ToInt32(myRow["Room"]); 
                     aReservation.Total = Convert.ToDouble(myRow["Total"]);
-                    aReservation.Days = Convert.ToInt32(myRow["days_of_Stay"]);
+                    aReservation.Days = Convert.ToInt32(myRow["DaysOfStay"]);
 
                 }
                 Reservations.Add(aReservation);
@@ -88,10 +88,10 @@ namespace INFOsProject.Data
             if (operation == DBOperation.Add)
             {
                 aRow["ID"] = aReservation.ReservationID;  //NOTE square brackets to indicate index of collections of fields in row.
-                aRow["Guest"] = aReservation.Guest;
+                aRow["Guest"] = aReservation.Client;
                 aRow["Room"] = aReservation.Room;
                 aRow["Total"] = aReservation.Total;
-                aRow["days_of_stay"] = aReservation.Days;
+                aRow["DaysOfStay"] = aReservation.Days;
 
             }
         }
@@ -118,64 +118,55 @@ namespace INFOsProject.Data
         #region Build Parameters, Create Commands & Update database
         private void Build_INSERT_Parameters(Reservation aReservation)
         {
+
             SqlParameter param = default(SqlParameter);
             param = new SqlParameter("@ID", SqlDbType.NVarChar, 15, "ID");
             daMain.InsertCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@Name", SqlDbType.NVarChar, 10, "Name");
+            param = new SqlParameter("@Client", SqlDbType.NVarChar, 10, "Client");
             daMain.InsertCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@StreetAddress", SqlDbType.NVarChar, 100, "StreetAddress");
+            param = new SqlParameter("@Room", SqlDbType.NVarChar, 10, "Room");
             daMain.InsertCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@Area", SqlDbType.NVarChar, 15, "Area");
+            param = new SqlParameter("@Total", SqlDbType.Money, 10, "Total");
             daMain.InsertCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@Town", SqlDbType.NVarChar, 10, "Town");
+            param = new SqlParameter("@DaysOfStay", SqlDbType.Money, 10, "DaysOfStay");
             daMain.InsertCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@PostalCode", SqlDbType.NVarChar, 10, "PostalCode");
-            daMain.InsertCommand.Parameters.Add(param);
-
-            param = new SqlParameter("@BookingDate", SqlDbType.DateTime, 10, "BookingDate");
-            daMain.InsertCommand.Parameters.Add(param);
         }
         private void Create_INSERT_Command(Reservation aReservation)
         {
-            daMain.InsertCommand = new SqlCommand("INSERT into Reservations (ID, Name, StreetAddress, Area, Town, PostalCode, BookingDate) VALUES (@ID, @Name, @StreetAddress, @Area, @Town, @PostalCode, @BookingDate)", cnMain);
+            daMain.InsertCommand = new SqlCommand("INSERT into Reservations (ID, Client, Room, Total, DaysOfStay) VALUES (@ID, @Client, @Room, @Total, @DaysOfStay)", cnMain);
             Build_INSERT_Parameters(aReservation);
         }
         private void Build_UPDATE_Parameters(Reservation aReservation)
         {
-            //string reservationID;
-            //Client guest;
-            //Room room;
-            //double total;
-            //int days_of_Stay;
             SqlParameter param = default(SqlParameter);
-            param = new SqlParameter("@Guest", SqlDbType.Int, 50, "Guest");
+            param = new SqlParameter("@ID", SqlDbType.NVarChar, 15, "ID");
             param.SourceVersion = DataRowVersion.Current;
             daMain.UpdateCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@Room", SqlDbType.NVarChar, 15, "Room");
+            param = new SqlParameter("@Client", SqlDbType.NVarChar, 10, "Client");
             param.SourceVersion = DataRowVersion.Current;
             daMain.UpdateCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@Total", SqlDbType.Money, 50, "Total");
+            param = new SqlParameter("@Room", SqlDbType.NVarChar, 10, "Room");
             param.SourceVersion = DataRowVersion.Current;
             daMain.UpdateCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@days_of_stay", SqlDbType.Int, 10, "days_of_stay");
+            param = new SqlParameter("@Total", SqlDbType.Money, 10, "Total");
             param.SourceVersion = DataRowVersion.Current;
             daMain.UpdateCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@Original_ID", SqlDbType.Int, 15, "ID");
-            param.SourceVersion = DataRowVersion.Original;
+            param = new SqlParameter("@DaysOfStay", SqlDbType.Money, 10, "DaysOfStay");
+            param.SourceVersion = DataRowVersion.Current;
             daMain.UpdateCommand.Parameters.Add(param);
         }
         private void Create_UPDATE_Command(Reservation aReservation)
         {
-            daMain.UpdateCommand = new SqlCommand("UPDATE Reservations SET Guest =@Guest, Room =@Room, Total =@Total, days_of_stay = @days_of_stay " + "WHERE ID = @Original_ID", cnMain);
+            daMain.UpdateCommand = new SqlCommand("UPDATE Reservations SET Client=@Client, Room=@Room, Total=@Total, DaysOfStay=@DaysOfStay) " + "WHERE ID = @ID", cnMain);
             Build_UPDATE_Parameters(aReservation);
 
         }
@@ -189,4 +180,5 @@ namespace INFOsProject.Data
         }
         #endregion
     }
+}
 }

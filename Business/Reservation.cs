@@ -9,9 +9,9 @@ namespace INFOsProject.Business
 {
     public class Reservation
     {
-        string reservationID;
-        Client guest;
-        Room room;
+        string ID;
+        int client;
+        int room;
         double total;
         int days_of_Stay;
 
@@ -19,15 +19,15 @@ namespace INFOsProject.Business
 
         public string ReservationID
         {
-            get { return reservationID; }
-            set { reservationID = value; }
+            get { return ID; }
+            set { ID = value; }
         }
-        public Client Guest
+        public int Client
         {
-            get { return guest; }
-            set { guest = value; }
+            get { return client; }
+            set { client = value; }
         }
-        public Room Room
+        public int Room
         {
             get { return room; }
             set { room = value; }

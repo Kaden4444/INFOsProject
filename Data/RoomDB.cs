@@ -155,7 +155,7 @@ namespace INFOsProject.Data
         }
         private void Create_UPDATE_Command(Room aRoom)
         {
-            daMain.UpdateCommand = new SqlCommand("UPDATE Rooms  Booked =@Booked, Price =@Price " + "WHERE ID = @ID", cnMain);
+            daMain.UpdateCommand = new SqlCommand("UPDATE Rooms SET Booked =@Booked, Price =@Price " + "WHERE ID = @ID", cnMain);
             Build_UPDATE_Parameters(aRoom);
 
         }
