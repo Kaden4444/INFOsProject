@@ -96,7 +96,7 @@ namespace INFOsProject.Presentation
 
         private void button3_Click_1(object sender, EventArgs e)
         {
-            MainUI ReservationsUI = new MainUI(this, 1);
+            MainUI ReservationsUI = new MainUI(this, 2);
             ReservationsUI.Show();
             this.Hide();
         }
@@ -108,7 +108,7 @@ namespace INFOsProject.Presentation
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            MainUI RoomsUI = new MainUI(this, 2);
+            MainUI RoomsUI = new MainUI(this, 1);
             RoomsUI.Show();
             this.Hide();
         }
