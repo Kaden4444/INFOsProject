@@ -154,6 +154,7 @@
             this.deleteRadioGroup.TabIndex = 2;
             this.deleteRadioGroup.Text = "Delete";
             this.deleteRadioGroup.UseVisualStyleBackColor = true;
+            this.deleteRadioGroup.CheckedChanged += new System.EventHandler(this.deleteRadioGroup_CheckedChanged);
             // 
             // editRadioGroup
             // 
@@ -164,6 +165,7 @@
             this.editRadioGroup.TabIndex = 1;
             this.editRadioGroup.Text = "Edit";
             this.editRadioGroup.UseVisualStyleBackColor = true;
+            this.editRadioGroup.CheckedChanged += new System.EventHandler(this.editRadioGroup_CheckedChanged);
             // 
             // label1
             // 

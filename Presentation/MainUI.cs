@@ -596,18 +596,62 @@ namespace INFOsProject.Presentation
             {
                 case 0:
 ;                   ClearClient();
-                    ClientLabel.Text = "Add as client";
+                    ClientLabel.Text = "Add a Client:";
                     break;
 
                 case 1:
                     ClearRoom();
-                    RoomLabel.Text = "Add a room";
+                    RoomLabel.Text = "Add a Room:";
                     break;
 
                 case 2:
                     ReservationPanel.Visible = true;
                     ClearReservation();
-                    ReservationLabel.Text = "Add a reservation";
+                    ReservationLabel.Text = "Add a Reservation:";
+                    break;
+            }
+        }
+
+        private void editRadioGroup_CheckedChanged(object sender, EventArgs e)
+        {
+            switch (State_of_Form)
+            {
+                case 0:
+                    ; ClearClient();
+                    ClientLabel.Text = "Edit a Client:";
+                    break;
+
+                case 1:
+                    ClearRoom();
+                    RoomLabel.Text = "Edit a Room:";
+                    break;
+
+                case 2:
+                    ReservationPanel.Visible = true;
+                    ClearReservation();
+                    ReservationLabel.Text = "Edit a Reservation:";
+                    break;
+            }
+        }
+
+        private void deleteRadioGroup_CheckedChanged(object sender, EventArgs e)
+        {
+            switch (State_of_Form)
+            {
+                case 0:
+                    ClearClient();
+                    ClientLabel.Text = "Delete a Client:";
+                    break;
+
+                case 1:
+                    ClearRoom();
+                    RoomLabel.Text = "Delete a Room:";
+                    break;
+
+                case 2:
+                    ReservationPanel.Visible = true;
+                    ClearReservation();
+                    ReservationLabel.Text = "Delete a Reservation:";
                     break;
             }
         }
@@ -615,138 +659,3 @@ namespace INFOsProject.Presentation
 
 
 }
-
-/*        #region Events
-
-
-        #region Utility Methods
-
-       
-        private void EnableEntries(bool value)
-        {
-            if ((state == FormStates.Edit) && value)
-            {
-                idTextBox.Enabled = !value;
-                empIDTextBox.Enabled = !value;
-            }
-            else
-            {
-                idTextBox.Enabled = value;
-                empIDTextBox.Enabled = value;
-            }
-            nameTextBox.Enabled = value;
-            phoneTextBox.Enabled = value;
-            paymentTextBox.Enabled = value;
-            shiftsTextBox.Enabled = value;
-            if (state == FormStates.Delete)
-            {
-                cancelButton.Visible = !value;
-                submitButton.Visible = !value;
-            }
-            else
-            {
-                cancelButton.Visible = value;
-                submitButton.Visible = value;
-            }
-        }
-        private void ClearAll()
-        {
-            idTextBox.Text = "";
-            empIDTextBox.Text = "";
-            nameTextBox.Text = "";
-            phoneTextBox.Text = "";
-            paymentTextBox.Text = "";
-            shiftsTextBox.Text = "";
-        }
-        #endregion
-
-        private void PopulateTextBoxes(Employee employee)
-        {
-            HeadWaiter headW;
-            Waiter waiter;
-            Runner runner;
-            idTextBox.Text = employee.ID;
-            empIDTextBox.Text = employee.EmployeeID;
-            nameTextBox.Text = employee.Name;
-            phoneTextBox.Text = employee.Telephone;
-
-            switch (employee.role.getRoleValue)
-            {
-                case Role.RoleType.Headwaiter:
-                    headW = (HeadWaiter)(employee.role);
-                    paymentTextBox.Text = Convert.ToString(headW.SalaryAmount);
-                    break;
-                case Role.RoleType.Waiter:
-                    waiter = (Waiter)(employee.role);
-                    paymentTextBox.Text = Convert.ToString(waiter.getRate);
-                    shiftsTextBox.Text = Convert.ToString(waiter.getShifts);
-                    break;
-                case Role.RoleType.Runner:
-                    runner = (Runner)(employee.role);
-                    paymentTextBox.Text = Convert.ToString(runner.getRate);
-                    shiftsTextBox.Text = Convert.ToString(runner.getShifts);
-                    break;
-            }
-        }
-
-        private void editButton_Click(object sender, EventArgs e)
-        {
-            state = FormStates.Edit;
-            EnableEntries(true);
-        }
-
-        private void PopulateObject(Role.RoleType roleType)
-        {
-            HeadWaiter headW;
-            Waiter waiter;
-            Runner runner;
-            employee = new Employee(roleType);
-            employee.ID = idTextBox.Text;
-            employee.EmployeeID = empIDTextBox.Text;
-            employee.Name = nameTextBox.Text;
-            employee.Telephone = phoneTextBox.Text;
-
-            switch (employee.role.getRoleValue)
-            {
-                case Role.RoleType.Headwaiter:
-                    headW = (HeadWaiter)(employee.role);
-                    headW.SalaryAmount = decimal.Parse(paymentTextBox.Text);
-                    break;
-                case Role.RoleType.Waiter:
-                    waiter = (Waiter)(employee.role);
-                    waiter.getRate = decimal.Parse(paymentTextBox.Text);
-                    break;
-                case Role.RoleType.Runner:
-                    runner = (Runner)(employee.role);
-                    runner.getRate = decimal.Parse(paymentTextBox.Text);
-                    break;
-            }
-        }
-
-
-        private void submitButton_Click(object sender, EventArgs e)
-        {
-            PopulateObject(roleValue);
-         
-{           if (state == FormStates.Edit)
-                {
-                    employeeController.DataMaintenance(employee, Data.DB.DBOperation.Edit);
-                }
-                else if (state == FormStates.Delete)
-                {
-                    employeeController.DataMaintenance(employee, Data.DB.DBOperation.Delete);
-                }
-}
-            employeeController.FinalizeChanges(employee);
-            ClearAll();
-            state = FormStates.View;
-            ShowAll(false,roleValue);
-            setUpMainListView();
-    }
-
-        private void deleteButton_Click(object sender, EventArgs e)
-        {
-            state = FormStates.Delete;
-            
-        }
-    }*/
