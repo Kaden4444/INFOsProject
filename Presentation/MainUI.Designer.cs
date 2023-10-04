@@ -208,7 +208,7 @@
             this.ClientPanel.Controls.Add(this.label4);
             this.ClientPanel.Controls.Add(this.label3);
             this.ClientPanel.Controls.Add(this.label2);
-            this.ClientPanel.Location = new System.Drawing.Point(234, 229);
+            this.ClientPanel.Location = new System.Drawing.Point(555, 262);
             this.ClientPanel.Name = "ClientPanel";
             this.ClientPanel.Size = new System.Drawing.Size(491, 207);
             this.ClientPanel.TabIndex = 4;
@@ -283,6 +283,7 @@
             this.ClientSubmit.TabIndex = 8;
             this.ClientSubmit.Text = "Submit";
             this.ClientSubmit.UseVisualStyleBackColor = true;
+            this.ClientSubmit.Click += new System.EventHandler(this.ClientSubmit_Click_1);
             // 
             // button3
             // 
@@ -291,7 +292,7 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 24);
             this.button3.TabIndex = 7;
-            this.button3.Text = "Cancel";
+            this.button3.Text = "Clear";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -375,7 +376,7 @@
             this.RoomPanel.Controls.Add(this.button5);
             this.RoomPanel.Controls.Add(this.label16);
             this.RoomPanel.Controls.Add(this.label17);
-            this.RoomPanel.Location = new System.Drawing.Point(299, 231);
+            this.RoomPanel.Location = new System.Drawing.Point(362, 455);
             this.RoomPanel.Name = "RoomPanel";
             this.RoomPanel.Size = new System.Drawing.Size(376, 159);
             this.RoomPanel.TabIndex = 5;
@@ -392,7 +393,7 @@
             // 
             // PriceTextbox
             // 
-            this.PriceTextbox.Location = new System.Drawing.Point(220, 63);
+            this.PriceTextbox.Location = new System.Drawing.Point(234, 61);
             this.PriceTextbox.Name = "PriceTextbox";
             this.PriceTextbox.Size = new System.Drawing.Size(48, 20);
             this.PriceTextbox.TabIndex = 10;
@@ -413,6 +414,7 @@
             this.RoomSubmit.TabIndex = 8;
             this.RoomSubmit.Text = "Submit";
             this.RoomSubmit.UseVisualStyleBackColor = true;
+            this.RoomSubmit.Click += new System.EventHandler(this.RoomSubmit_Click_1);
             // 
             // button5
             // 
@@ -421,7 +423,7 @@
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(75, 24);
             this.button5.TabIndex = 7;
-            this.button5.Text = "Cancel";
+            this.button5.Text = "Clear";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
@@ -459,7 +461,7 @@
             this.ReservationPanel.Controls.Add(this.label18);
             this.ReservationPanel.Controls.Add(this.label19);
             this.ReservationPanel.Controls.Add(this.label20);
-            this.ReservationPanel.Location = new System.Drawing.Point(237, 229);
+            this.ReservationPanel.Location = new System.Drawing.Point(823, 68);
             this.ReservationPanel.Name = "ReservationPanel";
             this.ReservationPanel.Size = new System.Drawing.Size(491, 192);
             this.ReservationPanel.TabIndex = 6;
