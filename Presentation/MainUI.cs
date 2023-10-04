@@ -14,6 +14,10 @@ using INFOsProject.Business;
 using System.Collections.ObjectModel;
 using System.Reflection.Emit;
 using System.Xml;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Data;
+using System.Linq;
 
 namespace INFOsProject.Presentation
 {
@@ -154,6 +158,7 @@ namespace INFOsProject.Presentation
         private ClientsController clientsController;
         private RoomController roomController;
         private ReservationController reservationController;
+
         #endregion
 
         public MainUI(Dash dash, int State)
@@ -161,6 +166,12 @@ namespace INFOsProject.Presentation
             InitializeComponent();
             d = dash;
             State_of_Form = State;
+            
+
+            // Create an instance of ClientsController
+            clientsController = new ClientsController();
+
+            LoadClients(); // Load clients from the database when the form is initialized
 
 
             this.Load += MainListView_Load;
@@ -171,6 +182,33 @@ namespace INFOsProject.Presentation
            // MainListView.Clear();
             Console.Write("Hi!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
             MessageBox.Show("I am working");
+        }
+
+        private void LoadClients()
+        {
+            // Retrieve the list of clients from the controller
+            Collection<Client> clients = clientsController.AllClients;
+
+            // Clear existing items in the ListView
+            MainListView.Items.Clear();
+
+            // Populate the ListView with the retrieved client data
+            foreach (Client client in clients)
+            {
+                ListViewItem item = new ListViewItem(client.getID);
+                item.SubItems.Add(client.getName);
+                item.SubItems.Add(client.getStreetAddress);
+                item.SubItems.Add(client.getArea);
+                item.SubItems.Add(client.getTown);
+                item.SubItems.Add(client.getPostal_code);
+                item.SubItems.Add(client.getBooking.ToString());
+
+                // Tag the ListViewItem with the client object for later reference
+                item.Tag = client;
+
+                // Add the ListViewItem to the ListView
+                MainListView.Items.Add(item);
+            }
         }
 
         private void HidePanels()
@@ -446,7 +484,7 @@ namespace INFOsProject.Presentation
             MainListView.View = View.Details;
 
           
-            //setUpMainListView();
+            setUpMainListView();
 
            
             //ShowAll(false, roleValue);
