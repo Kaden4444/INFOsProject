@@ -183,8 +183,6 @@ namespace INFOsProject.Presentation
             this.Load += MainListView_Load;
             this.Activated += MainListView_Activated;
             this.FormClosed += MainListView_FormClosed;
-
-            HidePanels();
         }
         #endregion
 
@@ -237,9 +235,11 @@ namespace INFOsProject.Presentation
         {
             HidePanels();
             MainListView.Clear();
+            ClientTextbox.Enabled = false;
             switch (State_of_Form)
             {
                 case 0:
+                    ClientPanel.Show();
                     MainListView.Columns.Insert(0, "ClientID", 120, HorizontalAlignment.Left);
                     MainListView.Columns.Insert(1, "Name", 120, HorizontalAlignment.Left);
                     MainListView.Columns.Insert(2, "Address", 150, HorizontalAlignment.Left);
@@ -250,11 +250,14 @@ namespace INFOsProject.Presentation
                     break;
 
                 case 1:
+                    RoomPanel.Show();
                     MainListView.Columns.Insert(0, "RoomID", 120, HorizontalAlignment.Left);
                     MainListView.Columns.Insert(1, "Price", 120, HorizontalAlignment.Left);
                     break;
 
                 case 2:
+                    MessageBox.Show("FUcking poes");
+                    ReservationPanel.Show();
                     MainListView.Columns.Insert(0, "ReservationID", 120, HorizontalAlignment.Left);
                     MainListView.Columns.Insert(1, "Guest", 120, HorizontalAlignment.Left);
                     MainListView.Columns.Insert(2, "Room", 120, HorizontalAlignment.Left);
@@ -276,29 +279,8 @@ namespace INFOsProject.Presentation
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            if (viewRadioGroup.Checked)
-            {
-                switch(State_of_Form)
-                {
-                    case 0: //Client
-                    ClientPanel.Show();
-                    //MainListView
 
-                    break;
-
-                    case 1: //Room
-                    RoomPanel.Show();
-                    break;
-
-                    case 2: //Reseration
-                    ReservationPanel.Show();
-                    break;
-
-                }
-                
-            }
-
-            else if (addRadioGroup.Checked)
+            if (addRadioGroup.Checked)
             {
 
             }
@@ -382,17 +364,17 @@ namespace INFOsProject.Presentation
 
         private void button3_Click(object sender, EventArgs e)
         {
-            HidePanels();
+            ClearClient();
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-            HidePanels();
+            ClearReservation();
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            HidePanels();
+            ClearRoom();
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
@@ -445,6 +427,7 @@ namespace INFOsProject.Presentation
         private void ClearClient()
         {
             ClientTextbox.Text = "";
+            NameTextbox.Text = "";
             AddressTextbox.Text = "";
             AreaTextbox.Text = "";
             TownTextbox.Text = "";
@@ -455,6 +438,7 @@ namespace INFOsProject.Presentation
         private void PopulateClient(Client client)
         {
             ClientTextbox.Text = client.getID;
+            NameTextbox.Text = client.getName;
             AddressTextbox.Text = client.getStreetAddress;
             AreaTextbox.Text = client.getArea;
             TownTextbox.Text = client.getTown;
@@ -472,14 +456,7 @@ namespace INFOsProject.Presentation
             TotalTextbox.Text = "";
 
         }
-        private void PopulateReservations(Reservation reservation)
-        {
-            ReservationIDTextbox.Text = reservation.ReservationID;
-            GuestTextbox.Text = reservation.Client.ToString();
-            RoomTextbox.Text = reservation.Room.ToString();
-            TotalTextbox.Text = reservation.Total.ToString();
 
-        }
         private void ClearRoom()
         {
             RoomIDTextbox.Text ="";
@@ -493,7 +470,10 @@ namespace INFOsProject.Presentation
 
         private void PopulateReservation(Reservation reservation)
         {
-
+            ReservationIDTextbox.Text = reservation.ReservationID;
+            GuestTextbox.Text = reservation.Client.ToString();
+            RoomTextbox.Text = reservation.Room.ToString();
+            TotalTextbox.Text = reservation.Total.ToString();
         }
         #endregion
 
@@ -608,6 +588,28 @@ namespace INFOsProject.Presentation
         private void ClientPanel_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void addRadioGroup_CheckedChanged(object sender, EventArgs e)
+        {
+            switch (State_of_Form)
+            {
+                case 0:
+;                   ClearClient();
+                    ClientLabel.Text = "Add as client";
+                    break;
+
+                case 1:
+                    ClearRoom();
+                    RoomLabel.Text = "Add a room";
+                    break;
+
+                case 2:
+                    ReservationPanel.Visible = true;
+                    ClearReservation();
+                    ReservationLabel.Text = "Add a reservation";
+                    break;
+            }
         }
     }
 

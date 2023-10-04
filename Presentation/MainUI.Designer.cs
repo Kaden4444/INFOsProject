@@ -38,11 +38,10 @@
             this.addRadioGroup = new System.Windows.Forms.RadioButton();
             this.deleteRadioGroup = new System.Windows.Forms.RadioButton();
             this.editRadioGroup = new System.Windows.Forms.RadioButton();
-            this.viewRadioGroup = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
             this.listView1 = new System.Windows.Forms.ListView();
             this.ClientPanel = new System.Windows.Forms.Panel();
-            this.label9 = new System.Windows.Forms.Label();
+            this.ClientLabel = new System.Windows.Forms.Label();
             this.ReservationTextbox = new System.Windows.Forms.TextBox();
             this.PostalCodeTextbox = new System.Windows.Forms.TextBox();
             this.TownTextbox = new System.Windows.Forms.TextBox();
@@ -60,7 +59,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.RoomPanel = new System.Windows.Forms.Panel();
-            this.label10 = new System.Windows.Forms.Label();
+            this.RoomLabel = new System.Windows.Forms.Label();
             this.PriceTextbox = new System.Windows.Forms.TextBox();
             this.RoomIDTextbox = new System.Windows.Forms.TextBox();
             this.RoomSubmit = new System.Windows.Forms.Button();
@@ -68,7 +67,7 @@
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.ReservationPanel = new System.Windows.Forms.Panel();
-            this.label11 = new System.Windows.Forms.Label();
+            this.ReservationLabel = new System.Windows.Forms.Label();
             this.TotalTextbox = new System.Windows.Forms.TextBox();
             this.RoomTextbox = new System.Windows.Forms.TextBox();
             this.GuestTextbox = new System.Windows.Forms.TextBox();
@@ -95,19 +94,17 @@
             this.panel1.Controls.Add(this.btnSubmit);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.groupBox1);
-            this.panel1.Location = new System.Drawing.Point(-1, 49);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
+            this.panel1.Location = new System.Drawing.Point(-1, 40);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(204, 490);
+            this.panel1.Size = new System.Drawing.Size(153, 398);
             this.panel1.TabIndex = 1;
             // 
             // btnSubmit
             // 
             this.btnSubmit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSubmit.Location = new System.Drawing.Point(24, 186);
-            this.btnSubmit.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSubmit.Location = new System.Drawing.Point(18, 151);
             this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(124, 28);
+            this.btnSubmit.Size = new System.Drawing.Size(93, 23);
             this.btnSubmit.TabIndex = 4;
             this.btnSubmit.Text = "Submit";
             this.btnSubmit.UseVisualStyleBackColor = true;
@@ -116,10 +113,9 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(-7, -2);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Location = new System.Drawing.Point(-5, -2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(217, 37);
+            this.button1.Size = new System.Drawing.Size(163, 30);
             this.button1.TabIndex = 1;
             this.button1.Text = "< Back";
             this.button1.UseVisualStyleBackColor = true;
@@ -130,13 +126,10 @@
             this.groupBox1.Controls.Add(this.addRadioGroup);
             this.groupBox1.Controls.Add(this.deleteRadioGroup);
             this.groupBox1.Controls.Add(this.editRadioGroup);
-            this.groupBox1.Controls.Add(this.viewRadioGroup);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(4, 34);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Location = new System.Drawing.Point(3, 28);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(196, 144);
+            this.groupBox1.Size = new System.Drawing.Size(147, 117);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Actions";
@@ -144,22 +137,20 @@
             // addRadioGroup
             // 
             this.addRadioGroup.AutoSize = true;
-            this.addRadioGroup.Location = new System.Drawing.Point(20, 49);
-            this.addRadioGroup.Margin = new System.Windows.Forms.Padding(4);
+            this.addRadioGroup.Location = new System.Drawing.Point(15, 21);
             this.addRadioGroup.Name = "addRadioGroup";
-            this.addRadioGroup.Size = new System.Drawing.Size(59, 24);
+            this.addRadioGroup.Size = new System.Drawing.Size(50, 20);
             this.addRadioGroup.TabIndex = 3;
             this.addRadioGroup.Text = "Add";
             this.addRadioGroup.UseVisualStyleBackColor = true;
-            this.addRadioGroup.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
+            this.addRadioGroup.CheckedChanged += new System.EventHandler(this.addRadioGroup_CheckedChanged);
             // 
             // deleteRadioGroup
             // 
             this.deleteRadioGroup.AutoSize = true;
-            this.deleteRadioGroup.Location = new System.Drawing.Point(20, 101);
-            this.deleteRadioGroup.Margin = new System.Windows.Forms.Padding(4);
+            this.deleteRadioGroup.Location = new System.Drawing.Point(15, 73);
             this.deleteRadioGroup.Name = "deleteRadioGroup";
-            this.deleteRadioGroup.Size = new System.Drawing.Size(79, 24);
+            this.deleteRadioGroup.Size = new System.Drawing.Size(65, 20);
             this.deleteRadioGroup.TabIndex = 2;
             this.deleteRadioGroup.Text = "Delete";
             this.deleteRadioGroup.UseVisualStyleBackColor = true;
@@ -167,25 +158,12 @@
             // editRadioGroup
             // 
             this.editRadioGroup.AutoSize = true;
-            this.editRadioGroup.Location = new System.Drawing.Point(20, 76);
-            this.editRadioGroup.Margin = new System.Windows.Forms.Padding(4);
+            this.editRadioGroup.Location = new System.Drawing.Point(15, 47);
             this.editRadioGroup.Name = "editRadioGroup";
-            this.editRadioGroup.Size = new System.Drawing.Size(59, 24);
+            this.editRadioGroup.Size = new System.Drawing.Size(48, 20);
             this.editRadioGroup.TabIndex = 1;
             this.editRadioGroup.Text = "Edit";
             this.editRadioGroup.UseVisualStyleBackColor = true;
-            // 
-            // viewRadioGroup
-            // 
-            this.viewRadioGroup.AutoSize = true;
-            this.viewRadioGroup.Location = new System.Drawing.Point(20, 23);
-            this.viewRadioGroup.Margin = new System.Windows.Forms.Padding(4);
-            this.viewRadioGroup.Name = "viewRadioGroup";
-            this.viewRadioGroup.Size = new System.Drawing.Size(66, 24);
-            this.viewRadioGroup.TabIndex = 0;
-            this.viewRadioGroup.Text = "View";
-            this.viewRadioGroup.UseVisualStyleBackColor = true;
-            this.viewRadioGroup.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // label1
             // 
@@ -193,27 +171,25 @@
             this.label1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label1.Location = new System.Drawing.Point(16, 11);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(124, 31);
+            this.label1.Size = new System.Drawing.Size(98, 25);
             this.label1.TabIndex = 2;
             this.label1.Text = "PumPum";
             // 
             // listView1
             // 
             this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(259, 47);
-            this.listView1.Margin = new System.Windows.Forms.Padding(4);
+            this.listView1.Location = new System.Drawing.Point(194, 38);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(768, 489);
+            this.listView1.Size = new System.Drawing.Size(577, 398);
             this.listView1.TabIndex = 3;
             this.listView1.UseCompatibleStateImageBehavior = false;
             // 
             // ClientPanel
             // 
             this.ClientPanel.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.ClientPanel.Controls.Add(this.label9);
+            this.ClientPanel.Controls.Add(this.ClientLabel);
             this.ClientPanel.Controls.Add(this.ReservationTextbox);
             this.ClientPanel.Controls.Add(this.PostalCodeTextbox);
             this.ClientPanel.Controls.Add(this.TownTextbox);
@@ -230,88 +206,78 @@
             this.ClientPanel.Controls.Add(this.label4);
             this.ClientPanel.Controls.Add(this.label3);
             this.ClientPanel.Controls.Add(this.label2);
-            this.ClientPanel.Location = new System.Drawing.Point(318, 284);
-            this.ClientPanel.Margin = new System.Windows.Forms.Padding(4);
+            this.ClientPanel.Location = new System.Drawing.Point(234, 229);
             this.ClientPanel.Name = "ClientPanel";
-            this.ClientPanel.Size = new System.Drawing.Size(655, 460);
+            this.ClientPanel.Size = new System.Drawing.Size(491, 207);
             this.ClientPanel.TabIndex = 4;
             this.ClientPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.ClientPanel_Paint);
             // 
-            // label9
+            // ClientLabel
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Nirmala UI", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(141, 16);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(329, 62);
-            this.label9.TabIndex = 16;
-            this.label9.Text = "Client Details:";
+            this.ClientLabel.AutoSize = true;
+            this.ClientLabel.Font = new System.Drawing.Font("Nirmala UI", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ClientLabel.Location = new System.Drawing.Point(106, 13);
+            this.ClientLabel.Name = "ClientLabel";
+            this.ClientLabel.Size = new System.Drawing.Size(262, 50);
+            this.ClientLabel.TabIndex = 16;
+            this.ClientLabel.Text = "Client Details:";
             // 
             // ReservationTextbox
             // 
-            this.ReservationTextbox.Location = new System.Drawing.Point(284, 270);
-            this.ReservationTextbox.Margin = new System.Windows.Forms.Padding(4);
+            this.ReservationTextbox.Location = new System.Drawing.Point(182, 179);
             this.ReservationTextbox.Name = "ReservationTextbox";
-            this.ReservationTextbox.Size = new System.Drawing.Size(111, 22);
+            this.ReservationTextbox.Size = new System.Drawing.Size(84, 20);
             this.ReservationTextbox.TabIndex = 15;
             // 
             // PostalCodeTextbox
             // 
-            this.PostalCodeTextbox.Location = new System.Drawing.Point(453, 201);
-            this.PostalCodeTextbox.Margin = new System.Windows.Forms.Padding(4);
+            this.PostalCodeTextbox.Location = new System.Drawing.Point(281, 135);
             this.PostalCodeTextbox.Name = "PostalCodeTextbox";
-            this.PostalCodeTextbox.Size = new System.Drawing.Size(71, 22);
+            this.PostalCodeTextbox.Size = new System.Drawing.Size(54, 20);
             this.PostalCodeTextbox.TabIndex = 14;
             // 
             // TownTextbox
             // 
-            this.TownTextbox.Location = new System.Drawing.Point(117, 201);
-            this.TownTextbox.Margin = new System.Windows.Forms.Padding(4);
+            this.TownTextbox.Location = new System.Drawing.Point(76, 132);
             this.TownTextbox.Name = "TownTextbox";
-            this.TownTextbox.Size = new System.Drawing.Size(132, 22);
+            this.TownTextbox.Size = new System.Drawing.Size(100, 20);
             this.TownTextbox.TabIndex = 13;
             // 
             // AreaTextbox
             // 
-            this.AreaTextbox.Location = new System.Drawing.Point(295, 125);
-            this.AreaTextbox.Margin = new System.Windows.Forms.Padding(4);
+            this.AreaTextbox.Location = new System.Drawing.Point(232, 101);
             this.AreaTextbox.Name = "AreaTextbox";
-            this.AreaTextbox.Size = new System.Drawing.Size(99, 22);
+            this.AreaTextbox.Size = new System.Drawing.Size(75, 20);
             this.AreaTextbox.TabIndex = 12;
             // 
             // AddressTextbox
             // 
-            this.AddressTextbox.Location = new System.Drawing.Point(106, 123);
-            this.AddressTextbox.Margin = new System.Windows.Forms.Padding(4);
+            this.AddressTextbox.Location = new System.Drawing.Point(86, 101);
             this.AddressTextbox.Name = "AddressTextbox";
-            this.AddressTextbox.Size = new System.Drawing.Size(86, 22);
+            this.AddressTextbox.Size = new System.Drawing.Size(66, 20);
             this.AddressTextbox.TabIndex = 11;
             // 
             // NameTextbox
             // 
-            this.NameTextbox.Location = new System.Drawing.Point(303, 77);
-            this.NameTextbox.Margin = new System.Windows.Forms.Padding(4);
+            this.NameTextbox.Location = new System.Drawing.Point(240, 61);
             this.NameTextbox.Name = "NameTextbox";
-            this.NameTextbox.Size = new System.Drawing.Size(91, 22);
+            this.NameTextbox.Size = new System.Drawing.Size(69, 20);
             this.NameTextbox.TabIndex = 10;
             // 
             // ClientTextbox
             // 
-            this.ClientTextbox.Location = new System.Drawing.Point(101, 76);
-            this.ClientTextbox.Margin = new System.Windows.Forms.Padding(4);
+            this.ClientTextbox.Location = new System.Drawing.Point(83, 63);
             this.ClientTextbox.Name = "ClientTextbox";
-            this.ClientTextbox.Size = new System.Drawing.Size(91, 22);
+            this.ClientTextbox.Size = new System.Drawing.Size(69, 20);
             this.ClientTextbox.TabIndex = 9;
             this.ClientTextbox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // ClientSubmit
             // 
             this.ClientSubmit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ClientSubmit.Location = new System.Drawing.Point(268, 297);
-            this.ClientSubmit.Margin = new System.Windows.Forms.Padding(4);
+            this.ClientSubmit.Location = new System.Drawing.Point(394, 179);
             this.ClientSubmit.Name = "ClientSubmit";
-            this.ClientSubmit.Size = new System.Drawing.Size(100, 29);
+            this.ClientSubmit.Size = new System.Drawing.Size(75, 24);
             this.ClientSubmit.TabIndex = 8;
             this.ClientSubmit.Text = "Submit";
             this.ClientSubmit.UseVisualStyleBackColor = true;
@@ -319,10 +285,9 @@
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(115, 297);
-            this.button3.Margin = new System.Windows.Forms.Padding(4);
+            this.button3.Location = new System.Drawing.Point(293, 179);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(100, 29);
+            this.button3.Size = new System.Drawing.Size(75, 24);
             this.button3.TabIndex = 7;
             this.button3.Text = "Cancel";
             this.button3.UseVisualStyleBackColor = true;
@@ -332,10 +297,9 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(128, 220);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Location = new System.Drawing.Point(96, 179);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(98, 20);
+            this.label8.Size = new System.Drawing.Size(80, 16);
             this.label8.TabIndex = 6;
             this.label8.Text = "Reservation";
             // 
@@ -343,10 +307,9 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(253, 167);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Location = new System.Drawing.Point(190, 136);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(100, 20);
+            this.label7.Size = new System.Drawing.Size(81, 16);
             this.label7.TabIndex = 5;
             this.label7.Text = "Postal Code";
             // 
@@ -354,10 +317,9 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(42, 167);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(32, 136);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(49, 20);
+            this.label6.Size = new System.Drawing.Size(40, 16);
             this.label6.TabIndex = 4;
             this.label6.Text = "Town";
             // 
@@ -365,10 +327,9 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(253, 130);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(190, 106);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(44, 20);
+            this.label5.Size = new System.Drawing.Size(36, 16);
             this.label5.TabIndex = 3;
             this.label5.Text = "Area";
             // 
@@ -376,10 +337,9 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(42, 126);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(32, 102);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(71, 20);
+            this.label4.Size = new System.Drawing.Size(58, 16);
             this.label4.TabIndex = 2;
             this.label4.Text = "Address";
             // 
@@ -387,10 +347,9 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(253, 80);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(190, 65);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 20);
+            this.label3.Size = new System.Drawing.Size(44, 16);
             this.label3.TabIndex = 1;
             this.label3.Text = "Name";
             // 
@@ -398,63 +357,57 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(42, 80);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(32, 65);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 20);
+            this.label2.Size = new System.Drawing.Size(53, 16);
             this.label2.TabIndex = 0;
             this.label2.Text = "ClientID";
             // 
             // RoomPanel
             // 
             this.RoomPanel.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.RoomPanel.Controls.Add(this.label10);
+            this.RoomPanel.Controls.Add(this.RoomLabel);
             this.RoomPanel.Controls.Add(this.PriceTextbox);
             this.RoomPanel.Controls.Add(this.RoomIDTextbox);
             this.RoomPanel.Controls.Add(this.RoomSubmit);
             this.RoomPanel.Controls.Add(this.button5);
             this.RoomPanel.Controls.Add(this.label16);
             this.RoomPanel.Controls.Add(this.label17);
-            this.RoomPanel.Location = new System.Drawing.Point(399, 284);
-            this.RoomPanel.Margin = new System.Windows.Forms.Padding(4);
+            this.RoomPanel.Location = new System.Drawing.Point(299, 231);
             this.RoomPanel.Name = "RoomPanel";
-            this.RoomPanel.Size = new System.Drawing.Size(443, 196);
+            this.RoomPanel.Size = new System.Drawing.Size(376, 159);
             this.RoomPanel.TabIndex = 5;
             // 
-            // label10
+            // RoomLabel
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Nirmala UI", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(106, 6);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(334, 62);
-            this.label10.TabIndex = 16;
-            this.label10.Text = "Room Details:";
+            this.RoomLabel.AutoSize = true;
+            this.RoomLabel.Font = new System.Drawing.Font("Nirmala UI", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RoomLabel.Location = new System.Drawing.Point(80, 5);
+            this.RoomLabel.Name = "RoomLabel";
+            this.RoomLabel.Size = new System.Drawing.Size(264, 50);
+            this.RoomLabel.TabIndex = 16;
+            this.RoomLabel.Text = "Room Details:";
             // 
             // PriceTextbox
             // 
-            this.PriceTextbox.Location = new System.Drawing.Point(294, 77);
-            this.PriceTextbox.Margin = new System.Windows.Forms.Padding(4);
+            this.PriceTextbox.Location = new System.Drawing.Point(220, 63);
             this.PriceTextbox.Name = "PriceTextbox";
-            this.PriceTextbox.Size = new System.Drawing.Size(62, 22);
+            this.PriceTextbox.Size = new System.Drawing.Size(48, 20);
             this.PriceTextbox.TabIndex = 10;
             // 
             // RoomIDTextbox
             // 
-            this.RoomIDTextbox.Location = new System.Drawing.Point(105, 76);
-            this.RoomIDTextbox.Margin = new System.Windows.Forms.Padding(4);
+            this.RoomIDTextbox.Location = new System.Drawing.Point(79, 62);
             this.RoomIDTextbox.Name = "RoomIDTextbox";
-            this.RoomIDTextbox.Size = new System.Drawing.Size(87, 22);
+            this.RoomIDTextbox.Size = new System.Drawing.Size(66, 20);
             this.RoomIDTextbox.TabIndex = 9;
             // 
             // RoomSubmit
             // 
             this.RoomSubmit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RoomSubmit.Location = new System.Drawing.Point(256, 126);
-            this.RoomSubmit.Margin = new System.Windows.Forms.Padding(4);
+            this.RoomSubmit.Location = new System.Drawing.Point(192, 102);
             this.RoomSubmit.Name = "RoomSubmit";
-            this.RoomSubmit.Size = new System.Drawing.Size(100, 29);
+            this.RoomSubmit.Size = new System.Drawing.Size(75, 24);
             this.RoomSubmit.TabIndex = 8;
             this.RoomSubmit.Text = "Submit";
             this.RoomSubmit.UseVisualStyleBackColor = true;
@@ -462,10 +415,9 @@
             // button5
             // 
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(105, 126);
-            this.button5.Margin = new System.Windows.Forms.Padding(4);
+            this.button5.Location = new System.Drawing.Point(79, 102);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(100, 29);
+            this.button5.Size = new System.Drawing.Size(75, 24);
             this.button5.TabIndex = 7;
             this.button5.Text = "Cancel";
             this.button5.UseVisualStyleBackColor = true;
@@ -475,10 +427,9 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(253, 80);
-            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label16.Location = new System.Drawing.Point(190, 65);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(48, 20);
+            this.label16.Size = new System.Drawing.Size(38, 16);
             this.label16.TabIndex = 1;
             this.label16.Text = "Price";
             // 
@@ -486,17 +437,16 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(42, 80);
-            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label17.Location = new System.Drawing.Point(32, 65);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(70, 20);
+            this.label17.Size = new System.Drawing.Size(57, 16);
             this.label17.TabIndex = 0;
             this.label17.Text = "RoomID";
             // 
             // ReservationPanel
             // 
             this.ReservationPanel.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.ReservationPanel.Controls.Add(this.label11);
+            this.ReservationPanel.Controls.Add(this.ReservationLabel);
             this.ReservationPanel.Controls.Add(this.TotalTextbox);
             this.ReservationPanel.Controls.Add(this.RoomTextbox);
             this.ReservationPanel.Controls.Add(this.GuestTextbox);
@@ -507,65 +457,58 @@
             this.ReservationPanel.Controls.Add(this.label18);
             this.ReservationPanel.Controls.Add(this.label19);
             this.ReservationPanel.Controls.Add(this.label20);
-            this.ReservationPanel.Location = new System.Drawing.Point(318, 284);
-            this.ReservationPanel.Margin = new System.Windows.Forms.Padding(4);
+            this.ReservationPanel.Location = new System.Drawing.Point(237, 229);
             this.ReservationPanel.Name = "ReservationPanel";
-            this.ReservationPanel.Size = new System.Drawing.Size(655, 302);
+            this.ReservationPanel.Size = new System.Drawing.Size(491, 192);
             this.ReservationPanel.TabIndex = 6;
             this.ReservationPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.ReservationPanel_Paint);
             // 
-            // label11
+            // ReservationLabel
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Nirmala UI", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(84, 12);
-            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(462, 62);
-            this.label11.TabIndex = 16;
-            this.label11.Text = "Reservation Details:";
+            this.ReservationLabel.AutoSize = true;
+            this.ReservationLabel.Font = new System.Drawing.Font("Nirmala UI", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ReservationLabel.Location = new System.Drawing.Point(63, 10);
+            this.ReservationLabel.Name = "ReservationLabel";
+            this.ReservationLabel.Size = new System.Drawing.Size(365, 50);
+            this.ReservationLabel.TabIndex = 16;
+            this.ReservationLabel.Text = "Reservation Details:";
             // 
             // TotalTextbox
             // 
-            this.TotalTextbox.Location = new System.Drawing.Point(392, 155);
-            this.TotalTextbox.Margin = new System.Windows.Forms.Padding(4);
+            this.TotalTextbox.Location = new System.Drawing.Point(294, 126);
             this.TotalTextbox.Name = "TotalTextbox";
-            this.TotalTextbox.Size = new System.Drawing.Size(132, 22);
+            this.TotalTextbox.Size = new System.Drawing.Size(100, 20);
             this.TotalTextbox.TabIndex = 12;
             // 
             // RoomTextbox
             // 
-            this.RoomTextbox.Location = new System.Drawing.Point(123, 151);
-            this.RoomTextbox.Margin = new System.Windows.Forms.Padding(4);
+            this.RoomTextbox.Location = new System.Drawing.Point(92, 123);
             this.RoomTextbox.Name = "RoomTextbox";
-            this.RoomTextbox.Size = new System.Drawing.Size(132, 22);
+            this.RoomTextbox.Size = new System.Drawing.Size(100, 20);
             this.RoomTextbox.TabIndex = 11;
             this.RoomTextbox.TextChanged += new System.EventHandler(this.textBox12_TextChanged);
             // 
             // GuestTextbox
             // 
-            this.GuestTextbox.Location = new System.Drawing.Point(392, 95);
-            this.GuestTextbox.Margin = new System.Windows.Forms.Padding(4);
+            this.GuestTextbox.Location = new System.Drawing.Point(294, 77);
             this.GuestTextbox.Name = "GuestTextbox";
-            this.GuestTextbox.Size = new System.Drawing.Size(132, 22);
+            this.GuestTextbox.Size = new System.Drawing.Size(100, 20);
             this.GuestTextbox.TabIndex = 10;
             // 
             // ReservationIDTextbox
             // 
-            this.ReservationIDTextbox.Location = new System.Drawing.Point(188, 94);
-            this.ReservationIDTextbox.Margin = new System.Windows.Forms.Padding(4);
+            this.ReservationIDTextbox.Location = new System.Drawing.Point(141, 76);
             this.ReservationIDTextbox.Name = "ReservationIDTextbox";
-            this.ReservationIDTextbox.Size = new System.Drawing.Size(67, 22);
+            this.ReservationIDTextbox.Size = new System.Drawing.Size(51, 20);
             this.ReservationIDTextbox.TabIndex = 9;
             this.ReservationIDTextbox.TextChanged += new System.EventHandler(this.textBox16_TextChanged);
             // 
             // ReservationSubmit
             // 
             this.ReservationSubmit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ReservationSubmit.Location = new System.Drawing.Point(343, 230);
-            this.ReservationSubmit.Margin = new System.Windows.Forms.Padding(4);
+            this.ReservationSubmit.Location = new System.Drawing.Point(256, 159);
             this.ReservationSubmit.Name = "ReservationSubmit";
-            this.ReservationSubmit.Size = new System.Drawing.Size(133, 36);
+            this.ReservationSubmit.Size = new System.Drawing.Size(100, 29);
             this.ReservationSubmit.TabIndex = 8;
             this.ReservationSubmit.Text = "Submit";
             this.ReservationSubmit.UseVisualStyleBackColor = true;
@@ -574,12 +517,11 @@
             // button7
             // 
             this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.Location = new System.Drawing.Point(147, 230);
-            this.button7.Margin = new System.Windows.Forms.Padding(4);
+            this.button7.Location = new System.Drawing.Point(104, 159);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(133, 36);
+            this.button7.Size = new System.Drawing.Size(100, 29);
             this.button7.TabIndex = 7;
-            this.button7.Text = "Cancel";
+            this.button7.Text = "Clear";
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
@@ -587,10 +529,9 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(337, 160);
-            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label15.Location = new System.Drawing.Point(253, 130);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(46, 20);
+            this.label15.Size = new System.Drawing.Size(38, 16);
             this.label15.TabIndex = 3;
             this.label15.Text = "Total";
             // 
@@ -598,10 +539,9 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(56, 155);
-            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label18.Location = new System.Drawing.Point(42, 126);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(53, 20);
+            this.label18.Size = new System.Drawing.Size(44, 16);
             this.label18.TabIndex = 2;
             this.label18.Text = "Room";
             // 
@@ -609,10 +549,9 @@
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(337, 98);
-            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label19.Location = new System.Drawing.Point(253, 80);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(54, 20);
+            this.label19.Size = new System.Drawing.Size(42, 16);
             this.label19.TabIndex = 1;
             this.label19.Text = "Guest";
             // 
@@ -620,20 +559,18 @@
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(56, 98);
-            this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label20.Location = new System.Drawing.Point(42, 80);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(115, 20);
+            this.label20.Size = new System.Drawing.Size(93, 16);
             this.label20.TabIndex = 0;
             this.label20.Text = "ReservationID";
             // 
             // ListView
             // 
             this.ListView.HideSelection = false;
-            this.ListView.Location = new System.Drawing.Point(259, 49);
-            this.ListView.Margin = new System.Windows.Forms.Padding(4);
+            this.ListView.Location = new System.Drawing.Point(194, 40);
             this.ListView.Name = "ListView";
-            this.ListView.Size = new System.Drawing.Size(768, 486);
+            this.ListView.Size = new System.Drawing.Size(577, 396);
             this.ListView.TabIndex = 7;
             this.ListView.UseCompatibleStateImageBehavior = false;
             this.ListView.SelectedIndexChanged += new System.EventHandler(this.ListView_SelectedIndexChanged);
@@ -641,20 +578,19 @@
             // MainListView
             // 
             this.MainListView.HideSelection = false;
-            this.MainListView.Location = new System.Drawing.Point(288, 65);
-            this.MainListView.Margin = new System.Windows.Forms.Padding(4);
+            this.MainListView.Location = new System.Drawing.Point(216, 53);
             this.MainListView.Name = "MainListView";
-            this.MainListView.Size = new System.Drawing.Size(711, 211);
+            this.MainListView.Size = new System.Drawing.Size(534, 172);
             this.MainListView.TabIndex = 8;
             this.MainListView.UseCompatibleStateImageBehavior = false;
             this.MainListView.SelectedIndexChanged += new System.EventHandler(this.MainListView_SelectedIndexChanged);
             // 
             // MainUI
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(1371, 750);
+            this.ClientSize = new System.Drawing.Size(1289, 609);
             this.Controls.Add(this.ReservationPanel);
             this.Controls.Add(this.ClientPanel);
             this.Controls.Add(this.RoomPanel);
@@ -664,7 +600,6 @@
             this.Controls.Add(this.ListView);
             this.Controls.Add(this.listView1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainUI";
             this.Text = "ClientsUI";
             this.Load += new System.EventHandler(this.MainUI_Load);
@@ -691,7 +626,6 @@
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.RadioButton deleteRadioGroup;
         private System.Windows.Forms.RadioButton editRadioGroup;
-        private System.Windows.Forms.RadioButton viewRadioGroup;
         private System.Windows.Forms.RadioButton addRadioGroup;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnSubmit;
@@ -712,9 +646,9 @@
         private System.Windows.Forms.TextBox AddressTextbox;
         private System.Windows.Forms.TextBox NameTextbox;
         private System.Windows.Forms.TextBox ClientTextbox;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label ClientLabel;
         private System.Windows.Forms.Panel RoomPanel;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label RoomLabel;
         private System.Windows.Forms.TextBox PriceTextbox;
         private System.Windows.Forms.TextBox RoomIDTextbox;
         private System.Windows.Forms.Button RoomSubmit;
@@ -722,7 +656,7 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Panel ReservationPanel;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label ReservationLabel;
         private System.Windows.Forms.TextBox TotalTextbox;
         private System.Windows.Forms.TextBox RoomTextbox;
         private System.Windows.Forms.TextBox GuestTextbox;
