@@ -79,7 +79,6 @@ namespace INFOsProject.Data
                     aReservation.Total = Convert.ToDouble(myRow["Total"]);
                     aReservation.Days = Convert.ToInt32(myRow["DaysOfStay"]);
                     Reservations.Add(aReservation);
-                    MessageBox.Show("Reservation added");
                 }
                 
             }

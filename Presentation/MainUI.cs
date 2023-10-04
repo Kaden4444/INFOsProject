@@ -235,7 +235,6 @@ namespace INFOsProject.Presentation
         {
             HidePanels();
             MainListView.Clear();
-            Console.Write("Hi!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
             switch (State_of_Form)
             {
                 case 0:
@@ -484,8 +483,6 @@ namespace INFOsProject.Presentation
         {
             
             MainListView.View = View.Details;
-            MessageBox.Show("About to call setup");
-          
             setUpMainListView();
 
            
@@ -504,7 +501,6 @@ namespace INFOsProject.Presentation
             
             ListViewItem clientDetails, roomDetails, reservationDetails;
             MainListView.Clear();
-            MessageBox.Show("Trying to set up listview");
             switch (State_of_Form)
             {
                 case 0:
@@ -515,11 +511,41 @@ namespace INFOsProject.Presentation
                     MainListView.Columns.Insert(4, "Town", 100, HorizontalAlignment.Left);
                     MainListView.Columns.Insert(5, "Postal Code", 100, HorizontalAlignment.Left);
                     MainListView.Columns.Insert(6, "Reservation", 100, HorizontalAlignment.Left);
+
+                    Clients = null;
+                    Clients = clientsController.AllClients;
+                    foreach (Client Client in Clients)
+                    {
+                        clientDetails = new ListViewItem();
+                        clientDetails.Text = Client.getID.ToString();
+                        clientDetails.SubItems.Add(Client.getName);
+                        clientDetails.SubItems.Add(Client.getStreetAddress);
+                        clientDetails.SubItems.Add(Client.getArea);
+                        clientDetails.SubItems.Add(Client.getTown);
+                        clientDetails.SubItems.Add(Client.getPostal_code);
+                        clientDetails.SubItems.Add(Client.getBooking.ToString());
+                        MainListView.Items.Add(clientDetails);
+                    }
+                    MainListView.Refresh();
+                    MainListView.GridLines = true;
                     break;
 
                 case 1:
                     MainListView.Columns.Insert(0, "RoomID", 120, HorizontalAlignment.Left);
                     MainListView.Columns.Insert(1, "Price", 120, HorizontalAlignment.Left);
+
+                    Rooms = null;
+                    Rooms = roomController.AllRooms;
+                    foreach (Room Room in Rooms)
+                    {
+                        roomDetails = new ListViewItem();
+                        roomDetails.Text = Room.RoomID.ToString();
+                        roomDetails.SubItems.Add(Room.Booked.ToString());
+
+                        MainListView.Items.Add(roomDetails);
+                    }
+                    MainListView.Refresh();
+                    MainListView.GridLines = true;
                     break;
 
                 case 2:
@@ -528,52 +554,25 @@ namespace INFOsProject.Presentation
                     MainListView.Columns.Insert(2, "Room", 120, HorizontalAlignment.Left);
                     MainListView.Columns.Insert(3, "Total", 120, HorizontalAlignment.Left);
                     MainListView.Columns.Insert(4, "DaysOfStay", 120, HorizontalAlignment.Left);
+
+                    Reservations = null;
+                    Reservations = reservationController.AllReservations;
+                    foreach (Reservation Reservation in Reservations)
+                    {
+                        reservationDetails = new ListViewItem();
+                        reservationDetails.Text = Reservation.ReservationID.ToString();
+                        reservationDetails.SubItems.Add(Reservation.Client.ToString());
+                        reservationDetails.SubItems.Add(Reservation.Room.ToString());
+                        reservationDetails.SubItems.Add(Reservation.Total.ToString());
+                        reservationDetails.SubItems.Add(Reservation.Days.ToString());
+
+                        MainListView.Items.Add(reservationDetails);
+                    }
+                    MainListView.Refresh();
+                    MainListView.GridLines = true;
+
                     break;
-            }
-
-            Clients = null;
-            Clients = clientsController.AllClients;
-            foreach (Client Client in  Clients)
-            {
-                clientDetails = new ListViewItem();
-                clientDetails.Text = Client.getID.ToString();
-                clientDetails.SubItems.Add(Client.getName);
-                clientDetails.SubItems.Add(Client.getStreetAddress);
-                clientDetails.SubItems.Add(Client.getArea);
-                clientDetails.SubItems.Add(Client.getTown);
-                clientDetails.SubItems.Add(Client.getPostal_code);
-                clientDetails.SubItems.Add(Client.getBooking.ToString());
-                MainListView.Items.Add(clientDetails);
-            }
-            MainListView.Refresh();
-            MainListView.GridLines = true;
-
-            Rooms = null;
-            foreach (Room Room in Rooms)
-            {
-                roomDetails = new ListViewItem();
-                roomDetails.Text = Room.RoomID.ToString();
-                roomDetails.SubItems.Add(Room.Booked.ToString());
-  
-                MainListView.Items.Add(roomDetails);
-            }
-            MainListView.Refresh();
-            MainListView.GridLines = true;
-
-            Reservations = null;
-            foreach (Reservation Reservation in Reservations)
-            {
-                reservationDetails = new ListViewItem();
-                reservationDetails.Text = Reservation.ReservationID.ToString();
-                reservationDetails.SubItems.Add(Reservation.Client.ToString());
-                reservationDetails.SubItems.Add(Reservation.Room.ToString());
-                reservationDetails.SubItems.Add(Reservation.Total.ToString());
-                reservationDetails.SubItems.Add(Reservation.Days.ToString());
-
-                MainListView.Items.Add(reservationDetails);
-            }
-            MainListView.Refresh();
-            MainListView.GridLines = true;
+            }        
         }
         #endregion
     }

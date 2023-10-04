@@ -64,10 +64,9 @@ namespace INFOsProject.Data
                     aClient.getArea = Convert.ToString(myRow["Area"]).TrimEnd();
                     aClient.getTown = Convert.ToString(myRow["Town"]).TrimEnd();
                     aClient.getPostal_code = Convert.ToString(myRow["PostalCode"]).TrimEnd();
-                    if (!(myRow["BookingDate"] == null)){ aClient.getBooking = Convert.ToDateTime(myRow["BookingDate"]); }
+                    //if (!(myRow["BookingDate"] == null)){ aClient.getBooking = Convert.ToDateTime(myRow["BookingDate"]); }
 
                     Clients.Add(aClient);
-                    MessageBox.Show("Client was added");
                 }
 
             }

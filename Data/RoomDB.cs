@@ -76,10 +76,9 @@ namespace INFOsProject.Data
                 {
                     aRoom = new Room();
                     aRoom.RoomID = Convert.ToString(myRow["ID"]).TrimEnd();
-                    aRoom.Booked = Convert.ToBoolean(myRow["Booked"]);
                     aRoom.Price = Convert.ToDouble(myRow["Price"]);
                     Rooms.Add(aRoom);
-                    MessageBox.Show("Room was added");
+                    
                 }
                 
             }
@@ -89,8 +88,7 @@ namespace INFOsProject.Data
         {
             if (operation == DBOperation.Add)
             {
-                aRow["ID"] = aRoom.RoomID;  //NOTE square brackets to indicate index of collections of fields in row.
-                aRow["Booked"] = aRoom.Booked;
+                aRow["ID"] = aRoom.RoomID;  //NOTE square brackets to indicate index of collections of fields in row.   
                 aRow["Price"] = aRoom.Price;
 
             }
@@ -123,29 +121,21 @@ namespace INFOsProject.Data
             param = new SqlParameter("@ID", SqlDbType.NVarChar, 15, "ID");
             daMain.InsertCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@Booked", SqlDbType.Bit, 1, "Booked");
-            daMain.InsertCommand.Parameters.Add(param);
-
             param = new SqlParameter("@Price", SqlDbType.Money, 50, "Price");
             daMain.InsertCommand.Parameters.Add(param);
 
         }
         private void Create_INSERT_Command(Room aRoom)
         {
-            daMain.InsertCommand = new SqlCommand("INSERT into Rooms (ID, Booked, Price) VALUES (@ID, @Booked, @Price)", cnMain);
+            daMain.InsertCommand = new SqlCommand("INSERT into Rooms (ID, Price) VALUES (@ID, @Price)", cnMain);
             Build_INSERT_Parameters(aRoom);
         }
         private void Build_UPDATE_Parameters(Room aRoom)
         {
             // string roomID;
-            //bool booked;
             //double price;
             SqlParameter param = default(SqlParameter);
             param = new SqlParameter("@ID", SqlDbType.NVarChar, 15, "ID");
-            param.SourceVersion = DataRowVersion.Current;
-            daMain.UpdateCommand.Parameters.Add(param);
-
-            param = new SqlParameter("@Booked", SqlDbType.Bit, 1, "Booked");
             param.SourceVersion = DataRowVersion.Current;
             daMain.UpdateCommand.Parameters.Add(param);
 
@@ -157,7 +147,7 @@ namespace INFOsProject.Data
         }
         private void Create_UPDATE_Command(Room aRoom)
         {
-            daMain.UpdateCommand = new SqlCommand("UPDATE Rooms SET Booked =@Booked, Price =@Price " + "WHERE ID = @ID", cnMain);
+            daMain.UpdateCommand = new SqlCommand("UPDATE Rooms SET Price =@Price " + "WHERE ID = @ID", cnMain);
             Build_UPDATE_Parameters(aRoom);
 
         }
@@ -171,7 +161,7 @@ namespace INFOsProject.Data
         #endregion
 
         #region Database Operations CRUD
-        public void DataSetChange(Client aClient, DB.DBOperation operation)
+        public void DataSetChange(Room aRoom, DB.DBOperation operation)
         {
             DataRow aRow = null;
             string dataTable = table;
