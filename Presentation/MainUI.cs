@@ -7,30 +7,36 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.AxHost;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using INFOsProject.Data;
+using INFOsProject.Business;
+using System.Collections.ObjectModel;
+using System.Reflection.Emit;
+using System.Xml;
 
 namespace INFOsProject.Presentation
 {
 
     /*
         #region Events
-        private void EmployeeListingForm_FormClosed(object sender, FormClosedEventArgs e)
+        private void MainListView_FormClosed(object sender, FormClosedEventArgs e)
         {
             listFormClosed = true;//4.4 Set the Boolean value of listFormClosed to true in the FormClosed event of the form(first create a FormClosed event for the form).
 
         }
-        private void EmployeeListingForm_Load(object sender, EventArgs e)
+        private void MainListView_Load(object sender, EventArgs e)
         {
-            employeeListView.View = View.Details;
+            MainListView.View = View.Details;
         }
 
-        private void EmployeeListingForm_Activated(object sender, EventArgs e)
+        private void MainListView_Activated(object sender, EventArgs e)
         {
-            // 4.3.1 Set the view of the employeeListView to Details view
-            employeeListView.View = View.Details;
+            // 4.3.1 Set the view of the MainListView to Details view
+            MainListView.View = View.Details;
 
-            // 4.3.2 Call the setUpEmployeeListView method
-            setUpEmployeeListView();
+            // 4.3.2 Call the setUpMainListView method
+            setUpMainListView();
 
             // 4.3.3 Call the ShowAll method to reset the controls
             ShowAll(false, roleValue);
@@ -38,143 +44,133 @@ namespace INFOsProject.Presentation
         #endregion
 
         #region List View
-        public void setUpEmployeeListView()
+        public void setUpMainListView()
         {
-            ListViewItem employeeDetails;   //Declare variables
+            ListViewItem clientDetails;   //Declare variables
             HeadWaiter headW;
             Waiter waiter;
             Runner runner;
             //Clear current List View Control
-            employeeListView.Clear();
+            MainListView.Clear();
             //Set Up Columns of List View
-            employeeListView.Columns.Insert(0, "ID", 120, HorizontalAlignment.Left);
-            employeeListView.Columns.Insert(1, "EMPID", 120, HorizontalAlignment.Left);
-            employeeListView.Columns.Insert(2, "Name", 150, HorizontalAlignment.Left);
-            employeeListView.Columns.Insert(3, "Phone", 100, HorizontalAlignment.Left);
+            MainListView.Columns.Insert(0, "ID", 120, HorizontalAlignment.Left);
+            MainListView.Columns.Insert(1, "EMPID", 120, HorizontalAlignment.Left);
+            MainListView.Columns.Insert(2, "Name", 150, HorizontalAlignment.Left);
+            MainListView.Columns.Insert(3, "Phone", 100, HorizontalAlignment.Left);
             //TO DO  … do this for the other generic elements
-            employees = null;                      //employees collection will be filled by role
+            clients = null;                      //clients collection will be filled by role
             switch (roleValue)                     //  Check which role to add specific headings
             {
                 case Role.RoleType.NoRole:
-                    // TO DO Get all the employees from the EmployeeController object 
-                    // (use the property) and assign to a local employees collection reference
-                    employees = employeeController.AllEmployees;
-                    listLabel.Text = "Listing of all employees";
-                    employeeListView.Columns.Insert(4, "Payment", 100, HorizontalAlignment.Center);
+                    // TO DO Get all the clients from the ClientController object 
+                    // (use the property) and assign to a local clients collection reference
+                    clients = clientController.AllClients;
+                    listLabel.Text = "Listing of all clients";
+                    MainListView.Columns.Insert(4, "Payment", 100, HorizontalAlignment.Center);
                     break;
                 case Role.RoleType.Headwaiter:
-                    //Add a FindByRole method to the EmployeeController 
-                    employees = employeeController.FindByRole(employeeController.AllEmployees, Role.RoleType.Headwaiter);
+                    //Add a FindByRole method to the ClientController 
+                    clients = clientController.FindByRole(clientController.AllClients, Role.RoleType.Headwaiter);
                     listLabel.Text = "Listing of all Headwaiters";
                     //Set Up Columns of List View
-                    employeeListView.Columns.Insert(4, "Salary", 100, HorizontalAlignment.Center);
+                    MainListView.Columns.Insert(4, "Salary", 100, HorizontalAlignment.Center);
                     break;
                 //do for the others
                 case Role.RoleType.Waiter:
-                    //Add a FindByRole method to the EmployeeController 
-                    employees = employeeController.FindByRole(employeeController.AllEmployees, Role.RoleType.Waiter);
+                    //Add a FindByRole method to the ClientController 
+                    clients = clientController.FindByRole(clientController.AllClients, Role.RoleType.Waiter);
                     listLabel.Text = "Listing of all Waiters";
                     //Set Up Columns of List View
-                    employeeListView.Columns.Insert(4, "Rate", 100, HorizontalAlignment.Center);
-                    employeeListView.Columns.Insert(4, "Number of Shifts", 100, HorizontalAlignment.Center);
+                    MainListView.Columns.Insert(4, "Rate", 100, HorizontalAlignment.Center);
+                    MainListView.Columns.Insert(4, "Number of Shifts", 100, HorizontalAlignment.Center);
                     break;
                 case Role.RoleType.Runner:
-                    //Add a FindByRole method to the EmployeeController 
-                    employees = employeeController.FindByRole(employeeController.AllEmployees, Role.RoleType.Runner);
+                    //Add a FindByRole method to the ClientController 
+                    clients = clientController.FindByRole(clientController.AllClients, Role.RoleType.Runner);
                     listLabel.Text = "Listing of all Runners";
                     //Set Up Columns of List View
-                    employeeListView.Columns.Insert(4, "Rate", 100, HorizontalAlignment.Center);
-                    employeeListView.Columns.Insert(4, "Number of Shifts", 100, HorizontalAlignment.Center);
+                    MainListView.Columns.Insert(4, "Rate", 100, HorizontalAlignment.Center);
+                    MainListView.Columns.Insert(4, "Number of Shifts", 100, HorizontalAlignment.Center);
                     break;
 
             }
-            //Add employee details to each ListView item 
-            foreach (Employee employee in employees)
+            //Add client details to each ListView item 
+            foreach (Client client in clients)
             {
-                employeeDetails = new ListViewItem();
-                employeeDetails.Text = employee.ID.ToString();
+                clientDetails = new ListViewItem();
+                clientDetails.Text = client.ID.ToString();
                 // Do the same for EmpID, Name and Phone
-                employeeDetails.SubItems.Add(employee.EmployeeID);
-                employeeDetails.SubItems.Add(employee.Name);
-                employeeDetails.SubItems.Add(employee.Telephone);
+                clientDetails.SubItems.Add(client.ClientID);
+                clientDetails.SubItems.Add(client.Name);
+                clientDetails.SubItems.Add(client.Telephone);
 
-                switch (employee.role.getRoleValue)
+                switch (client.role.getRoleValue)
                 {
                     case Role.RoleType.Headwaiter:
-                        headW = (HeadWaiter)employee.role;
-                        employeeDetails.SubItems.Add(headW.SalaryAmount.ToString());
+                        headW = (HeadWaiter)client.role;
+                        clientDetails.SubItems.Add(headW.SalaryAmount.ToString());
                         break;
                     case Role.RoleType.Waiter:
-                        waiter = (Waiter)employee.role;
-                        employeeDetails.SubItems.Add(waiter.getRate.ToString());
-                        employeeDetails.SubItems.Add(waiter.getShifts.ToString());
+                        waiter = (Waiter)client.role;
+                        clientDetails.SubItems.Add(waiter.getRate.ToString());
+                        clientDetails.SubItems.Add(waiter.getShifts.ToString());
                         break;
                     case Role.RoleType.Runner:
-                        runner = (Runner)employee.role;
-                        employeeDetails.SubItems.Add(runner.getRate.ToString());
-                        employeeDetails.SubItems.Add(runner.getShifts.ToString());
+                        runner = (Runner)client.role;
+                        clientDetails.SubItems.Add(runner.getRate.ToString());
+                        clientDetails.SubItems.Add(runner.getShifts.ToString());
                         break;
                 }
-                employeeListView.Items.Add(employeeDetails);
+                MainListView.Items.Add(clientDetails);
             }
-            employeeListView.Refresh();
-            employeeListView.GridLines = true;
+            MainListView.Refresh();
+            MainListView.GridLines = true;
         }
 
 
-        private void employeeListView_SelectedIndexChanged(object sender, EventArgs e)
+        private void MainListView_SelectedIndexChanged(object sender, EventArgs e)
         {
             ShowAll(true, roleValue);
             state = FormStates.View;
             EnableEntries(false);
-            if (employeeListView.SelectedItems.Count > 0)   // if you selected an item 
+            if (MainListView.SelectedItems.Count > 0)   // if you selected an item 
             {
-                employee = employeeController.Find(employeeListView.SelectedItems[0].Text);  //selected student becoms current student
+                client = clientController.Find(MainListView.SelectedItems[0].Text);  //selected student becoms current student
                                                                                              // Show the details of the selected student in the controls
-                PopulateTextBoxes(employee);
+                PopulateTextBoxes(client);
             }
         }
         #endregion
      */
     public partial class MainUI : Form
     {
+        #region Field members
         Dash d;
         int State_of_Form; // 0 = Client, 1 = Room, 2 = Reservation
-        
+        public bool listFormClosed;
+        private Collection<Client> Clients;
+        private Collection<Room> Rooms;
+        private Collection<Reservation> Reservations;
+        private ClientsController clientsController;
+        private RoomController roomController;
+        private ReservationController reservationController;
+        #endregion
+
         public MainUI(Dash dash, int State)
         {
             InitializeComponent();
             d = dash;
             State_of_Form = State;
 
+
+            this.Load += MainListView_Load;
+            this.Activated += MainListView_Activated;
+            this.FormClosed += MainListView_FormClosed;
+
             HidePanels();
-            listView2.Clear();
+            MainListView.Clear();
             Console.Write("Hi!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-            switch (State_of_Form)
-            {
-                case 0:
-                    listView2.Columns.Insert(0, "ClientID", 120, HorizontalAlignment.Left);
-                    listView2.Columns.Insert(1, "Name", 120, HorizontalAlignment.Left);
-                    listView2.Columns.Insert(2, "Address", 150, HorizontalAlignment.Left);
-                    listView2.Columns.Insert(3, "Area", 100, HorizontalAlignment.Left);
-                    listView2.Columns.Insert(4, "Town", 100, HorizontalAlignment.Left);
-                    listView2.Columns.Insert(5, "Postal Code", 100, HorizontalAlignment.Left);
-                    listView2.Columns.Insert(6, "Reservation", 100, HorizontalAlignment.Left);
-                    break;
 
-                case 1:
-                    listView2.Columns.Insert(0, "RoomID", 120, HorizontalAlignment.Left);
-                    listView2.Columns.Insert(1, "Price", 120, HorizontalAlignment.Left);
-                    break;
-
-                case 2:
-                    listView2.Columns.Insert(0, "ReservationID", 120, HorizontalAlignment.Left);
-                    listView2.Columns.Insert(1, "Guest", 120, HorizontalAlignment.Left);
-                    listView2.Columns.Insert(2, "Room", 120, HorizontalAlignment.Left);
-                    listView2.Columns.Insert(3, "Total", 120, HorizontalAlignment.Left);
-                    listView2.Columns.Insert(4, "DaysOfStay", 120, HorizontalAlignment.Left);
-                    break;
-            }
         }
 
         private void HidePanels()
@@ -198,31 +194,31 @@ namespace INFOsProject.Presentation
         private void MainUI_Load(object sender, EventArgs e)
         {
             HidePanels();
-            listView2.Clear();
+            MainListView.Clear();
             Console.Write("Hi!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
             switch (State_of_Form)
             {
                 case 0:
-                    listView2.Columns.Insert(0, "ClientID", 120, HorizontalAlignment.Left);
-                    listView2.Columns.Insert(1, "Name", 120, HorizontalAlignment.Left);
-                    listView2.Columns.Insert(2, "Address", 150, HorizontalAlignment.Left);
-                    listView2.Columns.Insert(3, "Area", 100, HorizontalAlignment.Left);
-                    listView2.Columns.Insert(4, "Town", 100, HorizontalAlignment.Left);
-                    listView2.Columns.Insert(5, "Postal Code", 100, HorizontalAlignment.Left);
-                    listView2.Columns.Insert(6, "Reservation", 100, HorizontalAlignment.Left);
+                    MainListView.Columns.Insert(0, "ClientID", 120, HorizontalAlignment.Left);
+                    MainListView.Columns.Insert(1, "Name", 120, HorizontalAlignment.Left);
+                    MainListView.Columns.Insert(2, "Address", 150, HorizontalAlignment.Left);
+                    MainListView.Columns.Insert(3, "Area", 100, HorizontalAlignment.Left);
+                    MainListView.Columns.Insert(4, "Town", 100, HorizontalAlignment.Left);
+                    MainListView.Columns.Insert(5, "Postal Code", 100, HorizontalAlignment.Left);
+                    MainListView.Columns.Insert(6, "Reservation", 100, HorizontalAlignment.Left);
                     break;
 
                 case 1:
-                    listView2.Columns.Insert(0, "RoomID", 120, HorizontalAlignment.Left);
-                    listView2.Columns.Insert(1, "Price", 120, HorizontalAlignment.Left);
+                    MainListView.Columns.Insert(0, "RoomID", 120, HorizontalAlignment.Left);
+                    MainListView.Columns.Insert(1, "Price", 120, HorizontalAlignment.Left);
                     break;
 
                 case 2:
-                    listView2.Columns.Insert(0, "ReservationID", 120, HorizontalAlignment.Left);
-                    listView2.Columns.Insert(1, "Guest", 120, HorizontalAlignment.Left);
-                    listView2.Columns.Insert(2, "Room", 120, HorizontalAlignment.Left);
-                    listView2.Columns.Insert(3, "Total", 120, HorizontalAlignment.Left);
-                    listView2.Columns.Insert(4, "DaysOfStay", 120, HorizontalAlignment.Left);
+                    MainListView.Columns.Insert(0, "ReservationID", 120, HorizontalAlignment.Left);
+                    MainListView.Columns.Insert(1, "Guest", 120, HorizontalAlignment.Left);
+                    MainListView.Columns.Insert(2, "Room", 120, HorizontalAlignment.Left);
+                    MainListView.Columns.Insert(3, "Total", 120, HorizontalAlignment.Left);
+                    MainListView.Columns.Insert(4, "DaysOfStay", 120, HorizontalAlignment.Left);
                     break;
             }
         }
@@ -241,7 +237,24 @@ namespace INFOsProject.Presentation
         {
             if (viewRadioGroup.Checked)
             {
-                ClientPanel.Show();
+                switch(State_of_Form)
+                {
+                    case 0: //Client
+                    ClientPanel.Show();
+                    //MainListView
+
+                    break;
+
+                    case 1: //Room
+                    RoomPanel.Show();
+                    break;
+
+                    case 2: //Reseration
+                    ReservationPanel.Show();
+                    break;
+
+                }
+                
             }
 
             else if (addRadioGroup.Checked)
@@ -348,26 +361,26 @@ namespace INFOsProject.Presentation
             switch (State_of_Form)
             {
                 case 0:
-                    listView2.Columns.Insert(0, "ClientID", 120, HorizontalAlignment.Left);
-                    listView2.Columns.Insert(1, "Name", 120, HorizontalAlignment.Left);
-                    listView2.Columns.Insert(2, "Address", 150, HorizontalAlignment.Left);
-                    listView2.Columns.Insert(3, "Area", 100, HorizontalAlignment.Left);
-                    listView2.Columns.Insert(4, "Town", 100, HorizontalAlignment.Left);
-                    listView2.Columns.Insert(5, "Postal Code", 100, HorizontalAlignment.Left);
-                    listView2.Columns.Insert(6, "Reservation", 100, HorizontalAlignment.Left);
+                    MainListView.Columns.Insert(0, "ClientID", 120, HorizontalAlignment.Left);
+                    MainListView.Columns.Insert(1, "Name", 120, HorizontalAlignment.Left);
+                    MainListView.Columns.Insert(2, "Address", 150, HorizontalAlignment.Left);
+                    MainListView.Columns.Insert(3, "Area", 100, HorizontalAlignment.Left);
+                    MainListView.Columns.Insert(4, "Town", 100, HorizontalAlignment.Left);
+                    MainListView.Columns.Insert(5, "Postal Code", 100, HorizontalAlignment.Left);
+                    MainListView.Columns.Insert(6, "Reservation", 100, HorizontalAlignment.Left);
                     break;
 
                 case 1:
-                    listView2.Columns.Insert(0, "RoomID", 120, HorizontalAlignment.Left);
-                    listView2.Columns.Insert(1, "Price", 120, HorizontalAlignment.Left);
+                    MainListView.Columns.Insert(0, "RoomID", 120, HorizontalAlignment.Left);
+                    MainListView.Columns.Insert(1, "Price", 120, HorizontalAlignment.Left);
                     break;
 
                 case 2:
-                    listView2.Columns.Insert(0, "ReservationID", 120, HorizontalAlignment.Left);
-                    listView2.Columns.Insert(1, "Guest", 120, HorizontalAlignment.Left);
-                    listView2.Columns.Insert(2, "Room", 120, HorizontalAlignment.Left);
-                    listView2.Columns.Insert(3, "Total", 120, HorizontalAlignment.Left);
-                    listView2.Columns.Insert(4, "DaysOfStay", 120, HorizontalAlignment.Left);
+                    MainListView.Columns.Insert(0, "ReservationID", 120, HorizontalAlignment.Left);
+                    MainListView.Columns.Insert(1, "Guest", 120, HorizontalAlignment.Left);
+                    MainListView.Columns.Insert(2, "Room", 120, HorizontalAlignment.Left);
+                    MainListView.Columns.Insert(3, "Total", 120, HorizontalAlignment.Left);
+                    MainListView.Columns.Insert(4, "DaysOfStay", 120, HorizontalAlignment.Left);
                     break;
             }
             
@@ -378,9 +391,290 @@ namespace INFOsProject.Presentation
 
         }
 
-        private void listView2_SelectedIndexChanged(object sender, EventArgs e)
+        private void MainListView_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
+
+        #region Utility Methods
+       /* private void PopulateTextBoxes(Employee employee)
+        {
+            HeadWaiter headW;
+            Waiter waiter;
+            Runner runner;
+            idTextBox.Text = employee.ID;
+            empIDTextBox.Text = employee.EmployeeID;
+            nameTextBox.Text = employee.Name;
+            phoneTextBox.Text = employee.Telephone;
+
+            switch (employee.role.getRoleValue)
+            {
+                case Role.RoleType.Headwaiter:
+                    headW = (HeadWaiter)(employee.role);
+                    paymentTextBox.Text = Convert.ToString(headW.SalaryAmount);
+                    break;
+                case Role.RoleType.Waiter:
+                    waiter = (Waiter)(employee.role);
+                    paymentTextBox.Text = Convert.ToString(waiter.getRate);
+                    shiftsTextBox.Text = Convert.ToString(waiter.getShifts);
+                    break;
+                case Role.RoleType.Runner:
+                    runner = (Runner)(employee.role);
+                    paymentTextBox.Text = Convert.ToString(runner.getRate);
+                    shiftsTextBox.Text = Convert.ToString(runner.getShifts);
+                    break;
+            }
+        } */
+
+        #endregion
+
+
+        #region Events
+        private void MainListView_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            listFormClosed = true;
+
+        }
+        private void MainListView_Load(object sender, EventArgs e)
+        {
+            MainListView.View = View.Details;
+        }
+
+        private void MainListView_Activated(object sender, EventArgs e)
+        {
+            
+            MainListView.View = View.Details;
+
+          
+            //setUpMainListView();
+
+           
+            //ShowAll(false, roleValue);
+        }
+
+
+        #endregion
+
+        #region List View
+
+   
+   
+        public void setUpMainListView()
+        {
+            ListViewItem clientDetails, roomDetails, reservationDetails;
+            
+            Client client;
+            Room room;
+            Reservation reservation;
+            MainListView.Clear();
+
+            switch (State_of_Form)
+            {
+                case 0:
+                    MainListView.Columns.Insert(0, "ClientID", 120, HorizontalAlignment.Left);
+                    MainListView.Columns.Insert(1, "Name", 120, HorizontalAlignment.Left);
+                    MainListView.Columns.Insert(2, "Address", 150, HorizontalAlignment.Left);
+                    MainListView.Columns.Insert(3, "Area", 100, HorizontalAlignment.Left);
+                    MainListView.Columns.Insert(4, "Town", 100, HorizontalAlignment.Left);
+                    MainListView.Columns.Insert(5, "Postal Code", 100, HorizontalAlignment.Left);
+                    MainListView.Columns.Insert(6, "Reservation", 100, HorizontalAlignment.Left);
+                    break;
+
+                case 1:
+                    MainListView.Columns.Insert(0, "RoomID", 120, HorizontalAlignment.Left);
+                    MainListView.Columns.Insert(1, "Price", 120, HorizontalAlignment.Left);
+                    break;
+
+                case 2:
+                    MainListView.Columns.Insert(0, "ReservationID", 120, HorizontalAlignment.Left);
+                    MainListView.Columns.Insert(1, "Client", 120, HorizontalAlignment.Left);
+                    MainListView.Columns.Insert(2, "Room", 120, HorizontalAlignment.Left);
+                    MainListView.Columns.Insert(3, "Total", 120, HorizontalAlignment.Left);
+                    MainListView.Columns.Insert(4, "DaysOfStay", 120, HorizontalAlignment.Left);
+                    break;
+            }
+
+            Clients = null;
+
+            foreach (Client Client in Clients)
+            {
+                clientDetails = new ListViewItem();
+                clientDetails.Text = Client.getID.ToString();
+                clientDetails.SubItems.Add(Client.getName);
+                clientDetails.SubItems.Add(Client.getStreetAddress);
+                clientDetails.SubItems.Add(Client.getArea);
+                clientDetails.SubItems.Add(Client.getTown);
+                clientDetails.SubItems.Add(Client.getPostal_code);
+                clientDetails.SubItems.Add(Client.getBooking.ToString());
+                MainListView.Items.Add(clientDetails);
+            }
+            MainListView.Refresh();
+            MainListView.GridLines = true;
+
+            Rooms = null;
+            foreach (Room Room in Rooms)
+            {
+                roomDetails = new ListViewItem();
+                roomDetails.Text = Room.RoomID.ToString();
+                roomDetails.SubItems.Add(Room.Booked.ToString());
+  
+                MainListView.Items.Add(roomDetails);
+            }
+            MainListView.Refresh();
+            MainListView.GridLines = true;
+
+            Reservations = null;
+            foreach (Reservation Reservation in Reservations)
+            {
+                reservationDetails = new ListViewItem();
+                reservationDetails.Text = Reservation.ReservationID.ToString();
+                reservationDetails.SubItems.Add(Reservation.Client.ToString());
+                reservationDetails.SubItems.Add(Reservation.Room.ToString());
+                reservationDetails.SubItems.Add(Reservation.Total.ToString());
+                reservationDetails.SubItems.Add(Reservation.Days.ToString());
+
+                MainListView.Items.Add(reservationDetails);
+            }
+            MainListView.Refresh();
+            MainListView.GridLines = true;
+        }
+        #endregion
     }
+
+
 }
+
+/*        #region Events
+
+
+        #region Utility Methods
+
+       
+        private void EnableEntries(bool value)
+        {
+            if ((state == FormStates.Edit) && value)
+            {
+                idTextBox.Enabled = !value;
+                empIDTextBox.Enabled = !value;
+            }
+            else
+            {
+                idTextBox.Enabled = value;
+                empIDTextBox.Enabled = value;
+            }
+            nameTextBox.Enabled = value;
+            phoneTextBox.Enabled = value;
+            paymentTextBox.Enabled = value;
+            shiftsTextBox.Enabled = value;
+            if (state == FormStates.Delete)
+            {
+                cancelButton.Visible = !value;
+                submitButton.Visible = !value;
+            }
+            else
+            {
+                cancelButton.Visible = value;
+                submitButton.Visible = value;
+            }
+        }
+        private void ClearAll()
+        {
+            idTextBox.Text = "";
+            empIDTextBox.Text = "";
+            nameTextBox.Text = "";
+            phoneTextBox.Text = "";
+            paymentTextBox.Text = "";
+            shiftsTextBox.Text = "";
+        }
+        #endregion
+
+        private void PopulateTextBoxes(Employee employee)
+        {
+            HeadWaiter headW;
+            Waiter waiter;
+            Runner runner;
+            idTextBox.Text = employee.ID;
+            empIDTextBox.Text = employee.EmployeeID;
+            nameTextBox.Text = employee.Name;
+            phoneTextBox.Text = employee.Telephone;
+
+            switch (employee.role.getRoleValue)
+            {
+                case Role.RoleType.Headwaiter:
+                    headW = (HeadWaiter)(employee.role);
+                    paymentTextBox.Text = Convert.ToString(headW.SalaryAmount);
+                    break;
+                case Role.RoleType.Waiter:
+                    waiter = (Waiter)(employee.role);
+                    paymentTextBox.Text = Convert.ToString(waiter.getRate);
+                    shiftsTextBox.Text = Convert.ToString(waiter.getShifts);
+                    break;
+                case Role.RoleType.Runner:
+                    runner = (Runner)(employee.role);
+                    paymentTextBox.Text = Convert.ToString(runner.getRate);
+                    shiftsTextBox.Text = Convert.ToString(runner.getShifts);
+                    break;
+            }
+        }
+
+        private void editButton_Click(object sender, EventArgs e)
+        {
+            state = FormStates.Edit;
+            EnableEntries(true);
+        }
+
+        private void PopulateObject(Role.RoleType roleType)
+        {
+            HeadWaiter headW;
+            Waiter waiter;
+            Runner runner;
+            employee = new Employee(roleType);
+            employee.ID = idTextBox.Text;
+            employee.EmployeeID = empIDTextBox.Text;
+            employee.Name = nameTextBox.Text;
+            employee.Telephone = phoneTextBox.Text;
+
+            switch (employee.role.getRoleValue)
+            {
+                case Role.RoleType.Headwaiter:
+                    headW = (HeadWaiter)(employee.role);
+                    headW.SalaryAmount = decimal.Parse(paymentTextBox.Text);
+                    break;
+                case Role.RoleType.Waiter:
+                    waiter = (Waiter)(employee.role);
+                    waiter.getRate = decimal.Parse(paymentTextBox.Text);
+                    break;
+                case Role.RoleType.Runner:
+                    runner = (Runner)(employee.role);
+                    runner.getRate = decimal.Parse(paymentTextBox.Text);
+                    break;
+            }
+        }
+
+
+        private void submitButton_Click(object sender, EventArgs e)
+        {
+            PopulateObject(roleValue);
+         
+{           if (state == FormStates.Edit)
+                {
+                    employeeController.DataMaintenance(employee, Data.DB.DBOperation.Edit);
+                }
+                else if (state == FormStates.Delete)
+                {
+                    employeeController.DataMaintenance(employee, Data.DB.DBOperation.Delete);
+                }
+}
+            employeeController.FinalizeChanges(employee);
+            ClearAll();
+            state = FormStates.View;
+            ShowAll(false,roleValue);
+            setUpMainListView();
+    }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            state = FormStates.Delete;
+            
+        }
+    }*/
