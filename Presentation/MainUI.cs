@@ -345,21 +345,7 @@ namespace INFOsProject.Presentation
 
         private void ReservationSubmit_Click(object sender, EventArgs e)
         {
-            switch (State_of_Form)
-            {
-                case 0:
-                    ClientPanel.Visible = true;
-
-                    break;
-
-                case 1:
-                    RoomPanel.Visible = true;
-                    break;
-
-                case 2:
-                    ReservationPanel.Visible = true;
-                    break;
-            }
+            ResetLabels();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -653,22 +639,74 @@ namespace INFOsProject.Presentation
         {
             switch (State_of_Form)
             {
+
                 case 0:
                     ClearClient();
                     ClientLabel.Text = "Delete a Client:";
+                    RestrictAllLabels();
                     break;
 
                 case 1:
                     ClearRoom();
                     RoomLabel.Text = "Delete a Room:";
+                    RestrictAllLabels();
                     break;
 
                 case 2:
                     ReservationPanel.Visible = true;
                     ClearReservation();
                     ReservationLabel.Text = "Delete a Reservation:";
+                    RestrictAllLabels();
                     break;
             }
+        }
+
+        private void RestrictAllLabels()
+        {
+            ClientTextbox.Enabled = false;
+            NameTextbox.Enabled = false;
+            AddressTextbox.Enabled = false;
+            AreaTextbox.Enabled = false;
+            TownTextbox.Enabled = false;
+            PostalCodeTextbox.Enabled = false;
+            ReservationTextbox.Enabled = false;
+
+            RoomIDTextbox.Enabled = false;
+            PriceTextbox.Enabled = false;
+
+            ReservationIDTextbox.Enabled = false;
+            GuestTextbox.Enabled = false;
+            RoomTextbox.Enabled = false;
+            TotalTextbox.Enabled = false;
+        }
+        private void ResetLabels()
+        {
+            switch (State_of_Form)
+            {
+                case 0:
+                    ClearClient();
+                    ClientLabel.Text = "Client Details:";
+                    break;
+
+                case 1:
+                    ClearRoom();
+                    RoomLabel.Text = "Room Details:";
+                    break;
+
+                case 2:
+                    ClearReservation();
+                    ReservationLabel.Text = "Reservation Details:";
+                    break;
+            }
+        }
+        private void RoomSubmit_Click_1(object sender, EventArgs e)
+        {
+            ResetLabels();
+        }
+
+        private void ClientSubmit_Click_1(object sender, EventArgs e)
+        {
+            ResetLabels();
         }
     }
 
