@@ -66,7 +66,7 @@ namespace INFOsProject.Data
         {
             //Declare references to a myRow object and an Room object
             DataRow myRow = null;
-
+            Room aRoom;
             //READ from the table  
             foreach (DataRow myRow_loopVariable in dsMain.Tables[table].Rows)
             {
@@ -77,9 +77,9 @@ namespace INFOsProject.Data
                     aRoom.RoomID = Convert.ToString(myRow["ID"]).TrimEnd();
                     aRoom.Booked = Convert.ToBoolean(myRow["Booked"]);
                     aRoom.Price = Convert.ToDouble(myRow["Price"]);
-
+                    Rooms.Add(aRoom);
                 }
-                Rooms.Add(aRoom);
+                
             }
         }
 
@@ -164,9 +164,33 @@ namespace INFOsProject.Data
             bool success = true;
             Create_INSERT_Command(aRoom);
             Create_UPDATE_Command(aRoom);
-            success = UpdateDataSource(sqlLocal, table);
             return success;
         }
+        #endregion
+
+        #region Database Operations CRUD
+        public void DataSetChange(Client aClient, DB.DBOperation operation)
+        {
+            DataRow aRow = null;
+            string dataTable = table;
+            dataTable = table;
+
+            switch (operation)
+            {
+                case DB.DBOperation.Add:
+                    aRow = dsMain.Tables[dataTable].NewRow();
+                    FillRow(aRow, aRoom, operation);
+                    dsMain.Tables[dataTable].Rows.Add(aRow); //Add to the dataset
+                    break;
+
+                case DB.DBOperation.Edit:
+                    aRow = dsMain.Tables[dataTable].Rows[FindRow(aRoom, dataTable)];
+                    FillRow(aRow, aRoom, operation);
+                    dsMain.Tables[dataTable].Rows.Add(aRow);
+                    break;
+            }
+        }
+
         #endregion
     }
 }

@@ -108,6 +108,8 @@ namespace INFOsProject.Presentation
 
         private void button2_Click_1(object sender, EventArgs e)
         {
+            MessageBox.Show("Message");
+            Console.WriteLine("Hide!");
             MainUI RoomsUI = new MainUI(this, 1);
             RoomsUI.Show();
             this.Hide();
