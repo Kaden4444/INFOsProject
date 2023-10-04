@@ -356,6 +356,17 @@ namespace INFOsProject.Presentation
             } */
         }
 
+
+        private void ClearReservation()
+        {
+            //...
+            ReservationIDTextbox.Text = "";
+            GuestTextbox.Text = "";
+            RoomTextbox.Text = "";
+            TotalTextbox.Text = "";
+
+        }
+
         private void ReservationSubmit_Click(object sender, EventArgs e)
         {
             switch (State_of_Form)
