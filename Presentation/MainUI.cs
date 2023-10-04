@@ -597,17 +597,30 @@ namespace INFOsProject.Presentation
                 case 0:
 ;                   ClearClient();
                     ClientLabel.Text = "Add a Client:";
+                    ClientTextbox.Enabled = true;
+                    NameTextbox.Enabled = true;
+                    AddressTextbox.Enabled = true;
+                    AreaTextbox.Enabled= true;
+                    TownTextbox.Enabled = true;
+                    PostalCodeTextbox.Enabled = true;
+                    ReservationTextbox.Enabled = true;
                     break;
 
                 case 1:
                     ClearRoom();
                     RoomLabel.Text = "Add a Room:";
+                    RoomIDTextbox.Enabled = true;
+                    PriceTextbox.Enabled = true;
                     break;
 
                 case 2:
                     ReservationPanel.Visible = true;
                     ClearReservation();
                     ReservationLabel.Text = "Add a Reservation:";
+                    ReservationIDTextbox.Enabled = true;
+                    GuestTextbox.Enabled = true;
+                    RoomTextbox.Enabled = true;
+                    TotalTextbox.Enabled = true;
                     break;
             }
         }
@@ -617,19 +630,21 @@ namespace INFOsProject.Presentation
             switch (State_of_Form)
             {
                 case 0:
-                    ; ClearClient();
+                    ClearClient();
                     ClientLabel.Text = "Edit a Client:";
+                    ClientTextbox.Enabled = false;
                     break;
 
                 case 1:
                     ClearRoom();
                     RoomLabel.Text = "Edit a Room:";
+                    RoomIDTextbox.Enabled = false;
                     break;
 
                 case 2:
-                    ReservationPanel.Visible = true;
                     ClearReservation();
                     ReservationLabel.Text = "Edit a Reservation:";
+                    ReservationIDTextbox.Enabled = false;
                     break;
             }
         }
