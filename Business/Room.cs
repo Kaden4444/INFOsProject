@@ -9,7 +9,6 @@ namespace INFOsProject.Business
     public class Room
     {
         string roomID;
-        bool booked;
         double price;
 
         public Room()
@@ -23,11 +22,7 @@ namespace INFOsProject.Business
             get { return roomID; }
             set { roomID = value; }
         }
-        public bool Booked
-        {
-            get { return booked; }
-            set { booked = value; }
-        }
+
         public double Price
         {
             get { return price; }

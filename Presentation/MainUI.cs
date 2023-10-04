@@ -540,8 +540,7 @@ namespace INFOsProject.Presentation
                     {
                         roomDetails = new ListViewItem();
                         roomDetails.Text = Room.RoomID.ToString();
-                        roomDetails.SubItems.Add(Room.Booked.ToString());
-
+                        roomDetails.SubItems.Add(Room.Price.ToString());
                         MainListView.Items.Add(roomDetails);
                     }
                     MainListView.Refresh();

@@ -206,6 +206,7 @@
             this.ClientPanel.Controls.Add(this.ReservationTextbox);
             this.ClientPanel.Controls.Add(this.PostalCodeTextbox);
             this.ClientPanel.Controls.Add(this.TownTextbox);
+            this.ClientPanel.Controls.Add(this.RoomPanel);
             this.ClientPanel.Controls.Add(this.AreaTextbox);
             this.ClientPanel.Controls.Add(this.AddressTextbox);
             this.ClientPanel.Controls.Add(this.NameTextbox);
@@ -385,7 +386,7 @@
             this.RoomPanel.Controls.Add(this.button5);
             this.RoomPanel.Controls.Add(this.label16);
             this.RoomPanel.Controls.Add(this.label17);
-            this.RoomPanel.Location = new System.Drawing.Point(857, 412);
+            this.RoomPanel.Location = new System.Drawing.Point(21, 3);
             this.RoomPanel.Name = "RoomPanel";
             this.RoomPanel.Size = new System.Drawing.Size(443, 196);
             this.RoomPanel.TabIndex = 5;
@@ -469,7 +470,7 @@
             this.ReservationPanel.Controls.Add(this.label18);
             this.ReservationPanel.Controls.Add(this.label19);
             this.ReservationPanel.Controls.Add(this.label20);
-            this.ReservationPanel.Location = new System.Drawing.Point(818, 117);
+            this.ReservationPanel.Location = new System.Drawing.Point(240, 53);
             this.ReservationPanel.Name = "ReservationPanel";
             this.ReservationPanel.Size = new System.Drawing.Size(491, 245);
             this.ReservationPanel.TabIndex = 6;
@@ -607,7 +608,6 @@
             this.Controls.Add(this.MainListView);
             this.Controls.Add(this.ListView);
             this.Controls.Add(this.ReservationPanel);
-            this.Controls.Add(this.RoomPanel);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
