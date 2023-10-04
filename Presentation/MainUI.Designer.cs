@@ -219,7 +219,7 @@
             this.ClientPanel.Controls.Add(this.label4);
             this.ClientPanel.Controls.Add(this.label3);
             this.ClientPanel.Controls.Add(this.label2);
-            this.ClientPanel.Location = new System.Drawing.Point(242, 285);
+            this.ClientPanel.Location = new System.Drawing.Point(240, 53);
             this.ClientPanel.Name = "ClientPanel";
             this.ClientPanel.Size = new System.Drawing.Size(491, 374);
             this.ClientPanel.TabIndex = 4;
@@ -603,8 +603,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(1028, 609);
-            this.Controls.Add(this.MainListView);
             this.Controls.Add(this.ClientPanel);
+            this.Controls.Add(this.MainListView);
             this.Controls.Add(this.ListView);
             this.Controls.Add(this.ReservationPanel);
             this.Controls.Add(this.RoomPanel);

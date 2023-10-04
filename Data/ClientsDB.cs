@@ -15,7 +15,7 @@ namespace INFOsProject.Data
     public class ClientsDB : DB
     {
         #region  Data members        
-        private string table1 = "Clients";
+        private string table = "Clients";
         private string sqlLocal1 = "SELECT * FROM Clients";
         private Collection<Client> Clients;
         private Client aClient;
@@ -33,8 +33,8 @@ namespace INFOsProject.Data
         public ClientsDB() : base()
         {
             Clients = new Collection<Client>();
-            FillDataSet(sqlLocal1, table1);
-            Add2Collection(table1);
+            FillDataSet(sqlLocal1, table);
+            Add2Collection(table);
         }
         #endregion
 
@@ -120,6 +120,32 @@ namespace INFOsProject.Data
         }
         #endregion
 
+        #region Database Operations CRUD
+        public void DataSetChange(Client aClient, DB.DBOperation operation)
+        {
+            DataRow aRow = null;
+            string dataTable = table;
+            dataTable = table;
+
+            switch (operation)
+            {
+                case DB.DBOperation.Add:
+                    aRow = dsMain.Tables[dataTable].NewRow();
+                    FillRow(aRow, aClient, operation);
+                    dsMain.Tables[dataTable].Rows.Add(aRow); //Add to the dataset
+                    break;
+
+                case DB.DBOperation.Edit:
+                    aRow = dsMain.Tables[dataTable].Rows[FindRow(aClient, dataTable)];
+                    FillRow(aRow, aClient, operation);
+                    dsMain.Tables[dataTable].Rows.Add(aRow);
+                    break;
+            }
+        }
+
+
+        #endregion
+
         #region Build Parameters, Create Commands & Update database
         private void Build_INSERT_Parameters(Client aClient)
         {
@@ -196,7 +222,7 @@ namespace INFOsProject.Data
             bool success = true;
             Create_INSERT_Command(aClient);
             Create_UPDATE_Command(aClient);
-            success = UpdateDataSource(sqlLocal1, table1);
+            success = UpdateDataSource(sqlLocal1, table);
             return success;
         }
         #endregion
