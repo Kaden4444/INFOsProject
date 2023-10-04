@@ -436,35 +436,26 @@ namespace INFOsProject.Presentation
         }
 
         #region Utility Methods
-       /* private void PopulateTextBoxes(Employee employee)
+       private void PopulateClient(Client client)
         {
-            HeadWaiter headW;
-            Waiter waiter;
-            Runner runner;
-            idTextBox.Text = employee.ID;
-            empIDTextBox.Text = employee.EmployeeID;
-            nameTextBox.Text = employee.Name;
-            phoneTextBox.Text = employee.Telephone;
+            ClientTextbox.Text = client.getID;
+            AddressTextbox.Text = client.getStreetAddress;
+            AreaTextbox.Text = client.getArea;
+            TownTextbox.Text = client.getTown;
+            PostalCodeTextbox.Text = client.getPostal_code;
+            ReservationTextbox.Text = client.getBooking.ToString();
+            
+        }
 
-            switch (employee.role.getRoleValue)
-            {
-                case Role.RoleType.Headwaiter:
-                    headW = (HeadWaiter)(employee.role);
-                    paymentTextBox.Text = Convert.ToString(headW.SalaryAmount);
-                    break;
-                case Role.RoleType.Waiter:
-                    waiter = (Waiter)(employee.role);
-                    paymentTextBox.Text = Convert.ToString(waiter.getRate);
-                    shiftsTextBox.Text = Convert.ToString(waiter.getShifts);
-                    break;
-                case Role.RoleType.Runner:
-                    runner = (Runner)(employee.role);
-                    paymentTextBox.Text = Convert.ToString(runner.getRate);
-                    shiftsTextBox.Text = Convert.ToString(runner.getShifts);
-                    break;
-            }
-        } */
+        private void PopulateRoom(Room room)
+        {
 
+        }
+
+        private void PopulateReservation(Reservation reservation)
+        {
+
+        }
         #endregion
 
 
@@ -574,6 +565,11 @@ namespace INFOsProject.Presentation
             }        
         }
         #endregion
+
+        private void ClientPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 
 

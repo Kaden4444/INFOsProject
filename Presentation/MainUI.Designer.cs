@@ -46,6 +46,14 @@
             this.ReservationTextbox = new System.Windows.Forms.TextBox();
             this.PostalCodeTextbox = new System.Windows.Forms.TextBox();
             this.TownTextbox = new System.Windows.Forms.TextBox();
+            this.RoomPanel = new System.Windows.Forms.Panel();
+            this.label10 = new System.Windows.Forms.Label();
+            this.PriceTextbox = new System.Windows.Forms.TextBox();
+            this.RoomIDTextbox = new System.Windows.Forms.TextBox();
+            this.RoomSubmit = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
             this.AreaTextbox = new System.Windows.Forms.TextBox();
             this.AddressTextbox = new System.Windows.Forms.TextBox();
             this.NameTextbox = new System.Windows.Forms.TextBox();
@@ -59,14 +67,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.RoomPanel = new System.Windows.Forms.Panel();
-            this.label10 = new System.Windows.Forms.Label();
-            this.PriceTextbox = new System.Windows.Forms.TextBox();
-            this.RoomIDTextbox = new System.Windows.Forms.TextBox();
-            this.RoomSubmit = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
             this.ReservationPanel = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
             this.TotalTextbox = new System.Windows.Forms.TextBox();
@@ -206,7 +206,6 @@
             this.ClientPanel.Controls.Add(this.ReservationTextbox);
             this.ClientPanel.Controls.Add(this.PostalCodeTextbox);
             this.ClientPanel.Controls.Add(this.TownTextbox);
-            this.ClientPanel.Controls.Add(this.RoomPanel);
             this.ClientPanel.Controls.Add(this.AreaTextbox);
             this.ClientPanel.Controls.Add(this.AddressTextbox);
             this.ClientPanel.Controls.Add(this.NameTextbox);
@@ -220,10 +219,11 @@
             this.ClientPanel.Controls.Add(this.label4);
             this.ClientPanel.Controls.Add(this.label3);
             this.ClientPanel.Controls.Add(this.label2);
-            this.ClientPanel.Location = new System.Drawing.Point(240, 53);
+            this.ClientPanel.Location = new System.Drawing.Point(237, 53);
             this.ClientPanel.Name = "ClientPanel";
             this.ClientPanel.Size = new System.Drawing.Size(491, 374);
             this.ClientPanel.TabIndex = 4;
+            this.ClientPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.ClientPanel_Paint);
             // 
             // label9
             // 
@@ -255,6 +255,86 @@
             this.TownTextbox.Name = "TownTextbox";
             this.TownTextbox.Size = new System.Drawing.Size(100, 20);
             this.TownTextbox.TabIndex = 13;
+            // 
+            // RoomPanel
+            // 
+            this.RoomPanel.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.RoomPanel.Controls.Add(this.label10);
+            this.RoomPanel.Controls.Add(this.PriceTextbox);
+            this.RoomPanel.Controls.Add(this.RoomIDTextbox);
+            this.RoomPanel.Controls.Add(this.RoomSubmit);
+            this.RoomPanel.Controls.Add(this.button5);
+            this.RoomPanel.Controls.Add(this.label16);
+            this.RoomPanel.Controls.Add(this.label17);
+            this.RoomPanel.Location = new System.Drawing.Point(818, 73);
+            this.RoomPanel.Name = "RoomPanel";
+            this.RoomPanel.Size = new System.Drawing.Size(443, 196);
+            this.RoomPanel.TabIndex = 5;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Nirmala UI", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(106, 6);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(264, 50);
+            this.label10.TabIndex = 16;
+            this.label10.Text = "Room Details:";
+            // 
+            // PriceTextbox
+            // 
+            this.PriceTextbox.Location = new System.Drawing.Point(294, 77);
+            this.PriceTextbox.Name = "PriceTextbox";
+            this.PriceTextbox.Size = new System.Drawing.Size(62, 20);
+            this.PriceTextbox.TabIndex = 10;
+            // 
+            // RoomIDTextbox
+            // 
+            this.RoomIDTextbox.Location = new System.Drawing.Point(105, 76);
+            this.RoomIDTextbox.Name = "RoomIDTextbox";
+            this.RoomIDTextbox.Size = new System.Drawing.Size(87, 20);
+            this.RoomIDTextbox.TabIndex = 9;
+            // 
+            // RoomSubmit
+            // 
+            this.RoomSubmit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RoomSubmit.Location = new System.Drawing.Point(256, 126);
+            this.RoomSubmit.Name = "RoomSubmit";
+            this.RoomSubmit.Size = new System.Drawing.Size(100, 29);
+            this.RoomSubmit.TabIndex = 8;
+            this.RoomSubmit.Text = "Submit";
+            this.RoomSubmit.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.Location = new System.Drawing.Point(105, 126);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(100, 29);
+            this.button5.TabIndex = 7;
+            this.button5.Text = "Cancel";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(253, 80);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(38, 16);
+            this.label16.TabIndex = 1;
+            this.label16.Text = "Price";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(42, 80);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(57, 16);
+            this.label17.TabIndex = 0;
+            this.label17.Text = "RoomID";
             // 
             // AreaTextbox
             // 
@@ -375,86 +455,6 @@
             this.label2.Size = new System.Drawing.Size(53, 16);
             this.label2.TabIndex = 0;
             this.label2.Text = "ClientID";
-            // 
-            // RoomPanel
-            // 
-            this.RoomPanel.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.RoomPanel.Controls.Add(this.label10);
-            this.RoomPanel.Controls.Add(this.PriceTextbox);
-            this.RoomPanel.Controls.Add(this.RoomIDTextbox);
-            this.RoomPanel.Controls.Add(this.RoomSubmit);
-            this.RoomPanel.Controls.Add(this.button5);
-            this.RoomPanel.Controls.Add(this.label16);
-            this.RoomPanel.Controls.Add(this.label17);
-            this.RoomPanel.Location = new System.Drawing.Point(21, 3);
-            this.RoomPanel.Name = "RoomPanel";
-            this.RoomPanel.Size = new System.Drawing.Size(443, 196);
-            this.RoomPanel.TabIndex = 5;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Nirmala UI", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(106, 6);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(264, 50);
-            this.label10.TabIndex = 16;
-            this.label10.Text = "Room Details:";
-            // 
-            // PriceTextbox
-            // 
-            this.PriceTextbox.Location = new System.Drawing.Point(294, 77);
-            this.PriceTextbox.Name = "PriceTextbox";
-            this.PriceTextbox.Size = new System.Drawing.Size(62, 20);
-            this.PriceTextbox.TabIndex = 10;
-            // 
-            // RoomIDTextbox
-            // 
-            this.RoomIDTextbox.Location = new System.Drawing.Point(105, 76);
-            this.RoomIDTextbox.Name = "RoomIDTextbox";
-            this.RoomIDTextbox.Size = new System.Drawing.Size(87, 20);
-            this.RoomIDTextbox.TabIndex = 9;
-            // 
-            // RoomSubmit
-            // 
-            this.RoomSubmit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RoomSubmit.Location = new System.Drawing.Point(256, 126);
-            this.RoomSubmit.Name = "RoomSubmit";
-            this.RoomSubmit.Size = new System.Drawing.Size(100, 29);
-            this.RoomSubmit.TabIndex = 8;
-            this.RoomSubmit.Text = "Submit";
-            this.RoomSubmit.UseVisualStyleBackColor = true;
-            // 
-            // button5
-            // 
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(105, 126);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(100, 29);
-            this.button5.TabIndex = 7;
-            this.button5.Text = "Cancel";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(253, 80);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(38, 16);
-            this.label16.TabIndex = 1;
-            this.label16.Text = "Price";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(42, 80);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(57, 16);
-            this.label17.TabIndex = 0;
-            this.label17.Text = "RoomID";
             // 
             // ReservationPanel
             // 
@@ -608,6 +608,7 @@
             this.Controls.Add(this.MainListView);
             this.Controls.Add(this.ListView);
             this.Controls.Add(this.ReservationPanel);
+            this.Controls.Add(this.RoomPanel);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
