@@ -449,7 +449,8 @@ namespace INFOsProject.Presentation
 
         private void PopulateRoom(Room room)
         {
-
+            RoomIDTextbox.Text = room.RoomID;
+            PriceTextbox.Text = room.Price.ToString();
         }
 
         private void PopulateReservation(Reservation reservation)
