@@ -359,15 +359,7 @@ namespace INFOsProject.Presentation
         }
 
 
-        private void ClearReservation()
-        {
-            //...
-            ReservationIDTextbox.Text = "";
-            GuestTextbox.Text = "";
-            RoomTextbox.Text = "";
-            TotalTextbox.Text = "";
 
-        }
 
         private void ReservationSubmit_Click(object sender, EventArgs e)
         {
@@ -449,7 +441,18 @@ namespace INFOsProject.Presentation
         }
 
         #region Utility Methods
-       private void PopulateClient(Client client)
+
+        private void ClearClient()
+        {
+            ClientTextbox.Text = "";
+            AddressTextbox.Text = "";
+            AreaTextbox.Text = "";
+            TownTextbox.Text = "";
+            PostalCodeTextbox.Text = "";
+            ReservationTextbox.Text = "";
+
+        }
+        private void PopulateClient(Client client)
         {
             ClientTextbox.Text = client.getID;
             AddressTextbox.Text = client.getStreetAddress;
@@ -460,6 +463,28 @@ namespace INFOsProject.Presentation
             
         }
 
+        private void ClearReservation()
+        {
+            //...
+            ReservationIDTextbox.Text = "";
+            GuestTextbox.Text = "";
+            RoomTextbox.Text = "";
+            TotalTextbox.Text = "";
+
+        }
+        private void PopulateReservations(Reservation reservation)
+        {
+            ReservationIDTextbox.Text = reservation.ReservationID;
+            GuestTextbox.Text = reservation.Client.ToString();
+            RoomTextbox.Text = reservation.Room.ToString();
+            TotalTextbox.Text = reservation.Total.ToString();
+
+        }
+        private void ClearRoom()
+        {
+            RoomIDTextbox.Text ="";
+            PriceTextbox.Text = "";
+        }
         private void PopulateRoom(Room room)
         {
             RoomIDTextbox.Text = room.RoomID;
