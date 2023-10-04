@@ -77,10 +77,8 @@ namespace INFOsProject.Data
                     aRoom = new Room();
                     aRoom.RoomID = Convert.ToString(myRow["ID"]).TrimEnd();
                     aRoom.Price = Convert.ToDouble(myRow["Price"]);
-                    Rooms.Add(aRoom);
-                    
-                }
-                
+                    Rooms.Add(aRoom);  
+                }              
             }
         }
 
@@ -132,8 +130,6 @@ namespace INFOsProject.Data
         }
         private void Build_UPDATE_Parameters(Room aRoom)
         {
-            // string roomID;
-            //double price;
             SqlParameter param = default(SqlParameter);
             param = new SqlParameter("@ID", SqlDbType.NVarChar, 15, "ID");
             param.SourceVersion = DataRowVersion.Current;
@@ -142,8 +138,6 @@ namespace INFOsProject.Data
             param = new SqlParameter("@Price", SqlDbType.Money, 50, "Price");
             param.SourceVersion = DataRowVersion.Current;
             daMain.UpdateCommand.Parameters.Add(param); 
-
-
         }
         private void Create_UPDATE_Command(Room aRoom)
         {
