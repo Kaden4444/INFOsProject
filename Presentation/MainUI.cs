@@ -168,9 +168,9 @@ namespace INFOsProject.Presentation
             this.FormClosed += MainListView_FormClosed;
 
             HidePanels();
-            MainListView.Clear();
+           // MainListView.Clear();
             Console.Write("Hi!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-
+            MessageBox.Show("I am working");
         }
 
         private void HidePanels()
