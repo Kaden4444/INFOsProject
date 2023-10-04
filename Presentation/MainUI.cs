@@ -235,7 +235,7 @@ namespace INFOsProject.Presentation
         {
             HidePanels();
             MainListView.Clear();
-            ClientTextbox.Enabled = false;
+            RestrictAllLabels();
             switch (State_of_Form)
             {
                 case 0:
@@ -390,7 +390,7 @@ namespace INFOsProject.Presentation
                     if (MainListView.SelectedItems.Count > 0)
                     {
                         client = clientsController.Find(MainListView.SelectedItems[0].Text);
-                        PopulateClient(client);
+                        PopulateClientTB(client);
                     }
                     
                     break;
@@ -398,20 +398,32 @@ namespace INFOsProject.Presentation
                     if (MainListView.SelectedItems.Count > 0)
                     {
                         room = roomController.Find(MainListView.SelectedItems[0].Text);
-                        PopulateRoom(room);
+                        PopulateRoomTB(room);
                     }
                     break;
                 case 2:
                     if (MainListView.SelectedItems.Count > 0)
                     {
                         reservation = reservationController.Find(MainListView.SelectedItems[0].Text);
-                        PopulateReservation(reservation);
+                        PopulateReservationTB(reservation);
                     }
                     break;
                 }
         }
 
         #region Utility Methods
+
+        private void PopulateRoomObject()
+        {
+
+            Room room = new Room();
+
+            room.RoomID = RoomIDTextbox.Text;
+            MessageBox.Show(PriceTextbox.Text);
+            double temp = Double.Parse(PriceTextbox.Text);
+            room.Price = temp;
+
+        }
 
         private void ClearClient()
         {
@@ -424,7 +436,7 @@ namespace INFOsProject.Presentation
             ReservationTextbox.Text = "";
 
         }
-        private void PopulateClient(Client client)
+        private void PopulateClientTB(Client client)
         {
             ClientTextbox.Text = client.getID;
             NameTextbox.Text = client.getName;
@@ -451,13 +463,13 @@ namespace INFOsProject.Presentation
             RoomIDTextbox.Text ="";
             PriceTextbox.Text = "";
         }
-        private void PopulateRoom(Room room)
+        private void PopulateRoomTB(Room room)
         {
             RoomIDTextbox.Text = room.RoomID;
             PriceTextbox.Text = room.Price.ToString();
         }
 
-        private void PopulateReservation(Reservation reservation)
+        private void PopulateReservationTB(Reservation reservation)
         {
             ReservationIDTextbox.Text = reservation.ReservationID;
             GuestTextbox.Text = reservation.Client.ToString();
@@ -728,6 +740,16 @@ namespace INFOsProject.Presentation
         }
         private void RoomSubmit_Click_1(object sender, EventArgs e)
         {
+            
+            if (addRadioGroup.Checked)
+            {
+                PopulateRoomObject();
+                MessageBox.Show("To be submitted to the Database!");
+                roomController.DataMaintenance(room, DB.DBOperation.Add);
+                roomController.DataMaintenance(room, DB.DBOperation.Add);
+                ClearRoom();
+               // ShowAll(false, roleValue);
+            }
             ResetLabels();
         }
 
