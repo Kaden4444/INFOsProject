@@ -359,6 +359,7 @@ namespace INFOsProject.Presentation
 
         private void ClearReservation()
         {
+            //...
             ReservationIDTextbox.Text = "";
             GuestTextbox.Text = "";
             RoomTextbox.Text = "";
