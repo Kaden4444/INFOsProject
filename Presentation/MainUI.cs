@@ -158,7 +158,9 @@ namespace INFOsProject.Presentation
         private ClientsController clientsController;
         private RoomController roomController;
         private ReservationController reservationController;
-
+        private Client client;
+        private Room room;
+        private Reservation reservation;
         #endregion
 
         #region Constructor
@@ -408,31 +410,7 @@ namespace INFOsProject.Presentation
 
         private void ListView_SelectedIndexChanged(object sender, EventArgs e)
         {
-            switch (State_of_Form)
-            {
-                case 0:
-                    MainListView.Columns.Insert(0, "ClientID", 120, HorizontalAlignment.Left);
-                    MainListView.Columns.Insert(1, "Name", 120, HorizontalAlignment.Left);
-                    MainListView.Columns.Insert(2, "Address", 150, HorizontalAlignment.Left);
-                    MainListView.Columns.Insert(3, "Area", 100, HorizontalAlignment.Left);
-                    MainListView.Columns.Insert(4, "Town", 100, HorizontalAlignment.Left);
-                    MainListView.Columns.Insert(5, "Postal Code", 100, HorizontalAlignment.Left);
-                    MainListView.Columns.Insert(6, "Reservation", 100, HorizontalAlignment.Left);
-                    break;
-
-                case 1:
-                    MainListView.Columns.Insert(0, "RoomID", 120, HorizontalAlignment.Left);
-                    MainListView.Columns.Insert(1, "Price", 120, HorizontalAlignment.Left);
-                    break;
-
-                case 2:
-                    MainListView.Columns.Insert(0, "ReservationID", 120, HorizontalAlignment.Left);
-                    MainListView.Columns.Insert(1, "Guest", 120, HorizontalAlignment.Left);
-                    MainListView.Columns.Insert(2, "Room", 120, HorizontalAlignment.Left);
-                    MainListView.Columns.Insert(3, "Total", 120, HorizontalAlignment.Left);
-                    MainListView.Columns.Insert(4, "DaysOfStay", 120, HorizontalAlignment.Left);
-                    break;
-            }
+            
             
         }
 
@@ -443,7 +421,31 @@ namespace INFOsProject.Presentation
 
         private void MainListView_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            switch (State_of_Form)
+            {
+                case 0:
+                    if (MainListView.SelectedItems.Count > 0)
+                    {
+                        client = clientsController.Find(MainListView.SelectedItems[0].Text);
+                        PopulateClient(client);
+                    }
+                    
+                    break;
+                case 1:
+                    if (MainListView.SelectedItems.Count > 0)
+                    {
+                        room = roomController.Find(MainListView.SelectedItems[0].Text);
+                        PopulateRoom(room);
+                    }
+                    break;
+                case 2:
+                    if (MainListView.SelectedItems.Count > 0)
+                    {
+                        reservation = reservationController.Find(MainListView.SelectedItems[0].Text);
+                        PopulateReservation(reservation);
+                    }
+                    break;
+                }
         }
 
         #region Utility Methods
