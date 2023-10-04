@@ -18,7 +18,7 @@ namespace INFOsProject.Data
         private string table = "Clients";
         private string sqlLocal1 = "SELECT * FROM Clients";
         private Collection<Client> Clients;
-        private Client aClient;
+      //  private Client aClient;
         #endregion
 
         public Collection<Client> AllClients
@@ -44,29 +44,12 @@ namespace INFOsProject.Data
             return dsMain;
         }
 
-        public void DataMaintenance(Client aClient, DB.DBOperation operation)
-        {
-            int index = 0;
 
-            switch (operation)
-            {
-                case DB.DBOperation.Add:
-                    Clients.Add(aClient);
-                    break;
-                case DB.DBOperation.Edit:
-                    //index = FindIndex(aClient);
-                    Clients[index] = aClient;
-                    break;
-                case DB.DBOperation.Delete:
-                    Clients.Remove(aClient);
-                    break;
-            }
-        }
         private void Add2Collection(string table)
         {
             //Declare references to a myRow object and an Client object
             DataRow myRow = null;
-
+            Client aClient;
             //READ from the table  
             foreach (DataRow myRow_loopVariable in dsMain.Tables[table].Rows)
             {
@@ -82,8 +65,10 @@ namespace INFOsProject.Data
                     aClient.getArea = Convert.ToString(myRow["Area"]).TrimEnd();
                     aClient.getPostal_code = Convert.ToString(myRow["PostalCode"]).TrimEnd();
                     aClient.getBooking = Convert.ToDateTime(myRow["BookingDate"]);
+
+                    Clients.Add(aClient);
                 }
-                Clients.Add(aClient);
+
             }
         }
 
