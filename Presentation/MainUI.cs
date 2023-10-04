@@ -583,7 +583,7 @@ namespace INFOsProject.Presentation
                 case 0:
 ;                   ClearClient();
                     ClientLabel.Text = "Add a Client:";
-                   // ClientTextbox.Enabled = true;
+                    ClientTextbox.Enabled = false;
                     NameTextbox.Enabled = true;
                     AddressTextbox.Enabled = true;
                     AreaTextbox.Enabled= true;
@@ -595,7 +595,7 @@ namespace INFOsProject.Presentation
                 case 1:
                     ClearRoom();
                     RoomLabel.Text = "Add a Room:";
-                   // RoomIDTextbox.Enabled = true;
+                    RoomIDTextbox.Enabled = false;
                     PriceTextbox.Enabled = true;
                     break;
 
@@ -603,7 +603,7 @@ namespace INFOsProject.Presentation
                     ReservationPanel.Visible = true;
                     ClearReservation();
                     ReservationLabel.Text = "Add a Reservation:";
-                   // ReservationIDTextbox.Enabled = true;
+                    ReservationIDTextbox.Enabled = false;
                     GuestTextbox.Enabled = true;
                     RoomTextbox.Enabled = true;
                     TotalTextbox.Enabled = true;
