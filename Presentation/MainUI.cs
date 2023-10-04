@@ -346,16 +346,19 @@ namespace INFOsProject.Presentation
         private void ReservationSubmit_Click(object sender, EventArgs e)
         {
             ResetLabels();
+            RestrictAllLabels();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             ClearClient();
+            RestrictAllLabels();
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
             ClearReservation();
+            RestrictAllLabels();
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -583,13 +586,17 @@ namespace INFOsProject.Presentation
                 case 0:
 ;                   ClearClient();
                     ClientLabel.Text = "Add a Client:";
-                   // ClientTextbox.Enabled = true;
                     NameTextbox.Enabled = true;
                     AddressTextbox.Enabled = true;
                     AreaTextbox.Enabled= true;
                     TownTextbox.Enabled = true;
                     PostalCodeTextbox.Enabled = true;
                     ReservationTextbox.Enabled = true;
+
+                    int newCid = 0;
+                    newCid = Clients.Count;
+
+                    ClientTextbox.Text = newCid.ToString();
                     break;
 
                 case 1:
@@ -597,6 +604,11 @@ namespace INFOsProject.Presentation
                     RoomLabel.Text = "Add a Room:";
                    // RoomIDTextbox.Enabled = true;
                     PriceTextbox.Enabled = true;
+
+                    int newRid = 0;
+                    newRid = Rooms.Count;
+
+                    RoomIDTextbox.Text = newRid.ToString();
                     break;
 
                 case 2:
@@ -607,6 +619,10 @@ namespace INFOsProject.Presentation
                     GuestTextbox.Enabled = true;
                     RoomTextbox.Enabled = true;
                     TotalTextbox.Enabled = true;
+                    int newResid = 0;
+                    newResid = Reservations.Count;
+
+                    ReservationIDTextbox.Text = newResid.ToString();
                     break;
             }
         }
