@@ -1,4 +1,6 @@
-﻿using System;
+﻿using INFOsProject.Business;
+using INFOsProject.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,14 +14,20 @@ namespace INFOsProject.Presentation
 {
     public partial class Dash : Form
     {
+        private ClientsController cCont;
+        private RoomController rCont;
+        private ReservationController resCont;
         public Dash()
         {
             InitializeComponent();
+            cCont = new ClientsController();
+            rCont = new RoomController();
+            resCont = new ReservationController();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MainUI ClientUI = new MainUI(this, 0);
+            MainUI ClientUI = new MainUI(this, 0, cCont, rCont, resCont);
             ClientUI.Show();
             this.Hide();
         }
@@ -28,6 +36,7 @@ namespace INFOsProject.Presentation
         {
             ActiveControl = null;
             timer1.Start();
+            MessageBox.Show(Settings.Default.ProjectDatabaseConnectionString);
         }
 
         private void label5_Click(object sender, EventArgs e)
@@ -37,14 +46,14 @@ namespace INFOsProject.Presentation
 
         private void button3_Click(object sender, EventArgs e)
         {
-            MainUI ReservationsUI = new MainUI(this, 1);
+            MainUI ReservationsUI = new MainUI(this, 1, cCont, rCont, resCont);
             ReservationsUI.Show();
             this.Hide();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            MainUI RoomsUI = new MainUI(this, 2);
+            MainUI RoomsUI = new MainUI(this, 2, cCont, rCont, resCont);
             RoomsUI.Show();
             this.Hide();
         }
@@ -96,7 +105,7 @@ namespace INFOsProject.Presentation
 
         private void button3_Click_1(object sender, EventArgs e)
         {
-            MainUI ReservationsUI = new MainUI(this, 2);
+            MainUI ReservationsUI = new MainUI(this, 2, cCont, rCont, resCont);
             ReservationsUI.Show();
             this.Hide();
         }
@@ -108,16 +117,15 @@ namespace INFOsProject.Presentation
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            MessageBox.Show("Message");
-            Console.WriteLine("Hide!");
-            MainUI RoomsUI = new MainUI(this, 1);
+
+            MainUI RoomsUI = new MainUI(this, 1, cCont, rCont, resCont);
             RoomsUI.Show();
             this.Hide();
         }
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            MainUI ClientUI = new MainUI(this, 0);
+            MainUI ClientUI = new MainUI(this, 0, cCont, rCont, resCont);
             ClientUI.Show();
             this.Hide();
         }

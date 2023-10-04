@@ -63,7 +63,6 @@ namespace INFOsProject.Data
                     aClient.getStreetAddress = Convert.ToString(myRow["StreetAddress"]).TrimEnd();
                     aClient.getArea = Convert.ToString(myRow["Area"]).TrimEnd();
                     aClient.getTown = Convert.ToString(myRow["Town"]).TrimEnd();
-                    aClient.getArea = Convert.ToString(myRow["Area"]).TrimEnd();
                     aClient.getPostal_code = Convert.ToString(myRow["PostalCode"]).TrimEnd();
                     aClient.getBooking = Convert.ToDateTime(myRow["BookingDate"]);
 

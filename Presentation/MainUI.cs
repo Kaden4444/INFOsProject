@@ -156,12 +156,16 @@ namespace INFOsProject.Presentation
         private ReservationController reservationController;
         #endregion
 
-        public MainUI(Dash dash, int State)
+        #region Constructor
+        public MainUI(Dash dash, int State, ClientsController c, RoomController r, ReservationController res)
         {
             InitializeComponent();
             d = dash;
             State_of_Form = State;
 
+            clientsController = c;
+            roomController = r;
+            reservationController = res;
 
             this.Load += MainListView_Load;
             this.Activated += MainListView_Activated;
@@ -169,6 +173,7 @@ namespace INFOsProject.Presentation
 
             HidePanels();
         }
+        #endregion
 
         private void HidePanels()
         {
@@ -460,10 +465,6 @@ namespace INFOsProject.Presentation
         {
             
             ListViewItem clientDetails, roomDetails, reservationDetails;
-            
-            Client client;
-            Room room;
-            Reservation reservation;
             MainListView.Clear();
             MessageBox.Show("Trying to set up listview");
             switch (State_of_Form)
@@ -493,8 +494,8 @@ namespace INFOsProject.Presentation
             }
 
             Clients = null;
-
-            foreach (Client Client in Clients)
+            Clients = clientsController.AllClients;
+            foreach (Client Client in  Clients)
             {
                 clientDetails = new ListViewItem();
                 clientDetails.Text = Client.getID.ToString();

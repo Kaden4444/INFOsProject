@@ -69,6 +69,11 @@
     <Compile Include="Business\RoomController.cs" />
     <Compile Include="Data\ClientsDB.cs" />
     <Compile Include="Data\DB.cs" />
+    <Compile Include="DatabaseFiles\HotelDatabaseDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HotelDatabaseDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Data\ReservationDB.cs" />
     <Compile Include="Data\RoomDB.cs" />
     <Compile Include="Presentation\MainUI.cs">
@@ -101,6 +106,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="DatabaseFiles\HotelDatabaseDataSet.xsc">
+      <DependentUpon>HotelDatabaseDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DatabaseFiles\HotelDatabaseDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>HotelDatabaseDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DatabaseFiles\HotelDatabaseDataSet.xss">
+      <DependentUpon>HotelDatabaseDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -136,10 +152,10 @@
     <None Include="Resources\peach.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Presentation\HotelDatabase.mdf">
+    <Content Include="DatabaseFiles\HotelDatabase.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Presentation\HotelDatabase_log.ldf">
+    <Content Include="DatabaseFiles\HotelDatabase_log.ldf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>HotelDatabase.mdf</DependentUpon>
     </Content>

@@ -12,9 +12,9 @@ namespace INFOsProject.Data
     {
         public class DB
         {
-            #region Variable declaration
-            //***Once the database is created you can find the correct connection string by using the Settings.Default object to select the correct connection string
-            private string strConn = Settings.Default.ProjectDatabaseConnectionString;
+        #region Variable declaration
+        //***Once the database is created you can find the correct connection string by using the Settings.Default object to select the correct connection string
+        private string strConn = Settings.Default.ProjectDatabaseConnectionString;
             protected SqlConnection cnMain;
             protected DataSet dsMain;
             protected SqlDataAdapter daMain;
