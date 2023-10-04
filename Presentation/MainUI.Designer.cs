@@ -230,12 +230,12 @@
             this.ClientPanel.Controls.Add(this.label4);
             this.ClientPanel.Controls.Add(this.label3);
             this.ClientPanel.Controls.Add(this.label2);
-<<<<<<< HEAD
+ 
             this.ClientPanel.Location = new System.Drawing.Point(300, 83);
             this.ClientPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-=======
+ 
             this.ClientPanel.Location = new System.Drawing.Point(237, 53);
->>>>>>> c5d60f82f49b2dac82fa3b682d7564dd53ffbd32
+ 
             this.ClientPanel.Name = "ClientPanel";
             this.ClientPanel.Size = new System.Drawing.Size(655, 460);
             this.ClientPanel.TabIndex = 4;
@@ -286,76 +286,76 @@
             this.RoomPanel.Controls.Add(this.button5);
             this.RoomPanel.Controls.Add(this.label16);
             this.RoomPanel.Controls.Add(this.label17);
-<<<<<<< HEAD
+ 
             this.RoomPanel.Location = new System.Drawing.Point(29, 323);
             this.RoomPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.RoomPanel.Name = "RoomPanel";
             this.RoomPanel.Size = new System.Drawing.Size(591, 241);
-=======
+ 
             this.RoomPanel.Location = new System.Drawing.Point(818, 73);
             this.RoomPanel.Name = "RoomPanel";
             this.RoomPanel.Size = new System.Drawing.Size(443, 196);
->>>>>>> c5d60f82f49b2dac82fa3b682d7564dd53ffbd32
+ 
             this.RoomPanel.TabIndex = 5;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Nirmala UI", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-<<<<<<< HEAD
+ 
             this.label10.Location = new System.Drawing.Point(141, 7);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(334, 62);
-=======
+ 
             this.label10.Location = new System.Drawing.Point(106, 6);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(264, 50);
->>>>>>> c5d60f82f49b2dac82fa3b682d7564dd53ffbd32
+ 
             this.label10.TabIndex = 16;
             this.label10.Text = "Room Details:";
             // 
             // PriceTextbox
             // 
-<<<<<<< HEAD
+ 
             this.PriceTextbox.Location = new System.Drawing.Point(392, 95);
             this.PriceTextbox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.PriceTextbox.Name = "PriceTextbox";
             this.PriceTextbox.Size = new System.Drawing.Size(81, 22);
-=======
+ 
             this.PriceTextbox.Location = new System.Drawing.Point(294, 77);
             this.PriceTextbox.Name = "PriceTextbox";
             this.PriceTextbox.Size = new System.Drawing.Size(62, 20);
->>>>>>> c5d60f82f49b2dac82fa3b682d7564dd53ffbd32
+ 
             this.PriceTextbox.TabIndex = 10;
             // 
             // RoomIDTextbox
             // 
-<<<<<<< HEAD
+ 
             this.RoomIDTextbox.Location = new System.Drawing.Point(140, 94);
             this.RoomIDTextbox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.RoomIDTextbox.Name = "RoomIDTextbox";
             this.RoomIDTextbox.Size = new System.Drawing.Size(115, 22);
-=======
+ 
             this.RoomIDTextbox.Location = new System.Drawing.Point(105, 76);
             this.RoomIDTextbox.Name = "RoomIDTextbox";
             this.RoomIDTextbox.Size = new System.Drawing.Size(87, 20);
->>>>>>> c5d60f82f49b2dac82fa3b682d7564dd53ffbd32
+ 
             this.RoomIDTextbox.TabIndex = 9;
             // 
             // RoomSubmit
             // 
             this.RoomSubmit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-<<<<<<< HEAD
+ 
             this.RoomSubmit.Location = new System.Drawing.Point(341, 155);
             this.RoomSubmit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.RoomSubmit.Name = "RoomSubmit";
             this.RoomSubmit.Size = new System.Drawing.Size(133, 36);
-=======
+ 
             this.RoomSubmit.Location = new System.Drawing.Point(256, 126);
             this.RoomSubmit.Name = "RoomSubmit";
             this.RoomSubmit.Size = new System.Drawing.Size(100, 29);
->>>>>>> c5d60f82f49b2dac82fa3b682d7564dd53ffbd32
+ 
             this.RoomSubmit.TabIndex = 8;
             this.RoomSubmit.Text = "Submit";
             this.RoomSubmit.UseVisualStyleBackColor = true;
@@ -363,16 +363,16 @@
             // button5
             // 
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-<<<<<<< HEAD
+ 
             this.button5.Location = new System.Drawing.Point(140, 155);
             this.button5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(133, 36);
-=======
+ 
             this.button5.Location = new System.Drawing.Point(105, 126);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(100, 29);
->>>>>>> c5d60f82f49b2dac82fa3b682d7564dd53ffbd32
+ 
             this.button5.TabIndex = 7;
             this.button5.Text = "Cancel";
             this.button5.UseVisualStyleBackColor = true;
@@ -382,16 +382,16 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-<<<<<<< HEAD
+ 
             this.label16.Location = new System.Drawing.Point(337, 98);
             this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(48, 20);
-=======
+ 
             this.label16.Location = new System.Drawing.Point(253, 80);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(38, 16);
->>>>>>> c5d60f82f49b2dac82fa3b682d7564dd53ffbd32
+ 
             this.label16.TabIndex = 1;
             this.label16.Text = "Price";
             // 
@@ -399,89 +399,89 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-<<<<<<< HEAD
+ 
             this.label17.Location = new System.Drawing.Point(56, 98);
             this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(70, 20);
-=======
+ 
             this.label17.Location = new System.Drawing.Point(42, 80);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(57, 16);
->>>>>>> c5d60f82f49b2dac82fa3b682d7564dd53ffbd32
+ 
             this.label17.TabIndex = 0;
             this.label17.Text = "RoomID";
             // 
             // AreaTextbox
             // 
-<<<<<<< HEAD
+ 
             this.AreaTextbox.Location = new System.Drawing.Point(393, 154);
             this.AreaTextbox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.AreaTextbox.Name = "AreaTextbox";
             this.AreaTextbox.Size = new System.Drawing.Size(131, 22);
-=======
+ 
             this.AreaTextbox.Location = new System.Drawing.Point(295, 125);
             this.AreaTextbox.Name = "AreaTextbox";
             this.AreaTextbox.Size = new System.Drawing.Size(99, 20);
->>>>>>> c5d60f82f49b2dac82fa3b682d7564dd53ffbd32
+ 
             this.AreaTextbox.TabIndex = 12;
             // 
             // AddressTextbox
             // 
-<<<<<<< HEAD
+ 
             this.AddressTextbox.Location = new System.Drawing.Point(141, 151);
             this.AddressTextbox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.AddressTextbox.Name = "AddressTextbox";
             this.AddressTextbox.Size = new System.Drawing.Size(113, 22);
-=======
+ 
             this.AddressTextbox.Location = new System.Drawing.Point(106, 123);
             this.AddressTextbox.Name = "AddressTextbox";
             this.AddressTextbox.Size = new System.Drawing.Size(86, 20);
->>>>>>> c5d60f82f49b2dac82fa3b682d7564dd53ffbd32
+ 
             this.AddressTextbox.TabIndex = 11;
             // 
             // NameTextbox
             // 
-<<<<<<< HEAD
+ 
             this.NameTextbox.Location = new System.Drawing.Point(404, 95);
             this.NameTextbox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.NameTextbox.Name = "NameTextbox";
             this.NameTextbox.Size = new System.Drawing.Size(120, 22);
-=======
+ 
             this.NameTextbox.Location = new System.Drawing.Point(303, 77);
             this.NameTextbox.Name = "NameTextbox";
             this.NameTextbox.Size = new System.Drawing.Size(91, 20);
->>>>>>> c5d60f82f49b2dac82fa3b682d7564dd53ffbd32
+ 
             this.NameTextbox.TabIndex = 10;
             // 
             // ClientTextbox
             // 
-<<<<<<< HEAD
+ 
             this.ClientTextbox.Location = new System.Drawing.Point(135, 94);
             this.ClientTextbox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ClientTextbox.Name = "ClientTextbox";
             this.ClientTextbox.Size = new System.Drawing.Size(120, 22);
-=======
+ 
             this.ClientTextbox.Location = new System.Drawing.Point(101, 76);
             this.ClientTextbox.Name = "ClientTextbox";
             this.ClientTextbox.Size = new System.Drawing.Size(91, 20);
->>>>>>> c5d60f82f49b2dac82fa3b682d7564dd53ffbd32
+ 
             this.ClientTextbox.TabIndex = 9;
             this.ClientTextbox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // ClientSubmit
             // 
             this.ClientSubmit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-<<<<<<< HEAD
+ 
             this.ClientSubmit.Location = new System.Drawing.Point(357, 366);
             this.ClientSubmit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ClientSubmit.Name = "ClientSubmit";
             this.ClientSubmit.Size = new System.Drawing.Size(133, 36);
-=======
+ 
             this.ClientSubmit.Location = new System.Drawing.Point(268, 297);
             this.ClientSubmit.Name = "ClientSubmit";
             this.ClientSubmit.Size = new System.Drawing.Size(100, 29);
->>>>>>> c5d60f82f49b2dac82fa3b682d7564dd53ffbd32
+ 
             this.ClientSubmit.TabIndex = 8;
             this.ClientSubmit.Text = "Submit";
             this.ClientSubmit.UseVisualStyleBackColor = true;
@@ -489,16 +489,16 @@
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-<<<<<<< HEAD
+ 
             this.button3.Location = new System.Drawing.Point(153, 366);
             this.button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(133, 36);
-=======
+ 
             this.button3.Location = new System.Drawing.Point(115, 297);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(100, 29);
->>>>>>> c5d60f82f49b2dac82fa3b682d7564dd53ffbd32
+ 
             this.button3.TabIndex = 7;
             this.button3.Text = "Cancel";
             this.button3.UseVisualStyleBackColor = true;
@@ -508,16 +508,16 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-<<<<<<< HEAD
+ 
             this.label8.Location = new System.Drawing.Point(171, 271);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(98, 20);
-=======
+ 
             this.label8.Location = new System.Drawing.Point(128, 220);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(80, 16);
->>>>>>> c5d60f82f49b2dac82fa3b682d7564dd53ffbd32
+ 
             this.label8.TabIndex = 6;
             this.label8.Text = "Reservation";
             // 
@@ -525,16 +525,16 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-<<<<<<< HEAD
+ 
             this.label7.Location = new System.Drawing.Point(337, 206);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(100, 20);
-=======
+ 
             this.label7.Location = new System.Drawing.Point(253, 167);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(81, 16);
->>>>>>> c5d60f82f49b2dac82fa3b682d7564dd53ffbd32
+ 
             this.label7.TabIndex = 5;
             this.label7.Text = "Postal Code";
             // 
@@ -542,16 +542,16 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-<<<<<<< HEAD
+ 
             this.label6.Location = new System.Drawing.Point(56, 206);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(49, 20);
-=======
+ 
             this.label6.Location = new System.Drawing.Point(42, 167);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(40, 16);
->>>>>>> c5d60f82f49b2dac82fa3b682d7564dd53ffbd32
+ 
             this.label6.TabIndex = 4;
             this.label6.Text = "Town";
             // 
@@ -559,16 +559,16 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-<<<<<<< HEAD
+ 
             this.label5.Location = new System.Drawing.Point(337, 160);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(44, 20);
-=======
+ 
             this.label5.Location = new System.Drawing.Point(253, 130);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(36, 16);
->>>>>>> c5d60f82f49b2dac82fa3b682d7564dd53ffbd32
+ 
             this.label5.TabIndex = 3;
             this.label5.Text = "Area";
             // 
@@ -576,16 +576,16 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-<<<<<<< HEAD
+ 
             this.label4.Location = new System.Drawing.Point(56, 155);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(71, 20);
-=======
+ 
             this.label4.Location = new System.Drawing.Point(42, 126);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(58, 16);
->>>>>>> c5d60f82f49b2dac82fa3b682d7564dd53ffbd32
+ 
             this.label4.TabIndex = 2;
             this.label4.Text = "Address";
             // 
@@ -593,16 +593,16 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-<<<<<<< HEAD
+ 
             this.label3.Location = new System.Drawing.Point(337, 98);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 20);
-=======
+ 
             this.label3.Location = new System.Drawing.Point(253, 80);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(44, 16);
->>>>>>> c5d60f82f49b2dac82fa3b682d7564dd53ffbd32
+ 
             this.label3.TabIndex = 1;
             this.label3.Text = "Name";
             // 
@@ -610,16 +610,16 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-<<<<<<< HEAD
+ 
             this.label2.Location = new System.Drawing.Point(56, 98);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(69, 20);
-=======
+ 
             this.label2.Location = new System.Drawing.Point(42, 80);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 16);
->>>>>>> c5d60f82f49b2dac82fa3b682d7564dd53ffbd32
+ 
             this.label2.TabIndex = 0;
             this.label2.Text = "ClientID";
             // 
@@ -786,12 +786,12 @@
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(1371, 750);
             this.Controls.Add(this.ReservationPanel);
-<<<<<<< HEAD
+ 
             this.Controls.Add(this.ClientPanel);
-=======
+ 
             this.Controls.Add(this.RoomPanel);
             this.Controls.Add(this.listView1);
->>>>>>> c5d60f82f49b2dac82fa3b682d7564dd53ffbd32
+ 
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.ListView);
