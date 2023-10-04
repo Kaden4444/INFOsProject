@@ -36,7 +36,7 @@ namespace INFOsProject.Presentation
         {
             ActiveControl = null;
             timer1.Start();
-            MessageBox.Show(Settings.Default.ProjectDatabaseConnectionString);
+      
         }
 
         private void label5_Click(object sender, EventArgs e)
