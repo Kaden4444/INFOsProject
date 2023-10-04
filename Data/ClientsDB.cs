@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using INFOsProject.Business;
 using INFOsProject.Presentation;
 using static INFOsProject.Data.DB;
@@ -67,6 +68,7 @@ namespace INFOsProject.Data
                     aClient.getBooking = Convert.ToDateTime(myRow["BookingDate"]);
 
                     Clients.Add(aClient);
+                    MessageBox.Show("Client was added");
                 }
 
             }

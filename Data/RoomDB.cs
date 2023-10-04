@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using INFOsProject.Business;
 using INFOsProject.Presentation;
 using static INFOsProject.Data.DB;
@@ -78,6 +79,7 @@ namespace INFOsProject.Data
                     aRoom.Booked = Convert.ToBoolean(myRow["Booked"]);
                     aRoom.Price = Convert.ToDouble(myRow["Price"]);
                     Rooms.Add(aRoom);
+                    MessageBox.Show("Room was added");
                 }
                 
             }

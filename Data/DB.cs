@@ -38,7 +38,7 @@ namespace INFOsProject.Data
                 }
                 catch (SystemException e)
                 {
-                    System.Windows.Forms.MessageBox.Show(e.Message, "Error");
+                    System.Windows.Forms.MessageBox.Show(e.Message, "Error DB file 41");
                     return;
                 }
             }
@@ -59,7 +59,7 @@ namespace INFOsProject.Data
                 }
                 catch (Exception errObj)
                 {
-                    MessageBox.Show(errObj.Message + "  " + errObj.StackTrace);
+                    MessageBox.Show(errObj.Message + " fill data set error DB " + errObj.StackTrace);
                 }
             }
 
@@ -83,7 +83,7 @@ namespace INFOsProject.Data
                 }
                 catch (Exception errObj)
                 {
-                    MessageBox.Show(errObj.Message + "  " + errObj.StackTrace);
+                    MessageBox.Show(errObj.Message + " Update data source error " + errObj.StackTrace);
                     success = false;
                 }
                 finally
