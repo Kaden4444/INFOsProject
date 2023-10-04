@@ -583,7 +583,7 @@ namespace INFOsProject.Presentation
                 case 0:
 ;                   ClearClient();
                     ClientLabel.Text = "Add a Client:";
-                    ClientTextbox.Enabled = true;
+                   // ClientTextbox.Enabled = true;
                     NameTextbox.Enabled = true;
                     AddressTextbox.Enabled = true;
                     AreaTextbox.Enabled= true;
@@ -595,7 +595,7 @@ namespace INFOsProject.Presentation
                 case 1:
                     ClearRoom();
                     RoomLabel.Text = "Add a Room:";
-                    RoomIDTextbox.Enabled = true;
+                   // RoomIDTextbox.Enabled = true;
                     PriceTextbox.Enabled = true;
                     break;
 
@@ -603,7 +603,7 @@ namespace INFOsProject.Presentation
                     ReservationPanel.Visible = true;
                     ClearReservation();
                     ReservationLabel.Text = "Add a Reservation:";
-                    ReservationIDTextbox.Enabled = true;
+                   // ReservationIDTextbox.Enabled = true;
                     GuestTextbox.Enabled = true;
                     RoomTextbox.Enabled = true;
                     TotalTextbox.Enabled = true;
@@ -619,18 +619,28 @@ namespace INFOsProject.Presentation
                     ClearClient();
                     ClientLabel.Text = "Edit a Client:";
                     ClientTextbox.Enabled = false;
+                    NameTextbox.Enabled = true;
+                    AddressTextbox.Enabled = true;
+                    AreaTextbox.Enabled = true;
+                    TownTextbox.Enabled = true;
+                    PostalCodeTextbox.Enabled = true;
+                    ReservationTextbox.Enabled = true;
                     break;
 
                 case 1:
                     ClearRoom();
                     RoomLabel.Text = "Edit a Room:";
                     RoomIDTextbox.Enabled = false;
+                    PriceTextbox.Enabled = true;
                     break;
 
                 case 2:
                     ClearReservation();
                     ReservationLabel.Text = "Edit a Reservation:";
                     ReservationIDTextbox.Enabled = false;
+                    GuestTextbox.Enabled = true;
+                    RoomTextbox.Enabled = true;
+                    TotalTextbox.Enabled = true;
                     break;
             }
         }
