@@ -179,9 +179,6 @@ namespace INFOsProject.Presentation
             this.FormClosed += MainListView_FormClosed;
 
             HidePanels();
-           // MainListView.Clear();
-            Console.Write("Hi!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-            MessageBox.Show("I am working");
         }
 
         private void LoadClients()
@@ -482,7 +479,7 @@ namespace INFOsProject.Presentation
         {
             
             MainListView.View = View.Details;
-
+            MessageBox.Show("About to call setup");
           
             setUpMainListView();
 
@@ -499,13 +496,14 @@ namespace INFOsProject.Presentation
    
         public void setUpMainListView()
         {
+            
             ListViewItem clientDetails, roomDetails, reservationDetails;
             
             Client client;
             Room room;
             Reservation reservation;
             MainListView.Clear();
-
+            MessageBox.Show("Trying to set up listview");
             switch (State_of_Form)
             {
                 case 0:

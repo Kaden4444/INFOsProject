@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using INFOsProject.Business;
+using System.Windows.Forms;
 
 namespace INFOsProject.Data
 {
@@ -64,7 +65,7 @@ namespace INFOsProject.Data
         {
             //Declare references to a myRow object and an Reservation object
             DataRow myRow = null;
-
+            Reservation aReservation;
             //READ from the table  
             foreach (DataRow myRow_loopVariable in dsMain.Tables[table].Rows)
             {
@@ -77,9 +78,10 @@ namespace INFOsProject.Data
                     aReservation.Room = Convert.ToInt32(myRow["Room"]); 
                     aReservation.Total = Convert.ToDouble(myRow["Total"]);
                     aReservation.Days = Convert.ToInt32(myRow["DaysOfStay"]);
-
+                    Reservations.Add(aReservation);
+                    MessageBox.Show("Reservation added");
                 }
-                Reservations.Add(aReservation);
+                
             }
         }
 
