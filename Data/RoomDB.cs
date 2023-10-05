@@ -22,6 +22,7 @@ namespace INFOsProject.Data
         private Room aRoom;
         #endregion
 
+        #region Collection Methods
         public Collection<Room> AllRooms
         {
             get
@@ -29,6 +30,7 @@ namespace INFOsProject.Data
                 return Rooms;
             }
         }
+        #endregion
 
         #region Constructor
         public RoomDB() : base()

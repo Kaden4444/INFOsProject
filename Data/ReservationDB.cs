@@ -20,6 +20,7 @@ namespace INFOsProject.Data
         private Reservation aReservation;
         #endregion
 
+        #region Collection Methods
         public Collection<Reservation> AllReservations
         {
             get
@@ -27,6 +28,7 @@ namespace INFOsProject.Data
                 return Reservations;
             }
         }
+        #endregion
 
         #region Constructor
         public ReservationDB() : base()

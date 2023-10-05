@@ -27,7 +27,7 @@ namespace INFOsProject.Data
 
             #endregion
 
-            #region Constructor
+        #region Constructor
             public DB()
             {
                 try
@@ -45,7 +45,7 @@ namespace INFOsProject.Data
 
             #endregion
 
-            #region Update the DateSet
+        #region Update the DateSet
             public void FillDataSet(string aSQLstring, string aTable)
             {
                 //fills dataset fresh from the db for a specific table and with a specific Query
@@ -65,7 +65,7 @@ namespace INFOsProject.Data
 
             #endregion
 
-            #region Update the data source 
+        #region Update the data source 
             protected bool UpdateDataSource(string sqlLocal, string table)
             {
                 bool success;

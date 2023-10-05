@@ -9,11 +9,17 @@ namespace INFOsProject.Business
 {
     public class Reservation
     {
+        #region Data fields
         string ID;
         string client;
         string room;
         double total;
         int days_of_Stay;
+        #endregion
+
+        #region Constructor
+        public Reservation(){}
+        #endregion
 
         #region Property Methods
 

@@ -22,6 +22,7 @@ namespace INFOsProject.Data
         private Client aClient;
         #endregion
 
+        #region Collection Methods
         public Collection<Client> AllClients
         {
             get
@@ -29,6 +30,7 @@ namespace INFOsProject.Data
                 return Clients;
             }
         }
+        #endregion
 
         #region Constructor
         public ClientsDB() : base()
@@ -44,7 +46,6 @@ namespace INFOsProject.Data
         {
             return dsMain;
         }
-
 
         private void Add2Collection(string table)
         {

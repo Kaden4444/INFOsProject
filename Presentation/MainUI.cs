@@ -62,51 +62,7 @@ namespace INFOsProject.Presentation
         }
         #endregion
 
-        private void LoadClients()
-        {
-            // Retrieve the list of clients from the controller
-            Collection<Client> clients = clientsController.AllClients;
-
-            // Clear existing items in the ListView
-            MainListView.Items.Clear();
-
-            // Populate the ListView with the retrieved client data
-            foreach (Client client in clients)
-            {
-                ListViewItem item = new ListViewItem(client.getID);
-                item.SubItems.Add(client.getName);
-                item.SubItems.Add(client.getStreetAddress);
-                item.SubItems.Add(client.getArea);
-                item.SubItems.Add(client.getTown);
-                item.SubItems.Add(client.getPostal_code);
-                item.SubItems.Add(client.getBooking.ToString());
-
-                // Tag the ListViewItem with the client object for later reference
-                item.Tag = client;
-
-                // Add the ListViewItem to the ListView
-                MainListView.Items.Add(item);
-            }
-        }
-
-        private void HidePanels()
-        {
-            ClientPanel.Visible = false;
-            RoomPanel.Visible = false;
-            ReservationPanel.Visible = false;
-        }
-        private void radioButton4_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            State_of_Form = -1;
-            d.Show();
-            this.Hide();
-        }
-
+        #region Important / initial 
         private void MainUI_Load(object sender, EventArgs e)
         {
             HidePanels();
@@ -138,39 +94,210 @@ namespace INFOsProject.Presentation
             //getLatestID();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void MainListView_SelectedIndexChanged(object sender, EventArgs e)
         {
+            switch (State_of_Form)
+            {
 
+                case 0:
+                    if (MainListView.SelectedItems.Count > 0)
+                    {
+                        client = clientsController.Find(MainListView.SelectedItems[0].Text);
+                        PopulateClientTB(client);
+                    }
+
+                    break;
+                case 1:
+                    if (MainListView.SelectedItems.Count > 0)
+                    {
+                        room = roomController.Find(MainListView.SelectedItems[0].Text);
+                        PopulateRoomTB(room);
+                    }
+                    break;
+                case 2:
+                    if (MainListView.SelectedItems.Count > 0)
+                    {
+                        reservation = reservationController.Find(MainListView.SelectedItems[0].Text);
+                        PopulateReservationTB(reservation);
+                    }
+                    break;
+            }
+        }
+        #endregion
+
+        #region Textbox Methods
+        private void EnableClient()
+        {
+            ClientTextbox.Enabled = false;
+            NameTextbox.Enabled = true;
+            AddressTextbox.Enabled = true;
+            AreaTextbox.Enabled = true;
+            TownTextbox.Enabled = true;
+            PostalCodeTextbox.Enabled = true;
+            dateTimePicker1.Enabled = true;
         }
 
-        private void textBox12_TextChanged(object sender, EventArgs e)
+        private void EnableRoom()
         {
-
+            RoomIDTextbox.Enabled = false;
+            PriceTextbox.Enabled = true;
         }
 
-        private void btnSubmit_Click(object sender, EventArgs e)
+        private void EnableReservation()
         {
+            ReservationIDTextbox.Enabled = false;
+            ClientTextbox.Enabled = true;
+            RoomTextbox.Enabled = true;
+            TotalTextbox.Enabled = true;
+        }
 
+        private void RestrictAllLabels()
+        {
+            ClientTextbox.Enabled = false;
+            NameTextbox.Enabled = false;
+            AddressTextbox.Enabled = false;
+            AreaTextbox.Enabled = false;
+            TownTextbox.Enabled = false;
+            PostalCodeTextbox.Enabled = false;
+            dateTimePicker1.Enabled = false;
+
+            RoomIDTextbox.Enabled = false;
+            PriceTextbox.Enabled = false;
+
+            ReservationIDTextbox.Enabled = false;
+            ClientTextbox.Enabled = false;
+            RoomTextbox.Enabled = false;
+            TotalTextbox.Enabled = false;
+        }
+        private void ResetLabels()
+        {
+            switch (State_of_Form)
+            {
+                case 0:
+                    ClearClient();
+                    ClientLabel.Text = "Client Details:";
+                    break;
+
+                case 1:
+                    ClearRoom();
+                    RoomLabel.Text = "Room Details:";
+                    break;
+
+                case 2:
+                    ClearReservation();
+                    ReservationLabel.Text = "Reservation Details:";
+                    break;
+            }
+        }
+        #endregion
+
+        #region Panel Methods
+        private void HidePanels()
+        {
+            ClientPanel.Visible = false;
+            RoomPanel.Visible = false;
+            ReservationPanel.Visible = false;
+        }
+
+
+        #endregion
+
+        #region Client Methods
+        private void LoadClients()
+        {
+            // Retrieve the list of clients from the controller
+            Collection<Client> clients = clientsController.AllClients;
+
+            // Clear existing items in the ListView
+            MainListView.Items.Clear();
+
+            // Populate the ListView with the retrieved client data
+            foreach (Client client in clients)
+            {
+                ListViewItem item = new ListViewItem(client.getID);
+                item.SubItems.Add(client.getName);
+                item.SubItems.Add(client.getStreetAddress);
+                item.SubItems.Add(client.getArea);
+                item.SubItems.Add(client.getTown);
+                item.SubItems.Add(client.getPostal_code);
+                item.SubItems.Add(client.getBooking.ToString());
+
+                // Tag the ListViewItem with the client object for later reference
+                item.Tag = client;
+
+                // Add the ListViewItem to the ListView
+                MainListView.Items.Add(item);
+            }
+        }
+
+        private void ClientSubmit_Click_1(object sender, EventArgs e)
+        {
             if (addRadioGroup.Checked)
             {
-                getLatestID();
-            }
+                client = PopulateClientObject();
+                MessageBox.Show("To be submitted to the Database!");
+                clientsController.DataMaintenance(client, DB.DBOperation.Add);
+                clientsController.FinalizeChanges(client);
+                setUpMainListView();
 
+
+            }
             else if (editRadioGroup.Checked)
             {
 
             }
-
             else if (deleteRadioGroup.Checked)
             {
 
             }
+            if (addRadioGroup.Checked)
+            {
+
+                // ShowAll(false, roleValue);
+            }
+            ClearRoom();
+            ResetLabels();
+            getLatestID();
+
         }
 
-
-        private void textBox16_TextChanged(object sender, EventArgs e)
+        private void ClientSubmit_Click(object sender, EventArgs e)
         {
 
+        }
+
+        #endregion
+
+        #region Room methods
+        private void RoomSubmit_Click_1(object sender, EventArgs e)
+        {
+            if (addRadioGroup.Checked)
+            {
+                Room newroom = PopulateRoomObject();
+
+                roomController.DataMaintenance(newroom, DB.DBOperation.Add);
+                MessageBox.Show("Added");
+                roomController.FinalizeChanges(newroom);
+                setUpMainListView();
+
+
+            }
+            else if (editRadioGroup.Checked)
+            {
+
+            }
+            else if (deleteRadioGroup.Checked)
+            {
+
+            }
+            if (addRadioGroup.Checked)
+            {
+
+                // ShowAll(false, roleValue);
+            }
+            ClearRoom();
+            ResetLabels();
+            getLatestID();
         }
 
         private void RoomSubmit_Click(object sender, EventArgs e)
@@ -191,15 +318,9 @@ namespace INFOsProject.Presentation
                     break;
             }
         }
+        #endregion
 
-        private void ClientSubmit_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
-
-
+        #region Reservation methods
         private void ReservationSubmit_Click(object sender, EventArgs e)
         {
             ResetLabels();
@@ -219,7 +340,34 @@ namespace INFOsProject.Presentation
             }
             getLatestID();
         }
+        #endregion
 
+        #region General Button Methods
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            State_of_Form = -1;
+            d.Show();
+            this.Hide();
+        }
+        private void btnSubmit_Click(object sender, EventArgs e)
+        {
+
+            if (addRadioGroup.Checked)
+            {
+                getLatestID();
+            }
+
+            else if (editRadioGroup.Checked)
+            {
+
+            }
+
+            else if (deleteRadioGroup.Checked)
+            {
+
+            }
+        }
         private void button3_Click(object sender, EventArgs e)
         {
             ClearClient();
@@ -237,53 +385,119 @@ namespace INFOsProject.Presentation
             ClearRoom();
         }
 
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        private void addRadioGroup_CheckedChanged(object sender, EventArgs e)
         {
+            getLatestID();
+            switch (State_of_Form)
+            {
+                case 0:
+                    ; ClearClient();
+                    ClientLabel.Text = "Add a Client:";
+                    getLatestID();
+                    EnableClient();
+                    break;
 
+                case 1:
+                    ClearRoom();
+                    RoomLabel.Text = "Add a Room:";
+                    EnableRoom();
+                    break;
+
+                case 2:
+                    ClearReservation();
+                    EnableReservation();
+                    ReservationLabel.Text = "Add a Reservation:";
+                    break;
+            }
         }
 
-        private void ListView_SelectedIndexChanged(object sender, EventArgs e)
+        private void editRadioGroup_CheckedChanged(object sender, EventArgs e)
         {
-            
-            
+            switch (State_of_Form)
+            {
+                case 0:
+                    ClearClient();
+                    ClientLabel.Text = "Edit a Client:";
+                    ClientTextbox.Enabled = false;
+                    NameTextbox.Enabled = true;
+                    AddressTextbox.Enabled = true;
+                    AreaTextbox.Enabled = true;
+                    TownTextbox.Enabled = true;
+                    PostalCodeTextbox.Enabled = true;
+                    dateTimePicker1.Enabled = true;
+                    break;
+
+                case 1:
+                    ClearRoom();
+                    RoomLabel.Text = "Edit a Room:";
+                    RoomIDTextbox.Enabled = false;
+                    PriceTextbox.Enabled = true;
+                    break;
+
+                case 2:
+                    ClearReservation();
+                    ReservationLabel.Text = "Edit a Reservation:";
+                    ReservationIDTextbox.Enabled = false;
+                    ClientTextbox.Enabled = true;
+                    RoomTextbox.Enabled = true;
+                    TotalTextbox.Enabled = true;
+                    break;
+            }
         }
 
-        private void ReservationPanel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void MainListView_SelectedIndexChanged(object sender, EventArgs e)
+        private void deleteRadioGroup_CheckedChanged(object sender, EventArgs e)
         {
             switch (State_of_Form)
             {
 
                 case 0:
-                    if (MainListView.SelectedItems.Count > 0)
-                    {
-                        client = clientsController.Find(MainListView.SelectedItems[0].Text);
-                        PopulateClientTB(client);
-                    }
-                    
+                    ClearClient();
+                    ClientLabel.Text = "Delete a Client:";
+                    RestrictAllLabels();
                     break;
+
                 case 1:
-                    if (MainListView.SelectedItems.Count > 0)
-                    {
-                        room = roomController.Find(MainListView.SelectedItems[0].Text);
-                        PopulateRoomTB(room);
-                    }
+                    ClearRoom();
+                    RoomLabel.Text = "Delete a Room:";
+                    RestrictAllLabels();
                     break;
+
                 case 2:
-                    if (MainListView.SelectedItems.Count > 0)
-                    {
-                        reservation = reservationController.Find(MainListView.SelectedItems[0].Text);
-                        PopulateReservationTB(reservation);
-                    }
+                    ReservationPanel.Visible = true;
+                    ClearReservation();
+                    ReservationLabel.Text = "Delete a Reservation:";
+                    RestrictAllLabels();
                     break;
-                }
+            }
         }
+        #endregion
 
         #region Utility Methods
+        private void getLatestID()
+        {
+            switch (State_of_Form)
+            {
+                case 0:
+                    int newCid = 0;
+                    newCid = Clients.Count;
+                    ClientTextbox.Text = newCid.ToString();
+                    break;
+
+                case 1:
+                    int newRid = 0;
+                    newRid = Rooms.Count;
+
+                    RoomIDTextbox.Text = newRid.ToString();
+                    break;
+
+                case 2:
+                    int newResid = 0;
+                    newResid = Reservations.Count;
+
+                    ReservationIDTextbox.Text = newResid.ToString();
+                    break;
+            }
+        }
 
         private Room PopulateRoomObject()
         {
@@ -379,7 +593,6 @@ namespace INFOsProject.Presentation
             TotalTextbox.Text = reservation.Total.ToString();
         }
         #endregion
-
 
         #region Events
         private void MainListView_FormClosed(object sender, FormClosedEventArgs e)
@@ -490,245 +703,48 @@ namespace INFOsProject.Presentation
         }
         #endregion
 
+        #region Unimplemented/Random
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox12_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox16_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ListView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+
+        }
+
+        private void ReservationPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void radioButton4_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void ClientPanel_Paint(object sender, PaintEventArgs e)
         {
 
         }
-        private void EnableClient()
-        {
-            ClientTextbox.Enabled = false;
-            NameTextbox.Enabled = true;
-            AddressTextbox.Enabled = true;
-            AreaTextbox.Enabled = true;
-            TownTextbox.Enabled = true;
-            PostalCodeTextbox.Enabled = true;
-            dateTimePicker1.Enabled = true;
-        }
 
-        private void EnableRoom()
-        {
-            RoomIDTextbox.Enabled = false;
-            PriceTextbox.Enabled = true;
-        }
-
-        private void getLatestID()
-        {
-            switch (State_of_Form)
-            {
-                case 0:
-                    int newCid = 0;
-                    newCid = Clients.Count;
-                    ClientTextbox.Text = newCid.ToString();
-                    break;
-
-                case 1:
-                    int newRid = 0;
-                    newRid = Rooms.Count;
-
-                    RoomIDTextbox.Text = newRid.ToString();
-                    break;
-
-                case 2:
-                    int newResid = 0;
-                    newResid = Reservations.Count;
-
-                    ReservationIDTextbox.Text = newResid.ToString();
-                    break;
-            }
-        }
-        private void EnableReservation()
-        {
-            ReservationIDTextbox.Enabled = false;
-            ClientTextbox.Enabled = true;
-            RoomTextbox.Enabled = true;
-            TotalTextbox.Enabled = true;
-        }
-        private void addRadioGroup_CheckedChanged(object sender, EventArgs e)
-        {
-            getLatestID();
-            switch (State_of_Form)
-            {
-                case 0:
-;                   ClearClient();
-                    ClientLabel.Text = "Add a Client:";
-                    getLatestID();
-                    EnableClient();
-                    break;
-
-                case 1:
-                    ClearRoom();
-                    RoomLabel.Text = "Add a Room:";
-                    EnableRoom();
-                    break;
-
-                case 2:
-                    ClearReservation();
-                    EnableReservation();
-                    ReservationLabel.Text = "Add a Reservation:";
-                    break;
-            }
-        }
-
-        private void editRadioGroup_CheckedChanged(object sender, EventArgs e)
-        {
-            switch (State_of_Form)
-            {
-                case 0:
-                    ClearClient();
-                    ClientLabel.Text = "Edit a Client:";
-                    ClientTextbox.Enabled = false;
-                    NameTextbox.Enabled = true;
-                    AddressTextbox.Enabled = true;
-                    AreaTextbox.Enabled = true;
-                    TownTextbox.Enabled = true;
-                    PostalCodeTextbox.Enabled = true;
-                    dateTimePicker1.Enabled = true;
-                    break;
-
-                case 1:
-                    ClearRoom();
-                    RoomLabel.Text = "Edit a Room:";
-                    RoomIDTextbox.Enabled = false;
-                    PriceTextbox.Enabled = true;
-                    break;
-
-                case 2:
-                    ClearReservation();
-                    ReservationLabel.Text = "Edit a Reservation:";
-                    ReservationIDTextbox.Enabled = false;
-                    ClientTextbox.Enabled = true;
-                    RoomTextbox.Enabled = true;
-                    TotalTextbox.Enabled = true;
-                    break;
-            }
-        }
-
-        private void deleteRadioGroup_CheckedChanged(object sender, EventArgs e)
-        {
-            switch (State_of_Form)
-            {
-
-                case 0:
-                    ClearClient();
-                    ClientLabel.Text = "Delete a Client:";
-                    RestrictAllLabels();
-                    break;
-
-                case 1:
-                    ClearRoom();
-                    RoomLabel.Text = "Delete a Room:";
-                    RestrictAllLabels();
-                    break;
-
-                case 2:
-                    ReservationPanel.Visible = true;
-                    ClearReservation();
-                    ReservationLabel.Text = "Delete a Reservation:";
-                    RestrictAllLabels();
-                    break;
-            }
-        }
-
-        private void RestrictAllLabels()
-        {
-            ClientTextbox.Enabled = false;
-            NameTextbox.Enabled = false;
-            AddressTextbox.Enabled = false;
-            AreaTextbox.Enabled = false;
-            TownTextbox.Enabled = false;
-            PostalCodeTextbox.Enabled = false;
-            dateTimePicker1.Enabled = false;
-
-            RoomIDTextbox.Enabled = false;
-            PriceTextbox.Enabled = false;
-
-            ReservationIDTextbox.Enabled = false;
-            ClientTextbox.Enabled = false;
-            RoomTextbox.Enabled = false;
-            TotalTextbox.Enabled = false;
-        }
-        private void ResetLabels()
-        {
-            switch (State_of_Form)
-            {
-                case 0:
-                    ClearClient();
-                    ClientLabel.Text = "Client Details:";
-                    break;
-
-                case 1:
-                    ClearRoom();
-                    RoomLabel.Text = "Room Details:";
-                    break;
-
-                case 2:
-                    ClearReservation();
-                    ReservationLabel.Text = "Reservation Details:";
-                    break;
-            }
-        }
-        private void RoomSubmit_Click_1(object sender, EventArgs e)
-        {
-            if (addRadioGroup.Checked)
-            {
-                Room newroom = PopulateRoomObject();
-                
-                roomController.DataMaintenance(newroom, DB.DBOperation.Add);
-                MessageBox.Show("Added");
-                roomController.FinalizeChanges(newroom);
-                setUpMainListView();
-
-                
-            }
-            else if (editRadioGroup.Checked)
-            {
-
-            }
-            else if (deleteRadioGroup.Checked)
-            {
-
-            }
-            if (addRadioGroup.Checked)
-            {
-
-               // ShowAll(false, roleValue);
-            }
-            ClearRoom();
-            ResetLabels();
-            getLatestID();
-        }
-
-        private void ClientSubmit_Click_1(object sender, EventArgs e)
-        {
-            if (addRadioGroup.Checked)
-            {
-                client = PopulateClientObject();
-                MessageBox.Show("To be submitted to the Database!");
-                clientsController.DataMaintenance(client, DB.DBOperation.Add);
-                clientsController.FinalizeChanges(client);
-                setUpMainListView();
-
-
-            }
-            else if (editRadioGroup.Checked)
-            {
-
-            }
-            else if (deleteRadioGroup.Checked)
-            {
-
-            }
-            if (addRadioGroup.Checked)
-            {
-
-                // ShowAll(false, roleValue);
-            }
-            ClearRoom();
-            ResetLabels();
-            getLatestID();
-
-        }
+        #endregion
     }
-
-
 }

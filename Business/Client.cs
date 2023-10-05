@@ -10,6 +10,7 @@ namespace INFOsProject.Business
 {
     public class Client
     {
+        #region Data fields
         string ID;
         string Name;
         string StreetAddress;
@@ -17,9 +18,10 @@ namespace INFOsProject.Business
         string Town;
         string PostalCode;
         DateTime BookingDate;
-
+        #endregion
+        #region Constructor
         public Client() { BookingDate = DateTime.MinValue; }
-
+        #endregion
         #region Property Methods
         public string getID
         {

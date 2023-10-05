@@ -8,13 +8,17 @@ namespace INFOsProject.Business
 {
     public class Room
     {
+        #region Data fields
         string roomID;
         double price;
+        #endregion
 
+        #region Constructor
         public Room()
         {
 
         }
+        #endregion
 
         #region Property Methods
         public string RoomID
