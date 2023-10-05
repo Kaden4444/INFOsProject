@@ -54,7 +54,7 @@ namespace INFOsProject.Business
                     break;
             }
         }
-
+        
         public bool FinalizeChanges(Reservation Reservation)
         {
             return ReservationDB.UpdateDataSource(Reservation);

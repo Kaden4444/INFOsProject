@@ -115,14 +115,7 @@ namespace INFOsProject.Presentation
             switch (State_of_Form)
             {
                 case 0:
-                    ClientPanel.Show();
-                    MainListView.Columns.Insert(0, "ClientID", 120, HorizontalAlignment.Left);
-                    MainListView.Columns.Insert(1, "Name", 120, HorizontalAlignment.Left);
-                    MainListView.Columns.Insert(2, "Address", 150, HorizontalAlignment.Left);
-                    MainListView.Columns.Insert(3, "Area", 100, HorizontalAlignment.Left);
-                    MainListView.Columns.Insert(4, "Town", 100, HorizontalAlignment.Left);
-                    MainListView.Columns.Insert(5, "Postal Code", 100, HorizontalAlignment.Left);
-                    MainListView.Columns.Insert(6, "Reservation", 100, HorizontalAlignment.Left);
+
                     break;
 
                 case 1:
@@ -132,7 +125,7 @@ namespace INFOsProject.Presentation
                     break;
 
                 case 2:
-                    MessageBox.Show("FUcking poes");
+                    //MessageBox.Show("FUcking poes");
                     ReservationPanel.Show();
                     MainListView.Columns.Insert(0, "ReservationID", 120, HorizontalAlignment.Left);
                     MainListView.Columns.Insert(1, "Client", 120, HorizontalAlignment.Left);
@@ -199,21 +192,7 @@ namespace INFOsProject.Presentation
 
         private void ClientSubmit_Click(object sender, EventArgs e)
         {
-           /* switch (groupBox1)
-            {
-                case 0:
-                    ClientPanel.Visible = true;
 
-                    break;
-
-                case 1:
-                    RoomPanel.Visible = true;
-                    break;
-
-                case 2:
-                    ReservationPanel.Visible = true;
-                    break;
-            } */
         }
 
 
@@ -321,6 +300,26 @@ namespace INFOsProject.Presentation
             return room;
         }
 
+        private Client PopulateClientObject()
+        {
+            try
+            {
+                client = new Client();
+                client.getID = ClientTextbox.Text;
+                client.getName = NameTextbox.Text;
+                client.getStreetAddress = AddressTextbox.Text;
+                client.getArea = AreaTextbox.Text;
+                client.getTown = TownTextbox.Text;
+                client.getPostal_code = PostalCodeTextbox.Text;
+                client.getBooking = DateTime.Parse(dateTimePicker1.Text);
+
+
+                //MessageBox.Show(room.RoomID + "     " + room.Price);
+            }
+            catch { MessageBox.Show("Something went wrong populating client, please ensure all fields are filled."); }
+            return client;
+        }
+
         private void ClearClient()
         {
             ClientTextbox.Text = "";
@@ -329,7 +328,7 @@ namespace INFOsProject.Presentation
             AreaTextbox.Text = "";
             TownTextbox.Text = "";
             PostalCodeTextbox.Text = "";
-            ReservationTextbox.Text = "";
+            dateTimePicker1.Text = "";
 
         }
         private void PopulateClientTB(Client client)
@@ -340,7 +339,7 @@ namespace INFOsProject.Presentation
             AreaTextbox.Text = client.getArea;
             TownTextbox.Text = client.getTown;
             PostalCodeTextbox.Text = client.getPostal_code;
-            ReservationTextbox.Text = client.getBooking.ToString();
+            dateTimePicker1.Text = client.getBooking.ToString();
             
         }
 
@@ -411,20 +410,21 @@ namespace INFOsProject.Presentation
             switch (State_of_Form)
             {
                 case 0:
-                    MainListView.Columns.Insert(0, "ClientID", 120, HorizontalAlignment.Left);
-                    MainListView.Columns.Insert(1, "Name", 120, HorizontalAlignment.Left);
+                    ClientPanel.Show();
+                    MainListView.Columns.Insert(0, "ClientID", 30, HorizontalAlignment.Left);
+                    MainListView.Columns.Insert(1, "Name", 100, HorizontalAlignment.Left);
                     MainListView.Columns.Insert(2, "Address", 150, HorizontalAlignment.Left);
-                    MainListView.Columns.Insert(3, "Area", 100, HorizontalAlignment.Left);
-                    MainListView.Columns.Insert(4, "Town", 100, HorizontalAlignment.Left);
-                    MainListView.Columns.Insert(5, "Postal Code", 100, HorizontalAlignment.Left);
-                    MainListView.Columns.Insert(6, "Reservation", 100, HorizontalAlignment.Left);
+                    MainListView.Columns.Insert(3, "Area", 50, HorizontalAlignment.Left);
+                    MainListView.Columns.Insert(4, "Town", 50, HorizontalAlignment.Left);
+                    MainListView.Columns.Insert(5, "Postal Code", 60, HorizontalAlignment.Left);
+                    MainListView.Columns.Insert(6, "Reservation", 200, HorizontalAlignment.Left);
 
                     Clients = null;
                     Clients = clientsController.AllClients;
                     foreach (Client Client in Clients)
                     {
                         clientDetails = new ListViewItem();
-                        clientDetails.Text = Client.getID.ToString();
+                        clientDetails.Text = Client.getID;
                         clientDetails.SubItems.Add(Client.getName);
                         clientDetails.SubItems.Add(Client.getStreetAddress);
                         clientDetails.SubItems.Add(Client.getArea);
@@ -495,7 +495,7 @@ namespace INFOsProject.Presentation
             AreaTextbox.Enabled = true;
             TownTextbox.Enabled = true;
             PostalCodeTextbox.Enabled = true;
-            ReservationTextbox.Enabled = true;
+            dateTimePicker1.Enabled = true;
         }
 
         private void EnableRoom()
@@ -504,6 +504,31 @@ namespace INFOsProject.Presentation
             PriceTextbox.Enabled = true;
         }
 
+        private void getLatestID()
+        {
+            switch (State_of_Form)
+            {
+                case 0:
+                    int newCid = 0;
+                    newCid = Clients.Count;
+                    ClientTextbox.Text = newCid.ToString();
+                    break;
+
+                case 1:
+                    int newRid = 0;
+                    newRid = Rooms.Count;
+
+                    RoomIDTextbox.Text = newRid.ToString();
+                    break;
+
+                case 2:
+                    int newResid = 0;
+                    newResid = Reservations.Count;
+
+                    ReservationIDTextbox.Text = newResid.ToString();
+                    break;
+            }
+        }
         private void EnableReservation()
         {
             ReservationIDTextbox.Enabled = false;
@@ -513,38 +538,25 @@ namespace INFOsProject.Presentation
         }
         private void addRadioGroup_CheckedChanged(object sender, EventArgs e)
         {
+            getLatestID();
             switch (State_of_Form)
             {
                 case 0:
 ;                   ClearClient();
                     ClientLabel.Text = "Add a Client:";
                     EnableClient();
-
-                    int newCid = 0;
-                    newCid = Clients.Count;
-
-                    ClientTextbox.Text = newCid.ToString();
                     break;
 
                 case 1:
                     ClearRoom();
                     RoomLabel.Text = "Add a Room:";
                     EnableRoom();
-
-                    int newRid = 0;
-                    newRid = Rooms.Count;
-
-                    RoomIDTextbox.Text = newRid.ToString();
                     break;
 
                 case 2:
                     ClearReservation();
                     EnableReservation();
                     ReservationLabel.Text = "Add a Reservation:";
-                    int newResid = 0;
-                    newResid = Reservations.Count;
-
-                    ReservationIDTextbox.Text = newResid.ToString();
                     break;
             }
         }
@@ -562,7 +574,7 @@ namespace INFOsProject.Presentation
                     AreaTextbox.Enabled = true;
                     TownTextbox.Enabled = true;
                     PostalCodeTextbox.Enabled = true;
-                    ReservationTextbox.Enabled = true;
+                    dateTimePicker1.Enabled = true;
                     break;
 
                 case 1:
@@ -617,7 +629,7 @@ namespace INFOsProject.Presentation
             AreaTextbox.Enabled = false;
             TownTextbox.Enabled = false;
             PostalCodeTextbox.Enabled = false;
-            ReservationTextbox.Enabled = false;
+            dateTimePicker1.Enabled = false;
 
             RoomIDTextbox.Enabled = false;
             PriceTextbox.Enabled = false;
@@ -652,8 +664,9 @@ namespace INFOsProject.Presentation
             if (addRadioGroup.Checked)
             {
                 Room newroom = PopulateRoomObject();
-                MessageBox.Show("To be submitted to the Database!");
+                
                 roomController.DataMaintenance(newroom, DB.DBOperation.Add);
+                MessageBox.Show("Added");
                 roomController.FinalizeChanges(newroom);
                 setUpMainListView();
 
@@ -678,7 +691,32 @@ namespace INFOsProject.Presentation
 
         private void ClientSubmit_Click_1(object sender, EventArgs e)
         {
+            if (addRadioGroup.Checked)
+            {
+                client = PopulateClientObject();
+                MessageBox.Show("To be submitted to the Database!");
+                clientsController.DataMaintenance(client, DB.DBOperation.Add);
+                clientsController.FinalizeChanges(client);
+                setUpMainListView();
+
+
+            }
+            else if (editRadioGroup.Checked)
+            {
+
+            }
+            else if (deleteRadioGroup.Checked)
+            {
+
+            }
+            if (addRadioGroup.Checked)
+            {
+
+                // ShowAll(false, roleValue);
+            }
+            ClearRoom();
             ResetLabels();
+
         }
     }
 
