@@ -40,7 +40,7 @@ namespace INFOsProject.Business
         public void DataMaintenance(Client aClient, DB.DBOperation operation)
         {
             int index = 0;
-
+            ClientDB.DataSetChange(aClient, operation);
             switch (operation)
             {
                 case DB.DBOperation.Add:
@@ -51,7 +51,8 @@ namespace INFOsProject.Business
                     Clients[index] = aClient;
                     break;
                 case DB.DBOperation.Delete:
-                    Clients.Remove(aClient);
+                    index = FindIndex(aClient);
+                    Clients.RemoveAt(index);
                     break;
             }
         }
@@ -85,7 +86,7 @@ namespace INFOsProject.Business
             int counter = 0;
             bool found = false;
             found = (aClient.getID == Clients[counter].getID);
-            while (found == false && counter != Clients.Count - 1)
+            while (!(found) & counter < Clients.Count - 1)
             {
                 counter++;
                 found = (aClient.getID == Clients[counter].getID);

@@ -125,6 +125,10 @@ namespace INFOsProject.Data
                     FillRow(aRow, aClient, operation);
                     dsMain.Tables[dataTable].Rows.Add(aRow);
                     break;
+                case DB.DBOperation.Delete:
+                    aRow = dsMain.Tables[dataTable].Rows[FindRow(aClient, dataTable)];
+                    aRow.Delete();
+                    break;
             }
         }
 
@@ -202,6 +206,8 @@ namespace INFOsProject.Data
             Build_UPDATE_Parameters(aClient);
 
         }
+
+        // Make delete methods
         public bool UpdateDataSource(Client aClient)
         {
             bool success = true;
