@@ -58,7 +58,7 @@ namespace INFOsProject.Presentation
 
             this.Load += MainListView_Load;
             this.Activated += MainListView_Activated;
-            this.FormClosed += MainListView_FormClosed;
+           // this.FormClosed += MainListView_FormClosed;
         }
         #endregion
 
@@ -271,7 +271,8 @@ namespace INFOsProject.Presentation
 
         }
 
-        private void MainListView_SelectedIndexChanged(object sender, EventArgs e)
+        private void MainListView_SelectedIndexChanged(o
+            bject sender, EventArgs e)
         {
             switch (State_of_Form)
             {
