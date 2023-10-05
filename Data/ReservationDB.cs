@@ -163,6 +163,36 @@ namespace INFOsProject.Data
             return success;
         }
         #endregion
+
+        #region Database Operations CRUD
+        public void DataSetChange(Reservation aReservation, DB.DBOperation operation)
+        {
+            DataRow aRow = null;
+            string dataTable = table;
+            dataTable = table;
+
+            switch (operation)
+            {
+                case DB.DBOperation.Add:
+                    aRow = dsMain.Tables[dataTable].NewRow();
+                    FillRow(aRow, aReservation, operation);
+                    dsMain.Tables[dataTable].Rows.Add(aRow); //Add to the dataset
+                    break;
+
+                case DB.DBOperation.Edit:
+                    aRow = dsMain.Tables[dataTable].Rows[FindRow(aReservation, dataTable)];
+                    FillRow(aRow, aReservation, operation);
+                    dsMain.Tables[dataTable].Rows.Add(aRow);
+                    break;
+                case DB.DBOperation.Delete:
+                    aRow = dsMain.Tables[dataTable].Rows[FindRow(aReservation, dataTable)];
+                    aRow.Delete();
+                    break;
+            }
+        }
+        }
+
+        #endregion
     }
-}
+
 

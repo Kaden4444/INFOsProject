@@ -19,9 +19,11 @@ namespace INFOsProject.Business
         string PostalCode;
         DateTime BookingDate;
         #endregion
+
         #region Constructor
         public Client() { BookingDate = DateTime.MinValue; }
         #endregion
+
         #region Property Methods
         public string getID
         {

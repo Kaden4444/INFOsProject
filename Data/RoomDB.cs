@@ -157,9 +157,15 @@ namespace INFOsProject.Data
                     FillRow(aRow, aRoom, operation);
                     dsMain.Tables[dataTable].Rows.Add(aRow);
                     break;
+
+                case DB.DBOperation.Delete:
+                    aRow = dsMain.Tables[dataTable].Rows[FindRow(aRoom, dataTable)];
+                    aRow.Delete();
+                    break;
             }
+        }
         }
 
         #endregion
     }
-}
+
