@@ -230,6 +230,26 @@ namespace INFOsProject.Presentation
             }
         }
 
+        private Client PopulateClientObject()
+        {
+            try
+            {
+                client = new Client();
+                client.getID = ClientTextbox.Text;
+                client.getName = NameTextbox.Text;
+                client.getStreetAddress = AddressTextbox.Text;
+                client.getArea = AreaTextbox.Text;
+                client.getTown = TownTextbox.Text;
+                client.getPostal_code = PostalCodeTextbox.Text;
+                client.getBooking = DateTime.Parse(dateTimePicker1.Text);
+
+
+                //MessageBox.Show(room.RoomID + "     " + room.Price);
+            }
+            catch { MessageBox.Show("Something went wrong populating client, please ensure all fields are filled."); }
+            return client;
+        }
+
         private void ClientSubmit_Click_1(object sender, EventArgs e)
         {
             if (addRadioGroup.Checked)
@@ -298,6 +318,24 @@ namespace INFOsProject.Presentation
             ClearRoom();
             ResetLabels();
             getLatestID();
+        }
+
+        private Room PopulateRoomObject()
+        {
+            try
+            {
+
+                Room room = new Room();
+
+                room.RoomID = RoomIDTextbox.Text;
+                //MessageBox.Show(PriceTextbox.Text);
+                double temp = Double.Parse(PriceTextbox.Text);
+                room.Price = temp;
+
+                //MessageBox.Show(room.RoomID + "     " + room.Price);
+            }
+            catch { MessageBox.Show("Something went wrong"); }
+            return room;
         }
 
         private void RoomSubmit_Click(object sender, EventArgs e)
@@ -502,43 +540,9 @@ namespace INFOsProject.Presentation
             }
         }
 
-        private Room PopulateRoomObject()
-        {
-            try
-            {
-
-                Room room = new Room();
-
-                room.RoomID = RoomIDTextbox.Text;
-                MessageBox.Show(PriceTextbox.Text);
-                double temp = Double.Parse(PriceTextbox.Text);
-                room.Price = temp;
-                
-                //MessageBox.Show(room.RoomID + "     " + room.Price);
-            }
-            catch {MessageBox.Show("Something went wrong"); }
-            return room;
-        }
-
-        private Client PopulateClientObject()
-        {
-            try
-            {
-                client = new Client();
-                client.getID = ClientTextbox.Text;
-                client.getName = NameTextbox.Text;
-                client.getStreetAddress = AddressTextbox.Text;
-                client.getArea = AreaTextbox.Text;
-                client.getTown = TownTextbox.Text;
-                client.getPostal_code = PostalCodeTextbox.Text;
-                client.getBooking = DateTime.Parse(dateTimePicker1.Text);
 
 
-                //MessageBox.Show(room.RoomID + "     " + room.Price);
-            }
-            catch { MessageBox.Show("Something went wrong populating client, please ensure all fields are filled."); }
-            return client;
-        }
+
 
         private void ClearClient()
         {
@@ -623,8 +627,6 @@ namespace INFOsProject.Presentation
 
         #region List View
 
-   
-   
         public void setUpMainListView()
         {
             
