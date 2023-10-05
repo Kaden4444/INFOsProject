@@ -45,29 +45,12 @@ namespace INFOsProject.Data
             return dsMain;
         }
 
-        public void DataMaintenance(Room aRoom, DB.DBOperation operation)
-        {
-            int index = 0;
 
-            switch (operation)
-            {
-                case DB.DBOperation.Add:
-                    Rooms.Add(aRoom);
-                    break;
-                case DB.DBOperation.Edit:
-                    //index = FindIndex(aRoom);
-                    Rooms[index] = aRoom;
-                    break;
-                case DB.DBOperation.Delete:
-                    Rooms.Remove(aRoom);
-                    break;
-            }
-        }
         private void Add2Collection(string table)
         {
             //Declare references to a myRow object and an Room object
             DataRow myRow = null;
-            Room aRoom;
+            //Room aRoom;
             //READ from the table  
             foreach (DataRow myRow_loopVariable in dsMain.Tables[table].Rows)
             {

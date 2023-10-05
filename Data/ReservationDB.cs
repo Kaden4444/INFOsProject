@@ -47,7 +47,6 @@ namespace INFOsProject.Data
         {
             //Declare references to a myRow object and an Reservation object
             DataRow myRow = null;
-            Reservation aReservation;
             //READ from the table  
             foreach (DataRow myRow_loopVariable in dsMain.Tables[table].Rows)
             {

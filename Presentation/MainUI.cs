@@ -22,130 +22,6 @@ using System.Linq;
 namespace INFOsProject.Presentation
 {
 
-    /*
-        #region Events
-        private void MainListView_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            listFormClosed = true;//4.4 Set the Boolean value of listFormClosed to true in the FormClosed event of the form(first create a FormClosed event for the form).
-
-        }
-        private void MainListView_Load(object sender, EventArgs e)
-        {
-            MainListView.View = View.Details;
-        }
-
-        private void MainListView_Activated(object sender, EventArgs e)
-        {
-            // 4.3.1 Set the view of the MainListView to Details view
-            MainListView.View = View.Details;
-
-            // 4.3.2 Call the setUpMainListView method
-            setUpMainListView();
-
-            // 4.3.3 Call the ShowAll method to reset the controls
-            ShowAll(false, roleValue);
-        }
-        #endregion
-
-        #region List View
-        public void setUpMainListView()
-        {
-            ListViewItem clientDetails;   //Declare variables
-            HeadWaiter headW;
-            Waiter waiter;
-            Runner runner;
-            //Clear current List View Control
-            MainListView.Clear();
-            //Set Up Columns of List View
-            MainListView.Columns.Insert(0, "ID", 120, HorizontalAlignment.Left);
-            MainListView.Columns.Insert(1, "EMPID", 120, HorizontalAlignment.Left);
-            MainListView.Columns.Insert(2, "Name", 150, HorizontalAlignment.Left);
-            MainListView.Columns.Insert(3, "Phone", 100, HorizontalAlignment.Left);
-            //TO DO  … do this for the other generic elements
-            clients = null;                      //clients collection will be filled by role
-            switch (roleValue)                     //  Check which role to add specific headings
-            {
-                case Role.RoleType.NoRole:
-                    // TO DO Get all the clients from the ClientController object 
-                    // (use the property) and assign to a local clients collection reference
-                    clients = clientController.AllClients;
-                    listLabel.Text = "Listing of all clients";
-                    MainListView.Columns.Insert(4, "Payment", 100, HorizontalAlignment.Center);
-                    break;
-                case Role.RoleType.Headwaiter:
-                    //Add a FindByRole method to the ClientController 
-                    clients = clientController.FindByRole(clientController.AllClients, Role.RoleType.Headwaiter);
-                    listLabel.Text = "Listing of all Headwaiters";
-                    //Set Up Columns of List View
-                    MainListView.Columns.Insert(4, "Salary", 100, HorizontalAlignment.Center);
-                    break;
-                //do for the others
-                case Role.RoleType.Waiter:
-                    //Add a FindByRole method to the ClientController 
-                    clients = clientController.FindByRole(clientController.AllClients, Role.RoleType.Waiter);
-                    listLabel.Text = "Listing of all Waiters";
-                    //Set Up Columns of List View
-                    MainListView.Columns.Insert(4, "Rate", 100, HorizontalAlignment.Center);
-                    MainListView.Columns.Insert(4, "Number of Shifts", 100, HorizontalAlignment.Center);
-                    break;
-                case Role.RoleType.Runner:
-                    //Add a FindByRole method to the ClientController 
-                    clients = clientController.FindByRole(clientController.AllClients, Role.RoleType.Runner);
-                    listLabel.Text = "Listing of all Runners";
-                    //Set Up Columns of List View
-                    MainListView.Columns.Insert(4, "Rate", 100, HorizontalAlignment.Center);
-                    MainListView.Columns.Insert(4, "Number of Shifts", 100, HorizontalAlignment.Center);
-                    break;
-
-            }
-            //Add client details to each ListView item 
-            foreach (Client client in clients)
-            {
-                clientDetails = new ListViewItem();
-                clientDetails.Text = client.ID.ToString();
-                // Do the same for EmpID, Name and Phone
-                clientDetails.SubItems.Add(client.ClientID);
-                clientDetails.SubItems.Add(client.Name);
-                clientDetails.SubItems.Add(client.Telephone);
-
-                switch (client.role.getRoleValue)
-                {
-                    case Role.RoleType.Headwaiter:
-                        headW = (HeadWaiter)client.role;
-                        clientDetails.SubItems.Add(headW.SalaryAmount.ToString());
-                        break;
-                    case Role.RoleType.Waiter:
-                        waiter = (Waiter)client.role;
-                        clientDetails.SubItems.Add(waiter.getRate.ToString());
-                        clientDetails.SubItems.Add(waiter.getShifts.ToString());
-                        break;
-                    case Role.RoleType.Runner:
-                        runner = (Runner)client.role;
-                        clientDetails.SubItems.Add(runner.getRate.ToString());
-                        clientDetails.SubItems.Add(runner.getShifts.ToString());
-                        break;
-                }
-                MainListView.Items.Add(clientDetails);
-            }
-            MainListView.Refresh();
-            MainListView.GridLines = true;
-        }
-
-
-        private void MainListView_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ShowAll(true, roleValue);
-            state = FormStates.View;
-            EnableEntries(false);
-            if (MainListView.SelectedItems.Count > 0)   // if you selected an item 
-            {
-                client = clientController.Find(MainListView.SelectedItems[0].Text);  //selected student becoms current student
-                                                                                             // Show the details of the selected student in the controls
-                PopulateTextBoxes(client);
-            }
-        }
-        #endregion
-     */
     public partial class MainUI : Form
     {
         #region Field members
@@ -399,6 +275,7 @@ namespace INFOsProject.Presentation
         {
             switch (State_of_Form)
             {
+
                 case 0:
                     if (MainListView.SelectedItems.Count > 0)
                     {
@@ -566,6 +443,7 @@ namespace INFOsProject.Presentation
 
                     Rooms = null;
                     Rooms = roomController.AllRooms;
+
                     foreach (Room Room in Rooms)
                     {
                         roomDetails = new ListViewItem();
@@ -609,7 +487,30 @@ namespace INFOsProject.Presentation
         {
 
         }
+        private void EnableClient()
+        {
+            ClientTextbox.Enabled = false;
+            NameTextbox.Enabled = true;
+            AddressTextbox.Enabled = true;
+            AreaTextbox.Enabled = true;
+            TownTextbox.Enabled = true;
+            PostalCodeTextbox.Enabled = true;
+            ReservationTextbox.Enabled = true;
+        }
 
+        private void EnableRoom()
+        {
+            RoomIDTextbox.Enabled = false;
+            PriceTextbox.Enabled = true;
+        }
+
+        private void EnableReservation()
+        {
+            ReservationIDTextbox.Enabled = false;
+            ClientTextbox.Enabled = true;
+            RoomTextbox.Enabled = true;
+            TotalTextbox.Enabled = true;
+        }
         private void addRadioGroup_CheckedChanged(object sender, EventArgs e)
         {
             switch (State_of_Form)
@@ -617,13 +518,7 @@ namespace INFOsProject.Presentation
                 case 0:
 ;                   ClearClient();
                     ClientLabel.Text = "Add a Client:";
-                    ClientTextbox.Enabled = false;
-                    NameTextbox.Enabled = true;
-                    AddressTextbox.Enabled = true;
-                    AreaTextbox.Enabled= true;
-                    TownTextbox.Enabled = true;
-                    PostalCodeTextbox.Enabled = true;
-                    ReservationTextbox.Enabled = true;
+                    EnableClient();
 
                     int newCid = 0;
                     newCid = Clients.Count;
@@ -634,8 +529,7 @@ namespace INFOsProject.Presentation
                 case 1:
                     ClearRoom();
                     RoomLabel.Text = "Add a Room:";
-                    RoomIDTextbox.Enabled = false;
-                    PriceTextbox.Enabled = true;
+                    EnableRoom();
 
                     int newRid = 0;
                     newRid = Rooms.Count;
@@ -644,13 +538,9 @@ namespace INFOsProject.Presentation
                     break;
 
                 case 2:
-                    ReservationPanel.Visible = true;
                     ClearReservation();
+                    EnableReservation();
                     ReservationLabel.Text = "Add a Reservation:";
-                    ReservationIDTextbox.Enabled = false;
-                    ClientTextbox.Enabled = true;
-                    RoomTextbox.Enabled = true;
-                    TotalTextbox.Enabled = true;
                     int newResid = 0;
                     newResid = Reservations.Count;
 
@@ -761,10 +651,12 @@ namespace INFOsProject.Presentation
         {
             if (addRadioGroup.Checked)
             {
-                Room newroom =PopulateRoomObject();
+                Room newroom = PopulateRoomObject();
                 MessageBox.Show("To be submitted to the Database!");
                 roomController.DataMaintenance(newroom, DB.DBOperation.Add);
                 roomController.FinalizeChanges(newroom);
+                setUpMainListView();
+
                 
             }
             else if (editRadioGroup.Checked)
