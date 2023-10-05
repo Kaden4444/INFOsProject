@@ -112,6 +112,7 @@ namespace INFOsProject.Presentation
             HidePanels();
             MainListView.Clear();
             RestrictAllLabels();
+            //getLatestID();
             switch (State_of_Form)
             {
                 case 0:
@@ -134,6 +135,7 @@ namespace INFOsProject.Presentation
                     MainListView.Columns.Insert(4, "DaysOfStay", 120, HorizontalAlignment.Left);
                     break;
             }
+            //getLatestID();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -151,7 +153,7 @@ namespace INFOsProject.Presentation
 
             if (addRadioGroup.Checked)
             {
-
+                getLatestID();
             }
 
             else if (editRadioGroup.Checked)
@@ -215,6 +217,7 @@ namespace INFOsProject.Presentation
             {
 
             }
+            getLatestID();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -339,8 +342,12 @@ namespace INFOsProject.Presentation
             AreaTextbox.Text = client.getArea;
             TownTextbox.Text = client.getTown;
             PostalCodeTextbox.Text = client.getPostal_code;
-            dateTimePicker1.Text = client.getBooking.ToString();
-            
+            try
+            {
+                dateTimePicker1.Text = client.getBooking.ToString();
+            }
+            catch { }
+            dateTimePicker1.Text = dateTimePicker1.MinDate.ToString();
         }
 
         private void ClearReservation()
@@ -510,6 +517,7 @@ namespace INFOsProject.Presentation
             {
                 case 0:
                     int newCid = 0;
+                    newCid = Clients.Count;
                     newCid = Clients.Count;
                     ClientTextbox.Text = newCid.ToString();
                     break;
@@ -687,6 +695,7 @@ namespace INFOsProject.Presentation
             }
             ClearRoom();
             ResetLabels();
+            getLatestID();
         }
 
         private void ClientSubmit_Click_1(object sender, EventArgs e)
@@ -716,6 +725,7 @@ namespace INFOsProject.Presentation
             }
             ClearRoom();
             ResetLabels();
+            getLatestID();
 
         }
     }

@@ -41,6 +41,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.listView1 = new System.Windows.Forms.ListView();
             this.ClientPanel = new System.Windows.Forms.Panel();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.ClientLabel = new System.Windows.Forms.Label();
             this.PostalCodeTextbox = new System.Windows.Forms.TextBox();
             this.TownTextbox = new System.Windows.Forms.TextBox();
@@ -79,7 +80,6 @@
             this.label20 = new System.Windows.Forms.Label();
             this.ListView = new System.Windows.Forms.ListView();
             this.MainListView = new System.Windows.Forms.ListView();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.projectDatabaseDataSetBindingSource)).BeginInit();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -213,6 +213,16 @@
             this.ClientPanel.Size = new System.Drawing.Size(491, 207);
             this.ClientPanel.TabIndex = 4;
             this.ClientPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.ClientPanel_Paint);
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker1.Location = new System.Drawing.Point(128, 175);
+            this.dateTimePicker1.MaxDate = new System.DateTime(2023, 12, 31, 0, 0, 0, 0);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(124, 20);
+            this.dateTimePicker1.TabIndex = 17;
+            this.dateTimePicker1.Value = new System.DateTime(2023, 12, 1, 0, 0, 0, 0);
             // 
             // ClientLabel
             // 
@@ -581,17 +591,6 @@
             this.MainListView.TabIndex = 8;
             this.MainListView.UseCompatibleStateImageBehavior = false;
             this.MainListView.SelectedIndexChanged += new System.EventHandler(this.MainListView_SelectedIndexChanged);
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(128, 175);
-            this.dateTimePicker1.MaxDate = new System.DateTime(2023, 12, 31, 0, 0, 0, 0);
-            this.dateTimePicker1.MinDate = new System.DateTime(2023, 12, 1, 0, 0, 0, 0);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(124, 20);
-            this.dateTimePicker1.TabIndex = 17;
-            this.dateTimePicker1.Value = new System.DateTime(2023, 12, 24, 0, 0, 0, 0);
             // 
             // MainUI
             // 
