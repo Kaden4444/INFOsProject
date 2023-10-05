@@ -106,36 +106,6 @@ namespace INFOsProject.Data
         }
         #endregion
 
-        #region Database Operations CRUD
-        public void DataSetChange(Client aClient, DB.DBOperation operation)
-        {
-            DataRow aRow = null;
-            string dataTable = table;
-            dataTable = table;
-
-            switch (operation)
-            {
-                case DB.DBOperation.Add:
-                    aRow = dsMain.Tables[dataTable].NewRow();
-                    FillRow(aRow, aClient, operation);
-                    dsMain.Tables[dataTable].Rows.Add(aRow); //Add to the dataset
-                    break;
-
-                case DB.DBOperation.Edit:
-                    aRow = dsMain.Tables[dataTable].Rows[FindRow(aClient, dataTable)];
-                    FillRow(aRow, aClient, operation);
-                    dsMain.Tables[dataTable].Rows.Add(aRow);
-                    break;
-                case DB.DBOperation.Delete:
-                    aRow = dsMain.Tables[dataTable].Rows[FindRow(aClient, dataTable)];
-                    aRow.Delete();
-                    break;
-            }
-        }
-
-
-        #endregion
-
         #region Build Parameters, Create Commands & Update database
         private void Build_INSERT_Parameters(Client aClient)
         {
@@ -218,6 +188,37 @@ namespace INFOsProject.Data
             return success;
         }
         #endregion
+
+        #region Database Operations CRUD
+        public void DataSetChange(Client aClient, DB.DBOperation operation)
+        {
+            DataRow aRow = null;
+            string dataTable = table;
+            dataTable = table;
+
+            switch (operation)
+            {
+                case DB.DBOperation.Add:
+                    aRow = dsMain.Tables[dataTable].NewRow();
+                    FillRow(aRow, aClient, operation);
+                    dsMain.Tables[dataTable].Rows.Add(aRow); //Add to the dataset
+                    break;
+
+                case DB.DBOperation.Edit:
+                    aRow = dsMain.Tables[dataTable].Rows[FindRow(aClient, dataTable)];
+                    FillRow(aRow, aClient, operation);
+                    dsMain.Tables[dataTable].Rows.Add(aRow);
+                    break;
+                case DB.DBOperation.Delete:
+                    aRow = dsMain.Tables[dataTable].Rows[FindRow(aClient, dataTable)];
+                    aRow.Delete();
+                    break;
+            }
+        }
+
+
+        #endregion
+
     }
 }
 

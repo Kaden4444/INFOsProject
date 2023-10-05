@@ -400,13 +400,16 @@ namespace INFOsProject.Presentation
                 case 1:
                     ClearRoom();
                     RoomLabel.Text = "Add a Room:";
+                    getLatestID();
                     EnableRoom();
                     break;
 
                 case 2:
                     ClearReservation();
-                    EnableReservation();
                     ReservationLabel.Text = "Add a Reservation:";
+                    getLatestID();
+                    EnableReservation();
+                    
                     break;
             }
         }
@@ -667,7 +670,7 @@ namespace INFOsProject.Presentation
                     foreach (Room Room in Rooms)
                     {
                         roomDetails = new ListViewItem();
-                        roomDetails.Text = Room.RoomID.ToString();
+                        roomDetails.Text = Room.RoomID;
                         roomDetails.SubItems.Add(Room.Price.ToString());
                         MainListView.Items.Add(roomDetails);
                     }
@@ -687,7 +690,7 @@ namespace INFOsProject.Presentation
                     foreach (Reservation Reservation in Reservations)
                     {
                         reservationDetails = new ListViewItem();
-                        reservationDetails.Text = Reservation.ReservationID.ToString();
+                        reservationDetails.Text = Reservation.ReservationID;
                         reservationDetails.SubItems.Add(Reservation.Client.ToString());
                         reservationDetails.SubItems.Add(Reservation.Room.ToString());
                         reservationDetails.SubItems.Add(Reservation.Total.ToString());
