@@ -507,10 +507,9 @@ namespace INFOsProject.Presentation
             try
             {
 
-                Room room = new Room();
-
+                room = new Room();
                 room.RoomID = RoomIDTextbox.Text;
-                MessageBox.Show(PriceTextbox.Text);
+               // MessageBox.Show(PriceTextbox.Text);
                 double temp = Double.Parse(PriceTextbox.Text);
                 room.Price = temp;
                 
@@ -540,6 +539,23 @@ namespace INFOsProject.Presentation
             return client;
         }
 
+        private Reservation PopulateReservationObject()
+        {
+            try
+            {
+
+                reservation = new Reservation();
+                reservation.ReservationID = ReservationIDTextbox.Text;
+
+                reservation.Client = GuestTextbox.Text;
+                reservation.Room = RoomTextbox.Text ;
+                reservation.Total = Double.Parse(TotalTextbox.Text) ;
+                
+
+            }
+            catch { MessageBox.Show("Something went wrong"); }
+            return reservation;
+        }
         private void ClearClient()
         {
             ClientTextbox.Text = "";
