@@ -59,12 +59,14 @@ namespace INFOsProject.Business
             return RoomDB.UpdateDataSource(Room);
         }
 
+
+
         #endregion
 
         #region Search Method
 
 
-        public Room Find(String ID)
+        public Room Find(string ID)
         {
             int index = 0;
             bool found = (Rooms[index].RoomID == ID);

@@ -259,7 +259,7 @@ namespace INFOsProject.Presentation
                     MessageBox.Show("FUcking poes");
                     ReservationPanel.Show();
                     MainListView.Columns.Insert(0, "ReservationID", 120, HorizontalAlignment.Left);
-                    MainListView.Columns.Insert(1, "Guest", 120, HorizontalAlignment.Left);
+                    MainListView.Columns.Insert(1, "Client", 120, HorizontalAlignment.Left);
                     MainListView.Columns.Insert(2, "Room", 120, HorizontalAlignment.Left);
                     MainListView.Columns.Insert(3, "Total", 120, HorizontalAlignment.Left);
                     MainListView.Columns.Insert(4, "DaysOfStay", 120, HorizontalAlignment.Left);
@@ -347,6 +347,19 @@ namespace INFOsProject.Presentation
         {
             ResetLabels();
             RestrictAllLabels();
+
+            if (addRadioGroup.Checked)
+            {
+                PopulateRoomObject();
+            }
+            else if (editRadioGroup.Checked)
+            {
+
+            }
+            else if (deleteRadioGroup.Checked)
+            {
+
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -413,16 +426,22 @@ namespace INFOsProject.Presentation
 
         #region Utility Methods
 
-        private void PopulateRoomObject()
+        private Room PopulateRoomObject()
         {
+            try
+            {
 
-            Room room = new Room();
+                Room room = new Room();
 
-            room.RoomID = RoomIDTextbox.Text;
-            MessageBox.Show(PriceTextbox.Text);
-            double temp = Double.Parse(PriceTextbox.Text);
-            room.Price = temp;
-
+                room.RoomID = RoomIDTextbox.Text;
+                MessageBox.Show(PriceTextbox.Text);
+                double temp = Double.Parse(PriceTextbox.Text);
+                room.Price = temp;
+                
+                //MessageBox.Show(room.RoomID + "     " + room.Price);
+            }
+            catch {MessageBox.Show("Something went wrong"); }
+            return room;
         }
 
         private void ClearClient()
@@ -452,7 +471,7 @@ namespace INFOsProject.Presentation
         {
             //...
             ReservationIDTextbox.Text = "";
-            GuestTextbox.Text = "";
+            ClientTextbox.Text = "";
             RoomTextbox.Text = "";
             TotalTextbox.Text = "";
 
@@ -472,7 +491,7 @@ namespace INFOsProject.Presentation
         private void PopulateReservationTB(Reservation reservation)
         {
             ReservationIDTextbox.Text = reservation.ReservationID;
-            GuestTextbox.Text = reservation.Client.ToString();
+            ClientTextbox.Text = reservation.Client.ToString();
             RoomTextbox.Text = reservation.Room.ToString();
             TotalTextbox.Text = reservation.Total.ToString();
         }
@@ -629,7 +648,7 @@ namespace INFOsProject.Presentation
                     ClearReservation();
                     ReservationLabel.Text = "Add a Reservation:";
                     ReservationIDTextbox.Enabled = false;
-                    GuestTextbox.Enabled = true;
+                    ClientTextbox.Enabled = true;
                     RoomTextbox.Enabled = true;
                     TotalTextbox.Enabled = true;
                     int newResid = 0;
@@ -667,7 +686,7 @@ namespace INFOsProject.Presentation
                     ClearReservation();
                     ReservationLabel.Text = "Edit a Reservation:";
                     ReservationIDTextbox.Enabled = false;
-                    GuestTextbox.Enabled = true;
+                    ClientTextbox.Enabled = true;
                     RoomTextbox.Enabled = true;
                     TotalTextbox.Enabled = true;
                     break;
@@ -714,7 +733,7 @@ namespace INFOsProject.Presentation
             PriceTextbox.Enabled = false;
 
             ReservationIDTextbox.Enabled = false;
-            GuestTextbox.Enabled = false;
+            ClientTextbox.Enabled = false;
             RoomTextbox.Enabled = false;
             TotalTextbox.Enabled = false;
         }
@@ -740,16 +759,28 @@ namespace INFOsProject.Presentation
         }
         private void RoomSubmit_Click_1(object sender, EventArgs e)
         {
-            
             if (addRadioGroup.Checked)
             {
-                PopulateRoomObject();
+                Room newroom =PopulateRoomObject();
                 MessageBox.Show("To be submitted to the Database!");
-                roomController.DataMaintenance(room, DB.DBOperation.Add);
-                roomController.DataMaintenance(room, DB.DBOperation.Add);
-                ClearRoom();
+                roomController.DataMaintenance(newroom, DB.DBOperation.Add);
+                roomController.FinalizeChanges(newroom);
+                
+            }
+            else if (editRadioGroup.Checked)
+            {
+
+            }
+            else if (deleteRadioGroup.Checked)
+            {
+
+            }
+            if (addRadioGroup.Checked)
+            {
+
                // ShowAll(false, roleValue);
             }
+            ClearRoom();
             ResetLabels();
         }
 

@@ -408,7 +408,7 @@
             // RoomSubmit
             // 
             this.RoomSubmit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RoomSubmit.Location = new System.Drawing.Point(192, 102);
+            this.RoomSubmit.Location = new System.Drawing.Point(190, 102);
             this.RoomSubmit.Name = "RoomSubmit";
             this.RoomSubmit.Size = new System.Drawing.Size(75, 24);
             this.RoomSubmit.TabIndex = 8;
@@ -461,7 +461,7 @@
             this.ReservationPanel.Controls.Add(this.label18);
             this.ReservationPanel.Controls.Add(this.label19);
             this.ReservationPanel.Controls.Add(this.label20);
-            this.ReservationPanel.Location = new System.Drawing.Point(823, 68);
+            this.ReservationPanel.Location = new System.Drawing.Point(555, 38);
             this.ReservationPanel.Name = "ReservationPanel";
             this.ReservationPanel.Size = new System.Drawing.Size(491, 192);
             this.ReservationPanel.TabIndex = 6;

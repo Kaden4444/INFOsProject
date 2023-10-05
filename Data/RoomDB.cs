@@ -116,7 +116,7 @@ namespace INFOsProject.Data
         {
 
             SqlParameter param = default(SqlParameter);
-            param = new SqlParameter("@ID", SqlDbType.NVarChar, 15, "ID");
+            param = new SqlParameter("@ID", SqlDbType.NVarChar, 10, "ID");
             daMain.InsertCommand.Parameters.Add(param);
 
             param = new SqlParameter("@Price", SqlDbType.Money, 50, "Price");
@@ -131,7 +131,7 @@ namespace INFOsProject.Data
         private void Build_UPDATE_Parameters(Room aRoom)
         {
             SqlParameter param = default(SqlParameter);
-            param = new SqlParameter("@ID", SqlDbType.NVarChar, 15, "ID");
+            param = new SqlParameter("@ID", SqlDbType.NVarChar, 10, "ID");
             param.SourceVersion = DataRowVersion.Current;
             daMain.UpdateCommand.Parameters.Add(param);
 

@@ -43,24 +43,6 @@ namespace INFOsProject.Data
             return dsMain;
         }
 
-        public void DataMaintenance(Reservation aReservation, DB.DBOperation operation)
-        {
-            int index = 0;
-
-            switch (operation)
-            {
-                case DB.DBOperation.Add:
-                    Reservations.Add(aReservation);
-                    break;
-                case DB.DBOperation.Edit:
-                    //index = FindIndex(aReservation);
-                    Reservations[index] = aReservation;
-                    break;
-                case DB.DBOperation.Delete:
-                    Reservations.Remove(aReservation);
-                    break;
-            }
-        }
         private void Add2Collection(string table)
         {
             //Declare references to a myRow object and an Reservation object
@@ -74,8 +56,8 @@ namespace INFOsProject.Data
                 {
                     aReservation = new Reservation();
                     aReservation.ReservationID = Convert.ToString(myRow["ID"]).TrimEnd();
-                    aReservation.Client = Convert.ToInt32(myRow["Guest"]);
-                    aReservation.Room = Convert.ToInt32(myRow["Room"]); 
+                    aReservation.Client = Convert.ToString(myRow["Client"]).TrimEnd();
+                    aReservation.Room = Convert.ToString(myRow["Room"]).TrimEnd(); 
                     aReservation.Total = Convert.ToDouble(myRow["Total"]);
                     aReservation.Days = Convert.ToInt32(myRow["DaysOfStay"]);
                     Reservations.Add(aReservation);
@@ -89,7 +71,7 @@ namespace INFOsProject.Data
             if (operation == DBOperation.Add)
             {
                 aRow["ID"] = aReservation.ReservationID;  //NOTE square brackets to indicate index of collections of fields in row.
-                aRow["Guest"] = aReservation.Client;
+                aRow["Client"] = aReservation.Client;
                 aRow["Room"] = aReservation.Room;
                 aRow["Total"] = aReservation.Total;
                 aRow["DaysOfStay"] = aReservation.Days;

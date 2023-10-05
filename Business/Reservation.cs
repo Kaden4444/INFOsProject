@@ -10,8 +10,8 @@ namespace INFOsProject.Business
     public class Reservation
     {
         string ID;
-        int client;
-        int room;
+        string client;
+        string room;
         double total;
         int days_of_Stay;
 
@@ -22,12 +22,12 @@ namespace INFOsProject.Business
             get { return ID; }
             set { ID = value; }
         }
-        public int Client
+        public string Client
         {
             get { return client; }
             set { client = value; }
         }
-        public int Room
+        public string Room
         {
             get { return room; }
             set { room = value; }
