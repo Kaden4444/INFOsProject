@@ -146,7 +146,7 @@ namespace INFOsProject.Presentation
         private void EnableReservation()
         {
             ReservationIDTextbox.Enabled = false;
-            ClientTextbox.Enabled = true;
+            GuestTextbox.Enabled = true;
             RoomTextbox.Enabled = true;
             TotalTextbox.Enabled = true;
         }
@@ -165,7 +165,7 @@ namespace INFOsProject.Presentation
             PriceTextbox.Enabled = false;
 
             ReservationIDTextbox.Enabled = false;
-            ClientTextbox.Enabled = false;
+            GuestTextbox.Enabled = false;
             RoomTextbox.Enabled = false;
             TotalTextbox.Enabled = false;
         }
@@ -323,12 +323,15 @@ namespace INFOsProject.Presentation
         #region Reservation methods
         private void ReservationSubmit_Click(object sender, EventArgs e)
         {
-            ResetLabels();
-            RestrictAllLabels();
+          
 
             if (addRadioGroup.Checked)
             {
-                PopulateRoomObject();
+                reservation = PopulateReservationObject();
+                MessageBox.Show("To be submitted to the Database!");
+                reservationController.DataMaintenance(reservation, DB.DBOperation.Add);
+                reservationController.FinalizeChanges(reservation);
+                setUpMainListView();
             }
             else if (editRadioGroup.Checked)
             {
@@ -441,7 +444,7 @@ namespace INFOsProject.Presentation
                     ClearReservation();
                     ReservationLabel.Text = "Edit a Reservation:";
                     ReservationIDTextbox.Enabled = false;
-                    ClientTextbox.Enabled = true;
+                    GuestTextbox.Enabled = true;
                     RoomTextbox.Enabled = true;
                     TotalTextbox.Enabled = true;
                     break;
@@ -533,7 +536,6 @@ namespace INFOsProject.Presentation
                 client.getBooking = DateTime.Parse(dateTimePicker1.Text);
 
 
-                //MessageBox.Show(room.RoomID + "     " + room.Price);
             }
             catch { MessageBox.Show("Something went wrong populating client, please ensure all fields are filled."); }
             return client;
@@ -541,18 +543,19 @@ namespace INFOsProject.Presentation
 
         private Reservation PopulateReservationObject()
         {
-            try
-            {
+           try
+          {
 
                 reservation = new Reservation();
+
                 reservation.ReservationID = ReservationIDTextbox.Text;
+            reservation.Client = GuestTextbox.Text;
+            reservation.Room = RoomTextbox.Text ;
+            reservation.Total = Double.Parse(TotalTextbox.Text);
+            reservation.Days =int.Parse(DaystextBox.Text);
 
-                reservation.Client = GuestTextbox.Text;
-                reservation.Room = RoomTextbox.Text ;
-                reservation.Total = Double.Parse(TotalTextbox.Text) ;
-                
 
-            }
+             }
             catch { MessageBox.Show("Something went wrong"); }
             return reservation;
         }
@@ -587,7 +590,7 @@ namespace INFOsProject.Presentation
         {
             //...
             ReservationIDTextbox.Text = "";
-            ClientTextbox.Text = "";
+            GuestTextbox.Text = "";
             RoomTextbox.Text = "";
             TotalTextbox.Text = "";
 
@@ -607,9 +610,10 @@ namespace INFOsProject.Presentation
         private void PopulateReservationTB(Reservation reservation)
         {
             ReservationIDTextbox.Text = reservation.ReservationID;
-            ClientTextbox.Text = reservation.Client.ToString();
+            GuestTextbox.Text = reservation.Client.ToString();
             RoomTextbox.Text = reservation.Room.ToString();
             TotalTextbox.Text = reservation.Total.ToString();
+            DaystextBox.Text = reservation.Days.ToString();
         }
         #endregion
 
@@ -765,5 +769,10 @@ namespace INFOsProject.Presentation
         }
 
         #endregion
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
