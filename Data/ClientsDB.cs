@@ -19,7 +19,7 @@ namespace INFOsProject.Data
         private string table = "Clients";
         private string sqlLocal1 = "SELECT * FROM Clients";
         private Collection<Client> Clients;
-      //  private Client aClient;
+        private Client aClient;
         #endregion
 
         public Collection<Client> AllClients
@@ -50,7 +50,7 @@ namespace INFOsProject.Data
         {
             //Declare references to a myRow object and an Client object
             DataRow myRow = null;
-            Client aClient;
+            //Client aClient;
             //READ from the table  
             foreach (DataRow myRow_loopVariable in dsMain.Tables[table].Rows)
             {
@@ -157,7 +157,7 @@ namespace INFOsProject.Data
             param = new SqlParameter("@PostalCode", SqlDbType.NVarChar, 10, "PostalCode");
             daMain.InsertCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@BookingDate", SqlDbType.DateTime, 10, "BookingDate");
+            param = new SqlParameter("@BookingDate", SqlDbType.Date, 10, "BookingDate");
             daMain.InsertCommand.Parameters.Add(param);
         }
         private void Create_INSERT_Command(Client aClient)
@@ -192,7 +192,7 @@ namespace INFOsProject.Data
             param.SourceVersion = DataRowVersion.Current;
             daMain.UpdateCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@BookingDate", SqlDbType.DateTime, 10, "BookingDate");
+            param = new SqlParameter("@BookingDate", SqlDbType.Date, 10, "BookingDate");
             param.SourceVersion = DataRowVersion.Current;
             daMain.UpdateCommand.Parameters.Add(param);
 

@@ -41,8 +41,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.listView1 = new System.Windows.Forms.ListView();
             this.ClientPanel = new System.Windows.Forms.Panel();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.ClientLabel = new System.Windows.Forms.Label();
-            this.ReservationTextbox = new System.Windows.Forms.TextBox();
             this.PostalCodeTextbox = new System.Windows.Forms.TextBox();
             this.TownTextbox = new System.Windows.Forms.TextBox();
             this.AreaTextbox = new System.Windows.Forms.TextBox();
@@ -191,8 +191,8 @@
             // ClientPanel
             // 
             this.ClientPanel.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.ClientPanel.Controls.Add(this.dateTimePicker1);
             this.ClientPanel.Controls.Add(this.ClientLabel);
-            this.ClientPanel.Controls.Add(this.ReservationTextbox);
             this.ClientPanel.Controls.Add(this.PostalCodeTextbox);
             this.ClientPanel.Controls.Add(this.TownTextbox);
             this.ClientPanel.Controls.Add(this.AreaTextbox);
@@ -214,6 +214,16 @@
             this.ClientPanel.TabIndex = 4;
             this.ClientPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.ClientPanel_Paint);
             // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker1.Location = new System.Drawing.Point(128, 175);
+            this.dateTimePicker1.MaxDate = new System.DateTime(2023, 12, 31, 0, 0, 0, 0);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(124, 20);
+            this.dateTimePicker1.TabIndex = 17;
+            this.dateTimePicker1.Value = new System.DateTime(2023, 12, 1, 0, 0, 0, 0);
+            // 
             // ClientLabel
             // 
             this.ClientLabel.AutoSize = true;
@@ -223,13 +233,6 @@
             this.ClientLabel.Size = new System.Drawing.Size(262, 50);
             this.ClientLabel.TabIndex = 16;
             this.ClientLabel.Text = "Client Details:";
-            // 
-            // ReservationTextbox
-            // 
-            this.ReservationTextbox.Location = new System.Drawing.Point(182, 179);
-            this.ReservationTextbox.Name = "ReservationTextbox";
-            this.ReservationTextbox.Size = new System.Drawing.Size(84, 20);
-            this.ReservationTextbox.TabIndex = 15;
             // 
             // PostalCodeTextbox
             // 
@@ -277,7 +280,7 @@
             // ClientSubmit
             // 
             this.ClientSubmit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ClientSubmit.Location = new System.Drawing.Point(394, 179);
+            this.ClientSubmit.Location = new System.Drawing.Point(374, 179);
             this.ClientSubmit.Name = "ClientSubmit";
             this.ClientSubmit.Size = new System.Drawing.Size(75, 24);
             this.ClientSubmit.TabIndex = 8;
@@ -300,7 +303,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(96, 179);
+            this.label8.Location = new System.Drawing.Point(42, 179);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(80, 16);
             this.label8.TabIndex = 6;
@@ -643,7 +646,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox ReservationTextbox;
         private System.Windows.Forms.TextBox PostalCodeTextbox;
         private System.Windows.Forms.TextBox TownTextbox;
         private System.Windows.Forms.TextBox AreaTextbox;
@@ -673,5 +675,6 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.ListView ListView;
         private System.Windows.Forms.ListView MainListView;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }

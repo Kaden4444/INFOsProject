@@ -97,14 +97,12 @@ namespace INFOsProject.Data
         #region Build Parameters, Create Commands & Update database
         private void Build_INSERT_Parameters(Room aRoom)
         {
-
             SqlParameter param = default(SqlParameter);
             param = new SqlParameter("@ID", SqlDbType.NVarChar, 10, "ID");
             daMain.InsertCommand.Parameters.Add(param);
 
             param = new SqlParameter("@Price", SqlDbType.Money, 50, "Price");
             daMain.InsertCommand.Parameters.Add(param);
-
         }
         private void Create_INSERT_Command(Room aRoom)
         {
