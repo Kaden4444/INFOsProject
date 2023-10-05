@@ -253,8 +253,7 @@ namespace INFOsProject.Presentation
 
         }
 
-        private void MainListView_SelectedIndexChanged(o
-            bject sender, EventArgs e)
+        private void MainListView_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch (State_of_Form)
             {
@@ -519,7 +518,6 @@ namespace INFOsProject.Presentation
                 case 0:
                     int newCid = 0;
                     newCid = Clients.Count;
-                    newCid = Clients.Count;
                     ClientTextbox.Text = newCid.ToString();
                     break;
 
@@ -553,6 +551,7 @@ namespace INFOsProject.Presentation
                 case 0:
 ;                   ClearClient();
                     ClientLabel.Text = "Add a Client:";
+                    getLatestID();
                     EnableClient();
                     break;
 
