@@ -540,10 +540,59 @@ namespace INFOsProject.Presentation
             }
         }
 
+<<<<<<< HEAD
+=======
+        private Room PopulateRoomObject()
+        {
+            try
+            {
+
+                room = new Room();
+                room.RoomID = RoomIDTextbox.Text;
+               // MessageBox.Show(PriceTextbox.Text);
+                double temp = Double.Parse(PriceTextbox.Text);
+                room.Price = temp;
+                
+                //MessageBox.Show(room.RoomID + "     " + room.Price);
+            }
+            catch {MessageBox.Show("Something went wrong"); }
+            return room;
+        }
+
+        private Client PopulateClientObject()
+        {
+            try
+            {
+                client = new Client();
+                client.getID = ClientTextbox.Text;
+                client.getName = NameTextbox.Text;
+                client.getStreetAddress = AddressTextbox.Text;
+                client.getArea = AreaTextbox.Text;
+                client.getTown = TownTextbox.Text;
+                client.getPostal_code = PostalCodeTextbox.Text;
+                client.getBooking = DateTime.Parse(dateTimePicker1.Text);
+>>>>>>> eb23ed16fff5465fb18f2e397c5a848c15f6d717
 
 
 
 
+        private Reservation PopulateReservationObject()
+        {
+            try
+            {
+
+                reservation = new Reservation();
+                reservation.ReservationID = ReservationIDTextbox.Text;
+
+                reservation.Client = GuestTextbox.Text;
+                reservation.Room = RoomTextbox.Text ;
+                reservation.Total = Double.Parse(TotalTextbox.Text) ;
+                
+
+            }
+            catch { MessageBox.Show("Something went wrong"); }
+            return reservation;
+        }
         private void ClearClient()
         {
             ClientTextbox.Text = "";
