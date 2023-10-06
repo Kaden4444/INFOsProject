@@ -81,21 +81,10 @@ namespace INFOsProject.Data
         }
         private int FindRow(Reservation aReservation, String table)
         {
-            int rowIndex = 0;
-            DataRow myRow;
-            int returnValue = -1;
-
-            foreach (DataRow myRow_loopvariable in dsMain.Tables[table].Rows)
-            {
-                myRow = myRow_loopvariable;
-                if (myRow.RowState != DataRowState.Deleted)
-                    if (aReservation.ReservationID == Convert.ToString(dsMain.Tables[table].Rows[rowIndex]["ID"]))
-                    {
-                        returnValue = rowIndex;
-                    }
-                rowIndex++;
-            }
+            int returnValue = 0;
+            returnValue = int.Parse(aReservation.ReservationID);
             return returnValue;
+
         }
         #endregion
 

@@ -264,7 +264,22 @@ namespace INFOsProject.Presentation
             }
             else if (editRadioGroup.Checked)
             {
-                client  = clientsController.Find(MainListView.SelectedItems[0].Text);
+
+                /*             PopulateObject(roleValue);
+            if (state == FormStates.Edit)
+            {
+                employeeController.DataMaintenance(employee, Data.DB.DBOperation.Edit);
+            }
+            else
+            {
+                employeeController.DataMaintenance(employee, Data.DB.DBOperation.Delete);
+            }
+            employeeController.FinalizeChanges(employee);
+            ClearAll();
+            state = FormStates.View;
+            ShowAll(false, roleValue);
+            setUpEmployeeListView();*/
+                client = PopulateClientObject();
                 clientsController.DataMaintenance(client, DB.DBOperation.Edit);
                 clientsController.FinalizeChanges(client);
                 setUpMainListView();

@@ -49,9 +49,7 @@ namespace INFOsProject.Business
                     break;
                 case DB.DBOperation.Edit:
                     index = FindIndex(aClient);
-                    MessageBox.Show("Index is " + index.ToString());
-                    Clients[index] = aClient;
-                    MessageBox.Show(aClient.getName + " - " + Clients[index].getName);
+                    Clients[index] = aClient;  
                     break;
                 case DB.DBOperation.Delete:
                     index = FindIndex(aClient);

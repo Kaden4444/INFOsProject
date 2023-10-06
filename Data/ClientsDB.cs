@@ -91,23 +91,7 @@ namespace INFOsProject.Data
         }
         private int FindRow(Client aClient, String table)
         {
-            int rowIndex = 0;
-            DataRow myRow;
-            int returnValue = -1;
-            /* 
-            foreach (DataRow myRow_loopvariable in dsMain.Tables[table].Rows)
-            {
-               myRow = myRow_loopvariable;
-                if (myRow.RowState != DataRowState.Deleted)
-                   
-                     if (aClient.getID.Equals(Convert.ToString(dsMain.Tables[table].Rows[rowIndex]["ID"])))
-                {
-                        MessageBox.Show(aClient.getID + " - " + Convert.ToString(dsMain.Tables[table].Rows[rowIndex]["ID"]));
-                        returnValue = rowIndex;
-                }
-                rowIndex++;
-                
-            }*/
+            int returnValue;
             returnValue = int.Parse(aClient.getID);
             return returnValue;
         }
@@ -176,7 +160,7 @@ namespace INFOsProject.Data
         }
         private void Create_UPDATE_Command(Client aClient)
         {
-            daMain.UpdateCommand = new SqlCommand("UPDATE HeadWaiter SET Name =@Name, StreetAddress =@StreetAddress, Area =@Area, Town =@Town, PostalCode =@PostalCode, BookingDate =@BookingDate " + "WHERE ID = @Original_ID", cnMain);
+            daMain.UpdateCommand = new SqlCommand("UPDATE Clients SET Name =@Name, StreetAddress =@StreetAddress, Area =@Area, Town =@Town, PostalCode =@PostalCode, BookingDate =@BookingDate " + "WHERE ID = @Original_ID", cnMain);
             Build_UPDATE_Parameters(aClient);
 
         }

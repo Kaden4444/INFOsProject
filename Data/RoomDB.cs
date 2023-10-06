@@ -78,20 +78,8 @@ namespace INFOsProject.Data
         }
         private int FindRow(Room aRoom, String table)
         {
-            int rowIndex = 0;
-            DataRow myRow;
-            int returnValue = -1;
-
-            foreach (DataRow myRow_loopvariable in dsMain.Tables[table].Rows)
-            {
-                myRow = myRow_loopvariable;
-                if (myRow.RowState != DataRowState.Deleted)
-                    if (aRoom.RoomID == Convert.ToString(dsMain.Tables[table].Rows[rowIndex]["ID"]))
-                    {
-                        returnValue = rowIndex;
-                    }
-                rowIndex++;
-            }
+            int returnValue = 0;
+            returnValue = int.Parse(aRoom.RoomID);
             return returnValue;
         }
         #endregion
