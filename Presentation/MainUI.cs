@@ -165,6 +165,7 @@ namespace INFOsProject.Presentation
 
             ReservationIDTextbox.Enabled = false;
             GuestTextbox.Enabled = false;
+            DaystextBox.Enabled = false;
             RoomTextbox.Enabled = false;
             TotalTextbox.Enabled = false;
         }
@@ -593,10 +594,10 @@ namespace INFOsProject.Presentation
         }
         private void ClearReservation()
         {
-            //...
             ReservationIDTextbox.Text = "";
             GuestTextbox.Text = "";
             RoomTextbox.Text = "";
+            DaystextBox.Text = "";
             TotalTextbox.Text = "";
         }
 
@@ -633,15 +634,10 @@ namespace INFOsProject.Presentation
         }
 
         private void MainListView_Activated(object sender, EventArgs e)
-        {
-            
+        {        
             MainListView.View = View.Details;
             setUpMainListView();
-
-           
-            //ShowAll(false, roleValue);
         }
-
 
         #endregion
 

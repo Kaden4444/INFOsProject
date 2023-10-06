@@ -50,7 +50,8 @@ namespace INFOsProject.Business
                     Reservations[index] = aReservations;
                     break;
                 case DB.DBOperation.Delete:
-                    Reservations.Remove(aReservations);
+                    index = FindIndex(aReservations);
+                    Reservations.RemoveAt(index);
                     break;
             }
         }

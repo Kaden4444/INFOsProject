@@ -221,13 +221,9 @@ namespace INFOsProject.Data
 
                 case DB.DBOperation.Edit:
                     aRow = dsMain.Tables[dataTable].Rows[FindRow(aClient, dataTable)];
-                    aRow.BeginEdit();
                     FillRow(aRow, aClient, operation);
-                    aRow.EndEdit();
-                    
-                    MessageBox.Show(aClient.getName);
-                    //dsMain.Tables[dataTable].Rows.Add(aRow);
                     break;
+
                 case DB.DBOperation.Delete:
                     aRow = dsMain.Tables[dataTable].Rows[FindRow(aClient, dataTable)];
                     aRow.Delete();

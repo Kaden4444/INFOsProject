@@ -49,7 +49,8 @@ namespace INFOsProject.Business
                     Rooms[index] = aRoom;
                     break;
                 case DB.DBOperation.Delete:
-                    Rooms.Remove(aRoom);
+                    index = FindIndex(aRoom);
+                    Rooms.RemoveAt(index);
                     break;
             }
         }
