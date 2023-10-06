@@ -264,21 +264,6 @@ namespace INFOsProject.Presentation
             }
             else if (editRadioGroup.Checked)
             {
-
-                /*             PopulateObject(roleValue);
-            if (state == FormStates.Edit)
-            {
-                employeeController.DataMaintenance(employee, Data.DB.DBOperation.Edit);
-            }
-            else
-            {
-                employeeController.DataMaintenance(employee, Data.DB.DBOperation.Delete);
-            }
-            employeeController.FinalizeChanges(employee);
-            ClearAll();
-            state = FormStates.View;
-            ShowAll(false, roleValue);
-            setUpEmployeeListView();*/
                 client = PopulateClientObject();
                 clientsController.DataMaintenance(client, DB.DBOperation.Edit);
                 clientsController.FinalizeChanges(client);
@@ -286,12 +271,10 @@ namespace INFOsProject.Presentation
             }
             else if (deleteRadioGroup.Checked)
             {
-
-            }
-            if (addRadioGroup.Checked)
-            {
-
-                // ShowAll(false, roleValue);
+                client = PopulateClientObject();
+                clientsController.DataMaintenance(client, DB.DBOperation.Delete);
+                clientsController.FinalizeChanges(client);
+                setUpMainListView();
             }
             ClearRoom();
             ResetLabels();
@@ -342,15 +325,10 @@ namespace INFOsProject.Presentation
         {
             try
             {
-
                 room = new Room();
-
                 room.RoomID = RoomIDTextbox.Text;
-                //MessageBox.Show(PriceTextbox.Text);
                 double temp = Double.Parse(PriceTextbox.Text);
                 room.Price = temp;
-
-                //MessageBox.Show(room.RoomID + "     " + room.Price);
             }
             catch { MessageBox.Show("Something went wrong"); }
             return room;
@@ -430,18 +408,21 @@ namespace INFOsProject.Presentation
         private void button3_Click(object sender, EventArgs e)
         {
             ClearClient();
-            RestrictAllLabels();
+            UnselectedRadioButtons();
+
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
             ClearReservation();
-            RestrictAllLabels();
+            UnselectedRadioButtons();
+            
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
             ClearRoom();
+            UnselectedRadioButtons();
         }
 
         private void addRadioGroup_CheckedChanged(object sender, EventArgs e)
@@ -605,6 +586,12 @@ namespace INFOsProject.Presentation
             dateTimePicker1.Text = dateTimePicker1.MinDate.ToString();
         }
 
+        private void UnselectedRadioButtons()
+        {
+            addRadioGroup.Checked = false;
+            editRadioGroup.Checked = false;
+            deleteRadioGroup.Checked = false;
+        }
         private void ClearReservation()
         {
             //...
@@ -612,7 +599,6 @@ namespace INFOsProject.Presentation
             GuestTextbox.Text = "";
             RoomTextbox.Text = "";
             TotalTextbox.Text = "";
-
         }
 
         private void ClearRoom()

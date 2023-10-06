@@ -171,9 +171,37 @@ namespace INFOsProject.Data
             bool success = true;
             Create_INSERT_Command(aClient);
             Create_UPDATE_Command(aClient);
+            Create_DELETE_Command(aClient);
             success = UpdateDataSource(sqlLocal1, table);
             return success;
         }
+
+        //Deleting
+        private void Build_DELETE_Parameters()
+        {
+            //--Create Parameters to communicate with SQL DELETE
+            SqlParameter param;
+            param = new SqlParameter("@ID", SqlDbType.NVarChar, 5, "ID");
+            param.SourceVersion = DataRowVersion.Original;
+            daMain.DeleteCommand.Parameters.Add(param);
+        }
+
+        private string Create_DELETE_Command(Client aClient)
+        {
+            string errorString = null;
+            daMain.DeleteCommand = new SqlCommand("DELETE FROM Clients WHERE ID = @ID", cnMain);
+
+            try
+            {
+                Build_DELETE_Parameters();
+            }
+            catch (Exception errObj)
+            {
+                errorString = errObj.Message + "  " + errObj.StackTrace;
+            }
+            return errorString;
+        }
+
         #endregion
 
         #region Database Operations CRUD
