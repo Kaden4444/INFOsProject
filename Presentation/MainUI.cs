@@ -82,7 +82,6 @@ namespace INFOsProject.Presentation
                     break;
 
                 case 2:
-                    //MessageBox.Show("FUcking poes");
                     ReservationPanel.Show();
                     MainListView.Columns.Insert(0, "ReservationID", 120, HorizontalAlignment.Left);
                     MainListView.Columns.Insert(1, "Client", 120, HorizontalAlignment.Left);
@@ -242,9 +241,6 @@ namespace INFOsProject.Presentation
                 client.getTown = TownTextbox.Text;
                 client.getPostal_code = PostalCodeTextbox.Text;
                 client.getBooking = DateTime.Parse(dateTimePicker1.Text);
-
-
-                //MessageBox.Show(room.RoomID + "     " + room.Price);
             }
             catch { MessageBox.Show("Something went wrong populating client, please ensure all fields are filled."); }
             return client;
@@ -255,7 +251,6 @@ namespace INFOsProject.Presentation
             if (addRadioGroup.Checked)
             {
                 client = PopulateClientObject();
-                MessageBox.Show("To be submitted to the Database!");
                 clientsController.DataMaintenance(client, DB.DBOperation.Add);
                 clientsController.FinalizeChanges(client);
                 setUpMainListView();
@@ -297,24 +292,23 @@ namespace INFOsProject.Presentation
                 room = PopulateRoomObject();
 
                 roomController.DataMaintenance(room, DB.DBOperation.Add);
-                MessageBox.Show("Added");
+
                 roomController.FinalizeChanges(room);
                 setUpMainListView();
-
-
             }
             else if (editRadioGroup.Checked)
             {
-
+                room = PopulateRoomObject();
+                roomController.DataMaintenance(room, DB.DBOperation.Edit);
+                roomController.FinalizeChanges(room);
+                setUpMainListView();
             }
             else if (deleteRadioGroup.Checked)
             {
-
-            }
-            if (addRadioGroup.Checked)
-            {
-
-                // ShowAll(false, roleValue);
+                room = PopulateRoomObject();
+                roomController.DataMaintenance(room, DB.DBOperation.Delete);
+                roomController.FinalizeChanges(room);
+                setUpMainListView();
             }
             ClearRoom();
             ResetLabels();
@@ -362,18 +356,23 @@ namespace INFOsProject.Presentation
             if (addRadioGroup.Checked)
             {
                 reservation = PopulateReservationObject();
-                MessageBox.Show("To be submitted to the Database!");
                 reservationController.DataMaintenance(reservation, DB.DBOperation.Add);
                 reservationController.FinalizeChanges(reservation);
                 setUpMainListView();
             }
             else if (editRadioGroup.Checked)
             {
-
+                reservation = PopulateReservationObject();
+                reservationController.DataMaintenance(reservation, DB.DBOperation.Edit);
+                reservationController.FinalizeChanges(reservation);
+                setUpMainListView();
             }
             else if (deleteRadioGroup.Checked)
             {
-
+                reservation = PopulateReservationObject();
+                reservationController.DataMaintenance(reservation, DB.DBOperation.Delete);
+                reservationController.FinalizeChanges(reservation);
+                setUpMainListView();
             }
             getLatestID();
         }

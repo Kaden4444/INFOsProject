@@ -121,8 +121,35 @@ namespace INFOsProject.Data
             bool success = true;
             Create_INSERT_Command(aRoom);
             Create_UPDATE_Command(aRoom);
+            Create_DELETE_Command(aRoom);
             return success;
         }
+
+        private void Build_DELETE_Parameters()
+        {
+            //--Create Parameters to communicate with SQL DELETE
+            SqlParameter param;
+            param = new SqlParameter("@ID", SqlDbType.NVarChar, 5, "ID");
+            param.SourceVersion = DataRowVersion.Original;
+            daMain.DeleteCommand.Parameters.Add(param);
+        }
+
+        private string Create_DELETE_Command(Room aRoom)
+        {
+            string errorString = null;
+            daMain.DeleteCommand = new SqlCommand("DELETE FROM Rooms WHERE ID = @ID", cnMain);
+
+            try
+            {
+                Build_DELETE_Parameters();
+            }
+            catch (Exception errObj)
+            {
+                errorString = errObj.Message + "  " + errObj.StackTrace;
+            }
+            return errorString;
+        }
+
         #endregion
 
         #region Database Operations CRUD

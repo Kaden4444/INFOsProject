@@ -144,11 +144,37 @@ namespace INFOsProject.Data
             Build_UPDATE_Parameters(aReservation);
 
         }
+        private void Build_DELETE_Parameters()
+        {
+            //--Create Parameters to communicate with SQL DELETE
+            SqlParameter param;
+            param = new SqlParameter("@ID", SqlDbType.NVarChar, 5, "ID");
+            param.SourceVersion = DataRowVersion.Original;
+            daMain.DeleteCommand.Parameters.Add(param);
+        }
+
+        private string Create_DELETE_Command(Reservation aReservation)
+        {
+            string errorString = null;
+            daMain.DeleteCommand = new SqlCommand("DELETE FROM Reservations WHERE ID = @ID", cnMain);
+
+            try
+            {
+                Build_DELETE_Parameters();
+            }
+            catch (Exception errObj)
+            {
+                errorString = errObj.Message + "  " + errObj.StackTrace;
+            }
+            return errorString;
+        }
+
         public bool UpdateDataSource(Reservation aReservation)
         {
             bool success = true;
             Create_INSERT_Command(aReservation);
             Create_UPDATE_Command(aReservation);
+            Create_DELETE_Command(aReservation);
             success = UpdateDataSource(sqlLocal, table);
             return success;
         }
