@@ -100,10 +100,10 @@ namespace INFOsProject.Data
         private void Build_INSERT_Parameters(Room aRoom)
         {
             SqlParameter param = default(SqlParameter);
-            param = new SqlParameter("@ID", SqlDbType.NVarChar, 10, "ID");
+            param = new SqlParameter("@ID", SqlDbType.NVarChar, 5, "ID");
             daMain.InsertCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@Price", SqlDbType.Money, 50, "Price");
+            param = new SqlParameter("@Price", SqlDbType.Money, 10, "Price");
             daMain.InsertCommand.Parameters.Add(param);
         }
         private void Create_INSERT_Command(Room aRoom)
@@ -114,17 +114,17 @@ namespace INFOsProject.Data
         private void Build_UPDATE_Parameters(Room aRoom)
         {
             SqlParameter param = default(SqlParameter);
-            param = new SqlParameter("@ID", SqlDbType.NVarChar, 10, "ID");
-            param.SourceVersion = DataRowVersion.Current;
+            param = new SqlParameter("@OriginalID", SqlDbType.NVarChar, 5, "ID");
+            param.SourceVersion = DataRowVersion.Original;
             daMain.UpdateCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@Price", SqlDbType.Money, 50, "Price");
+            param = new SqlParameter("@Price", SqlDbType.Money, 10, "Price");
             param.SourceVersion = DataRowVersion.Current;
             daMain.UpdateCommand.Parameters.Add(param); 
         }
         private void Create_UPDATE_Command(Room aRoom)
         {
-            daMain.UpdateCommand = new SqlCommand("UPDATE Rooms SET Price =@Price " + "WHERE ID = @ID", cnMain);
+            daMain.UpdateCommand = new SqlCommand("UPDATE Rooms SET Price =@Price " + "WHERE ID = @OriginalID", cnMain);
             Build_UPDATE_Parameters(aRoom);
 
         }

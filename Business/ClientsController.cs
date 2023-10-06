@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using INFOsProject.Business;
 using INFOsProject.Data;
 
@@ -48,7 +49,9 @@ namespace INFOsProject.Business
                     break;
                 case DB.DBOperation.Edit:
                     index = FindIndex(aClient);
+                    MessageBox.Show("Index is " + index.ToString());
                     Clients[index] = aClient;
+                    MessageBox.Show(aClient.getName + " - " + Clients[index].getName);
                     break;
                 case DB.DBOperation.Delete:
                     index = FindIndex(aClient);
@@ -68,7 +71,7 @@ namespace INFOsProject.Business
         #region Search Method
 
 
-        public Client Find(String ID)
+        public Client Find(string ID)
         {
             int index = 0;
             bool found = (Clients[index].getID == ID);

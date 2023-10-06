@@ -65,7 +65,7 @@ namespace INFOsProject.Data
                     aClient.getArea = Convert.ToString(myRow["Area"]).TrimEnd();
                     aClient.getTown = Convert.ToString(myRow["Town"]).TrimEnd();
                     aClient.getPostal_code = Convert.ToString(myRow["PostalCode"]).TrimEnd();
-                    //if (!(myRow["BookingDate"] == null)){ aClient.getBooking = Convert.ToDateTime(myRow["BookingDate"]); }
+                    aClient.getBooking = Convert.ToDateTime(myRow["BookingDate"]);
 
                     Clients.Add(aClient);
                 }
@@ -115,25 +115,25 @@ namespace INFOsProject.Data
         private void Build_INSERT_Parameters(Client aClient)
         {
             SqlParameter param = default(SqlParameter);
-            param = new SqlParameter("@ID", SqlDbType.NVarChar, 15, "ID");
+            param = new SqlParameter("@ID", SqlDbType.NVarChar, 5, "ID");
             daMain.InsertCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@Name", SqlDbType.NVarChar, 10, "Name");
+            param = new SqlParameter("@Name", SqlDbType.NVarChar, 20, "Name");
             daMain.InsertCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@StreetAddress", SqlDbType.NVarChar, 100, "StreetAddress");
+            param = new SqlParameter("@StreetAddress", SqlDbType.NVarChar, 25, "StreetAddress");
             daMain.InsertCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@Area", SqlDbType.NVarChar, 15, "Area");
+            param = new SqlParameter("@Area", SqlDbType.NVarChar, 10, "Area");
             daMain.InsertCommand.Parameters.Add(param);
 
             param = new SqlParameter("@Town", SqlDbType.NVarChar, 10, "Town");
             daMain.InsertCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@PostalCode", SqlDbType.NVarChar, 10, "PostalCode");
+            param = new SqlParameter("@PostalCode", SqlDbType.NVarChar, 5, "PostalCode");
             daMain.InsertCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@BookingDate", SqlDbType.Date, 10, "BookingDate");
+            param = new SqlParameter("@BookingDate", SqlDbType.Date, 15, "BookingDate");
             daMain.InsertCommand.Parameters.Add(param);
         }
         private void Create_INSERT_Command(Client aClient)
@@ -144,15 +144,15 @@ namespace INFOsProject.Data
         private void Build_UPDATE_Parameters(Client aClient)
         {
             SqlParameter param = default(SqlParameter);
-            param = new SqlParameter("@Name", SqlDbType.NVarChar, 10, "Name");
+            param = new SqlParameter("@Name", SqlDbType.NVarChar, 20, "Name");
             param.SourceVersion = DataRowVersion.Current;
             daMain.UpdateCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@StreetAddress", SqlDbType.NVarChar, 100, "StreetAddress");
+            param = new SqlParameter("@StreetAddress", SqlDbType.NVarChar, 25, "StreetAddress");
             param.SourceVersion = DataRowVersion.Current;
             daMain.UpdateCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@Area", SqlDbType.NVarChar, 15, "Area");
+            param = new SqlParameter("@Area", SqlDbType.NVarChar, 10, "Area");
             param.SourceVersion = DataRowVersion.Current;
             daMain.UpdateCommand.Parameters.Add(param);
 
@@ -160,21 +160,21 @@ namespace INFOsProject.Data
             param.SourceVersion = DataRowVersion.Current;
             daMain.UpdateCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@PostalCode", SqlDbType.NVarChar, 10, "PostalCode");
+            param = new SqlParameter("@PostalCode", SqlDbType.NVarChar, 5, "PostalCode");
             param.SourceVersion = DataRowVersion.Current;
             daMain.UpdateCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@BookingDate", SqlDbType.Date, 10, "BookingDate");
+            param = new SqlParameter("@BookingDate", SqlDbType.Date, 15, "BookingDate");
             param.SourceVersion = DataRowVersion.Current;
             daMain.UpdateCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@Original_ID", SqlDbType.NVarChar, 15, "ID");
+            param = new SqlParameter("@Original_ID", SqlDbType.NVarChar, 5, "ID");
             param.SourceVersion = DataRowVersion.Original;
             daMain.UpdateCommand.Parameters.Add(param);
         }
         private void Create_UPDATE_Command(Client aClient)
         {
-            daMain.UpdateCommand = new SqlCommand("UPDATE HeadWaiter SET Name =@Name, StreetAdress =@StreetAdress, Area =@Area, Town = @Town, PostalCode = @PostalCode, BookingDate = @BookingDate " + "WHERE ID = @Original_ID", cnMain);
+            daMain.UpdateCommand = new SqlCommand("UPDATE HeadWaiter SET Name =@Name, StreetAdress =@StreetAdress, Area =@Area, Town =@Town, PostalCode =@PostalCode, BookingDate =@BookingDate " + "WHERE ID = @Original_ID", cnMain);
             Build_UPDATE_Parameters(aClient);
 
         }

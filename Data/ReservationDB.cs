@@ -104,19 +104,19 @@ namespace INFOsProject.Data
         {
 
             SqlParameter param = default(SqlParameter);
-            param = new SqlParameter("@ID", SqlDbType.NVarChar, 15, "ID");
+            param = new SqlParameter("@ID", SqlDbType.NVarChar, 5, "ID");
             daMain.InsertCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@Client", SqlDbType.NVarChar, 10, "Client");
+            param = new SqlParameter("@Client", SqlDbType.NVarChar, 5, "Client");
             daMain.InsertCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@Room", SqlDbType.NVarChar, 10, "Room");
+            param = new SqlParameter("@Room", SqlDbType.NVarChar, 5, "Room");
             daMain.InsertCommand.Parameters.Add(param);
 
             param = new SqlParameter("@Total", SqlDbType.Money, 10, "Total");
             daMain.InsertCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@DaysOfStay", SqlDbType.Money, 10, "DaysOfStay");
+            param = new SqlParameter("@DaysOfStay", SqlDbType.Int, 5, "DaysOfStay");
             daMain.InsertCommand.Parameters.Add(param);
 
         }
@@ -128,15 +128,12 @@ namespace INFOsProject.Data
         private void Build_UPDATE_Parameters(Reservation aReservation)
         {
             SqlParameter param = default(SqlParameter);
-            param = new SqlParameter("@ID", SqlDbType.NVarChar, 15, "ID");
+
+            param = new SqlParameter("@Client", SqlDbType.NVarChar, 5, "Client");
             param.SourceVersion = DataRowVersion.Current;
             daMain.UpdateCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@Client", SqlDbType.NVarChar, 10, "Client");
-            param.SourceVersion = DataRowVersion.Current;
-            daMain.UpdateCommand.Parameters.Add(param);
-
-            param = new SqlParameter("@Room", SqlDbType.NVarChar, 10, "Room");
+            param = new SqlParameter("@Room", SqlDbType.NVarChar, 5, "Room");
             param.SourceVersion = DataRowVersion.Current;
             daMain.UpdateCommand.Parameters.Add(param);
 
@@ -144,8 +141,12 @@ namespace INFOsProject.Data
             param.SourceVersion = DataRowVersion.Current;
             daMain.UpdateCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@DaysOfStay", SqlDbType.Money, 10, "DaysOfStay");
+            param = new SqlParameter("@DaysOfStay", SqlDbType.Money, 5, "DaysOfStay");
             param.SourceVersion = DataRowVersion.Current;
+            daMain.UpdateCommand.Parameters.Add(param);
+
+            param = new SqlParameter("@OriginalID", SqlDbType.NVarChar, 5, "ID");
+            param.SourceVersion = DataRowVersion.Original;
             daMain.UpdateCommand.Parameters.Add(param);
         }
         private void Create_UPDATE_Command(Reservation aReservation)
