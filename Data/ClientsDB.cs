@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -65,7 +66,8 @@ namespace INFOsProject.Data
                     aClient.getArea = Convert.ToString(myRow["Area"]).TrimEnd();
                     aClient.getTown = Convert.ToString(myRow["Town"]).TrimEnd();
                     aClient.getPostal_code = Convert.ToString(myRow["PostalCode"]).TrimEnd();
-                    aClient.getBooking = Convert.ToDateTime(myRow["BookingDate"]);
+                    try { aClient.getBooking = Convert.ToDateTime(myRow["BookingDate"]); }
+                    catch { aClient.getBooking = DateTime.Today; }
 
                     Clients.Add(aClient);
                 }
@@ -174,7 +176,7 @@ namespace INFOsProject.Data
         }
         private void Create_UPDATE_Command(Client aClient)
         {
-            daMain.UpdateCommand = new SqlCommand("UPDATE HeadWaiter SET Name =@Name, StreetAdress =@StreetAdress, Area =@Area, Town =@Town, PostalCode =@PostalCode, BookingDate =@BookingDate " + "WHERE ID = @Original_ID", cnMain);
+            daMain.UpdateCommand = new SqlCommand("UPDATE HeadWaiter SET Name =@Name, StreetAddress =@StreetAddress, Area =@Area, Town =@Town, PostalCode =@PostalCode, BookingDate =@BookingDate " + "WHERE ID = @Original_ID", cnMain);
             Build_UPDATE_Parameters(aClient);
 
         }
