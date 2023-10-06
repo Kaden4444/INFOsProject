@@ -85,23 +85,28 @@ namespace INFOsProject.Data
                 aRow["PostalCode"] = aClient.getPostal_code;
                 aRow["BookingDate"] = aClient.getBooking;
             }
+
         }
         private int FindRow(Client aClient, String table)
         {
             int rowIndex = 0;
             DataRow myRow;
             int returnValue = -1;
-
+            /* 
             foreach (DataRow myRow_loopvariable in dsMain.Tables[table].Rows)
             {
-                myRow = myRow_loopvariable;
+               myRow = myRow_loopvariable;
                 if (myRow.RowState != DataRowState.Deleted)
-                    if (aClient.getID == Convert.ToString(dsMain.Tables[table].Rows[rowIndex]["ID"]))
-                    {
+                   
+                     if (aClient.getID.Equals(Convert.ToString(dsMain.Tables[table].Rows[rowIndex]["ID"])))
+                {
+                        MessageBox.Show(aClient.getID + " - " + Convert.ToString(dsMain.Tables[table].Rows[rowIndex]["ID"]));
                         returnValue = rowIndex;
-                    }
+                }
                 rowIndex++;
-            }
+                
+            }*/
+            returnValue = int.Parse(aClient.getID);
             return returnValue;
         }
         #endregion
@@ -139,19 +144,15 @@ namespace INFOsProject.Data
         private void Build_UPDATE_Parameters(Client aClient)
         {
             SqlParameter param = default(SqlParameter);
-            param = new SqlParameter("@Name", SqlDbType.NVarChar, 100, "Name");
+            param = new SqlParameter("@Name", SqlDbType.NVarChar, 10, "Name");
             param.SourceVersion = DataRowVersion.Current;
             daMain.UpdateCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@StreetAddress", SqlDbType.NVarChar, 15, "StreetAddress");
+            param = new SqlParameter("@StreetAddress", SqlDbType.NVarChar, 100, "StreetAddress");
             param.SourceVersion = DataRowVersion.Current;
             daMain.UpdateCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@Area", SqlDbType.NVarChar, 10, "Area");
-            param.SourceVersion = DataRowVersion.Current;
-            daMain.UpdateCommand.Parameters.Add(param);
-
-            param = new SqlParameter("@Area", SqlDbType.NVarChar, 10, "Area");
+            param = new SqlParameter("@Area", SqlDbType.NVarChar, 15, "Area");
             param.SourceVersion = DataRowVersion.Current;
             daMain.UpdateCommand.Parameters.Add(param);
 
@@ -206,8 +207,12 @@ namespace INFOsProject.Data
 
                 case DB.DBOperation.Edit:
                     aRow = dsMain.Tables[dataTable].Rows[FindRow(aClient, dataTable)];
+                    aRow.BeginEdit();
                     FillRow(aRow, aClient, operation);
-                    dsMain.Tables[dataTable].Rows.Add(aRow);
+                    aRow.EndEdit();
+                    
+                    MessageBox.Show(aClient.getName);
+                    //dsMain.Tables[dataTable].Rows.Add(aRow);
                     break;
                 case DB.DBOperation.Delete:
                     aRow = dsMain.Tables[dataTable].Rows[FindRow(aClient, dataTable)];

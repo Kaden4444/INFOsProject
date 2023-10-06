@@ -265,7 +265,7 @@ namespace INFOsProject.Presentation
             else if (editRadioGroup.Checked)
             {
                 client  = clientsController.Find(MainListView.SelectedItems[0].Text);
-                clientsController.DataMaintenance(client, Data.DB.DBOperation.Edit);
+                clientsController.DataMaintenance(client, DB.DBOperation.Edit);
                 clientsController.FinalizeChanges(client);
                 setUpMainListView();
             }
