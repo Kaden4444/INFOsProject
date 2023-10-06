@@ -14,7 +14,7 @@ namespace INFOsProject.Data
         {
         #region Variable declaration
         //***Once the database is created you can find the correct connection string by using the Settings.Default object to select the correct connection string
-        private string strConn = Settings.Default.HotelDatabaseConnectionString;
+        private string strConn = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\dzivh\\Source\\Repos\\INFOsProjec\\DatabaseFiles\\HotelDatabase.mdf;Integrated Security=True";
             protected SqlConnection cnMain;
             protected DataSet dsMain;
             protected SqlDataAdapter daMain;
