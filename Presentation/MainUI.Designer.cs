@@ -39,7 +39,6 @@
             this.editRadioGroup = new System.Windows.Forms.RadioButton();
             this.ClientPanel = new System.Windows.Forms.Panel();
             this.ClientLabel = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.PostalCodeTextbox = new System.Windows.Forms.TextBox();
             this.TownTextbox = new System.Windows.Forms.TextBox();
             this.AreaTextbox = new System.Windows.Forms.TextBox();
@@ -48,7 +47,6 @@
             this.button7 = new System.Windows.Forms.Button();
             this.NameTextbox = new System.Windows.Forms.TextBox();
             this.ClientTextbox = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -65,7 +63,6 @@
             this.label17 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
             this.ReservationPanel = new System.Windows.Forms.Panel();
-            this.DaystextBox = new System.Windows.Forms.TextBox();
             this.ReservationLabel = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.TotalTextbox = new System.Windows.Forms.TextBox();
@@ -107,6 +104,9 @@
             this.CreditNumTextbox = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.projectDatabaseDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.label8 = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.ClientPanel.SuspendLayout();
@@ -216,7 +216,6 @@
             // 
             this.ClientPanel.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.ClientPanel.Controls.Add(this.ClientLabel);
-            this.ClientPanel.Controls.Add(this.dateTimePicker1);
             this.ClientPanel.Controls.Add(this.PostalCodeTextbox);
             this.ClientPanel.Controls.Add(this.TownTextbox);
             this.ClientPanel.Controls.Add(this.AreaTextbox);
@@ -225,7 +224,6 @@
             this.ClientPanel.Controls.Add(this.button7);
             this.ClientPanel.Controls.Add(this.NameTextbox);
             this.ClientPanel.Controls.Add(this.ClientTextbox);
-            this.ClientPanel.Controls.Add(this.label8);
             this.ClientPanel.Controls.Add(this.label7);
             this.ClientPanel.Controls.Add(this.label6);
             this.ClientPanel.Controls.Add(this.label5);
@@ -248,17 +246,6 @@
             this.ClientLabel.Size = new System.Drawing.Size(264, 52);
             this.ClientLabel.TabIndex = 16;
             this.ClientLabel.Text = "Client Details:";
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(491, 77);
-            this.dateTimePicker1.MaxDate = new System.DateTime(2023, 12, 31, 0, 0, 0, 0);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(126, 29);
-            this.dateTimePicker1.TabIndex = 17;
-            this.dateTimePicker1.Value = new System.DateTime(2023, 12, 1, 0, 0, 0, 0);
             // 
             // PostalCodeTextbox
             // 
@@ -330,16 +317,6 @@
             this.ClientTextbox.Size = new System.Drawing.Size(141, 29);
             this.ClientTextbox.TabIndex = 9;
             this.ClientTextbox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Lucida Sans", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(487, 50);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(130, 24);
-            this.label8.TabIndex = 6;
-            this.label8.Text = "Reservation";
             // 
             // label7
             // 
@@ -422,7 +399,7 @@
             this.RoomPanel.Controls.Add(this.label16);
             this.RoomPanel.Controls.Add(this.label17);
             this.RoomPanel.Controls.Add(this.button3);
-            this.RoomPanel.Location = new System.Drawing.Point(206, 370);
+            this.RoomPanel.Location = new System.Drawing.Point(897, 593);
             this.RoomPanel.Name = "RoomPanel";
             this.RoomPanel.Size = new System.Drawing.Size(649, 203);
             this.RoomPanel.TabIndex = 5;
@@ -489,7 +466,7 @@
             // button5
             // 
             this.button5.Font = new System.Drawing.Font("Lucida Sans", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(265, 160);
+            this.button5.Location = new System.Drawing.Point(353, 164);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(100, 29);
             this.button5.TabIndex = 7;
@@ -500,7 +477,9 @@
             // ReservationPanel
             // 
             this.ReservationPanel.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.ReservationPanel.Controls.Add(this.DaystextBox);
+            this.ReservationPanel.Controls.Add(this.dateTimePicker2);
+            this.ReservationPanel.Controls.Add(this.dateTimePicker1);
+            this.ReservationPanel.Controls.Add(this.label8);
             this.ReservationPanel.Controls.Add(this.ReservationLabel);
             this.ReservationPanel.Controls.Add(this.label9);
             this.ReservationPanel.Controls.Add(this.TotalTextbox);
@@ -514,20 +493,11 @@
             this.ReservationPanel.Controls.Add(this.label19);
             this.ReservationPanel.Controls.Add(this.label20);
             this.ReservationPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ReservationPanel.Location = new System.Drawing.Point(206, 370);
+            this.ReservationPanel.Location = new System.Drawing.Point(881, 370);
             this.ReservationPanel.Name = "ReservationPanel";
             this.ReservationPanel.Size = new System.Drawing.Size(649, 203);
             this.ReservationPanel.TabIndex = 6;
             this.ReservationPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.ReservationPanel_Paint);
-            // 
-            // DaystextBox
-            // 
-            this.DaystextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DaystextBox.Location = new System.Drawing.Point(378, 56);
-            this.DaystextBox.Margin = new System.Windows.Forms.Padding(2);
-            this.DaystextBox.Name = "DaystextBox";
-            this.DaystextBox.Size = new System.Drawing.Size(100, 29);
-            this.DaystextBox.TabIndex = 18;
             // 
             // ReservationLabel
             // 
@@ -548,9 +518,9 @@
             this.label9.Location = new System.Drawing.Point(238, 58);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(136, 24);
+            this.label9.Size = new System.Drawing.Size(116, 24);
             this.label9.TabIndex = 17;
-            this.label9.Text = "Days of stay";
+            this.label9.Text = "Start Date";
             this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // TotalTextbox
@@ -564,9 +534,9 @@
             // RoomTextbox
             // 
             this.RoomTextbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RoomTextbox.Location = new System.Drawing.Point(313, 96);
+            this.RoomTextbox.Location = new System.Drawing.Point(353, 130);
             this.RoomTextbox.Name = "RoomTextbox";
-            this.RoomTextbox.Size = new System.Drawing.Size(165, 29);
+            this.RoomTextbox.Size = new System.Drawing.Size(200, 29);
             this.RoomTextbox.TabIndex = 11;
             this.RoomTextbox.TextChanged += new System.EventHandler(this.textBox12_TextChanged);
             // 
@@ -590,7 +560,7 @@
             // ReservationSubmit
             // 
             this.ReservationSubmit.Font = new System.Drawing.Font("Lucida Sans", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ReservationSubmit.Location = new System.Drawing.Point(378, 160);
+            this.ReservationSubmit.Location = new System.Drawing.Point(478, 163);
             this.ReservationSubmit.Name = "ReservationSubmit";
             this.ReservationSubmit.Size = new System.Drawing.Size(100, 29);
             this.ReservationSubmit.TabIndex = 8;
@@ -612,7 +582,7 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Lucida Sans", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(238, 99);
+            this.label18.Location = new System.Drawing.Point(238, 132);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(69, 24);
             this.label18.TabIndex = 2;
@@ -807,7 +777,7 @@
             this.CreditPanel.Controls.Add(this.label14);
             this.CreditPanel.Controls.Add(this.CreditNumTextbox);
             this.CreditPanel.Controls.Add(this.label13);
-            this.CreditPanel.Location = new System.Drawing.Point(295, 122);
+            this.CreditPanel.Location = new System.Drawing.Point(909, 22);
             this.CreditPanel.Name = "CreditPanel";
             this.CreditPanel.Size = new System.Drawing.Size(486, 314);
             this.CreditPanel.TabIndex = 10;
@@ -961,12 +931,37 @@
             this.label13.TabIndex = 17;
             this.label13.Text = "Enter Credit Card Details:";
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Lucida Sans", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(238, 99);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(116, 24);
+            this.label8.TabIndex = 19;
+            this.label8.Text = "Start Date";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(353, 57);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 29);
+            this.dateTimePicker1.TabIndex = 20;
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Location = new System.Drawing.Point(353, 95);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(200, 29);
+            this.dateTimePicker2.TabIndex = 21;
+            // 
             // MainUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(852, 583);
+            this.ClientSize = new System.Drawing.Size(1488, 690);
             this.Controls.Add(this.CreditPanel);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.ReservationPanel);
@@ -1014,7 +1009,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button ClientSubmit;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
@@ -1048,8 +1042,6 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.ListView MainListView;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.TextBox DaystextBox;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Panel panel5;
@@ -1081,5 +1073,8 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Label label8;
     }
 }
