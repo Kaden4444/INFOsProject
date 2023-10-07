@@ -94,9 +94,7 @@ namespace INFOsProject.Presentation
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            MainUI ClientUI = new MainUI(this, 0, cCont, rCont, resCont);
-            ClientUI.Show();
-            this.Hide();
+ 
         }
         private void pictureBox1_Click_1(object sender, EventArgs e)
         {
@@ -149,5 +147,12 @@ namespace INFOsProject.Presentation
         }
 
         #endregion
+
+        private void ReportButton_Click(object sender, EventArgs e)
+        {
+            ReportForm repForm = new ReportForm();
+            repForm.Show();
+            this.Hide();
+        }
     }
 }

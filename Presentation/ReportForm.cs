@@ -16,5 +16,23 @@ namespace INFOsProject.Presentation
         {
             InitializeComponent();
         }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox1.SelectedIndex == 0)
+            {
+                richTextBox1.Text = "Room Occupancy Levels For (DATE HERE):\r\nRooms occupied: 0/5\r\nRooms available: 5/5\r\n\r\nReservations using room occupied:\r\nRoom 1 - Kaden\r\netc etc\r\n\r\n";
+            }
+            if (comboBox1.SelectedIndex == 1)
+            {
+                richTextBox1.Text = "Weekly income for week of (Start date - Start date = 7):\r\nTOTAL\r\n\r\nComing from:\r\nReservation 0 - R200\r\nReservation 2 - R1000\r\n";
+            }
+            
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
