@@ -457,9 +457,7 @@ namespace INFOsProject.Presentation
         }
 
         private void addRadioGroup_CheckedChanged(object sender, EventArgs e)
-        {
-            editRadioGroup.Checked = false;
-            deleteRadioGroup.Checked = false;   
+        {  
             getLatestID();
             switch (State_of_Form)
             {
@@ -489,8 +487,6 @@ namespace INFOsProject.Presentation
 
         private void editRadioGroup_CheckedChanged(object sender, EventArgs e)
         {
-            addRadioGroup.Checked = false;
-            deleteRadioGroup.Checked = false;
             switch (State_of_Form)
             {
                 case 0:
