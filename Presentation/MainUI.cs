@@ -70,6 +70,7 @@ namespace INFOsProject.Presentation
         {
             ActiveControl = null;
             timer1.Start();
+            CreditPanel.Visible = false;
             HidePanels();
             MainListView.Clear();
             RestrictAllLabels();
@@ -150,6 +151,7 @@ namespace INFOsProject.Presentation
         private void EnableReservation()
         {
             ReservationIDTextbox.Enabled = false;
+            DaystextBox.Enabled = true;
             GuestTextbox.Enabled = true;
             RoomTextbox.Enabled = true;
             TotalTextbox.Enabled = true;
@@ -364,14 +366,19 @@ namespace INFOsProject.Presentation
             MessageBox.Show("Credit card details valid - reservation made.");
             CreditDetailsValid = true;
             CreditPanel.Visible = false;
+            ClearCreditPanel();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void ClearCreditPanel() 
         {
             CardHolderTextbox.Clear();
             CreditNumTextbox.Clear();
             ExpiryTextbox.Clear();
             CVVTextbox.Clear();
+        }
+        private void button4_Click(object sender, EventArgs e)
+        {
+            ClearCreditPanel();
         }
 
         #endregion
@@ -462,7 +469,7 @@ namespace INFOsProject.Presentation
             switch (State_of_Form)
             {
                 case 0:
-                    ; ClearClient();
+                    ClearClient();
                     ClientLabel.Text = "Add a Client:";
                     getLatestID();
                     EnableClient();
@@ -576,12 +583,11 @@ namespace INFOsProject.Presentation
         {
            try
           {
-
-                reservation = new Reservation();
-
-                reservation.ReservationID = ReservationIDTextbox.Text;
+            reservation = new Reservation();
+            reservation.ReservationID = ReservationIDTextbox.Text;
             reservation.Client = GuestTextbox.Text;
             reservation.Room = RoomTextbox.Text ;
+            reservation.Total = Double.Parse(TotalTextbox.Text);
             reservation.Total = Double.Parse(TotalTextbox.Text);
             reservation.Days =int.Parse(DaystextBox.Text);
 
@@ -799,6 +805,8 @@ namespace INFOsProject.Presentation
 
         private void button6_Click(object sender, EventArgs e)
         {
+            CreditPanel.Visible = false;
+            ClearCreditPanel();
 
         }
         private void textBox1_TextChanged(object sender, EventArgs e)

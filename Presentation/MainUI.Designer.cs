@@ -807,7 +807,7 @@
             this.CreditPanel.Controls.Add(this.label14);
             this.CreditPanel.Controls.Add(this.CreditNumTextbox);
             this.CreditPanel.Controls.Add(this.label13);
-            this.CreditPanel.Location = new System.Drawing.Point(879, 83);
+            this.CreditPanel.Location = new System.Drawing.Point(295, 122);
             this.CreditPanel.Name = "CreditPanel";
             this.CreditPanel.Size = new System.Drawing.Size(486, 314);
             this.CreditPanel.TabIndex = 10;
@@ -966,7 +966,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(1395, 583);
+            this.ClientSize = new System.Drawing.Size(852, 583);
             this.Controls.Add(this.CreditPanel);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.ReservationPanel);
