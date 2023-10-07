@@ -81,19 +81,35 @@
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.MainListView = new System.Windows.Forms.ListView();
-            this.projectDatabaseDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel6 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
             this.lblTime = new System.Windows.Forms.Label();
             this.linkLabelLogOut = new System.Windows.Forms.LinkLabel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.CreditPanel = new System.Windows.Forms.Panel();
+            this.label13 = new System.Windows.Forms.Label();
+            this.CreditNumTextbox = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.ExpiryTextbox = new System.Windows.Forms.TextBox();
+            this.CardHolderTextbox = new System.Windows.Forms.TextBox();
+            this.CVVTextbox = new System.Windows.Forms.TextBox();
+            this.CreditTypeCbx = new System.Windows.Forms.ComboBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.projectDatabaseDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.button6 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -102,13 +118,14 @@
             this.ClientPanel.SuspendLayout();
             this.RoomPanel.SuspendLayout();
             this.ReservationPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.projectDatabaseDataSetBindingSource)).BeginInit();
             this.panel5.SuspendLayout();
             this.panel8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
+            this.CreditPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.projectDatabaseDataSetBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -711,17 +728,6 @@
             this.label12.TabIndex = 3;
             this.label12.Text = "Management System";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::INFOsProject.Properties.Resources.peach1;
-            this.pictureBox1.Location = new System.Drawing.Point(5, 2);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(75, 65);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
-            // 
             // panel6
             // 
             this.panel6.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -793,6 +799,178 @@
             this.linkLabelLogOut.VisitedLinkColor = System.Drawing.Color.Black;
             this.linkLabelLogOut.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelLogOut_LinkClicked);
             // 
+            // CreditPanel
+            // 
+            this.CreditPanel.BackColor = System.Drawing.Color.White;
+            this.CreditPanel.Controls.Add(this.button6);
+            this.CreditPanel.Controls.Add(this.button4);
+            this.CreditPanel.Controls.Add(this.button2);
+            this.CreditPanel.Controls.Add(this.CreditTypeCbx);
+            this.CreditPanel.Controls.Add(this.CVVTextbox);
+            this.CreditPanel.Controls.Add(this.CardHolderTextbox);
+            this.CreditPanel.Controls.Add(this.ExpiryTextbox);
+            this.CreditPanel.Controls.Add(this.label25);
+            this.CreditPanel.Controls.Add(this.label24);
+            this.CreditPanel.Controls.Add(this.label23);
+            this.CreditPanel.Controls.Add(this.label22);
+            this.CreditPanel.Controls.Add(this.label21);
+            this.CreditPanel.Controls.Add(this.label14);
+            this.CreditPanel.Controls.Add(this.CreditNumTextbox);
+            this.CreditPanel.Controls.Add(this.label13);
+            this.CreditPanel.Location = new System.Drawing.Point(879, 83);
+            this.CreditPanel.Name = "CreditPanel";
+            this.CreditPanel.Size = new System.Drawing.Size(486, 314);
+            this.CreditPanel.TabIndex = 10;
+            // 
+            // label13
+            // 
+            this.label13.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label13.AutoSize = true;
+            this.label13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label13.Font = new System.Drawing.Font("Nirmala UI", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(0, 1);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(461, 52);
+            this.label13.TabIndex = 17;
+            this.label13.Text = "Enter Credit Card Details:";
+            // 
+            // CreditNumTextbox
+            // 
+            this.CreditNumTextbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreditNumTextbox.Location = new System.Drawing.Point(247, 149);
+            this.CreditNumTextbox.Name = "CreditNumTextbox";
+            this.CreditNumTextbox.Size = new System.Drawing.Size(214, 26);
+            this.CreditNumTextbox.TabIndex = 18;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Lucida Sans", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(23, 76);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(0, 24);
+            this.label14.TabIndex = 19;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Lucida Sans", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(14, 149);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(227, 24);
+            this.label21.TabIndex = 20;
+            this.label21.Text = "Credit Card Number:";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Lucida Sans", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Location = new System.Drawing.Point(14, 204);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(137, 24);
+            this.label22.TabIndex = 21;
+            this.label22.Text = "Expiry Date:";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Lucida Sans", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(14, 104);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(142, 24);
+            this.label23.TabIndex = 22;
+            this.label23.Text = "Card Holder:";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Lucida Sans", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Location = new System.Drawing.Point(257, 204);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(62, 24);
+            this.label24.TabIndex = 23;
+            this.label24.Text = "CVV:";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Lucida Sans", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.Location = new System.Drawing.Point(14, 60);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(72, 24);
+            this.label25.TabIndex = 24;
+            this.label25.Text = "Type: ";
+            this.label25.Click += new System.EventHandler(this.label25_Click);
+            // 
+            // ExpiryTextbox
+            // 
+            this.ExpiryTextbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExpiryTextbox.Location = new System.Drawing.Point(157, 202);
+            this.ExpiryTextbox.Name = "ExpiryTextbox";
+            this.ExpiryTextbox.Size = new System.Drawing.Size(84, 26);
+            this.ExpiryTextbox.TabIndex = 25;
+            // 
+            // CardHolderTextbox
+            // 
+            this.CardHolderTextbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CardHolderTextbox.Location = new System.Drawing.Point(247, 104);
+            this.CardHolderTextbox.Name = "CardHolderTextbox";
+            this.CardHolderTextbox.Size = new System.Drawing.Size(214, 26);
+            this.CardHolderTextbox.TabIndex = 26;
+            // 
+            // CVVTextbox
+            // 
+            this.CVVTextbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CVVTextbox.Location = new System.Drawing.Point(325, 202);
+            this.CVVTextbox.Name = "CVVTextbox";
+            this.CVVTextbox.Size = new System.Drawing.Size(136, 26);
+            this.CVVTextbox.TabIndex = 27;
+            // 
+            // CreditTypeCbx
+            // 
+            this.CreditTypeCbx.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreditTypeCbx.FormattingEnabled = true;
+            this.CreditTypeCbx.Items.AddRange(new object[] {
+            "Visa",
+            "MasterCard"});
+            this.CreditTypeCbx.Location = new System.Drawing.Point(83, 60);
+            this.CreditTypeCbx.Name = "CreditTypeCbx";
+            this.CreditTypeCbx.Size = new System.Drawing.Size(121, 28);
+            this.CreditTypeCbx.TabIndex = 28;
+            // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("Lucida Sans", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(361, 267);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(100, 29);
+            this.button2.TabIndex = 29;
+            this.button2.Text = "Submit";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button4
+            // 
+            this.button4.Font = new System.Drawing.Font("Lucida Sans", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.Location = new System.Drawing.Point(247, 267);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(100, 29);
+            this.button4.TabIndex = 30;
+            this.button4.Text = "Clear";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::INFOsProject.Properties.Resources.peach1;
+            this.pictureBox1.Location = new System.Drawing.Point(5, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(75, 65);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
+            // 
             // pictureBox2
             // 
             this.pictureBox2.Image = global::INFOsProject.Properties.Resources.logout;
@@ -805,12 +983,24 @@
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
+            // button6
+            // 
+            this.button6.Font = new System.Drawing.Font("Lucida Sans", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button6.Location = new System.Drawing.Point(128, 267);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(100, 29);
+            this.button6.TabIndex = 31;
+            this.button6.Text = "Cancel";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
             // MainUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.ClientSize = new System.Drawing.Size(856, 583);
+            this.BackColor = System.Drawing.Color.Black;
+            this.ClientSize = new System.Drawing.Size(1395, 583);
+            this.Controls.Add(this.CreditPanel);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.ReservationPanel);
             this.Controls.Add(this.RoomPanel);
@@ -836,16 +1026,18 @@
             this.RoomPanel.PerformLayout();
             this.ReservationPanel.ResumeLayout(false);
             this.ReservationPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.projectDatabaseDataSetBindingSource)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
+            this.CreditPanel.ResumeLayout(false);
+            this.CreditPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.projectDatabaseDataSetBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -915,5 +1107,21 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Panel CreditPanel;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox CreditNumTextbox;
+        private System.Windows.Forms.TextBox CVVTextbox;
+        private System.Windows.Forms.TextBox CardHolderTextbox;
+        private System.Windows.Forms.TextBox ExpiryTextbox;
+        private System.Windows.Forms.ComboBox CreditTypeCbx;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button6;
     }
 }

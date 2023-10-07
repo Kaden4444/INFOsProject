@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data;
 using System.Linq;
+using System.Threading;
 
 namespace INFOsProject.Presentation
 {
@@ -37,6 +38,7 @@ namespace INFOsProject.Presentation
         private Client client;
         private Room room;
         private Reservation reservation;
+        bool CreditDetailsValid = false;
         #endregion
 
         #region Constructor
@@ -352,17 +354,43 @@ namespace INFOsProject.Presentation
         }
         #endregion
 
+        #region Credit methods
+        private void button2_Click(object sender, EventArgs e)
+        {
+            // Please enter validation here
+            MessageBox.Show("Validation message here");
+
+            //success
+            MessageBox.Show("Credit card details valid - reservation made.");
+            CreditDetailsValid = true;
+            CreditPanel.Visible = false;
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            CardHolderTextbox.Clear();
+            CreditNumTextbox.Clear();
+            ExpiryTextbox.Clear();
+            CVVTextbox.Clear();
+        }
+
+        #endregion
+
         #region Reservation methods
         private void ReservationSubmit_Click(object sender, EventArgs e)
         {
-          
 
+            CreditDetailsValid = false;
             if (addRadioGroup.Checked)
             {
+                
+                CreditPanel.Visible = true;
+                CreditPanel.Focus();
                 reservation = PopulateReservationObject();
                 reservationController.DataMaintenance(reservation, DB.DBOperation.Add);
                 reservationController.FinalizeChanges(reservation);
                 setUpMainListView();
+
             }
             else if (editRadioGroup.Checked)
             {
@@ -737,6 +765,46 @@ namespace INFOsProject.Presentation
         #endregion
 
         #region Unimplemented/Random
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel6_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void RoomPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label25_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+
+        }
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
@@ -780,35 +848,6 @@ namespace INFOsProject.Presentation
 
         #endregion
 
-        private void label9_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel6_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void RoomPanel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
 
         private void linkLabelLogOut_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -819,5 +858,7 @@ namespace INFOsProject.Presentation
         {
             Application.Exit();
         }
+
+
     }
 }
