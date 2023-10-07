@@ -45,7 +45,8 @@ namespace INFOsProject.Presentation
             InitializeComponent();
             d = dash;
             State_of_Form = State;
-            
+
+
 
             // Create an instance of ClientsController
             clientsController = new ClientsController();
@@ -65,6 +66,8 @@ namespace INFOsProject.Presentation
         #region Important / initial 
         private void MainUI_Load(object sender, EventArgs e)
         {
+            ActiveControl = null;
+            timer1.Start();
             HidePanels();
             MainListView.Clear();
             RestrictAllLabels();
@@ -407,26 +410,28 @@ namespace INFOsProject.Presentation
         }
         private void button3_Click(object sender, EventArgs e)
         {
-            ClearClient();
+            ClearRoom();
             UnselectedRadioButtons();
 
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-            ClearReservation();
+            ClearClient();
             UnselectedRadioButtons();
             
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            ClearRoom();
+            ClearReservation();
             UnselectedRadioButtons();
         }
 
         private void addRadioGroup_CheckedChanged(object sender, EventArgs e)
         {
+            editRadioGroup.Checked = false;
+            deleteRadioGroup.Checked = false;   
             getLatestID();
             switch (State_of_Form)
             {
@@ -456,6 +461,8 @@ namespace INFOsProject.Presentation
 
         private void editRadioGroup_CheckedChanged(object sender, EventArgs e)
         {
+            addRadioGroup.Checked = false;
+            deleteRadioGroup.Checked = false;
             switch (State_of_Form)
             {
                 case 0:
@@ -489,7 +496,7 @@ namespace INFOsProject.Presentation
         }
 
         private void deleteRadioGroup_CheckedChanged(object sender, EventArgs e)
-        {
+        {   
             switch (State_of_Form)
             {
 
@@ -623,6 +630,11 @@ namespace INFOsProject.Presentation
         #endregion
 
         #region Events
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            lblTime.Text = DateTime.Now.ToString("dd-MM-yyyy hh:mm:ss ");
+        }
+
         private void MainListView_FormClosed(object sender, FormClosedEventArgs e)
         {
             listFormClosed = true;
@@ -652,12 +664,12 @@ namespace INFOsProject.Presentation
             {
                 case 0:
                     ClientPanel.Show();
-                    MainListView.Columns.Insert(0, "ClientID", 30, HorizontalAlignment.Left);
-                    MainListView.Columns.Insert(1, "Name", 100, HorizontalAlignment.Left);
-                    MainListView.Columns.Insert(2, "Address", 150, HorizontalAlignment.Left);
-                    MainListView.Columns.Insert(3, "Area", 50, HorizontalAlignment.Left);
+                    MainListView.Columns.Insert(0, "ClientID", 50, HorizontalAlignment.Left);
+                    MainListView.Columns.Insert(1, "Name", 90, HorizontalAlignment.Left);
+                    MainListView.Columns.Insert(2, "Address", 140, HorizontalAlignment.Left);
+                    MainListView.Columns.Insert(3, "Area", 70, HorizontalAlignment.Left);
                     MainListView.Columns.Insert(4, "Town", 50, HorizontalAlignment.Left);
-                    MainListView.Columns.Insert(5, "Postal Code", 60, HorizontalAlignment.Left);
+                    MainListView.Columns.Insert(5, "Postal Code", 70, HorizontalAlignment.Left);
                     MainListView.Columns.Insert(6, "Reservation", 200, HorizontalAlignment.Left);
 
                     Clients = null;
@@ -771,6 +783,41 @@ namespace INFOsProject.Presentation
         private void label9_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel6_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void RoomPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void linkLabelLogOut_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
