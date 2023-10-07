@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data;
 using System.Linq;
+using System.Xml.Linq;
 
 namespace INFOsProject.Presentation
 {
@@ -148,6 +149,7 @@ namespace INFOsProject.Presentation
             GuestTextbox.Enabled = true;
             RoomTextbox.Enabled = true;
             TotalTextbox.Enabled = true;
+            DaystextBox.Enabled = true;
         }
 
         private void RestrictAllLabels()
@@ -251,10 +253,17 @@ namespace INFOsProject.Presentation
         {
             if (addRadioGroup.Checked)
             {
-                client = PopulateClientObject();
-                clientsController.DataMaintenance(client, DB.DBOperation.Add);
-                clientsController.FinalizeChanges(client);
-                setUpMainListView();
+                if (ValidateClientFields())
+                {
+                    client = PopulateClientObject();
+                    clientsController.DataMaintenance(client, DB.DBOperation.Add);
+                    clientsController.FinalizeChanges(client);
+                    setUpMainListView();
+                }
+                else
+                {
+                    MessageBox.Show("Invalid client. Please check highlighted field(s).");
+                }
 
 
             }
@@ -356,13 +365,23 @@ namespace INFOsProject.Presentation
 
             if (addRadioGroup.Checked)
             {
-                reservation = PopulateReservationObject();
-                reservationController.DataMaintenance(reservation, DB.DBOperation.Add);
-                reservationController.FinalizeChanges(reservation);
-                setUpMainListView();
+                if (ValidateReservationFields())
+                {
+                    reservation = PopulateReservationObject();
+                    reservationController.DataMaintenance(reservation, DB.DBOperation.Add);
+                    reservationController.FinalizeChanges(reservation);
+                    setUpMainListView();
+                }
+                else
+                {
+                    MessageBox.Show("Invalid Reservation. Please check highlighted field(s).");
+                }
+                
+
             }
             else if (editRadioGroup.Checked)
             {
+             
                 reservation = PopulateReservationObject();
                 reservationController.DataMaintenance(reservation, DB.DBOperation.Edit);
                 reservationController.FinalizeChanges(reservation);
@@ -546,9 +565,9 @@ namespace INFOsProject.Presentation
            try
           {
 
-                reservation = new Reservation();
+            reservation = new Reservation();
 
-                reservation.ReservationID = ReservationIDTextbox.Text;
+            reservation.ReservationID = ReservationIDTextbox.Text;
             reservation.Client = GuestTextbox.Text;
             reservation.Room = RoomTextbox.Text ;
             reservation.Total = Double.Parse(TotalTextbox.Text);
@@ -568,6 +587,14 @@ namespace INFOsProject.Presentation
             TownTextbox.Text = "";
             PostalCodeTextbox.Text = "";
             dateTimePicker1.Text = "";
+
+            //  reset the background colors to the default 
+            NameTextbox.BackColor = System.Drawing.SystemColors.Window;
+            AddressTextbox.BackColor = System.Drawing.SystemColors.Window;
+            AreaTextbox.BackColor = System.Drawing.SystemColors.Window;
+            TownTextbox.BackColor = System.Drawing.SystemColors.Window;
+            PostalCodeTextbox.BackColor = System.Drawing.SystemColors.Window;
+            dateTimePicker1.BackColor = System.Drawing.SystemColors.Window;
 
         }
         private void PopulateClientTB(Client client)
@@ -599,6 +626,13 @@ namespace INFOsProject.Presentation
             RoomTextbox.Text = "";
             DaystextBox.Text = "";
             TotalTextbox.Text = "";
+
+            //  reset the background colors to the default 
+            ReservationIDTextbox.BackColor = System.Drawing.SystemColors.Window;
+            GuestTextbox.BackColor = System.Drawing.SystemColors.Window;
+            RoomTextbox.BackColor = System.Drawing.SystemColors.Window;
+            DaystextBox.BackColor = System.Drawing.SystemColors.Window;
+            TotalTextbox.BackColor = System.Drawing.SystemColors.Window;
         }
 
         private void ClearRoom()
@@ -724,6 +758,104 @@ namespace INFOsProject.Presentation
         }
         #endregion
 
+        #region Validation
+
+
+        private bool ValidateClientFields()
+        {
+            bool valid = true;
+            // You can reset the background color to its default by setting it to 'SystemColors.Window'
+            // textBox1.BackColor = System.Drawing.SystemColors.Window;
+
+            if (string.IsNullOrEmpty(NameTextbox.Text) || (!(NameTextbox.Text).All(char.IsLetter)) || (!(NameTextbox.Text).All(char.IsWhiteSpace)))
+            {
+                MessageBox.Show("Please enter a valid Name.");
+                NameTextbox.BackColor = System.Drawing.Color.Red;
+                valid = false;
+            }
+
+
+            if (string.IsNullOrEmpty(AddressTextbox.Text) || (!(AddressTextbox.Text).All(char.IsLetterOrDigit)) || (!(AddressTextbox.Text).All(char.IsWhiteSpace)))
+            {
+                MessageBox.Show("Please enter a valid address.");
+                AddressTextbox.BackColor = System.Drawing.Color.Red;
+                valid = false;
+            }
+
+            if (string.IsNullOrEmpty(AreaTextbox.Text) || (!(AreaTextbox.Text).All(char.IsLetterOrDigit)) || (!(AreaTextbox.Text).All(char.IsWhiteSpace)))
+            {
+                MessageBox.Show("Please enter a valid area.");
+                AreaTextbox.BackColor = System.Drawing.Color.Red;
+                valid = false;
+            }
+
+            if (string.IsNullOrEmpty(TownTextbox.Text) || (!(TownTextbox.Text).All(char.IsLetter)) || (!(TownTextbox.Text).All(char.IsWhiteSpace)))
+            {
+                MessageBox.Show("Please enter a valid town.");
+                TownTextbox.BackColor = System.Drawing.Color.Red;
+                valid = false;
+            }
+
+            if (string.IsNullOrEmpty(PostalCodeTextbox.Text) || (!(PostalCodeTextbox.Text).All(char.IsDigit)))
+            {
+                MessageBox.Show("Please enter a valid postal code.");
+                PostalCodeTextbox.BackColor = System.Drawing.Color.Red;
+                valid = false;
+            }
+
+            DateTime selectedDate = dateTimePicker1.Value;
+
+            DateTime startDate = new DateTime(2023, 12, 1);
+            DateTime endDate = new DateTime(2023, 12, 31);
+
+            if (!(selectedDate >= startDate && selectedDate <= endDate))
+            {
+                MessageBox.Show("Please select a date between December 1, 2023, and December 31, 2023.");
+                dateTimePicker1.BackColor = System.Drawing.Color.Red;
+                valid = false;
+            }
+           
+
+            return valid; // All fields are valid
+        }
+
+
+        private bool ValidateReservationFields()
+        {
+            bool valid = true;
+            // You can reset the background color to its default by setting it to 'SystemColors.Window'
+            // textBox1.BackColor = System.Drawing.SystemColors.Window;
+
+            if (string.IsNullOrEmpty(GuestTextbox.Text) || (!(GuestTextbox.Text).All(char.IsDigit)))
+            {
+                MessageBox.Show("Please enter a valid Guest.");
+                GuestTextbox.BackColor = System.Drawing.Color.Red;
+                valid = false;
+            }
+
+
+            if (string.IsNullOrEmpty(DaystextBox.Text) || (!(DaystextBox.Text).All(char.IsDigit)))
+            {
+                MessageBox.Show("Please enter a valid number of days of stay.");
+                DaystextBox.BackColor = System.Drawing.Color.Red;
+                valid = false;
+            }
+
+            int room = int.Parse(RoomTextbox.Text);
+
+            if (string.IsNullOrEmpty(RoomTextbox.Text) || (!(RoomTextbox.Text).All(char.IsDigit)) || (!(room>=1 && room <=5)))
+            {
+                MessageBox.Show("Please enter a valid Room.");
+                RoomTextbox.BackColor = System.Drawing.Color.Red;
+                valid = false;
+            }
+
+            return valid; // All fields are valid
+        }
+
+
+        #endregion
+
         #region Unimplemented/Random
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
@@ -765,12 +897,13 @@ namespace INFOsProject.Presentation
         {
 
         }
-
-        #endregion
-
         private void label9_Click(object sender, EventArgs e)
         {
 
         }
+
+        #endregion
+
+
     }
 }
