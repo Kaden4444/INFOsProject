@@ -19,6 +19,7 @@ using System.Collections.ObjectModel;
 using System.Data;
 using System.Linq;
 using System.Threading;
+using System.Data.SqlClient;
 
 namespace INFOsProject.Presentation
 {
@@ -151,9 +152,9 @@ namespace INFOsProject.Presentation
         private void EnableReservation()
         {
             ReservationIDTextbox.Enabled = false;
-            DaystextBox.Enabled = true;
+           //DaystextBox.Enabled = true;
             GuestTextbox.Enabled = true;
-            RoomTextbox.Enabled = true;
+           // RoomTextbox.Enabled = true;
             TotalTextbox.Enabled = true;
         }
 
@@ -172,8 +173,8 @@ namespace INFOsProject.Presentation
 
             ReservationIDTextbox.Enabled = false;
             GuestTextbox.Enabled = false;
-            DaystextBox.Enabled = false;
-            RoomTextbox.Enabled = false;
+            //DaystextBox.Enabled = false;
+            //RoomTextbox.Enabled = false;
             TotalTextbox.Enabled = false;
         }
         private void ResetLabels()
@@ -258,19 +259,32 @@ namespace INFOsProject.Presentation
         {
             if (addRadioGroup.Checked)
             {
-                client = PopulateClientObject();
-                clientsController.DataMaintenance(client, DB.DBOperation.Add);
-                clientsController.FinalizeChanges(client);
-                setUpMainListView();
+                if (ValidateClientFields()) {
+                    client = PopulateClientObject();
+                    clientsController.DataMaintenance(client, DB.DBOperation.Add);
+                    clientsController.FinalizeChanges(client);
+                    setUpMainListView();
+                }
+                else
+                {
+                    MessageBox.Show("Invalid credentials entered");
+                }
 
 
             }
             else if (editRadioGroup.Checked)
             {
-                client = PopulateClientObject();
-                clientsController.DataMaintenance(client, DB.DBOperation.Edit);
-                clientsController.FinalizeChanges(client);
-                setUpMainListView();
+                if (ValidateClientFields()) {
+                    client = PopulateClientObject();
+                    clientsController.DataMaintenance(client, DB.DBOperation.Edit);
+                    clientsController.FinalizeChanges(client);
+                    setUpMainListView();
+                }
+                else
+                {
+                    MessageBox.Show("Invalid credentials entered");
+                }
+
             }
             else if (deleteRadioGroup.Checked)
             {
@@ -359,14 +373,17 @@ namespace INFOsProject.Presentation
         #region Credit methods
         private void button2_Click(object sender, EventArgs e)
         {
-            // Please enter validation here
-            MessageBox.Show("Validation message here");
 
-            //success
-            MessageBox.Show("Credit card details valid - reservation made.");
-            CreditDetailsValid = true;
-            CreditPanel.Visible = false;
-            ClearCreditPanel();
+            if (ValidateCreditFields()) {
+                MessageBox.Show("Credit card details valid - reservation made.");
+                CreditDetailsValid = true;
+                CreditPanel.Visible = false;
+                ClearCreditPanel();
+            }
+            else
+            {
+                MessageBox.Show("Invalid card details.");
+            }
         }
 
         private void ClearCreditPanel() 
@@ -390,21 +407,34 @@ namespace INFOsProject.Presentation
             CreditDetailsValid = false;
             if (addRadioGroup.Checked)
             {
-                
-                CreditPanel.Visible = true;
-                CreditPanel.Focus();
-                reservation = PopulateReservationObject();
-                reservationController.DataMaintenance(reservation, DB.DBOperation.Add);
-                reservationController.FinalizeChanges(reservation);
-                setUpMainListView();
+                if (ValidateReservationFields()) {
+                    CreditPanel.Visible = true;
+                    CreditPanel.Focus();
+                    reservation = PopulateReservationObject();
+                    reservationController.DataMaintenance(reservation, DB.DBOperation.Add);
+                    reservationController.FinalizeChanges(reservation);
+                    setUpMainListView();
+                }
+                else
+                {
+                    MessageBox.Show("Invalid credentials entered");
+                }
 
             }
             else if (editRadioGroup.Checked)
             {
-                reservation = PopulateReservationObject();
-                reservationController.DataMaintenance(reservation, DB.DBOperation.Edit);
-                reservationController.FinalizeChanges(reservation);
-                setUpMainListView();
+                if (ValidateReservationFields())
+                {
+                    reservation = PopulateReservationObject();
+                    reservationController.DataMaintenance(reservation, DB.DBOperation.Edit);
+                    reservationController.FinalizeChanges(reservation);
+                    setUpMainListView();
+                }
+                else
+                {
+                    MessageBox.Show("Invalid credentials entered");
+                }
+
             }
             else if (deleteRadioGroup.Checked)
             {
@@ -520,7 +550,7 @@ namespace INFOsProject.Presentation
                     ReservationLabel.Text = "Edit a Reservation:";
                     ReservationIDTextbox.Enabled = false;
                     GuestTextbox.Enabled = true;
-                    RoomTextbox.Enabled = true;
+                    //RoomTextbox.Enabled = true;
                     TotalTextbox.Enabled = true;
                     break;
             }
@@ -586,10 +616,10 @@ namespace INFOsProject.Presentation
             reservation = new Reservation();
             reservation.ReservationID = ReservationIDTextbox.Text;
             reservation.Client = GuestTextbox.Text;
-            reservation.Room = RoomTextbox.Text ;
+           // reservation.Room = RoomTextbox.Text ;
             reservation.Total = Double.Parse(TotalTextbox.Text);
             reservation.Total = Double.Parse(TotalTextbox.Text);
-            reservation.Days =int.Parse(DaystextBox.Text);
+           // reservation.Days =int.Parse(DaystextBox.Text);
 
 
              }
@@ -604,8 +634,15 @@ namespace INFOsProject.Presentation
             AreaTextbox.Text = "";
             TownTextbox.Text = "";
             PostalCodeTextbox.Text = "";
-            dateTimePicker1.Text = "";
+            
 
+
+            NameTextbox.BackColor = System.Drawing.SystemColors.Window;
+            AddressTextbox.BackColor = System.Drawing.SystemColors.Window;
+            AreaTextbox.BackColor = System.Drawing.SystemColors.Window;
+            TownTextbox.BackColor = System.Drawing.SystemColors.Window;
+            PostalCodeTextbox.BackColor = System.Drawing.SystemColors.Window;
+            
         }
         private void PopulateClientTB(Client client)
         {
@@ -633,9 +670,17 @@ namespace INFOsProject.Presentation
         {
             ReservationIDTextbox.Text = "";
             GuestTextbox.Text = "";
-            RoomTextbox.Text = "";
-            DaystextBox.Text = "";
+           // RoomTextbox.Text = "";
+           // DaystextBox.Text = "";
             TotalTextbox.Text = "";
+            dateTimePicker1.Text = "";
+            dateTimePicker2.Text = "";
+
+            ReservationIDTextbox.BackColor = System.Drawing.SystemColors.Window;
+            GuestTextbox.BackColor = System.Drawing.SystemColors.Window;
+            TotalTextbox.BackColor = System.Drawing.SystemColors.Window;
+            dateTimePicker1.BackColor = System.Drawing.SystemColors.Window;
+            dateTimePicker2.BackColor = System.Drawing.SystemColors.Window;
         }
 
         private void ClearRoom()
@@ -653,9 +698,9 @@ namespace INFOsProject.Presentation
         {
             ReservationIDTextbox.Text = reservation.ReservationID;
             GuestTextbox.Text = reservation.Client.ToString();
-            RoomTextbox.Text = reservation.Room.ToString();
+           // RoomTextbox.Text = reservation.Room.ToString();
             TotalTextbox.Text = reservation.Total.ToString();
-            DaystextBox.Text = reservation.Days.ToString();
+          //  DaystextBox.Text = reservation.Days.ToString();
         }
         #endregion
 
@@ -766,6 +811,133 @@ namespace INFOsProject.Presentation
         }
         #endregion
 
+        #region Validation
+
+        private bool ValidateCreditFields()
+        {
+            bool valid = true;
+            if (string.IsNullOrEmpty(CardHolderTextbox.Text) || (!(CardHolderTextbox.Text).All(char.IsLetter)) || (!(CardHolderTextbox.Text).All(char.IsWhiteSpace)))
+            {
+                MessageBox.Show("Please enter a valid Name.");
+                CardHolderTextbox.BackColor = System.Drawing.Color.Red;
+                valid = false;
+            }
+
+            if (string.IsNullOrEmpty(CreditNumTextbox.Text) || (!(CreditNumTextbox.Text).All(char.IsDigit)) || (!(CreditNumTextbox.Text.Length==16)))
+            {
+                MessageBox.Show("Please enter a valid card number.");
+                CreditNumTextbox.BackColor = System.Drawing.Color.Red;
+                valid = false;
+            }
+
+            if (string.IsNullOrEmpty(CVVTextbox.Text) || (!(CVVTextbox.Text).All(char.IsDigit)) || (!(CVVTextbox.Text.Length == 3)))
+            {
+                MessageBox.Show("Please enter a valid card verification value.");
+                CVVTextbox.BackColor = System.Drawing.Color.Red;
+                valid = false;
+            }
+            // Validate date
+            return valid;
+        }
+
+        private bool ValidateClientFields()
+        {
+            bool valid = true;
+            // You can reset the background color to its default by setting it to 'SystemColors.Window'
+            // textBox1.BackColor = System.Drawing.SystemColors.Window;
+
+            if (string.IsNullOrEmpty(NameTextbox.Text) || (!(NameTextbox.Text).All(char.IsLetter)) || (!(NameTextbox.Text).All(char.IsWhiteSpace)))
+            {
+                MessageBox.Show("Please enter a valid Name.");
+                NameTextbox.BackColor = System.Drawing.Color.Red;
+                valid = false;
+            }
+
+
+            if (string.IsNullOrEmpty(AddressTextbox.Text) || (!(AddressTextbox.Text).All(char.IsLetterOrDigit)) || (!(AddressTextbox.Text).All(char.IsWhiteSpace)))
+            {
+                MessageBox.Show("Please enter a valid address.");
+                AddressTextbox.BackColor = System.Drawing.Color.Red;
+                valid = false;
+            }
+
+            if (string.IsNullOrEmpty(AreaTextbox.Text) || (!(AreaTextbox.Text).All(char.IsLetterOrDigit)) || (!(AreaTextbox.Text).All(char.IsWhiteSpace)))
+            {
+                MessageBox.Show("Please enter a valid area.");
+                AreaTextbox.BackColor = System.Drawing.Color.Red;
+                valid = false;
+            }
+
+            if (string.IsNullOrEmpty(TownTextbox.Text) || (!(TownTextbox.Text).All(char.IsLetter)) || (!(TownTextbox.Text).All(char.IsWhiteSpace)))
+            {
+                MessageBox.Show("Please enter a valid town.");
+                TownTextbox.BackColor = System.Drawing.Color.Red;
+                valid = false;
+            }
+
+            if (string.IsNullOrEmpty(PostalCodeTextbox.Text) || (!(PostalCodeTextbox.Text).All(char.IsDigit)))
+            {
+                MessageBox.Show("Please enter a valid postal code.");
+                PostalCodeTextbox.BackColor = System.Drawing.Color.Red;
+                valid = false;
+            }
+
+          
+
+            return valid; // All fields are valid
+        }
+
+
+        private bool ValidateReservationFields()
+        {
+            bool valid = true;
+            // You can reset the background color to its default by setting it to 'SystemColors.Window'
+            // textBox1.BackColor = System.Drawing.SystemColors.Window;
+
+            if (string.IsNullOrEmpty(GuestTextbox.Text) || (!(GuestTextbox.Text).All(char.IsDigit)))
+            {
+                MessageBox.Show("Please enter a valid Guest.");
+                GuestTextbox.BackColor = System.Drawing.Color.Red;
+                valid = false;
+            }
+
+            DateTime selectedDate1 = dateTimePicker1.Value;
+
+            DateTime startDate = new DateTime(2023, 12, 1);
+            DateTime endDate = new DateTime(2023, 12, 31);
+
+            if (!(selectedDate1 >= startDate && selectedDate1 <= endDate))
+            {
+                MessageBox.Show("Please select a date between December 1, 2023, and December 31, 2023.");
+                dateTimePicker1.BackColor = System.Drawing.Color.Red;
+                valid = false;
+            }
+
+            DateTime selectedDate2 = dateTimePicker2.Value;
+
+            if (!(selectedDate2 >= startDate && selectedDate2 <= endDate))
+            {
+                MessageBox.Show("Please select a date between December 1, 2023, and December 31, 2023.");
+                dateTimePicker2.BackColor = System.Drawing.Color.Red;
+                valid = false;
+            }
+
+            if (!(selectedDate2 > selectedDate1))
+            {
+                MessageBox.Show("Check in date cannot be after check out date");
+                dateTimePicker1.BackColor = System.Drawing.Color.Red;
+                dateTimePicker2.BackColor = System.Drawing.Color.Red;
+                valid = false;
+            }
+
+
+
+            return valid; // All fields are valid
+        }
+
+
+        #endregion
+
         #region Unimplemented/Random
         private void label9_Click(object sender, EventArgs e)
         {
@@ -863,6 +1035,35 @@ namespace INFOsProject.Presentation
             Application.Exit();
         }
 
+        private void button8_Click(object sender, EventArgs e)
+        {
 
+            ListViewItem clientDetails, roomDetails, reservationDetails;
+            MainListView.Clear();
+
+            DB.cnMain.Open();
+
+            string query = "";
+               switch (State_of_Form)
+            {
+                case 0:
+                    query = "SELECT * from Clients WHERE ClientName = '" + SearchtextBox.Text + "'";
+                    break;
+
+                case 1:
+
+                    break;
+
+                case 2:
+
+                    break;
+            }
+            SqlDataAdapter da = new SqlDataAdapter(query, DB.cnMain);
+            SqlCommandBuilder buider = new SqlCommandBuilder(da);
+            var ds = new DataSet();
+            da.Fill(ds);
+            //MainListView.Datasource = ds.Tables[0];
+            DB.cnMain.Close();
+        }
     }
 }
