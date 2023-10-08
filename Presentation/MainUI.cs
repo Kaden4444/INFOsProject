@@ -548,6 +548,29 @@ namespace INFOsProject.Presentation
         #endregion
 
         #region Utility Methods
+
+        private decimal CalculateTotal(DateTime CheckIn)
+        {
+            decimal price = 0;
+            DateTime lowSeason = new DateTime(2023, 12, 1);
+            DateTime midSeason = new DateTime(2023, 12, 8);
+            DateTime highSeason = new DateTime(2023, 12, 16);
+
+            if (CheckIn.Date < midSeason.Date)
+            {
+                price = 550;
+            }
+            else if ((CheckIn.Date >= midSeason.Date) && (CheckIn.Date < highSeason.Date))
+            {
+                price = 750;
+            }
+            else if ((CheckIn.Date >= highSeason.Date) && (CheckIn.Date <= new DateTime(2023, 12, 31)))
+            {
+                price = 995;
+            }
+
+            return price;
+        }
         private void getLatestID()
         {
             switch (State_of_Form)
@@ -573,10 +596,7 @@ namespace INFOsProject.Presentation
                     break;
             }
         }
-        private void CalculateTotal()
-        {
-            
-        }
+
         private Reservation PopulateReservationObject()
         {
            try
@@ -882,28 +902,28 @@ namespace INFOsProject.Presentation
                 
 
 
-            DateTime selectedDate1 = this.startDate.Value;
+            DateTime startD = this.startDate.Value;
 
-            DateTime startDate = new DateTime(2023, 12, 1);
-            DateTime endDate = new DateTime(2023, 12, 31);
+            DateTime minDate = new DateTime(2023, 12, 1);
+            DateTime maxDate = new DateTime(2023, 12, 31);
 
-            if (!(selectedDate1 >= startDate && selectedDate1 <= endDate))
+            if (!(startD >= minDate && startD <= maxDate))
             {
                 MessageBox.Show("Please select a starting date between December 1, 2023, and December 31, 2023.");
                 this.startDate.BackColor = System.Drawing.Color.Red;
                 valid = false;
             }
 
-            DateTime selectedDate2 = this.endDate.Value;
+            DateTime endD = this.endDate.Value;
 
-            if (!(selectedDate2 >= startDate && selectedDate2 <= endDate))
+            if (!(endD >= minDate && endD <= maxDate))
             {
                 MessageBox.Show("Please select a ending date between December 1, 2023, and December 31, 2023.");
                 this.endDate.BackColor = System.Drawing.Color.Red;
                 valid = false;
             }
 
-            if (!(selectedDate2 > selectedDate1))
+            if (!(endD > startD))
             {
                 MessageBox.Show("Check in date cannot be after check out date");
                 this.startDate.BackColor = System.Drawing.Color.Red;
@@ -930,40 +950,7 @@ namespace INFOsProject.Presentation
         #endregion
 
         #region Unimplemented/Random
-        private void label9_Click(object sender, EventArgs e)
-        {
 
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel6_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void RoomPanel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label25_Click(object sender, EventArgs e)
-        {
-
-        }
 
 
         private void button6_Click(object sender, EventArgs e)
@@ -988,8 +975,8 @@ namespace INFOsProject.Presentation
 
         private void button8_Click(object sender, EventArgs e)
         {
-            //try
-           // {
+            try
+           {
                 int input = int.Parse(SearchtextBox.Text);
                 ListViewItem clientDetails, roomDetails, reservationDetails;
                 MainListView.Clear();
@@ -1076,8 +1063,8 @@ namespace INFOsProject.Presentation
 
                         break;
                 }
-            //}
-           // catch { MessageBox.Show("Invalid Search"); }
+            }
+            catch { MessageBox.Show("Invalid Search"); }
         }
         
 

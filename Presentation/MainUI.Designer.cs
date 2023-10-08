@@ -151,7 +151,7 @@
             this.groupBox1.Size = new System.Drawing.Size(203, 492);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+
             // 
             // SearchButton
             // 
@@ -429,7 +429,7 @@
             this.RoomPanel.Name = "RoomPanel";
             this.RoomPanel.Size = new System.Drawing.Size(649, 203);
             this.RoomPanel.TabIndex = 5;
-            this.RoomPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.RoomPanel_Paint);
+
             // 
             // RoomLabel
             // 
@@ -597,7 +597,7 @@
             this.label9.Size = new System.Drawing.Size(116, 24);
             this.label9.TabIndex = 17;
             this.label9.Text = "Start Date";
-            this.label9.Click += new System.EventHandler(this.label9_Click);
+
             // 
             // TotalTextbox
             // 
@@ -740,7 +740,7 @@
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(674, 121);
             this.panel6.TabIndex = 2;
-            this.panel6.Paint += new System.Windows.Forms.PaintEventHandler(this.panel6_Paint);
+
             // 
             // label1
             // 
@@ -913,7 +913,7 @@
             this.label25.Size = new System.Drawing.Size(72, 24);
             this.label25.TabIndex = 24;
             this.label25.Text = "Type: ";
-            this.label25.Click += new System.EventHandler(this.label25_Click);
+
             // 
             // label24
             // 
