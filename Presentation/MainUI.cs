@@ -983,10 +983,10 @@ namespace INFOsProject.Presentation
             Application.Exit();
         }
 
-        private void button8_Click(object sender, EventArgs e)
+       private void button8_Click(object sender, EventArgs e)
         {
-
-            ListViewItem clientDetails, roomDetails, reservationDetails;
+            /*
+          ListViewItem clientDetails, roomDetails, reservationDetails;
             MainListView.Clear();
 
             DB.cnMain.Open();
@@ -1039,8 +1039,8 @@ namespace INFOsProject.Presentation
             var ds = new DataSet();
             da.Fill(ds);
             //MainListView.Datasource = ds.Tables[0];
-            DB.cnMain.Close();
+            DB.cnMain.Close(); */
         }
-
+     
     }
 }
