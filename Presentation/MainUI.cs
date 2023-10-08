@@ -51,6 +51,7 @@ namespace INFOsProject.Presentation
 
 
 
+
             // Create an instance of ClientsController
             clientsController = new ClientsController();
 
@@ -59,10 +60,8 @@ namespace INFOsProject.Presentation
             clientsController = c;
             roomController = r;
             reservationController = res;
-
             this.Load += MainListView_Load;
             this.Activated += MainListView_Activated;
-           // this.FormClosed += MainListView_FormClosed;
         }
         #endregion
 
@@ -73,6 +72,18 @@ namespace INFOsProject.Presentation
             timer1.Start();
             CreditPanel.Visible = false;
             HidePanels();
+            switch (State_of_Form)
+            {
+                case 0:
+                    ClientPanel.Show();
+                    break;
+                case 1:
+                    RoomPanel.Show();
+                    break;
+                case 2:
+                    ReservationPanel.Show();
+                    break;
+            }
             MainListView.Clear();
             RestrictAllLabels();
 
@@ -130,10 +141,11 @@ namespace INFOsProject.Presentation
         private void EnableReservation()
         {
             ReservationIDTextbox.Enabled = false;
-           //DaystextBox.Enabled = true;
+            startDate.Enabled = true;   
+            endDate.Enabled = true;
             GuestTextbox.Enabled = true;
-           // RoomTextbox.Enabled = true;
-            TotalTextbox.Enabled = true;
+            //RoomcomboBox.populate
+            TotalTextbox.Enabled = false;
         }
 
         private void RestrictAllLabels()
@@ -233,66 +245,54 @@ namespace INFOsProject.Presentation
             return client;
         }
 
-        private void ClientSubmit_Click_1(object sender, EventArgs e)
-        {
-            if (addRadioGroup.Checked)
-            {
-                if (ValidateClientFields()) {
-                    client = PopulateClientObject();
-                    clientsController.DataMaintenance(client, DB.DBOperation.Add);
-                    clientsController.FinalizeChanges(client);
-                    setUpMainListView();
-                }
-                else
-                {
-                    MessageBox.Show("Invalid credentials entered");
-                }
-
-
-            }
-            else if (editRadioGroup.Checked)
-            {
-                if (ValidateClientFields()) {
-                    client = PopulateClientObject();
-                    clientsController.DataMaintenance(client, DB.DBOperation.Edit);
-                    clientsController.FinalizeChanges(client);
-                    setUpMainListView();
-                }
-                else
-                {
-                    MessageBox.Show("Invalid credentials entered");
-                }
-
-            }
-            else if (deleteRadioGroup.Checked)
-            {
-                client = PopulateClientObject();
-                clientsController.DataMaintenance(client, DB.DBOperation.Delete);
-                clientsController.FinalizeChanges(client);
-                setUpMainListView();
-            }
-            ClearRoom();
-            ResetLabels();
-            getLatestID();
-
-        }
-
         private void ClientSubmit_Click(object sender, EventArgs e)
         {
+            if (ValidateClientFields())
+            {
+                if (addRadioGroup.Checked)
+                {
+                        client = PopulateClientObject();
+                        clientsController.DataMaintenance(client, DB.DBOperation.Add);
+                        clientsController.FinalizeChanges(client);
+                        setUpMainListView();
+                }
+
+                else if (editRadioGroup.Checked)
+                {
+                        client = PopulateClientObject();
+                        clientsController.DataMaintenance(client, DB.DBOperation.Edit);
+                        clientsController.FinalizeChanges(client);
+                        setUpMainListView();
+                }
+                else if (deleteRadioGroup.Checked)
+                {
+                    client = PopulateClientObject();
+                    clientsController.DataMaintenance(client, DB.DBOperation.Delete);
+                    clientsController.FinalizeChanges(client);
+                    setUpMainListView();
+                }
+                ClearRoom();
+                ResetLabels();
+                getLatestID();
+            }
+            else
+            {
+                MessageBox.Show("Invalid credentials entered");
+            }
+
 
         }
 
         #endregion
 
         #region Room methods
-        private void RoomSubmit_Click_1(object sender, EventArgs e)
+        private void RoomSubmit_Click(object sender, EventArgs e)
         {
+            if (ValidateRoomFields()) { 
             if (addRadioGroup.Checked)
             {
                 room = PopulateRoomObject();
-
                 roomController.DataMaintenance(room, DB.DBOperation.Add);
-
                 roomController.FinalizeChanges(room);
                 setUpMainListView();
             }
@@ -310,9 +310,15 @@ namespace INFOsProject.Presentation
                 roomController.FinalizeChanges(room);
                 setUpMainListView();
             }
-            ClearRoom();
-            ResetLabels();
-            getLatestID();
+                ClearRoom();
+                ResetLabels();
+                getLatestID();
+            }
+            else
+            {
+                MessageBox.Show("Invalid credentials entered");
+            }
+
         }
 
         private Room PopulateRoomObject()
@@ -328,24 +334,6 @@ namespace INFOsProject.Presentation
             return room;
         }
 
-        private void RoomSubmit_Click(object sender, EventArgs e)
-        {
-            switch (State_of_Form)
-            {
-                case 0:
-                    ClientPanel.Visible = true;
-
-                    break;
-
-                case 1:
-                    RoomPanel.Visible = true;
-                    break;
-
-                case 2:
-                    ReservationPanel.Visible = true;
-                    break;
-            }
-        }
         #endregion
 
         #region Credit methods
@@ -381,11 +369,12 @@ namespace INFOsProject.Presentation
         #region Reservation methods
         private void ReservationSubmit_Click(object sender, EventArgs e)
         {
-
-            CreditDetailsValid = false;
-            if (addRadioGroup.Checked)
+            if (ValidateReservationFields())
             {
-                if (ValidateReservationFields()) {
+                CreditDetailsValid = false;
+                if (addRadioGroup.Checked)
+                {
+
                     CreditPanel.Visible = true;
                     CreditPanel.Focus();
                     reservation = PopulateReservationObject();
@@ -393,35 +382,29 @@ namespace INFOsProject.Presentation
                     reservationController.FinalizeChanges(reservation);
                     setUpMainListView();
                 }
-                else
-                {
-                    MessageBox.Show("Invalid credentials entered");
-                }
-
-            }
-            else if (editRadioGroup.Checked)
-            {
-                if (ValidateReservationFields())
+                else if (editRadioGroup.Checked)
                 {
                     reservation = PopulateReservationObject();
                     reservationController.DataMaintenance(reservation, DB.DBOperation.Edit);
                     reservationController.FinalizeChanges(reservation);
                     setUpMainListView();
                 }
-                else
+                else if (deleteRadioGroup.Checked)
                 {
-                    MessageBox.Show("Invalid credentials entered");
+                    reservation = PopulateReservationObject();
+                    reservationController.DataMaintenance(reservation, DB.DBOperation.Delete);
+                    reservationController.FinalizeChanges(reservation);
+                    setUpMainListView();
                 }
-
-            }
-            else if (deleteRadioGroup.Checked)
-            {
-                reservation = PopulateReservationObject();
-                reservationController.DataMaintenance(reservation, DB.DBOperation.Delete);
-                reservationController.FinalizeChanges(reservation);
-                setUpMainListView();
-            }
+            ClearRoom();
+            ResetLabels();
             getLatestID();
+            }
+            else
+            {
+                MessageBox.Show("Invalid credentials entered");
+            }
+            
         }
         #endregion
 
@@ -589,7 +572,7 @@ namespace INFOsProject.Presentation
         }
         private void CalculateTotal()
         {
-
+            
         }
         private Reservation PopulateReservationObject()
         {
@@ -598,13 +581,11 @@ namespace INFOsProject.Presentation
             reservation = new Reservation();
             reservation.ReservationID = ReservationIDTextbox.Text;
             reservation.Client = GuestTextbox.Text;
-           // reservation.Room = RoomTextbox.Text ;
-           // reservation.Total = 
-
-           
-
-             }
-            catch { MessageBox.Show("Something went wrong"); }
+            reservation.Room = RoomcomboBox.SelectedItem.ToString();
+            reservation.StartDate = startDate.Value;
+            reservation.EndDate = endDate.Value;
+            }
+            catch { MessageBox.Show("Something went wrong with reservation object population"); }
             return reservation;
         }
         private void ClearClient()
@@ -790,25 +771,40 @@ namespace INFOsProject.Presentation
         #endregion
 
         #region Validation
+        private void resetTextboxColours()
+        {
+            CardHolderTextbox.BackColor = System.Drawing.Color.White;
+            CreditNumTextbox.BackColor = System.Drawing.Color.White;
+            CVVTextbox.BackColor = System.Drawing.Color.White;
+            NameTextbox.BackColor = System.Drawing.Color.White;
+            AddressTextbox.BackColor = System.Drawing.Color.White;
+            AreaTextbox.BackColor = System.Drawing.Color.White;
+            TownTextbox.BackColor = System.Drawing.Color.White;
+            PostalCodeTextbox.BackColor = System.Drawing.Color.White;
+            GuestTextbox.BackColor = System.Drawing.Color.White;
+            startDate.BackColor = System.Drawing.Color.White;
+            endDate.BackColor = System.Drawing.Color.White;
+            PriceTextbox.BackColor = System.Drawing.Color.White;
 
+        }
         private bool ValidateCreditFields()
         {
             bool valid = true;
-            if (string.IsNullOrEmpty(CardHolderTextbox.Text) || (!(CardHolderTextbox.Text).All(char.IsLetter)) || (!(CardHolderTextbox.Text).All(char.IsWhiteSpace)))
+            if (string.IsNullOrEmpty(CardHolderTextbox.Text) || (!(CardHolderTextbox.Text).All(char.IsLetter)) || ((CardHolderTextbox.Text).All(char.IsWhiteSpace)))
             {
                 MessageBox.Show("Please enter a valid Name.");
                 CardHolderTextbox.BackColor = System.Drawing.Color.Red;
                 valid = false;
             }
 
-            if (string.IsNullOrEmpty(CreditNumTextbox.Text) || (!(CreditNumTextbox.Text).All(char.IsDigit)) || (!(CreditNumTextbox.Text.Length==16)))
+            if (string.IsNullOrEmpty(CreditNumTextbox.Text) || (!(CreditNumTextbox.Text).All(char.IsDigit)) || (!(CreditNumTextbox.Text.Length==16)) || ((CardHolderTextbox.Text).All(char.IsWhiteSpace)))
             {
                 MessageBox.Show("Please enter a valid card number.");
                 CreditNumTextbox.BackColor = System.Drawing.Color.Red;
                 valid = false;
             }
 
-            if (string.IsNullOrEmpty(CVVTextbox.Text) || (!(CVVTextbox.Text).All(char.IsDigit)) || (!(CVVTextbox.Text.Length == 3)))
+            if (string.IsNullOrEmpty(CVVTextbox.Text) || (!(CVVTextbox.Text).All(char.IsDigit)) || (!(CVVTextbox.Text.Length == 3)) || ((CardHolderTextbox.Text).All(char.IsWhiteSpace)))
             {
                 MessageBox.Show("Please enter a valid card verification value.");
                 CVVTextbox.BackColor = System.Drawing.Color.Red;
@@ -824,38 +820,38 @@ namespace INFOsProject.Presentation
             // You can reset the background color to its default by setting it to 'SystemColors.Window'
             // textBox1.BackColor = System.Drawing.SystemColors.Window;
 
-            if (string.IsNullOrEmpty(NameTextbox.Text) || (!(NameTextbox.Text).All(char.IsLetter)) || (!(NameTextbox.Text).All(char.IsWhiteSpace)))
+            if (string.IsNullOrEmpty(NameTextbox.Text) || (!(NameTextbox.Text).All(char.IsLetter)) || ((NameTextbox.Text).All(char.IsWhiteSpace)))
             {
-                MessageBox.Show("Please enter a valid Name.");
+               // MessageBox.Show("Please enter a valid Name.");
                 NameTextbox.BackColor = System.Drawing.Color.Red;
                 valid = false;
             }
 
 
-            if (string.IsNullOrEmpty(AddressTextbox.Text) || (!(AddressTextbox.Text).All(char.IsLetterOrDigit)) || (!(AddressTextbox.Text).All(char.IsWhiteSpace)))
+            if (string.IsNullOrEmpty(AddressTextbox.Text) || ((AddressTextbox.Text).All(char.IsWhiteSpace)))
             {
-                MessageBox.Show("Please enter a valid address.");
+                //MessageBox.Show("Please enter a valid address.");
                 AddressTextbox.BackColor = System.Drawing.Color.Red;
                 valid = false;
             }
 
-            if (string.IsNullOrEmpty(AreaTextbox.Text) || (!(AreaTextbox.Text).All(char.IsLetterOrDigit)) || (!(AreaTextbox.Text).All(char.IsWhiteSpace)))
+            if (string.IsNullOrEmpty(AreaTextbox.Text) || (!(AreaTextbox.Text).All(char.IsLetterOrDigit)) || ((AreaTextbox.Text).All(char.IsWhiteSpace)))
             {
-                MessageBox.Show("Please enter a valid area.");
+               // MessageBox.Show("Please enter a valid area.");
                 AreaTextbox.BackColor = System.Drawing.Color.Red;
                 valid = false;
             }
 
-            if (string.IsNullOrEmpty(TownTextbox.Text) || (!(TownTextbox.Text).All(char.IsLetter)) || (!(TownTextbox.Text).All(char.IsWhiteSpace)))
+            if (string.IsNullOrEmpty(TownTextbox.Text) || (!(TownTextbox.Text).All(char.IsLetter)) || ((TownTextbox.Text).All(char.IsWhiteSpace)))
             {
-                MessageBox.Show("Please enter a valid town.");
+               // MessageBox.Show("Please enter a valid town.");
                 TownTextbox.BackColor = System.Drawing.Color.Red;
                 valid = false;
             }
 
-            if (string.IsNullOrEmpty(PostalCodeTextbox.Text) || (!(PostalCodeTextbox.Text).All(char.IsDigit)))
+            if (string.IsNullOrEmpty(PostalCodeTextbox.Text) || (!(PostalCodeTextbox.Text).All(char.IsDigit)) || ((TownTextbox.Text).All(char.IsWhiteSpace)))
             {
-                MessageBox.Show("Please enter a valid postal code.");
+                //MessageBox.Show("Please enter a valid postal code.");
                 PostalCodeTextbox.BackColor = System.Drawing.Color.Red;
                 valid = false;
             }
@@ -872,12 +868,16 @@ namespace INFOsProject.Presentation
             // You can reset the background color to its default by setting it to 'SystemColors.Window'
             // textBox1.BackColor = System.Drawing.SystemColors.Window;
 
-            if (string.IsNullOrEmpty(GuestTextbox.Text) || (!(GuestTextbox.Text).All(char.IsDigit)))
-            {
-                MessageBox.Show("Please enter a valid Guest.");
+               
+                try { clientsController.Find(GuestTextbox.Text); }
+                catch 
+                {
                 GuestTextbox.BackColor = System.Drawing.Color.Red;
+                MessageBox.Show("Please enter a valid Client.");
                 valid = false;
             }
+                
+
 
             DateTime selectedDate1 = this.startDate.Value;
 
@@ -886,7 +886,7 @@ namespace INFOsProject.Presentation
 
             if (!(selectedDate1 >= startDate && selectedDate1 <= endDate))
             {
-                MessageBox.Show("Please select a date between December 1, 2023, and December 31, 2023.");
+                MessageBox.Show("Please select a starting date between December 1, 2023, and December 31, 2023.");
                 this.startDate.BackColor = System.Drawing.Color.Red;
                 valid = false;
             }
@@ -895,7 +895,7 @@ namespace INFOsProject.Presentation
 
             if (!(selectedDate2 >= startDate && selectedDate2 <= endDate))
             {
-                MessageBox.Show("Please select a date between December 1, 2023, and December 31, 2023.");
+                MessageBox.Show("Please select a ending date between December 1, 2023, and December 31, 2023.");
                 this.endDate.BackColor = System.Drawing.Color.Red;
                 valid = false;
             }
@@ -913,6 +913,16 @@ namespace INFOsProject.Presentation
             return valid; // All fields are valid
         }
 
+        private bool ValidateRoomFields()
+        {
+            bool valid = true;
+            if (string.IsNullOrEmpty(PriceTextbox.Text) || (!(PriceTextbox.Text).All(char.IsDigit)) || ((PriceTextbox.Text).All(char.IsWhiteSpace)))
+            {
+                this.PriceTextbox.BackColor = System.Drawing.Color.Red; 
+                valid = false;
+            }
+            return valid;
+        }
 
         #endregion
 
@@ -957,46 +967,6 @@ namespace INFOsProject.Presentation
         {
             CreditPanel.Visible = false;
             ClearCreditPanel();
-
-        }
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox12_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox16_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ListView_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-
-        }
-
-        private void ReservationPanel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void radioButton4_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ClientPanel_Paint(object sender, PaintEventArgs e)
-        {
 
         }
 
@@ -1072,9 +1042,5 @@ namespace INFOsProject.Presentation
             DB.cnMain.Close();
         }
 
-        private void SearchtextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

@@ -82,15 +82,12 @@
             this.MainListView = new System.Windows.Forms.ListView();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel6 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
             this.lblTime = new System.Windows.Forms.Label();
             this.linkLabelLogOut = new System.Windows.Forms.LinkLabel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.CreditPanel = new System.Windows.Forms.Panel();
             this.button6 = new System.Windows.Forms.Button();
@@ -108,7 +105,9 @@
             this.label14 = new System.Windows.Forms.Label();
             this.CreditNumTextbox = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.projectDatabaseDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.ClientPanel.SuspendLayout();
@@ -116,12 +115,12 @@
             this.ReservationPanel.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.CreditPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.projectDatabaseDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -143,7 +142,7 @@
             this.groupBox1.Controls.Add(this.addRadioGroup);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Location = new System.Drawing.Point(-2, 24);
+            this.groupBox1.Location = new System.Drawing.Point(2, 24);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(203, 492);
             this.groupBox1.TabIndex = 8;
@@ -152,8 +151,8 @@
             // 
             // SearchButton
             // 
-            this.SearchButton.Location = new System.Drawing.Point(128, 24);
-            this.SearchButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.SearchButton.Location = new System.Drawing.Point(131, 24);
+            this.SearchButton.Margin = new System.Windows.Forms.Padding(2);
             this.SearchButton.Name = "SearchButton";
             this.SearchButton.Size = new System.Drawing.Size(56, 19);
             this.SearchButton.TabIndex = 10;
@@ -165,12 +164,11 @@
             // 
             this.SearchtextBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.SearchtextBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.RecentlyUsedList;
-            this.SearchtextBox.Location = new System.Drawing.Point(13, 23);
-            this.SearchtextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.SearchtextBox.Location = new System.Drawing.Point(16, 23);
+            this.SearchtextBox.Margin = new System.Windows.Forms.Padding(2);
             this.SearchtextBox.Name = "SearchtextBox";
             this.SearchtextBox.Size = new System.Drawing.Size(107, 20);
             this.SearchtextBox.TabIndex = 9;
-            this.SearchtextBox.TextChanged += new System.EventHandler(this.SearchtextBox_TextChanged);
             // 
             // deleteRadioGroup
             // 
@@ -230,9 +228,9 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(21, 430);
+            this.button1.Location = new System.Drawing.Point(52, 410);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(163, 30);
+            this.button1.Size = new System.Drawing.Size(125, 30);
             this.button1.TabIndex = 1;
             this.button1.Text = "< Back";
             this.button1.UseVisualStyleBackColor = true;
@@ -256,11 +254,10 @@
             this.ClientPanel.Controls.Add(this.label4);
             this.ClientPanel.Controls.Add(this.label3);
             this.ClientPanel.Controls.Add(this.label2);
-            this.ClientPanel.Location = new System.Drawing.Point(206, 370);
+            this.ClientPanel.Location = new System.Drawing.Point(913, 85);
             this.ClientPanel.Name = "ClientPanel";
             this.ClientPanel.Size = new System.Drawing.Size(649, 203);
             this.ClientPanel.TabIndex = 4;
-            this.ClientPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.ClientPanel_Paint);
             // 
             // ClientLabel
             // 
@@ -308,18 +305,18 @@
             // ClientSubmit
             // 
             this.ClientSubmit.Font = new System.Drawing.Font("Lucida Sans", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ClientSubmit.Location = new System.Drawing.Point(532, 160);
+            this.ClientSubmit.Location = new System.Drawing.Point(375, 164);
             this.ClientSubmit.Name = "ClientSubmit";
             this.ClientSubmit.Size = new System.Drawing.Size(100, 29);
             this.ClientSubmit.TabIndex = 8;
             this.ClientSubmit.Text = "Submit";
             this.ClientSubmit.UseVisualStyleBackColor = true;
-            this.ClientSubmit.Click += new System.EventHandler(this.ClientSubmit_Click_1);
+            this.ClientSubmit.Click += new System.EventHandler(this.ClientSubmit_Click);
             // 
             // button7
             // 
             this.button7.Font = new System.Drawing.Font("Lucida Sans", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.Location = new System.Drawing.Point(415, 160);
+            this.button7.Location = new System.Drawing.Point(269, 164);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(100, 29);
             this.button7.TabIndex = 7;
@@ -342,7 +339,6 @@
             this.ClientTextbox.Name = "ClientTextbox";
             this.ClientTextbox.Size = new System.Drawing.Size(141, 29);
             this.ClientTextbox.TabIndex = 9;
-            this.ClientTextbox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label7
             // 
@@ -425,7 +421,7 @@
             this.RoomPanel.Controls.Add(this.label16);
             this.RoomPanel.Controls.Add(this.label17);
             this.RoomPanel.Controls.Add(this.button3);
-            this.RoomPanel.Location = new System.Drawing.Point(881, 579);
+            this.RoomPanel.Location = new System.Drawing.Point(206, 370);
             this.RoomPanel.Name = "RoomPanel";
             this.RoomPanel.Size = new System.Drawing.Size(649, 203);
             this.RoomPanel.TabIndex = 5;
@@ -445,7 +441,7 @@
             // PriceTextbox
             // 
             this.PriceTextbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PriceTextbox.Location = new System.Drawing.Point(109, 85);
+            this.PriceTextbox.Location = new System.Drawing.Point(107, 94);
             this.PriceTextbox.Name = "PriceTextbox";
             this.PriceTextbox.Size = new System.Drawing.Size(137, 29);
             this.PriceTextbox.TabIndex = 10;
@@ -453,7 +449,7 @@
             // RoomIDTextbox
             // 
             this.RoomIDTextbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RoomIDTextbox.Location = new System.Drawing.Point(109, 48);
+            this.RoomIDTextbox.Location = new System.Drawing.Point(107, 54);
             this.RoomIDTextbox.Name = "RoomIDTextbox";
             this.RoomIDTextbox.Size = new System.Drawing.Size(137, 29);
             this.RoomIDTextbox.TabIndex = 9;
@@ -467,13 +463,13 @@
             this.RoomSubmit.TabIndex = 8;
             this.RoomSubmit.Text = "Submit";
             this.RoomSubmit.UseVisualStyleBackColor = true;
-            this.RoomSubmit.Click += new System.EventHandler(this.RoomSubmit_Click_1);
+            this.RoomSubmit.Click += new System.EventHandler(this.RoomSubmit_Click);
             // 
             // label16
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Lucida Sans", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(12, 93);
+            this.label16.Location = new System.Drawing.Point(10, 97);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(59, 24);
             this.label16.TabIndex = 1;
@@ -483,7 +479,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Lucida Sans", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(12, 53);
+            this.label17.Location = new System.Drawing.Point(10, 57);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(91, 24);
             this.label17.TabIndex = 0;
@@ -518,12 +514,11 @@
             this.ReservationPanel.Controls.Add(this.label18);
             this.ReservationPanel.Controls.Add(this.label19);
             this.ReservationPanel.Controls.Add(this.label20);
-            this.ReservationPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ReservationPanel.Location = new System.Drawing.Point(881, 370);
+            this.ReservationPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ReservationPanel.Location = new System.Drawing.Point(878, 342);
             this.ReservationPanel.Name = "ReservationPanel";
             this.ReservationPanel.Size = new System.Drawing.Size(649, 203);
             this.ReservationPanel.TabIndex = 6;
-            this.ReservationPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.ReservationPanel_Paint);
             // 
             // RoomcomboBox
             // 
@@ -535,32 +530,33 @@
             "2",
             "3",
             "4"});
-            this.RoomcomboBox.Location = new System.Drawing.Point(352, 129);
-            this.RoomcomboBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.RoomcomboBox.Location = new System.Drawing.Point(352, 132);
+            this.RoomcomboBox.Margin = new System.Windows.Forms.Padding(2);
             this.RoomcomboBox.MaxDropDownItems = 5;
             this.RoomcomboBox.Name = "RoomcomboBox";
-            this.RoomcomboBox.Size = new System.Drawing.Size(201, 32);
+            this.RoomcomboBox.Size = new System.Drawing.Size(201, 24);
             this.RoomcomboBox.Sorted = true;
             this.RoomcomboBox.TabIndex = 22;
             // 
             // endDate
             // 
             this.endDate.CausesValidation = false;
-            this.endDate.Location = new System.Drawing.Point(353, 95);
+            this.endDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.endDate.Location = new System.Drawing.Point(353, 100);
             this.endDate.MaxDate = new System.DateTime(2023, 12, 31, 0, 0, 0, 0);
             this.endDate.MinDate = new System.DateTime(2023, 12, 1, 0, 0, 0, 0);
             this.endDate.Name = "endDate";
-            this.endDate.Size = new System.Drawing.Size(200, 29);
+            this.endDate.Size = new System.Drawing.Size(200, 22);
             this.endDate.TabIndex = 21;
             this.endDate.Value = new System.DateTime(2023, 12, 1, 0, 0, 0, 0);
             // 
             // startDate
             // 
-            this.startDate.Location = new System.Drawing.Point(353, 57);
+            this.startDate.Location = new System.Drawing.Point(353, 58);
             this.startDate.MaxDate = new System.DateTime(2023, 12, 31, 0, 0, 0, 0);
             this.startDate.MinDate = new System.DateTime(2023, 12, 1, 0, 0, 0, 0);
             this.startDate.Name = "startDate";
-            this.startDate.Size = new System.Drawing.Size(200, 29);
+            this.startDate.Size = new System.Drawing.Size(200, 22);
             this.startDate.TabIndex = 20;
             this.startDate.Value = new System.DateTime(2023, 12, 1, 0, 0, 0, 0);
             // 
@@ -622,12 +618,11 @@
             this.ReservationIDTextbox.Name = "ReservationIDTextbox";
             this.ReservationIDTextbox.Size = new System.Drawing.Size(39, 29);
             this.ReservationIDTextbox.TabIndex = 9;
-            this.ReservationIDTextbox.TextChanged += new System.EventHandler(this.textBox16_TextChanged);
             // 
             // ReservationSubmit
             // 
             this.ReservationSubmit.Font = new System.Drawing.Font("Lucida Sans", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ReservationSubmit.Location = new System.Drawing.Point(478, 163);
+            this.ReservationSubmit.Location = new System.Drawing.Point(459, 164);
             this.ReservationSubmit.Name = "ReservationSubmit";
             this.ReservationSubmit.Size = new System.Drawing.Size(100, 29);
             this.ReservationSubmit.TabIndex = 8;
@@ -699,26 +694,13 @@
             // 
             this.panel8.AllowDrop = true;
             this.panel8.BackColor = System.Drawing.Color.Black;
-            this.panel8.Controls.Add(this.label11);
             this.panel8.Controls.Add(this.label12);
             this.panel8.Controls.Add(this.pictureBox1);
-            this.panel8.Location = new System.Drawing.Point(6, 2);
-            this.panel8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel8.Location = new System.Drawing.Point(11, 2);
+            this.panel8.Margin = new System.Windows.Forms.Padding(2);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(184, 121);
             this.panel8.TabIndex = 3;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(81, 23);
-            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(106, 24);
-            this.label11.TabIndex = 4;
-            this.label11.Text = "Pum Pum ";
             // 
             // label12
             // 
@@ -732,17 +714,6 @@
             this.label12.TabIndex = 3;
             this.label12.Text = "Management System";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::INFOsProject.Properties.Resources.peach1;
-            this.pictureBox1.Location = new System.Drawing.Point(5, 2);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(75, 65);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
-            // 
             // panel6
             // 
             this.panel6.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -750,7 +721,7 @@
             this.panel6.Controls.Add(this.label1);
             this.panel6.Controls.Add(this.panel7);
             this.panel6.Location = new System.Drawing.Point(194, 2);
-            this.panel6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel6.Margin = new System.Windows.Forms.Padding(2);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(674, 121);
             this.panel6.TabIndex = 2;
@@ -779,7 +750,7 @@
             this.panel7.Cursor = System.Windows.Forms.Cursors.Hand;
             this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel7.Location = new System.Drawing.Point(0, 0);
-            this.panel7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel7.Margin = new System.Windows.Forms.Padding(2);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(674, 62);
             this.panel7.TabIndex = 0;
@@ -814,18 +785,6 @@
             this.linkLabelLogOut.VisitedLinkColor = System.Drawing.Color.Black;
             this.linkLabelLogOut.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelLogOut_LinkClicked);
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::INFOsProject.Properties.Resources.logout;
-            this.pictureBox2.Location = new System.Drawing.Point(567, 0);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(91, 63);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 0;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
-            // 
             // CreditPanel
             // 
             this.CreditPanel.BackColor = System.Drawing.Color.White;
@@ -844,7 +803,7 @@
             this.CreditPanel.Controls.Add(this.label14);
             this.CreditPanel.Controls.Add(this.CreditNumTextbox);
             this.CreditPanel.Controls.Add(this.label13);
-            this.CreditPanel.Location = new System.Drawing.Point(909, 22);
+            this.CreditPanel.Location = new System.Drawing.Point(269, 50);
             this.CreditPanel.Name = "CreditPanel";
             this.CreditPanel.Size = new System.Drawing.Size(486, 314);
             this.CreditPanel.TabIndex = 10;
@@ -998,12 +957,35 @@
             this.label13.TabIndex = 17;
             this.label13.Text = "Enter Credit Card Details:";
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::INFOsProject.Properties.Resources.logout;
+            this.pictureBox2.Location = new System.Drawing.Point(567, 0);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(91, 63);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 0;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::INFOsProject.Properties.Resources.PK;
+            this.pictureBox1.Location = new System.Drawing.Point(-27, -35);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(223, 145);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 4;
+            this.pictureBox1.TabStop = false;
+            // 
             // MainUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(1539, 816);
+            this.ClientSize = new System.Drawing.Size(1539, 594);
             this.Controls.Add(this.ClientPanel);
             this.Controls.Add(this.CreditPanel);
             this.Controls.Add(this.panel5);
@@ -1027,15 +1009,15 @@
             this.panel5.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.CreditPanel.ResumeLayout(false);
             this.CreditPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.projectDatabaseDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1093,9 +1075,7 @@
         private System.Windows.Forms.LinkLabel linkLabelLogOut;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Panel CreditPanel;
@@ -1120,5 +1100,6 @@
         private System.Windows.Forms.ComboBox RoomcomboBox;
         private System.Windows.Forms.Button SearchButton;
         private System.Windows.Forms.TextBox SearchtextBox;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

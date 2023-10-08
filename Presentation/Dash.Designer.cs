@@ -37,25 +37,24 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.labelDateTime = new System.Windows.Forms.Label();
             this.linkLabelLogOut = new System.Windows.Forms.LinkLabel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.RoomFormButton = new System.Windows.Forms.Button();
+            this.ReservationFormButton = new System.Windows.Forms.Button();
+            this.ClientFormButton = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // panel4
@@ -154,18 +153,6 @@
             this.linkLabelLogOut.VisitedLinkColor = System.Drawing.Color.Black;
             this.linkLabelLogOut.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::INFOsProject.Properties.Resources.logout;
-            this.pictureBox1.Location = new System.Drawing.Point(484, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(91, 63);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click_1);
-            // 
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
@@ -174,7 +161,6 @@
             // 
             this.panel3.AllowDrop = true;
             this.panel3.BackColor = System.Drawing.Color.Black;
-            this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.label1);
             this.panel3.Controls.Add(this.pictureBox2);
             this.panel3.Location = new System.Drawing.Point(0, 0);
@@ -182,18 +168,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(184, 121);
             this.panel3.TabIndex = 1;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(81, 23);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(106, 24);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Pum Pum ";
             // 
             // label1
             // 
@@ -207,24 +181,13 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Management System";
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::INFOsProject.Properties.Resources.peach1;
-            this.pictureBox2.Location = new System.Drawing.Point(5, 2);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(75, 65);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 2;
-            this.pictureBox2.TabStop = false;
-            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.RoomFormButton);
+            this.panel1.Controls.Add(this.ReservationFormButton);
+            this.panel1.Controls.Add(this.ClientFormButton);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label2);
@@ -234,42 +197,6 @@
             this.panel1.Padding = new System.Windows.Forms.Padding(10);
             this.panel1.Size = new System.Drawing.Size(624, 240);
             this.panel1.TabIndex = 6;
-            // 
-            // button2
-            // 
-            this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.Location = new System.Drawing.Point(415, 30);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(160, 146);
-            this.button2.TabIndex = 2;
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
-            // 
-            // button3
-            // 
-            this.button3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button3.BackgroundImage")));
-            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button3.Location = new System.Drawing.Point(223, 30);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(160, 146);
-            this.button3.TabIndex = 3;
-            this.button3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click_1);
-            // 
-            // button1
-            // 
-            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.Location = new System.Drawing.Point(36, 30);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(160, 146);
-            this.button1.TabIndex = 1;
-            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // label6
             // 
@@ -304,6 +231,65 @@
             this.label2.Text = "Clients";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
+            // RoomFormButton
+            // 
+            this.RoomFormButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("RoomFormButton.BackgroundImage")));
+            this.RoomFormButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.RoomFormButton.Location = new System.Drawing.Point(415, 30);
+            this.RoomFormButton.Name = "RoomFormButton";
+            this.RoomFormButton.Size = new System.Drawing.Size(160, 146);
+            this.RoomFormButton.TabIndex = 2;
+            this.RoomFormButton.UseVisualStyleBackColor = true;
+            this.RoomFormButton.Click += new System.EventHandler(this.RoomFormButton_Click);
+            // 
+            // ReservationFormButton
+            // 
+            this.ReservationFormButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ReservationFormButton.BackgroundImage")));
+            this.ReservationFormButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ReservationFormButton.Location = new System.Drawing.Point(223, 30);
+            this.ReservationFormButton.Name = "ReservationFormButton";
+            this.ReservationFormButton.Size = new System.Drawing.Size(160, 146);
+            this.ReservationFormButton.TabIndex = 3;
+            this.ReservationFormButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.ReservationFormButton.UseVisualStyleBackColor = true;
+            this.ReservationFormButton.Click += new System.EventHandler(this.ReservationFormButton_Click);
+            // 
+            // ClientFormButton
+            // 
+            this.ClientFormButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ClientFormButton.BackgroundImage")));
+            this.ClientFormButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientFormButton.Location = new System.Drawing.Point(36, 30);
+            this.ClientFormButton.Name = "ClientFormButton";
+            this.ClientFormButton.Size = new System.Drawing.Size(160, 146);
+            this.ClientFormButton.TabIndex = 1;
+            this.ClientFormButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.ClientFormButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.ClientFormButton.UseVisualStyleBackColor = true;
+            this.ClientFormButton.Click += new System.EventHandler(this.ClientFormButton_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::INFOsProject.Properties.Resources.logout;
+            this.pictureBox1.Location = new System.Drawing.Point(484, 0);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(91, 63);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click_1);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::INFOsProject.Properties.Resources.PK;
+            this.pictureBox2.Location = new System.Drawing.Point(-27, -38);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(218, 147);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 4;
+            this.pictureBox2.TabStop = false;
+            // 
             // Dash
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -323,12 +309,12 @@
             this.panel4.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -343,16 +329,15 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button RoomFormButton;
+        private System.Windows.Forms.Button ReservationFormButton;
+        private System.Windows.Forms.Button ClientFormButton;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button ReportButton;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

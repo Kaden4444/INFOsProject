@@ -47,6 +47,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>PK.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -165,6 +168,8 @@
     <Content Include="DatabaseFiles\HotelDatabase_log.ldf">
       <DependentUpon>HotelDatabase.mdf</DependentUpon>
     </Content>
+    <Content Include="PK.ico" />
+    <None Include="Resources\PK.jpg" />
     <None Include="Resources\x.png" />
     <None Include="Resources\pencil.png" />
     <None Include="Resources\plus.png" />

@@ -12,8 +12,12 @@ namespace INFOsProject.Presentation
 {
     public partial class ReportForm : Form
     {
-        public ReportForm()
+        int StateOfForm;
+        Dash d;
+        public ReportForm(Dash D, int State)
         {
+            d=D;
+            StateOfForm = State;
             InitializeComponent();
         }
 
@@ -33,6 +37,13 @@ namespace INFOsProject.Presentation
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            StateOfForm = -1;
+            d.Show();
+            this.Hide();
         }
     }
 }

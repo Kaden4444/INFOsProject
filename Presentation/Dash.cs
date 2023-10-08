@@ -47,12 +47,6 @@ namespace INFOsProject.Presentation
         #endregion
 
         #region ButtonClicks
-        private void button1_Click(object sender, EventArgs e)
-        {
-            MainUI ClientUI = new MainUI(this, 0, cCont, rCont, resCont);
-            ClientUI.Show();
-            this.Hide();
-        }
 
         private void button3_Click(object sender, EventArgs e)
         {
@@ -72,30 +66,8 @@ namespace INFOsProject.Presentation
         {
             Application.Exit();
         }
+     
 
-
-
-        private void button3_Click_1(object sender, EventArgs e)
-        {
-            MainUI ReservationsUI = new MainUI(this, 2, cCont, rCont, resCont);
-            ReservationsUI.Show();
-            this.Hide();
-        }
-
-        
-
-        private void button2_Click_1(object sender, EventArgs e)
-        {
-
-            MainUI RoomsUI = new MainUI(this, 1, cCont, rCont, resCont);
-            RoomsUI.Show();
-            this.Hide();
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
- 
-        }
         private void pictureBox1_Click_1(object sender, EventArgs e)
         {
             Application.Exit();
@@ -150,8 +122,29 @@ namespace INFOsProject.Presentation
 
         private void ReportButton_Click(object sender, EventArgs e)
         {
-            ReportForm repForm = new ReportForm();
+            ReportForm repForm = new ReportForm(this,-1);
             repForm.Show();
+            this.Hide();
+        }
+
+        private void ClientFormButton_Click(object sender, EventArgs e)
+        {
+            MainUI ClientUI = new MainUI(this, 0, cCont, rCont, resCont);
+            ClientUI.Show();
+            this.Hide();
+        }
+
+        private void ReservationFormButton_Click(object sender, EventArgs e)
+        {
+            MainUI ReservationsUI = new MainUI(this, 2, cCont, rCont, resCont);
+            ReservationsUI.Show();
+            this.Hide();
+        }
+
+        private void RoomFormButton_Click(object sender, EventArgs e)
+        {
+            MainUI RoomsUI = new MainUI(this, 1, cCont, rCont, resCont);
+            RoomsUI.Show();
             this.Hide();
         }
     }
