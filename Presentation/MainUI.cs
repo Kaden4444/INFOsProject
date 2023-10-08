@@ -20,6 +20,8 @@ using System.Data;
 using System.Linq;
 using System.Threading;
 using System.Data.SqlClient;
+using System.Net.Mail;
+using Microsoft.VisualBasic;
 
 namespace INFOsProject.Presentation
 {
@@ -340,7 +342,9 @@ namespace INFOsProject.Presentation
         {
 
             if (ValidateCreditFields()) {
+                string email = Interaction.InputBox("Enter your email address", "Email Address", "default@example.com");
                 MessageBox.Show("Credit card details valid - reservation made.");
+                ConfirmationEmail(email,reservation.StartDate.ToString(), reservation.EndDate.ToString(), reservation.Total);
                 reservation.Deposit = true;
                 reservationController.DataMaintenance(reservation, DB.DBOperation.Edit);
                 reservationController.FinalizeChanges(reservation);
@@ -415,6 +419,42 @@ namespace INFOsProject.Presentation
             }
             
         }
+
+        public void ConfirmationEmail(string email, string dateIn, string dateOut, double price)
+        {
+           try
+            {
+                SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
+                smtpClient.Port = 587;
+                smtpClient.Credentials = new System.Net.NetworkCredential("phumlakamnandi.info@gmail.com", "asdfghjkl@987");
+                smtpClient.EnableSsl = true;
+
+                MailMessage mail = new MailMessage();
+                mail.From = new MailAddress("phumlakamnandi.info@gmail.com");
+                mail.To.Add(email);
+                mail.Subject = "Booking Confirmation";
+
+                // Build the email body
+                string emailBody = $"Dear Customer,\n\n";
+                emailBody += $"We are pleased to confirm your booking.\n";
+                emailBody += $"Check-in Date: {dateIn}\n";
+                emailBody += $"Check-out Date: {dateOut}\n";
+                emailBody += $"Total Price: ${price}\n\n";
+                emailBody += $"Thank you for choosing our service.\n\n";
+                emailBody += $"Best regards,\n";
+                emailBody += $"Your Hotel Team";
+
+                mail.Body = emailBody;
+
+                smtpClient.Send(mail);
+            }
+            catch
+            {
+               MessageBox.Show("Email not sent");
+            }
+        }
+
+
         #endregion
 
         #region General Button Methods
@@ -914,8 +954,14 @@ namespace INFOsProject.Presentation
             // You can reset the background color to its default by setting it to 'SystemColors.Window'
             // textBox1.BackColor = System.Drawing.SystemColors.Window;
 
-               
-                try { clientsController.Find(GuestTextbox.Text); }
+            if (reservationController.RoomsAvailable(startDate.Value, endDate.Value).Count < 1)
+            {
+                MessageBox.Show("No room available from " + startDate.Text + " to " + endDate.Text);
+                valid = false;
+            }
+            try { clientsController.Find(GuestTextbox.Text);
+
+                }
                 catch 
                 {
                 GuestTextbox.BackColor = System.Drawing.Color.Red;
@@ -930,7 +976,7 @@ namespace INFOsProject.Presentation
             DateTime minDate = new DateTime(2023, 12, 1);
             DateTime maxDate = new DateTime(2023, 12, 31);
 
-            if (!(startD >= minDate && startD <= maxDate))
+            if (!(startD > minDate && startD < maxDate))
             {
                 MessageBox.Show("Please select a starting date between December 1, 2023, and December 31, 2023.");
                 this.startDate.BackColor = System.Drawing.Color.Red;
@@ -939,14 +985,14 @@ namespace INFOsProject.Presentation
 
             DateTime endD = this.endDate.Value;
 
-            if (!(endD >= minDate && endD <= maxDate))
+            if (!(endD > minDate && endD < maxDate))
             {
                 MessageBox.Show("Please select a ending date between December 1, 2023, and December 31, 2023.");
                 this.endDate.BackColor = System.Drawing.Color.Red;
                 valid = false;
             }
 
-            if (!(endD > startD))
+            if (!(endD >= startD))
             {
                 MessageBox.Show("Check in date cannot be after check out date");
                 this.startDate.BackColor = System.Drawing.Color.Red;

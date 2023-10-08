@@ -14,6 +14,7 @@ namespace INFOsProject.Business
         #region Data Members
         ReservationDB ReservationDB;
         Collection<Reservation> Reservations;
+        private Collection<int> rooms;
         #endregion
 
         #region Properties
@@ -32,6 +33,32 @@ namespace INFOsProject.Business
             //***instantiate the ReservationDB object to communicate with the database
             ReservationDB = new ReservationDB();
             Reservations = ReservationDB.AllReservations;
+            rooms = new Collection<int>();
+        }
+        #endregion
+
+        #region Rooms management
+
+        public void UpdateRooms()
+        {
+            rooms = new Collection<int>
+            {
+                0,1,2,3,4
+            };
+        }
+        public Collection<int> RoomsAvailable(DateTime dateIn, DateTime dateOut)
+        {
+            Collection<int> AvailableRooms = new Collection<int>(rooms);
+            Reservations = AllReservations;
+            foreach (Reservation reservation in Reservations)
+            {
+                if (dateIn.Date >= Convert.ToDateTime(reservation.EndDate).Date || dateOut < Convert.ToDateTime(reservation.StartDate).Date)
+                {
+                    AvailableRooms.Remove(Convert.ToInt32(reservation.Room));
+                }
+            }
+            UpdateRooms();
+            return AvailableRooms;
         }
         #endregion
 
