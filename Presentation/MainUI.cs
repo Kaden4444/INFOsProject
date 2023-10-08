@@ -48,9 +48,7 @@ namespace INFOsProject.Presentation
             InitializeComponent();
             d = dash;
             State_of_Form = State;
-
-
-
+            
 
             // Create an instance of ClientsController
             clientsController = new ClientsController();
@@ -62,6 +60,7 @@ namespace INFOsProject.Presentation
             reservationController = res;
             this.Load += MainListView_Load;
             this.Activated += MainListView_Activated;
+            setUpMainListView();
         }
         #endregion
 
@@ -274,6 +273,7 @@ namespace INFOsProject.Presentation
                 ClearRoom();
                 ResetLabels();
                 getLatestID();
+                resetTextboxColours();
             }
             else
             {
@@ -313,6 +313,7 @@ namespace INFOsProject.Presentation
                 ClearRoom();
                 ResetLabels();
                 getLatestID();
+                resetTextboxColours();
             }
             else
             {
@@ -345,6 +346,7 @@ namespace INFOsProject.Presentation
                 CreditDetailsValid = true;
                 CreditPanel.Visible = false;
                 ClearCreditPanel();
+                resetTextboxColours();
             }
             else
             {
@@ -399,6 +401,7 @@ namespace INFOsProject.Presentation
             ClearRoom();
             ResetLabels();
             getLatestID();
+            resetTextboxColours();
             }
             else
             {
@@ -985,62 +988,109 @@ namespace INFOsProject.Presentation
 
         private void button8_Click(object sender, EventArgs e)
         {
+            //try
+           // {
+                int input = int.Parse(SearchtextBox.Text);
+                ListViewItem clientDetails, roomDetails, reservationDetails;
+                MainListView.Clear();
+                switch (State_of_Form)
+                {
+                    case 0:
+                        ClientPanel.Show();
+                        MainListView.Columns.Insert(0, "ClientID", 50, HorizontalAlignment.Left);
+                        MainListView.Columns.Insert(1, "Name", 90, HorizontalAlignment.Left);
+                        MainListView.Columns.Insert(2, "Address", 140, HorizontalAlignment.Left);
+                        MainListView.Columns.Insert(3, "Area", 70, HorizontalAlignment.Left);
+                        MainListView.Columns.Insert(4, "Town", 50, HorizontalAlignment.Left);
+                        MainListView.Columns.Insert(5, "Postal Code", 70, HorizontalAlignment.Left);
+                        MainListView.Columns.Insert(6, "Reservation", 200, HorizontalAlignment.Left);
 
-            ListViewItem clientDetails, roomDetails, reservationDetails;
-            MainListView.Clear();
+                        Clients = null;
+                        Clients = clientsController.AllClients;
+                        try
+                        {
+                            Client Client = Clients[input];
+                            clientDetails = new ListViewItem();
+                            clientDetails.Text = Client.getID;
+                            clientDetails.SubItems.Add(Client.getName);
+                            clientDetails.SubItems.Add(Client.getStreetAddress);
+                            clientDetails.SubItems.Add(Client.getArea);
+                            clientDetails.SubItems.Add(Client.getTown);
+                            clientDetails.SubItems.Add(Client.getPostal_code);
+                            MainListView.Items.Add(clientDetails);
+                        }
+                        catch { MessageBox.Show("Not found"); }
+                        MainListView.Refresh();
+                        MainListView.GridLines = true;
+                        break;
 
-            DB.cnMain.Open();
-            string input = SearchtextBox.Text;
-            string query = "";
-               switch (State_of_Form)
-            {
-                case 0:
-                    try
-                    {
-                        query = "SELECT * from Clients WHERE ClientName = '" + input + "'";
-                    }
-                    
-                    catch 
-                    {
-                        MessageBox.Show("This is not a valid search item");
-                        SearchtextBox.Text = "";
-                    }
-                    break;
+                    case 1:
+                        MainListView.Columns.Insert(0, "RoomID", 120, HorizontalAlignment.Left);
+                        MainListView.Columns.Insert(1, "Price", 120, HorizontalAlignment.Left);
 
-                case 1:
-                    try
-                    {
-                        query = "SELECT * from Rooms WHERE ID = '" + input + "'";
-                    }
-                    catch
-                    {
-                        MessageBox.Show("This is not a valid search item");
-                        SearchtextBox.Text = "";
-                    }
-                    break;
+                        Rooms = null;
+                        Rooms = roomController.AllRooms;
 
-                case 2:
-                    try
-                    {
-                        query = "SELECT * from Reservations WHERE ID = '" + input + "'";
-                        
-                    }
-                    catch 
-                    { 
-                        MessageBox.Show("This is not a valid search item");
-                        SearchtextBox.Text = "";
-                    }
-                    break;
-            }
+                        try
+                        {
+                            Room Room = Rooms[input];
+                            roomDetails = new ListViewItem();
+                            roomDetails.Text = Room.RoomID;
+                            roomDetails.SubItems.Add(Room.Price.ToString());
+                            MainListView.Items.Add(roomDetails);
+                        }
+                        catch { MessageBox.Show("Not found"); }
+                        MainListView.Refresh();
+                        MainListView.GridLines = true;
+                        break;
 
-            //Do this because idk what you're going for
-            SqlDataAdapter da = new SqlDataAdapter(query, DB.cnMain);
-            SqlCommandBuilder buider = new SqlCommandBuilder(da);
-            var ds = new DataSet();
-            da.Fill(ds);
-            //MainListView.Datasource = ds.Tables[0];
-            DB.cnMain.Close();
+                    case 2:
+                        MainListView.Columns.Insert(0, "ReservationID", 120, HorizontalAlignment.Left);
+                        MainListView.Columns.Insert(1, "Client", 120, HorizontalAlignment.Left);
+                        MainListView.Columns.Insert(2, "Room", 120, HorizontalAlignment.Left);
+                        MainListView.Columns.Insert(3, "Total", 120, HorizontalAlignment.Left);
+                        MainListView.Columns.Insert(4, "StartDate", 120, HorizontalAlignment.Left);
+                        MainListView.Columns.Insert(5, "EndDate", 120, HorizontalAlignment.Left);
+                        MainListView.Columns.Insert(6, "DepositPaid", 120, HorizontalAlignment.Left);
+
+                        Reservations = null;
+                        Reservations = reservationController.AllReservations;
+                        try
+                        {
+                            Reservation Reservation = Reservations[input];
+                            reservationDetails = new ListViewItem();
+                            reservationDetails.Text = Reservation.ReservationID;
+                            reservationDetails.SubItems.Add(Reservation.Client.ToString());
+                            reservationDetails.SubItems.Add(Reservation.Room.ToString());
+                            reservationDetails.SubItems.Add(Reservation.Total.ToString());
+                            reservationDetails.SubItems.Add(Reservation.StartDate.ToString());
+                            reservationDetails.SubItems.Add(Reservation.EndDate.ToString());
+                            reservationDetails.SubItems.Add(Reservation.Deposit.ToString());
+
+                            MainListView.Items.Add(reservationDetails);
+                        }
+                        catch { MessageBox.Show("Not found"); }
+
+                        MainListView.Refresh();
+                        MainListView.GridLines = true;
+
+                        break;
+                }
+            //}
+           // catch { MessageBox.Show("Invalid Search"); }
+        }
+        
+
+      
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
         }
 
+        private void button8_Click_1(object sender, EventArgs e)
+        {
+            setUpMainListView();
+        }
     }
 }

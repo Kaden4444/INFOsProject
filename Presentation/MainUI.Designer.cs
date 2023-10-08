@@ -83,11 +83,13 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.label12 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel6 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
             this.lblTime = new System.Windows.Forms.Label();
             this.linkLabelLogOut = new System.Windows.Forms.LinkLabel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.CreditPanel = new System.Windows.Forms.Panel();
             this.button6 = new System.Windows.Forms.Button();
@@ -105,9 +107,9 @@
             this.label14 = new System.Windows.Forms.Label();
             this.CreditNumTextbox = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.projectDatabaseDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.button8 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.ClientPanel.SuspendLayout();
@@ -115,12 +117,12 @@
             this.ReservationPanel.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
-            this.CreditPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.CreditPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.projectDatabaseDataSetBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -135,6 +137,8 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Black;
+            this.groupBox1.Controls.Add(this.button8);
+            this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.SearchButton);
             this.groupBox1.Controls.Add(this.SearchtextBox);
             this.groupBox1.Controls.Add(this.deleteRadioGroup);
@@ -176,7 +180,7 @@
             this.deleteRadioGroup.BackColor = System.Drawing.Color.Black;
             this.deleteRadioGroup.Font = new System.Drawing.Font("Lucida Sans", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.deleteRadioGroup.ForeColor = System.Drawing.Color.White;
-            this.deleteRadioGroup.Location = new System.Drawing.Point(17, 199);
+            this.deleteRadioGroup.Location = new System.Drawing.Point(17, 220);
             this.deleteRadioGroup.Name = "deleteRadioGroup";
             this.deleteRadioGroup.Size = new System.Drawing.Size(196, 59);
             this.deleteRadioGroup.TabIndex = 2;
@@ -190,7 +194,7 @@
             this.editRadioGroup.BackColor = System.Drawing.Color.Black;
             this.editRadioGroup.Font = new System.Drawing.Font("Lucida Sans", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.editRadioGroup.ForeColor = System.Drawing.Color.White;
-            this.editRadioGroup.Location = new System.Drawing.Point(19, 143);
+            this.editRadioGroup.Location = new System.Drawing.Point(19, 164);
             this.editRadioGroup.Name = "editRadioGroup";
             this.editRadioGroup.Size = new System.Drawing.Size(132, 59);
             this.editRadioGroup.TabIndex = 1;
@@ -204,7 +208,7 @@
             this.addRadioGroup.BackColor = System.Drawing.Color.Black;
             this.addRadioGroup.Font = new System.Drawing.Font("Lucida Sans", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addRadioGroup.ForeColor = System.Drawing.Color.White;
-            this.addRadioGroup.Location = new System.Drawing.Point(17, 78);
+            this.addRadioGroup.Location = new System.Drawing.Point(17, 99);
             this.addRadioGroup.Name = "addRadioGroup";
             this.addRadioGroup.Size = new System.Drawing.Size(138, 59);
             this.addRadioGroup.TabIndex = 3;
@@ -216,14 +220,14 @@
             // 
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.Color.Black;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(18, 59);
+            this.label10.Location = new System.Drawing.Point(14, 80);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(125, 17);
+            this.label10.Size = new System.Drawing.Size(183, 18);
             this.label10.TabIndex = 8;
-            this.label10.Text = "Choose a mode:";
+            this.label10.Text = "Choose a mode:          ";
             // 
             // button1
             // 
@@ -714,6 +718,17 @@
             this.label12.TabIndex = 3;
             this.label12.Text = "Management System";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::INFOsProject.Properties.Resources.PK;
+            this.pictureBox1.Location = new System.Drawing.Point(-27, -35);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(223, 145);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 4;
+            this.pictureBox1.TabStop = false;
+            // 
             // panel6
             // 
             this.panel6.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -784,6 +799,18 @@
             this.linkLabelLogOut.Text = "Log Out";
             this.linkLabelLogOut.VisitedLinkColor = System.Drawing.Color.Black;
             this.linkLabelLogOut.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelLogOut_LinkClicked);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::INFOsProject.Properties.Resources.logout;
+            this.pictureBox2.Location = new System.Drawing.Point(567, 0);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(91, 63);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 0;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // CreditPanel
             // 
@@ -957,28 +984,30 @@
             this.label13.TabIndex = 17;
             this.label13.Text = "Enter Credit Card Details:";
             // 
-            // pictureBox2
+            // label11
             // 
-            this.pictureBox2.Image = global::INFOsProject.Properties.Resources.logout;
-            this.pictureBox2.Location = new System.Drawing.Point(567, 0);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(91, 63);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 0;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.Color.Black;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.Location = new System.Drawing.Point(14, 270);
+            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(248, 18);
+            this.label11.TabIndex = 11;
+            this.label11.Text = "                                                ";
+            this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
-            // pictureBox1
+            // button8
             // 
-            this.pictureBox1.Image = global::INFOsProject.Properties.Resources.PK;
-            this.pictureBox1.Location = new System.Drawing.Point(-27, -35);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(223, 145);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 4;
-            this.pictureBox1.TabStop = false;
+            this.button8.Location = new System.Drawing.Point(16, 47);
+            this.button8.Margin = new System.Windows.Forms.Padding(2);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(56, 19);
+            this.button8.TabIndex = 12;
+            this.button8.Text = "Reset";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click_1);
             // 
             // MainUI
             // 
@@ -1009,15 +1038,15 @@
             this.panel5.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.CreditPanel.ResumeLayout(false);
             this.CreditPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.projectDatabaseDataSetBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1101,5 +1130,7 @@
         private System.Windows.Forms.Button SearchButton;
         private System.Windows.Forms.TextBox SearchtextBox;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button button8;
     }
 }
