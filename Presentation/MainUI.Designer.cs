@@ -66,8 +66,8 @@
             this.button5 = new System.Windows.Forms.Button();
             this.ReservationPanel = new System.Windows.Forms.Panel();
             this.RoomcomboBox = new System.Windows.Forms.ComboBox();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.endDate = new System.Windows.Forms.DateTimePicker();
+            this.startDate = new System.Windows.Forms.DateTimePicker();
             this.label8 = new System.Windows.Forms.Label();
             this.ReservationLabel = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -292,9 +292,9 @@
             // AreaTextbox
             // 
             this.AreaTextbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AreaTextbox.Location = new System.Drawing.Point(80, 127);
+            this.AreaTextbox.Location = new System.Drawing.Point(107, 129);
             this.AreaTextbox.Name = "AreaTextbox";
-            this.AreaTextbox.Size = new System.Drawing.Size(122, 29);
+            this.AreaTextbox.Size = new System.Drawing.Size(141, 29);
             this.AreaTextbox.TabIndex = 12;
             // 
             // AddressTextbox
@@ -504,8 +504,8 @@
             // 
             this.ReservationPanel.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.ReservationPanel.Controls.Add(this.RoomcomboBox);
-            this.ReservationPanel.Controls.Add(this.dateTimePicker2);
-            this.ReservationPanel.Controls.Add(this.dateTimePicker1);
+            this.ReservationPanel.Controls.Add(this.endDate);
+            this.ReservationPanel.Controls.Add(this.startDate);
             this.ReservationPanel.Controls.Add(this.label8);
             this.ReservationPanel.Controls.Add(this.ReservationLabel);
             this.ReservationPanel.Controls.Add(this.label9);
@@ -543,19 +543,26 @@
             this.RoomcomboBox.Sorted = true;
             this.RoomcomboBox.TabIndex = 22;
             // 
-            // dateTimePicker2
+            // endDate
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(353, 95);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(200, 29);
-            this.dateTimePicker2.TabIndex = 21;
+            this.endDate.CausesValidation = false;
+            this.endDate.Location = new System.Drawing.Point(353, 95);
+            this.endDate.MaxDate = new System.DateTime(2023, 12, 31, 0, 0, 0, 0);
+            this.endDate.MinDate = new System.DateTime(2023, 12, 1, 0, 0, 0, 0);
+            this.endDate.Name = "endDate";
+            this.endDate.Size = new System.Drawing.Size(200, 29);
+            this.endDate.TabIndex = 21;
+            this.endDate.Value = new System.DateTime(2023, 12, 1, 0, 0, 0, 0);
             // 
-            // dateTimePicker1
+            // startDate
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(353, 57);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 29);
-            this.dateTimePicker1.TabIndex = 20;
+            this.startDate.Location = new System.Drawing.Point(353, 57);
+            this.startDate.MaxDate = new System.DateTime(2023, 12, 31, 0, 0, 0, 0);
+            this.startDate.MinDate = new System.DateTime(2023, 12, 1, 0, 0, 0, 0);
+            this.startDate.Name = "startDate";
+            this.startDate.Size = new System.Drawing.Size(200, 29);
+            this.startDate.TabIndex = 20;
+            this.startDate.Value = new System.DateTime(2023, 12, 1, 0, 0, 0, 0);
             // 
             // label8
             // 
@@ -564,9 +571,9 @@
             this.label8.Location = new System.Drawing.Point(238, 99);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(116, 24);
+            this.label8.Size = new System.Drawing.Size(104, 24);
             this.label8.TabIndex = 19;
-            this.label8.Text = "Start Date";
+            this.label8.Text = "End Date";
             // 
             // ReservationLabel
             // 
@@ -996,7 +1003,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(1443, 816);
+            this.ClientSize = new System.Drawing.Size(1539, 816);
             this.Controls.Add(this.ClientPanel);
             this.Controls.Add(this.CreditPanel);
             this.Controls.Add(this.panel5);
@@ -1107,8 +1114,8 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker endDate;
+        private System.Windows.Forms.DateTimePicker startDate;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox RoomcomboBox;
         private System.Windows.Forms.Button SearchButton;

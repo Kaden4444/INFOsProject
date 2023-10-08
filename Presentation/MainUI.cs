@@ -140,7 +140,7 @@ namespace INFOsProject.Presentation
             AreaTextbox.Enabled = true;
             TownTextbox.Enabled = true;
             PostalCodeTextbox.Enabled = true;
-            dateTimePicker1.Enabled = true;
+            startDate.Enabled = true;
         }
 
         private void EnableRoom()
@@ -166,7 +166,7 @@ namespace INFOsProject.Presentation
             AreaTextbox.Enabled = false;
             TownTextbox.Enabled = false;
             PostalCodeTextbox.Enabled = false;
-            dateTimePicker1.Enabled = false;
+            startDate.Enabled = false;
 
             RoomIDTextbox.Enabled = false;
             PriceTextbox.Enabled = false;
@@ -249,7 +249,7 @@ namespace INFOsProject.Presentation
                 client.getArea = AreaTextbox.Text;
                 client.getTown = TownTextbox.Text;
                 client.getPostal_code = PostalCodeTextbox.Text;
-                client.getBooking = DateTime.Parse(dateTimePicker1.Text);
+                client.getBooking = DateTime.Parse(startDate.Text);
             }
             catch { MessageBox.Show("Something went wrong populating client, please ensure all fields are filled."); }
             return client;
@@ -535,7 +535,7 @@ namespace INFOsProject.Presentation
                     AreaTextbox.Enabled = true;
                     TownTextbox.Enabled = true;
                     PostalCodeTextbox.Enabled = true;
-                    dateTimePicker1.Enabled = true;
+                    startDate.Enabled = true;
                     break;
 
                 case 1:
@@ -609,6 +609,10 @@ namespace INFOsProject.Presentation
                     break;
             }
         }
+        private void CalculateTotal()
+        {
+
+        }
         private Reservation PopulateReservationObject()
         {
            try
@@ -617,10 +621,9 @@ namespace INFOsProject.Presentation
             reservation.ReservationID = ReservationIDTextbox.Text;
             reservation.Client = GuestTextbox.Text;
            // reservation.Room = RoomTextbox.Text ;
-            reservation.Total = Double.Parse(TotalTextbox.Text);
-            reservation.Total = Double.Parse(TotalTextbox.Text);
-           // reservation.Days =int.Parse(DaystextBox.Text);
+            reservation.Total = 
 
+           
 
              }
             catch { MessageBox.Show("Something went wrong"); }
@@ -654,10 +657,10 @@ namespace INFOsProject.Presentation
             PostalCodeTextbox.Text = client.getPostal_code;
             try
             {
-                dateTimePicker1.Text = client.getBooking.ToString();
+                startDate.Text = client.getBooking.ToString();
             }
             catch { }
-            dateTimePicker1.Text = dateTimePicker1.MinDate.ToString();
+            startDate.Text = startDate.MinDate.ToString();
         }
 
         private void UnselectedRadioButtons()
@@ -673,14 +676,14 @@ namespace INFOsProject.Presentation
            // RoomTextbox.Text = "";
            // DaystextBox.Text = "";
             TotalTextbox.Text = "";
-            dateTimePicker1.Text = "";
-            dateTimePicker2.Text = "";
+            startDate.Text = "";
+            endDate.Text = "";
 
             ReservationIDTextbox.BackColor = System.Drawing.SystemColors.Window;
             GuestTextbox.BackColor = System.Drawing.SystemColors.Window;
             TotalTextbox.BackColor = System.Drawing.SystemColors.Window;
-            dateTimePicker1.BackColor = System.Drawing.SystemColors.Window;
-            dateTimePicker2.BackColor = System.Drawing.SystemColors.Window;
+            startDate.BackColor = System.Drawing.SystemColors.Window;
+            endDate.BackColor = System.Drawing.SystemColors.Window;
         }
 
         private void ClearRoom()
@@ -901,7 +904,7 @@ namespace INFOsProject.Presentation
                 valid = false;
             }
 
-            DateTime selectedDate1 = dateTimePicker1.Value;
+            DateTime selectedDate1 = this.startDate.Value;
 
             DateTime startDate = new DateTime(2023, 12, 1);
             DateTime endDate = new DateTime(2023, 12, 31);
@@ -909,24 +912,24 @@ namespace INFOsProject.Presentation
             if (!(selectedDate1 >= startDate && selectedDate1 <= endDate))
             {
                 MessageBox.Show("Please select a date between December 1, 2023, and December 31, 2023.");
-                dateTimePicker1.BackColor = System.Drawing.Color.Red;
+                this.startDate.BackColor = System.Drawing.Color.Red;
                 valid = false;
             }
 
-            DateTime selectedDate2 = dateTimePicker2.Value;
+            DateTime selectedDate2 = this.endDate.Value;
 
             if (!(selectedDate2 >= startDate && selectedDate2 <= endDate))
             {
                 MessageBox.Show("Please select a date between December 1, 2023, and December 31, 2023.");
-                dateTimePicker2.BackColor = System.Drawing.Color.Red;
+                this.endDate.BackColor = System.Drawing.Color.Red;
                 valid = false;
             }
 
             if (!(selectedDate2 > selectedDate1))
             {
                 MessageBox.Show("Check in date cannot be after check out date");
-                dateTimePicker1.BackColor = System.Drawing.Color.Red;
-                dateTimePicker2.BackColor = System.Drawing.Color.Red;
+                this.startDate.BackColor = System.Drawing.Color.Red;
+                this.endDate.BackColor = System.Drawing.Color.Red;
                 valid = false;
             }
 
