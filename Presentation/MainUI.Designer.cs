@@ -32,6 +32,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainUI));
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button8 = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
             this.SearchButton = new System.Windows.Forms.Button();
             this.SearchtextBox = new System.Windows.Forms.TextBox();
             this.deleteRadioGroup = new System.Windows.Forms.RadioButton();
@@ -71,11 +73,9 @@
             this.label8 = new System.Windows.Forms.Label();
             this.ReservationLabel = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.TotalTextbox = new System.Windows.Forms.TextBox();
             this.GuestTextbox = new System.Windows.Forms.TextBox();
             this.ReservationIDTextbox = new System.Windows.Forms.TextBox();
             this.ReservationSubmit = new System.Windows.Forms.Button();
-            this.label15 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
@@ -108,8 +108,6 @@
             this.CreditNumTextbox = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.projectDatabaseDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.label11 = new System.Windows.Forms.Label();
-            this.button8 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.ClientPanel.SuspendLayout();
@@ -151,7 +149,31 @@
             this.groupBox1.Size = new System.Drawing.Size(203, 492);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
-
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(16, 47);
+            this.button8.Margin = new System.Windows.Forms.Padding(2);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(56, 19);
+            this.button8.TabIndex = 12;
+            this.button8.Text = "Reset";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click_1);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.Color.Black;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.Location = new System.Drawing.Point(14, 270);
+            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(248, 18);
+            this.label11.TabIndex = 11;
+            this.label11.Text = "                                                ";
+            this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // SearchButton
             // 
@@ -429,7 +451,6 @@
             this.RoomPanel.Name = "RoomPanel";
             this.RoomPanel.Size = new System.Drawing.Size(649, 203);
             this.RoomPanel.TabIndex = 5;
-
             // 
             // RoomLabel
             // 
@@ -509,12 +530,10 @@
             this.ReservationPanel.Controls.Add(this.label8);
             this.ReservationPanel.Controls.Add(this.ReservationLabel);
             this.ReservationPanel.Controls.Add(this.label9);
-            this.ReservationPanel.Controls.Add(this.TotalTextbox);
             this.ReservationPanel.Controls.Add(this.button5);
             this.ReservationPanel.Controls.Add(this.GuestTextbox);
             this.ReservationPanel.Controls.Add(this.ReservationIDTextbox);
             this.ReservationPanel.Controls.Add(this.ReservationSubmit);
-            this.ReservationPanel.Controls.Add(this.label15);
             this.ReservationPanel.Controls.Add(this.label18);
             this.ReservationPanel.Controls.Add(this.label19);
             this.ReservationPanel.Controls.Add(this.label20);
@@ -528,12 +547,6 @@
             // 
             this.RoomcomboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.RoomcomboBox.FormattingEnabled = true;
-            this.RoomcomboBox.Items.AddRange(new object[] {
-            "0",
-            "1",
-            "2",
-            "3",
-            "4"});
             this.RoomcomboBox.Location = new System.Drawing.Point(352, 132);
             this.RoomcomboBox.Margin = new System.Windows.Forms.Padding(2);
             this.RoomcomboBox.MaxDropDownItems = 5;
@@ -597,15 +610,6 @@
             this.label9.Size = new System.Drawing.Size(116, 24);
             this.label9.TabIndex = 17;
             this.label9.Text = "Start Date";
-
-            // 
-            // TotalTextbox
-            // 
-            this.TotalTextbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TotalTextbox.Location = new System.Drawing.Point(89, 136);
-            this.TotalTextbox.Name = "TotalTextbox";
-            this.TotalTextbox.Size = new System.Drawing.Size(117, 29);
-            this.TotalTextbox.TabIndex = 12;
             // 
             // GuestTextbox
             // 
@@ -633,16 +637,6 @@
             this.ReservationSubmit.Text = "Submit";
             this.ReservationSubmit.UseVisualStyleBackColor = true;
             this.ReservationSubmit.Click += new System.EventHandler(this.ReservationSubmit_Click);
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Lucida Sans", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(12, 139);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(62, 24);
-            this.label15.TabIndex = 3;
-            this.label15.Text = "Total";
             // 
             // label18
             // 
@@ -740,7 +734,6 @@
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(674, 121);
             this.panel6.TabIndex = 2;
-
             // 
             // label1
             // 
@@ -913,7 +906,6 @@
             this.label25.Size = new System.Drawing.Size(72, 24);
             this.label25.TabIndex = 24;
             this.label25.Text = "Type: ";
-
             // 
             // label24
             // 
@@ -983,31 +975,6 @@
             this.label13.Size = new System.Drawing.Size(461, 52);
             this.label13.TabIndex = 17;
             this.label13.Text = "Enter Credit Card Details:";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.BackColor = System.Drawing.Color.Black;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(14, 270);
-            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(248, 18);
-            this.label11.TabIndex = 11;
-            this.label11.Text = "                                                ";
-            this.label11.Click += new System.EventHandler(this.label11_Click);
-            // 
-            // button8
-            // 
-            this.button8.Location = new System.Drawing.Point(16, 47);
-            this.button8.Margin = new System.Windows.Forms.Padding(2);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(56, 19);
-            this.button8.TabIndex = 12;
-            this.button8.Text = "Reset";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click_1);
             // 
             // MainUI
             // 
@@ -1084,12 +1051,10 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Panel ReservationPanel;
         private System.Windows.Forms.Label ReservationLabel;
-        private System.Windows.Forms.TextBox TotalTextbox;
         private System.Windows.Forms.TextBox GuestTextbox;
         private System.Windows.Forms.TextBox ReservationIDTextbox;
         private System.Windows.Forms.Button ReservationSubmit;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;

@@ -81,6 +81,7 @@ namespace INFOsProject.Presentation
                     break;
                 case 2:
                     ReservationPanel.Show();
+                    PopulateRoomCBX();
                     break;
             }
             MainListView.Clear();
@@ -144,7 +145,7 @@ namespace INFOsProject.Presentation
             endDate.Enabled = true;
             GuestTextbox.Enabled = true;
             //RoomcomboBox.populate
-            TotalTextbox.Enabled = false;
+            
         }
 
         private void RestrictAllLabels()
@@ -162,9 +163,7 @@ namespace INFOsProject.Presentation
 
             ReservationIDTextbox.Enabled = false;
             GuestTextbox.Enabled = false;
-            //DaystextBox.Enabled = false;
-            //RoomTextbox.Enabled = false;
-            TotalTextbox.Enabled = false;
+           
         }
         private void ResetLabels()
         {
@@ -319,7 +318,7 @@ namespace INFOsProject.Presentation
             {
                 MessageBox.Show("Invalid credentials entered");
             }
-
+            PopulateRoomCBX();
         }
 
         private Room PopulateRoomObject()
@@ -514,8 +513,8 @@ namespace INFOsProject.Presentation
                     ReservationLabel.Text = "Edit a Reservation:";
                     ReservationIDTextbox.Enabled = false;
                     GuestTextbox.Enabled = true;
-                    //RoomTextbox.Enabled = true;
-                    TotalTextbox.Enabled = true;
+                    
+                    
                     break;
             }
         }
@@ -649,19 +648,28 @@ namespace INFOsProject.Presentation
         {
             ReservationIDTextbox.Text = "";
             GuestTextbox.Text = "";
-           // RoomTextbox.Text = "";
-           // DaystextBox.Text = "";
-            TotalTextbox.Text = "";
+
             startDate.Text = "";
             endDate.Text = "";
 
             ReservationIDTextbox.BackColor = System.Drawing.SystemColors.Window;
             GuestTextbox.BackColor = System.Drawing.SystemColors.Window;
-            TotalTextbox.BackColor = System.Drawing.SystemColors.Window;
+           
             startDate.BackColor = System.Drawing.SystemColors.Window;
             endDate.BackColor = System.Drawing.SystemColors.Window;
         }
 
+        private void PopulateRoomCBX()
+        {
+            try { 
+            foreach(Room Room in Rooms)
+            {
+                RoomcomboBox.Items.Add(Room.RoomID);
+                }
+            }
+            catch{ }
+
+        }
         private void ClearRoom()
         {
             RoomIDTextbox.Text ="";
@@ -677,9 +685,9 @@ namespace INFOsProject.Presentation
         {
             ReservationIDTextbox.Text = reservation.ReservationID;
             GuestTextbox.Text = reservation.Client.ToString();
-           // RoomTextbox.Text = reservation.Room.ToString();
-            TotalTextbox.Text = reservation.Total.ToString();
-          //  DaystextBox.Text = reservation.Days.ToString();
+            RoomcomboBox.Text = reservation.Room;
+            startDate.Value = reservation.StartDate;
+            endDate.Value = reservation.EndDate;    
         }
         #endregion
 
