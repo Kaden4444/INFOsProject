@@ -17,11 +17,9 @@ namespace INFOsProject.Business
         string Area;
         string Town;
         string PostalCode;
-        DateTime BookingDate;
         #endregion
 
         #region Constructor
-        public Client() { BookingDate = DateTime.MinValue; }
         #endregion
 
         #region Property Methods
@@ -56,10 +54,6 @@ namespace INFOsProject.Business
             set { PostalCode = value; }    
         }
 
-        public DateTime getBooking
-        { get { return BookingDate; }
-            set { BookingDate = value;  }
-        }
         #endregion
 
     }

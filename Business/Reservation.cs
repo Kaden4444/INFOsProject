@@ -14,7 +14,9 @@ namespace INFOsProject.Business
         string client;
         string room;
         double total;
-        int days_of_Stay;
+        DateTime Start;
+        DateTime End;
+        bool deposit;
         #endregion
 
         #region Constructor
@@ -43,11 +45,10 @@ namespace INFOsProject.Business
             get { return total; }
             set { total = value; }
         }
-        public int Days
-        {
-            get { return days_of_Stay; }
-            set { days_of_Stay = value; }
-        }
+
+        public DateTime StartDate { get { return Start; } set {  Start = value; } }
+        public DateTime EndDate { get { return End;} set { End = value; } }
+        public bool Deposit {  get { return deposit; } set {  deposit = value; } }
         #endregion
 
     }

@@ -60,7 +60,9 @@ namespace INFOsProject.Data
                     aReservation.Client = Convert.ToString(myRow["Client"]).TrimEnd();
                     aReservation.Room = Convert.ToString(myRow["Room"]).TrimEnd(); 
                     aReservation.Total = Convert.ToDouble(myRow["Total"]);
-                    aReservation.Days = Convert.ToInt32(myRow["DaysOfStay"]);
+                    aReservation.StartDate = Convert.ToDateTime(myRow["StartDate"]);
+                    aReservation.EndDate = Convert.ToDateTime(myRow["EndDate"]);
+                    aReservation.Deposit = Convert.ToBoolean(myRow["Deposit"]);
                     Reservations.Add(aReservation);
                 }
                 
@@ -75,7 +77,9 @@ namespace INFOsProject.Data
                 aRow["Client"] = aReservation.Client;
                 aRow["Room"] = aReservation.Room;
                 aRow["Total"] = aReservation.Total;
-                aRow["DaysOfStay"] = aReservation.Days;
+                aRow["StartDate"] = aReservation.StartDate;
+                aRow["EndDate"] = aReservation.EndDate;
+                aRow["Deposit"] = aReservation.Deposit;
 
             }
         }
@@ -105,13 +109,19 @@ namespace INFOsProject.Data
             param = new SqlParameter("@Total", SqlDbType.Money, 10, "Total");
             daMain.InsertCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@DaysOfStay", SqlDbType.Int, 5, "DaysOfStay");
+            param = new SqlParameter("@StartDate", SqlDbType.Date, 10, "StartDate");
+            daMain.InsertCommand.Parameters.Add(param);
+
+            param = new SqlParameter("@EndDate", SqlDbType.Date, 10, "EndDate");
+            daMain.InsertCommand.Parameters.Add(param);
+
+            param = new SqlParameter("@Deposit", SqlDbType.Bit, 5, "Deposit");
             daMain.InsertCommand.Parameters.Add(param);
 
         }
         private void Create_INSERT_Command(Reservation aReservation)
         {
-            daMain.InsertCommand = new SqlCommand("INSERT into Reservations (ID, Client, Room, Total, DaysOfStay) VALUES (@ID, @Client, @Room, @Total, @DaysOfStay)", cnMain);
+            daMain.InsertCommand = new SqlCommand("INSERT into Reservations (ID, Client, Room, Total, StartDate, EndDate, Deposit) VALUES (@ID, @Client, @Room, @Total, @StartDate, @EndDate, @Deposit)", cnMain);
             Build_INSERT_Parameters(aReservation);
         }
         private void Build_UPDATE_Parameters(Reservation aReservation)
@@ -130,7 +140,15 @@ namespace INFOsProject.Data
             param.SourceVersion = DataRowVersion.Current;
             daMain.UpdateCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@DaysOfStay", SqlDbType.Money, 5, "DaysOfStay");
+            param = new SqlParameter("@StartDate", SqlDbType.Date, 10, "StartDate");
+            param.SourceVersion = DataRowVersion.Current;
+            daMain.UpdateCommand.Parameters.Add(param);
+
+            param = new SqlParameter("@EndDate", SqlDbType.Date, 10, "EndDate");
+            param.SourceVersion = DataRowVersion.Current;
+            daMain.UpdateCommand.Parameters.Add(param);
+
+            param = new SqlParameter("@Deposit", SqlDbType.Bit, 5, "Deposit");
             param.SourceVersion = DataRowVersion.Current;
             daMain.UpdateCommand.Parameters.Add(param);
 
@@ -140,7 +158,7 @@ namespace INFOsProject.Data
         }
         private void Create_UPDATE_Command(Reservation aReservation)
         {
-            daMain.UpdateCommand = new SqlCommand("UPDATE Reservations SET Client=@Client, Room=@Room, Total=@Total, DaysOfStay=@DaysOfStay) " + "WHERE ID = @ID", cnMain);
+            daMain.UpdateCommand = new SqlCommand("UPDATE Reservations SET Client=@Client, Room=@Room, Total=@Total, StartDate=@StartDate, EndDate=@EndDate, Deposit=@Deposit) " + "WHERE ID = @OriginalID", cnMain);
             Build_UPDATE_Parameters(aReservation);
 
         }

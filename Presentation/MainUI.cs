@@ -75,29 +75,7 @@ namespace INFOsProject.Presentation
             HidePanels();
             MainListView.Clear();
             RestrictAllLabels();
-            //getLatestID();
-            switch (State_of_Form)
-            {
-                case 0:
 
-                    break;
-
-                case 1:
-                    RoomPanel.Show();
-                    MainListView.Columns.Insert(0, "RoomID", 120, HorizontalAlignment.Left);
-                    MainListView.Columns.Insert(1, "Price", 120, HorizontalAlignment.Left);
-                    break;
-
-                case 2:
-                    ReservationPanel.Show();
-                    MainListView.Columns.Insert(0, "ReservationID", 120, HorizontalAlignment.Left);
-                    MainListView.Columns.Insert(1, "Client", 120, HorizontalAlignment.Left);
-                    MainListView.Columns.Insert(2, "Room", 120, HorizontalAlignment.Left);
-                    MainListView.Columns.Insert(3, "Total", 120, HorizontalAlignment.Left);
-                    MainListView.Columns.Insert(4, "DaysOfStay", 120, HorizontalAlignment.Left);
-                    break;
-            }
-            //getLatestID();
         }
 
         private void MainListView_SelectedIndexChanged(object sender, EventArgs e)
@@ -228,7 +206,7 @@ namespace INFOsProject.Presentation
                 item.SubItems.Add(client.getArea);
                 item.SubItems.Add(client.getTown);
                 item.SubItems.Add(client.getPostal_code);
-                item.SubItems.Add(client.getBooking.ToString());
+
 
                 // Tag the ListViewItem with the client object for later reference
                 item.Tag = client;
@@ -249,7 +227,7 @@ namespace INFOsProject.Presentation
                 client.getArea = AreaTextbox.Text;
                 client.getTown = TownTextbox.Text;
                 client.getPostal_code = PostalCodeTextbox.Text;
-                client.getBooking = DateTime.Parse(startDate.Text);
+                
             }
             catch { MessageBox.Show("Something went wrong populating client, please ensure all fields are filled."); }
             return client;
@@ -621,7 +599,7 @@ namespace INFOsProject.Presentation
             reservation.ReservationID = ReservationIDTextbox.Text;
             reservation.Client = GuestTextbox.Text;
            // reservation.Room = RoomTextbox.Text ;
-            reservation.Total = 
+           // reservation.Total = 
 
            
 
@@ -655,12 +633,6 @@ namespace INFOsProject.Presentation
             AreaTextbox.Text = client.getArea;
             TownTextbox.Text = client.getTown;
             PostalCodeTextbox.Text = client.getPostal_code;
-            try
-            {
-                startDate.Text = client.getBooking.ToString();
-            }
-            catch { }
-            startDate.Text = startDate.MinDate.ToString();
         }
 
         private void UnselectedRadioButtons()
@@ -761,7 +733,6 @@ namespace INFOsProject.Presentation
                         clientDetails.SubItems.Add(Client.getArea);
                         clientDetails.SubItems.Add(Client.getTown);
                         clientDetails.SubItems.Add(Client.getPostal_code);
-                        clientDetails.SubItems.Add(Client.getBooking.ToString());
                         MainListView.Items.Add(clientDetails);
                     }
                     MainListView.Refresh();
@@ -791,7 +762,9 @@ namespace INFOsProject.Presentation
                     MainListView.Columns.Insert(1, "Client", 120, HorizontalAlignment.Left);
                     MainListView.Columns.Insert(2, "Room", 120, HorizontalAlignment.Left);
                     MainListView.Columns.Insert(3, "Total", 120, HorizontalAlignment.Left);
-                    MainListView.Columns.Insert(4, "DaysOfStay", 120, HorizontalAlignment.Left);
+                    MainListView.Columns.Insert(4, "StartDate", 120, HorizontalAlignment.Left);
+                    MainListView.Columns.Insert(5, "EndDate", 120, HorizontalAlignment.Left);
+                    MainListView.Columns.Insert(6, "DepositPaid", 120, HorizontalAlignment.Left);
 
                     Reservations = null;
                     Reservations = reservationController.AllReservations;
@@ -802,7 +775,9 @@ namespace INFOsProject.Presentation
                         reservationDetails.SubItems.Add(Reservation.Client.ToString());
                         reservationDetails.SubItems.Add(Reservation.Room.ToString());
                         reservationDetails.SubItems.Add(Reservation.Total.ToString());
-                        reservationDetails.SubItems.Add(Reservation.Days.ToString());
+                        reservationDetails.SubItems.Add(Reservation.StartDate.ToString());
+                        reservationDetails.SubItems.Add(Reservation.EndDate.ToString());
+                        reservationDetails.SubItems.Add(Reservation.Deposit.ToString());
 
                         MainListView.Items.Add(reservationDetails);
                     }

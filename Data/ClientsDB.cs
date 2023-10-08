@@ -66,8 +66,7 @@ namespace INFOsProject.Data
                     aClient.getArea = Convert.ToString(myRow["Area"]).TrimEnd();
                     aClient.getTown = Convert.ToString(myRow["Town"]).TrimEnd();
                     aClient.getPostal_code = Convert.ToString(myRow["PostalCode"]).TrimEnd();
-                    try { aClient.getBooking = Convert.ToDateTime(myRow["BookingDate"]); }
-                    catch { aClient.getBooking = DateTime.Today; }
+                   
 
                     Clients.Add(aClient);
                 }
@@ -85,7 +84,6 @@ namespace INFOsProject.Data
                 aRow["Area"] = aClient.getArea;
                 aRow["Town"] = aClient.getTown;
                 aRow["PostalCode"] = aClient.getPostal_code;
-                aRow["BookingDate"] = aClient.getBooking;
             }
 
         }
@@ -118,13 +116,10 @@ namespace INFOsProject.Data
 
             param = new SqlParameter("@PostalCode", SqlDbType.NVarChar, 5, "PostalCode");
             daMain.InsertCommand.Parameters.Add(param);
-
-            param = new SqlParameter("@BookingDate", SqlDbType.Date, 15, "BookingDate");
-            daMain.InsertCommand.Parameters.Add(param);
         }
         private void Create_INSERT_Command(Client aClient)
         {
-            daMain.InsertCommand = new SqlCommand("INSERT into Clients (ID, Name, StreetAddress, Area, Town, PostalCode, BookingDate) VALUES (@ID, @Name, @StreetAddress, @Area, @Town, @PostalCode, @BookingDate)", cnMain);
+            daMain.InsertCommand = new SqlCommand("INSERT into Clients (ID, Name, StreetAddress, Area, Town, PostalCode) VALUES (@ID, @Name, @StreetAddress, @Area, @Town, @PostalCode)", cnMain);
             Build_INSERT_Parameters(aClient);
         }
         private void Build_UPDATE_Parameters(Client aClient)
@@ -150,17 +145,13 @@ namespace INFOsProject.Data
             param.SourceVersion = DataRowVersion.Current;
             daMain.UpdateCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@BookingDate", SqlDbType.Date, 15, "BookingDate");
-            param.SourceVersion = DataRowVersion.Current;
-            daMain.UpdateCommand.Parameters.Add(param);
-
             param = new SqlParameter("@Original_ID", SqlDbType.NVarChar, 5, "ID");
             param.SourceVersion = DataRowVersion.Original;
             daMain.UpdateCommand.Parameters.Add(param);
         }
         private void Create_UPDATE_Command(Client aClient)
         {
-            daMain.UpdateCommand = new SqlCommand("UPDATE Clients SET Name =@Name, StreetAddress =@StreetAddress, Area =@Area, Town =@Town, PostalCode =@PostalCode, BookingDate =@BookingDate " + "WHERE ID = @Original_ID", cnMain);
+            daMain.UpdateCommand = new SqlCommand("UPDATE Clients SET Name =@Name, StreetAddress =@StreetAddress, Area =@Area, Town =@Town, PostalCode =@PostalCode" + "WHERE ID = @Original_ID", cnMain);
             Build_UPDATE_Parameters(aClient);
 
         }
