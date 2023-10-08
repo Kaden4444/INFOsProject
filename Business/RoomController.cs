@@ -38,7 +38,7 @@ namespace INFOsProject.Business
         public void DataMaintenance(Room aRoom, DB.DBOperation operation)
         {
             int index = 0;
-
+            RoomDB.DataSetChange(aRoom, operation);
             switch (operation)
             {
                 case DB.DBOperation.Add:

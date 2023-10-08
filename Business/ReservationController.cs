@@ -39,7 +39,7 @@ namespace INFOsProject.Business
         public void DataMaintenance(Reservation aReservations, DB.DBOperation operation)
         {
             int index = 0;
-
+            ReservationDB.DataSetChange(aReservations, operation);
             switch (operation)
             {
                 case DB.DBOperation.Add:

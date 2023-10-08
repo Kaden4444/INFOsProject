@@ -122,6 +122,7 @@ namespace INFOsProject.Data
             Create_INSERT_Command(aRoom);
             Create_UPDATE_Command(aRoom);
             Create_DELETE_Command(aRoom);
+            success = UpdateDataSource(sqlLocal, table);
             return success;
         }
 
