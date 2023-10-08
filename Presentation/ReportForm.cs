@@ -30,6 +30,7 @@ namespace INFOsProject.Presentation
             if (comboBox1.SelectedIndex == 1)
             {
                 richTextBox1.Text = "Weekly income for week of (Start date - Start date = 7):\r\nTOTAL\r\n\r\nComing from:\r\nReservation 0 - R200\r\nReservation 2 - R1000\r\n";
+                
             }
             
         }

@@ -162,6 +162,12 @@ namespace INFOsProject.Data
             Build_UPDATE_Parameters(aReservation);
 
         }
+
+        public void Change_Deposit(Reservation aReservation)
+        {
+            daMain.UpdateCommand = new SqlCommand("UPDATE Reservations SET Deposit=True) " + "WHERE ID = @OriginalID", cnMain);
+            Build_UPDATE_Parameters(aReservation);
+        }
         private void Build_DELETE_Parameters()
         {
             //--Create Parameters to communicate with SQL DELETE
@@ -216,7 +222,6 @@ namespace INFOsProject.Data
                 case DB.DBOperation.Edit:
                     aRow = dsMain.Tables[dataTable].Rows[FindRow(aReservation, dataTable)];
                     FillRow(aRow, aReservation, operation);
-                    dsMain.Tables[dataTable].Rows.Add(aRow);
                     break;
                 case DB.DBOperation.Delete:
                     aRow = dsMain.Tables[dataTable].Rows[FindRow(aReservation, dataTable)];

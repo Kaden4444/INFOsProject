@@ -81,7 +81,6 @@ namespace INFOsProject.Presentation
                     break;
                 case 2:
                     ReservationPanel.Show();
-                    PopulateRoomCBX();
                     break;
             }
             MainListView.Clear();
@@ -342,7 +341,14 @@ namespace INFOsProject.Presentation
 
             if (ValidateCreditFields()) {
                 MessageBox.Show("Credit card details valid - reservation made.");
-                CreditDetailsValid = true;
+                reservation.Deposit = true;
+                reservationController.DataMaintenance(reservation, DB.DBOperation.Edit);
+                reservationController.FinalizeChanges(reservation);
+                reservation = null;
+                setUpMainListView();
+
+
+
                 CreditPanel.Visible = false;
                 ClearCreditPanel();
                 resetTextboxColours();
@@ -351,6 +357,8 @@ namespace INFOsProject.Presentation
             {
                 MessageBox.Show("Invalid card details.");
             }
+
+
         }
 
         private void ClearCreditPanel() 
@@ -372,7 +380,6 @@ namespace INFOsProject.Presentation
         {
             if (ValidateReservationFields())
             {
-                CreditDetailsValid = false;
                 if (addRadioGroup.Checked)
                 {
 
@@ -479,6 +486,7 @@ namespace INFOsProject.Presentation
                     ClearReservation();
                     ReservationLabel.Text = "Add a Reservation:";
                     getLatestID();
+                    PopulateRoomCBX();
                     EnableReservation();
                     
                     break;
@@ -510,6 +518,7 @@ namespace INFOsProject.Presentation
 
                 case 2:
                     ClearReservation();
+                    PopulateRoomCBX();
                     ReservationLabel.Text = "Edit a Reservation:";
                     ReservationIDTextbox.Enabled = false;
                     GuestTextbox.Enabled = true;
@@ -548,9 +557,9 @@ namespace INFOsProject.Presentation
 
         #region Utility Methods
 
-        private decimal CalculateTotal(DateTime CheckIn)
+        private double CalculateTotal(DateTime CheckIn)
         {
-            decimal price = 0;
+            double price = 0;
             DateTime lowSeason = new DateTime(2023, 12, 1);
             DateTime midSeason = new DateTime(2023, 12, 8);
             DateTime highSeason = new DateTime(2023, 12, 16);
@@ -606,6 +615,7 @@ namespace INFOsProject.Presentation
             reservation.Room = RoomcomboBox.SelectedItem.ToString();
             reservation.StartDate = startDate.Value;
             reservation.EndDate = endDate.Value;
+                reservation.Total = CalculateTotal(startDate.Value);
             }
             catch { MessageBox.Show("Something went wrong with reservation object population"); }
             return reservation;
@@ -661,13 +671,14 @@ namespace INFOsProject.Presentation
 
         private void PopulateRoomCBX()
         {
+            
             try { 
-            foreach(Room Room in Rooms)
+            foreach(Room Room in roomController.AllRooms)
             {
                 RoomcomboBox.Items.Add(Room.RoomID);
                 }
             }
-            catch{ }
+            catch{ MessageBox.Show("Rooms cannot be populated"); }
 
         }
         private void ClearRoom()
