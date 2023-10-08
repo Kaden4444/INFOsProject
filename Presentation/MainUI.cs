@@ -609,13 +609,17 @@ namespace INFOsProject.Presentation
         {
            try
           {
-            reservation = new Reservation();
-            reservation.ReservationID = ReservationIDTextbox.Text;
-            reservation.Client = GuestTextbox.Text;
-            reservation.Room = RoomcomboBox.SelectedItem.ToString();
-            reservation.StartDate = startDate.Value;
-            reservation.EndDate = endDate.Value;
-                reservation.Total = CalculateTotal(startDate.Value);
+                reservation = new Reservation();
+                reservation.ReservationID = ReservationIDTextbox.Text;
+                reservation.Client = GuestTextbox.Text;
+                reservation.Room = RoomcomboBox.SelectedItem.ToString();
+                reservation.StartDate = startDate.Value;
+                reservation.EndDate = endDate.Value;
+                double total = CalculateTotal(startDate.Value);
+                DateTime datein = DateTime.Parse(startDate.Text);
+                DateTime dateout = DateTime.Parse(endDate.Text);
+                int days = dateout.Subtract(datein).Days;
+                reservation.Total = total * days;
             }
             catch { MessageBox.Show("Something went wrong with reservation object population"); }
             return reservation;
