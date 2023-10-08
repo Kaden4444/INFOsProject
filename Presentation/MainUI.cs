@@ -1042,28 +1042,61 @@ namespace INFOsProject.Presentation
             MainListView.Clear();
 
             DB.cnMain.Open();
-
+            string input = SearchtextBox.Text;
             string query = "";
                switch (State_of_Form)
             {
                 case 0:
-                    query = "SELECT * from Clients WHERE ClientName = '" + SearchtextBox.Text + "'";
+                    try
+                    {
+                        query = "SELECT * from Clients WHERE ClientName = '" + input + "'";
+                    }
+                    
+                    catch 
+                    {
+                        MessageBox.Show("This is not a valid search item");
+                        SearchtextBox.Text = "";
+                    }
                     break;
 
                 case 1:
-
+                    try
+                    {
+                        query = "SELECT * from Rooms WHERE ID = '" + input + "'";
+                    }
+                    catch
+                    {
+                        MessageBox.Show("This is not a valid search item");
+                        SearchtextBox.Text = "";
+                    }
                     break;
 
                 case 2:
-
+                    try
+                    {
+                        query = "SELECT * from Reservations WHERE ID = '" + input + "'";
+                        
+                    }
+                    catch 
+                    { 
+                        MessageBox.Show("This is not a valid search item");
+                        SearchtextBox.Text = "";
+                    }
                     break;
             }
+
+            //Do this because idk what you're going for
             SqlDataAdapter da = new SqlDataAdapter(query, DB.cnMain);
             SqlCommandBuilder buider = new SqlCommandBuilder(da);
             var ds = new DataSet();
             da.Fill(ds);
             //MainListView.Datasource = ds.Tables[0];
             DB.cnMain.Close();
+        }
+
+        private void SearchtextBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
