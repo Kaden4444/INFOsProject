@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,8 +38,64 @@ namespace INFOsProject.Presentation
         {
             if (comboBox1.SelectedIndex == 0)
             {
-                richTextBox1.Text = "Room Occupancy Levels For (DATE HERE):\r\nRooms occupied: 0/5\r\nRooms available: 5/5\r\n\r\nReservations using room occupied:\r\nRoom 1 - Kaden\r\netc etc\r\n\r\n";
+                // Get the selected month and year
+                int selectedMonth = new DateTime(2023, 12, 1).Month; 
+                int selectedYear = new DateTime(2023, 12, 1).Year; 
+
+                // Calculate the number of days in the selected month
+                int daysInMonth = DateTime.DaysInMonth(selectedYear, selectedMonth);
+
+                // Initialize an array to store daily occupancy counts
+                int[] dailyOccupancy = new int[daysInMonth];
+
+                // Initialize the occupancy report texts
+                string occupancyReport = $"Occupancy Report for {CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(selectedMonth)} {selectedYear}:\r\n";
+                string max = "Fully booked days: \r\n";
+                string min = "Days with no bookings: \r\n";
+                // Iterate through each day of the selected month
+                for (int day = 1; day <= daysInMonth; day++)
+                {
+                    // Calculate the date for the current day
+                    DateTime currentDate = new DateTime(selectedYear, selectedMonth, day);
+
+                    // Count the number of reservations for the current day
+                    int reservationsForDay = resCont.AllReservations.Count(res =>
+                        res.StartDate.Date <= currentDate.Date && res.EndDate.Date >= currentDate.Date
+                    );
+
+                    // Update the daily occupancy count
+                    dailyOccupancy[day - 1] = reservationsForDay;
+                   
+
+                    // Add the daily occupancy to the report
+                    if (reservationsForDay > 0)
+                    {
+                        if (reservationsForDay == 1)
+                        {
+                            occupancyReport += $"{currentDate:dd-MMM-yyyy}: {reservationsForDay} reservation\r\n";
+                        }
+                        else
+                        {
+                            occupancyReport += $"{currentDate:dd-MMM-yyyy}: {reservationsForDay} reservations\r\n";
+                        }
+                       
+                    }
+                    if(reservationsForDay == 5)
+                    {
+                        max += $"{currentDate:dd-MMM-yyyy} \r\n";
+                    }
+                    if (reservationsForDay == 0)
+                    {
+                        min += $"{currentDate:dd-MMM-yyyy} \r\n";
+                    }
+
+                }
+
+                // Display the occupancy report 
+                richTextBox1.Text = occupancyReport+"\r\n"+max+"\r\n"+min;
+
             }
+
 
             if (comboBox1.SelectedIndex == 1)
             {
@@ -118,5 +175,11 @@ namespace INFOsProject.Presentation
             d.Show();
             this.Hide();
         }
+
+        private void ReportForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
+// richTextBox1.Text = "Room Occupancy Levels For (DATE HERE):\r\nRooms occupied: 0/5\r\nRooms available: 5/5\r\n\r\nReservations using room occupied:\r\nRoom 1 - Kaden\r\netc etc\r\n\r\n";
