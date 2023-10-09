@@ -22,6 +22,7 @@ using System.Threading;
 using System.Data.SqlClient;
 using System.Net.Mail;
 using Microsoft.VisualBasic;
+using System.Reflection;
 
 namespace INFOsProject.Presentation
 {
@@ -743,6 +744,7 @@ namespace INFOsProject.Presentation
             RoomcomboBox.Text = reservation.Room;
             startDate.Value = reservation.StartDate;
             endDate.Value = reservation.EndDate;    
+            RoomcomboBox.ValueMember = reservation.Room;
         }
         #endregion
 
@@ -953,21 +955,29 @@ namespace INFOsProject.Presentation
             bool valid = true;
             // You can reset the background color to its default by setting it to 'SystemColors.Window'
             // textBox1.BackColor = System.Drawing.SystemColors.Window;
-
+            MessageBox.Show(reservationController.RoomsAvailable(startDate.Value, endDate.Value).Count + "  ddd");
             if (reservationController.RoomsAvailable(startDate.Value, endDate.Value).Count < 1)
             {
+                MessageBox.Show(reservationController.RoomsAvailable(startDate.Value, endDate.Value).Count+"");
                 MessageBox.Show("No room available from " + startDate.Text + " to " + endDate.Text);
                 valid = false;
             }
-            try { clientsController.Find(GuestTextbox.Text);
 
-                }
-                catch 
-                {
+            // bool t = (Clients[Convert.ToInt32(GuestTextbox.Text)].getID == Convert.ToInt32(GuestTextbox.Text)+"");
+            // MessageBox.Show(t+"");
+            Collection<string> ID = new Collection<string>();
+            foreach(Client client in clientsController.AllClients)
+            {
+                ID.Add(client.getID);
+            }
+
+            if (!(ID.Contains(GuestTextbox.Text)))
+            {
                 GuestTextbox.BackColor = System.Drawing.Color.Red;
                 MessageBox.Show("Please enter a valid Client.");
                 valid = false;
             }
+
                 
 
 
