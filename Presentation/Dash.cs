@@ -122,7 +122,7 @@ namespace INFOsProject.Presentation
 
         private void ReportButton_Click(object sender, EventArgs e)
         {
-            ReportForm repForm = new ReportForm(this,-1);
+            ReportForm repForm = new ReportForm(this,-1, cCont,  rCont, resCont);
             repForm.Show();
             this.Hide();
         }

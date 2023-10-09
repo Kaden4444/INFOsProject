@@ -114,6 +114,7 @@ namespace INFOsProject.Presentation
                 case 2:
                     if (MainListView.SelectedItems.Count > 0)
                     {
+                        PopulateRoomCBX();
                         reservation = reservationController.Find(MainListView.SelectedItems[0].Text);
                         PopulateReservationTB(reservation);
                     }
@@ -266,10 +267,14 @@ namespace INFOsProject.Presentation
                 }
                 else if (deleteRadioGroup.Checked)
                 {
-                    client = PopulateClientObject();
-                    clientsController.DataMaintenance(client, DB.DBOperation.Delete);
-                    clientsController.FinalizeChanges(client);
-                    setUpMainListView();
+                    try
+                    {
+                        client = PopulateClientObject();
+                        clientsController.DataMaintenance(client, DB.DBOperation.Delete);
+                        clientsController.FinalizeChanges(client);
+                        setUpMainListView();
+                    }
+                    catch { MessageBox.Show("Please delete the reservation/s that involves this client first"); }
                 }
                 ClearRoom();
                 ResetLabels();
@@ -343,9 +348,9 @@ namespace INFOsProject.Presentation
         {
 
             if (ValidateCreditFields()) {
-                string email = Interaction.InputBox("Enter your email address", "Email Address", "default@example.com");
+                //string email = Interaction.InputBox("Enter your email address", "Email Address", "default@example.com");
                 MessageBox.Show("Credit card details valid - reservation made.");
-                ConfirmationEmail(email,reservation.StartDate.ToString(), reservation.EndDate.ToString(), reservation.Total);
+              //  ConfirmationEmail(email,reservation.StartDate.ToString(), reservation.EndDate.ToString(), reservation.Total);
                 reservation.Deposit = true;
                 reservationController.DataMaintenance(reservation, DB.DBOperation.Edit);
                 reservationController.FinalizeChanges(reservation);
@@ -383,11 +388,11 @@ namespace INFOsProject.Presentation
         #region Reservation methods
         private void ReservationSubmit_Click(object sender, EventArgs e)
         {
-            if (ValidateReservationFields())
-            {
+            
                 if (addRadioGroup.Checked)
                 {
-
+                if (ValidateReservationFields())
+                {
                     CreditPanel.Visible = true;
                     CreditPanel.Focus();
                     reservation = PopulateReservationObject();
@@ -395,12 +400,24 @@ namespace INFOsProject.Presentation
                     reservationController.FinalizeChanges(reservation);
                     setUpMainListView();
                 }
+                else
+                {
+                    MessageBox.Show("Invalid credentials entered");
+                }
+                }
                 else if (editRadioGroup.Checked)
+                {
+                if (ValidateReservationFields())
                 {
                     reservation = PopulateReservationObject();
                     reservationController.DataMaintenance(reservation, DB.DBOperation.Edit);
                     reservationController.FinalizeChanges(reservation);
                     setUpMainListView();
+                }
+                else
+                {
+                    MessageBox.Show("Invalid credentials entered");
+                }
                 }
                 else if (deleteRadioGroup.Checked)
                 {
@@ -408,18 +425,17 @@ namespace INFOsProject.Presentation
                     reservationController.DataMaintenance(reservation, DB.DBOperation.Delete);
                     reservationController.FinalizeChanges(reservation);
                     setUpMainListView();
+
                 }
+
             ClearRoom();
             ResetLabels();
             getLatestID();
             resetTextboxColours();
             }
-            else
-            {
-                MessageBox.Show("Invalid credentials entered");
-            }
+
             
-        }
+        
 
         public void ConfirmationEmail(string email, string dateIn, string dateOut, double price)
         {
@@ -539,7 +555,7 @@ namespace INFOsProject.Presentation
             switch (State_of_Form)
             {
                 case 0:
-                    //ClearClient();
+                    
                     ClientLabel.Text = "Edit a Client:";
                     ClientTextbox.Enabled = false;
                     NameTextbox.Enabled = true;
@@ -716,7 +732,7 @@ namespace INFOsProject.Presentation
 
         private void PopulateRoomCBX()
         {
-            
+            RoomcomboBox.Items.Clear();
             try { 
             foreach(Room Room in roomController.AllRooms)
             {
@@ -955,7 +971,7 @@ namespace INFOsProject.Presentation
             bool valid = true;
             // You can reset the background color to its default by setting it to 'SystemColors.Window'
             // textBox1.BackColor = System.Drawing.SystemColors.Window;
-            MessageBox.Show(reservationController.RoomsAvailable(startDate.Value, endDate.Value).Count + "  ddd");
+            // 
             if (reservationController.RoomsAvailable(startDate.Value, endDate.Value).Count < 1)
             {
                 MessageBox.Show(reservationController.RoomsAvailable(startDate.Value, endDate.Value).Count+"");
@@ -986,7 +1002,7 @@ namespace INFOsProject.Presentation
             DateTime minDate = new DateTime(2023, 12, 1);
             DateTime maxDate = new DateTime(2023, 12, 31);
 
-            if (!(startD > minDate && startD < maxDate))
+            if (!(startD >= minDate && startD <= maxDate))
             {
                 MessageBox.Show("Please select a starting date between December 1, 2023, and December 31, 2023.");
                 this.startDate.BackColor = System.Drawing.Color.Red;
@@ -1002,7 +1018,7 @@ namespace INFOsProject.Presentation
                 valid = false;
             }
 
-            if (!(endD >= startD))
+            if (!(endD > startD))
             {
                 MessageBox.Show("Check in date cannot be after check out date");
                 this.startDate.BackColor = System.Drawing.Color.Red;

@@ -98,15 +98,17 @@ namespace INFOsProject.Business
 
         public Reservation Find(String ID)
         {
+
             int index = 0;
-            bool found = (Reservations[index].ReservationID == ID);
+            bool found = (Reservations[index].ReservationID == ID);  //check if it is the first student
             int count = Reservations.Count;
-            while (!(found) && (index < Reservations.Count - 1))
+            while (!(found) && (index < Reservations.Count - 1))  //if not "this" student and you are not at the end of the list 
             {
                 index = index + 1;
-                found = (Reservations[index].ReservationID == ID);
+                found = (Reservations[index].ReservationID == ID);   // this will be TRUE if found
             }
-            return Reservations[index];
+            return Reservations[index];  // this is the one!  
+        
         }
 
         public int FindIndex(Reservation aReservations)

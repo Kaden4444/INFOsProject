@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace INFOsProject.Data
 {
-    public class ReservationDB:DB
+    public class ReservationDB : DB
     {
         #region  Data members        
         private string table = "Reservations";
@@ -58,14 +58,14 @@ namespace INFOsProject.Data
                     aReservation = new Reservation();
                     aReservation.ReservationID = Convert.ToString(myRow["ID"]).TrimEnd();
                     aReservation.Client = Convert.ToString(myRow["Client"]).TrimEnd();
-                    aReservation.Room = Convert.ToString(myRow["Room"]).TrimEnd(); 
+                    aReservation.Room = Convert.ToString(myRow["Room"]).TrimEnd();
                     aReservation.Total = Convert.ToDouble(myRow["Total"]);
                     aReservation.StartDate = Convert.ToDateTime(myRow["StartDate"]);
                     aReservation.EndDate = Convert.ToDateTime(myRow["EndDate"]);
                     aReservation.Deposit = Convert.ToBoolean(myRow["Deposit"]);
                     Reservations.Add(aReservation);
                 }
-                
+
             }
         }
 
@@ -85,11 +85,17 @@ namespace INFOsProject.Data
         }
         private int FindRow(Reservation aReservation, String table)
         {
-            int returnValue = 0;
-            returnValue = int.Parse(aReservation.ReservationID);
-            return returnValue;
-
+            {
+                int returnValue;
+                returnValue = int.Parse(aReservation.ReservationID);
+                return returnValue;
+            }
         }
+
+        // int returnValue = 0;
+        // returnValue = int.Parse(aReservation.ReservationID);
+        // return returnValue;
+
         #endregion
 
         #region Build Parameters, Create Commands & Update database
