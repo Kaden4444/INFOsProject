@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace INFOsProject.Business
 {
@@ -52,11 +53,13 @@ namespace INFOsProject.Business
             Reservations = AllReservations;
             foreach (Reservation reservation in Reservations)
             {
-                if (dateIn.Date >= Convert.ToDateTime(reservation.EndDate).Date || dateOut < Convert.ToDateTime(reservation.StartDate).Date)
+                if (dateIn.Date <= Convert.ToDateTime(reservation.EndDate).Date && dateOut >= Convert.ToDateTime(reservation.StartDate).Date)
                 {
                     AvailableRooms.Remove(Convert.ToInt32(reservation.Room));
                 }
             }
+  
+           
             UpdateRooms();
             return AvailableRooms;
         }

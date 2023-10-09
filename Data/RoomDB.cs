@@ -171,7 +171,7 @@ namespace INFOsProject.Data
                 case DB.DBOperation.Edit:
                     aRow = dsMain.Tables[dataTable].Rows[FindRow(aRoom, dataTable)];
                     FillRow(aRow, aRoom, operation);
-                    dsMain.Tables[dataTable].Rows.Add(aRow);
+                    //dsMain.Tables[dataTable].Rows.Add(aRow);
                     break;
 
                 case DB.DBOperation.Delete:

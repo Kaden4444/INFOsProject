@@ -82,6 +82,7 @@ namespace INFOsProject.Business
             return Clients[index];
         }
 
+
         public int FindIndex(Client aClient)
         {
             int counter = 0;
