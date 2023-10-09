@@ -765,10 +765,6 @@ namespace INFOsProject.Presentation
         #endregion
 
         #region Events
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            lblTime.Text = DateTime.Now.ToString("dd-MM-yyyy hh:mm:ss ");
-        }
 
         private void MainListView_FormClosed(object sender, FormClosedEventArgs e)
         {

@@ -87,7 +87,6 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.lblTime = new System.Windows.Forms.Label();
             this.linkLabelLogOut = new System.Windows.Forms.LinkLabel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -280,7 +279,7 @@
             this.ClientPanel.Controls.Add(this.label4);
             this.ClientPanel.Controls.Add(this.label3);
             this.ClientPanel.Controls.Add(this.label2);
-            this.ClientPanel.Location = new System.Drawing.Point(913, 85);
+            this.ClientPanel.Location = new System.Drawing.Point(206, 370);
             this.ClientPanel.Name = "ClientPanel";
             this.ClientPanel.Size = new System.Drawing.Size(649, 203);
             this.ClientPanel.TabIndex = 4;
@@ -538,7 +537,7 @@
             this.ReservationPanel.Controls.Add(this.label19);
             this.ReservationPanel.Controls.Add(this.label20);
             this.ReservationPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ReservationPanel.Location = new System.Drawing.Point(878, 342);
+            this.ReservationPanel.Location = new System.Drawing.Point(206, 370);
             this.ReservationPanel.Name = "ReservationPanel";
             this.ReservationPanel.Size = new System.Drawing.Size(649, 203);
             this.ReservationPanel.TabIndex = 6;
@@ -752,7 +751,6 @@
             // 
             this.panel7.BackColor = System.Drawing.Color.White;
             this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel7.Controls.Add(this.lblTime);
             this.panel7.Controls.Add(this.linkLabelLogOut);
             this.panel7.Controls.Add(this.pictureBox2);
             this.panel7.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -762,17 +760,6 @@
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(674, 62);
             this.panel7.TabIndex = 0;
-            // 
-            // lblTime
-            // 
-            this.lblTime.AutoSize = true;
-            this.lblTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTime.Location = new System.Drawing.Point(4, 41);
-            this.lblTime.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(17, 17);
-            this.lblTime.TabIndex = 2;
-            this.lblTime.Text = "?";
             // 
             // linkLabelLogOut
             // 
@@ -981,7 +968,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(1539, 594);
+            this.ClientSize = new System.Drawing.Size(855, 571);
             this.Controls.Add(this.ClientPanel);
             this.Controls.Add(this.CreditPanel);
             this.Controls.Add(this.panel5);
@@ -989,9 +976,10 @@
             this.Controls.Add(this.RoomPanel);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.MainListView);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainUI";
-            this.Text = "ClientsUI";
+            this.Text = "Phumla Kamnadani Management System";
             this.Load += new System.EventHandler(this.MainUI_Load);
             this.panel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
@@ -1065,7 +1053,6 @@
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.Label lblTime;
         private System.Windows.Forms.LinkLabel linkLabelLogOut;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Panel panel8;
