@@ -148,6 +148,7 @@
             this.groupBox1.Size = new System.Drawing.Size(203, 492);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // button8
             // 
@@ -283,6 +284,7 @@
             this.ClientPanel.Name = "ClientPanel";
             this.ClientPanel.Size = new System.Drawing.Size(649, 203);
             this.ClientPanel.TabIndex = 4;
+            this.ClientPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.ClientPanel_Paint);
             // 
             // ClientLabel
             // 

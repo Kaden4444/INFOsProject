@@ -613,7 +613,32 @@ namespace INFOsProject.Presentation
         #endregion
 
         #region Utility Methods
+        public void AutoNumberClients(Collection<Client> clients)
+        {
+            for (int i = 0; i < clients.Count; i++)
+            {
+                int index = i;
+                clients[i].getID = index.ToString();
+            }
+        }
 
+        public void AutoNumberRooms(Collection<Room> rooms)
+        {
+            for (int i = 0; i < rooms.Count; i++)
+            {
+                int index = i;
+                rooms[i].RoomID = index.ToString();
+            }
+        }
+
+        public void AutoNumberReservations(Collection<Reservation> reservations)
+        {
+            for (int i = 0; i < reservations.Count; i++)
+            {
+                int index = i;
+                reservations[i].ReservationID = index.ToString();
+            }
+        }
         private double CalculateTotal(DateTime CheckIn)
         {
             double price = 0;
@@ -805,6 +830,7 @@ namespace INFOsProject.Presentation
 
                     Clients = null;
                     Clients = clientsController.AllClients;
+                    AutoNumberClients(Clients);
                     foreach (Client Client in Clients)
                     {
                         clientDetails = new ListViewItem();
@@ -826,7 +852,7 @@ namespace INFOsProject.Presentation
 
                     Rooms = null;
                     Rooms = roomController.AllRooms;
-
+                    AutoNumberRooms(Rooms);
                     foreach (Room Room in Rooms)
                     {
                         roomDetails = new ListViewItem();
@@ -849,6 +875,7 @@ namespace INFOsProject.Presentation
 
                     Reservations = null;
                     Reservations = reservationController.AllReservations;
+                    AutoNumberReservations(Reservations);
                     foreach (Reservation Reservation in Reservations)
                     {
                         reservationDetails = new ListViewItem();
@@ -1156,10 +1183,7 @@ namespace INFOsProject.Presentation
                 }
             }
             catch { MessageBox.Show("Invalid Search"); }
-        }
-        
-
-      
+        } 
 
         private void label11_Click(object sender, EventArgs e)
         {
@@ -1169,6 +1193,16 @@ namespace INFOsProject.Presentation
         private void button8_Click_1(object sender, EventArgs e)
         {
             setUpMainListView();
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ClientPanel_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
