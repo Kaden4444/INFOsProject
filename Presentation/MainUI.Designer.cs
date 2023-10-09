@@ -562,7 +562,7 @@
             this.endDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.endDate.Location = new System.Drawing.Point(353, 100);
             this.endDate.MaxDate = new System.DateTime(2023, 12, 31, 0, 0, 0, 0);
-            this.endDate.MinDate = new System.DateTime(2023, 12, 1, 0, 0, 0, 0);
+            this.endDate.MinDate = new System.DateTime(2023, 10, 9, 0, 0, 0, 0);
             this.endDate.Name = "endDate";
             this.endDate.Size = new System.Drawing.Size(200, 22);
             this.endDate.TabIndex = 21;
@@ -572,7 +572,7 @@
             // 
             this.startDate.Location = new System.Drawing.Point(353, 58);
             this.startDate.MaxDate = new System.DateTime(2023, 12, 31, 0, 0, 0, 0);
-            this.startDate.MinDate = new System.DateTime(2023, 12, 1, 0, 0, 0, 0);
+            this.startDate.MinDate = new System.DateTime(2023, 10, 9, 0, 0, 0, 0);
             this.startDate.Name = "startDate";
             this.startDate.Size = new System.Drawing.Size(200, 22);
             this.startDate.TabIndex = 20;

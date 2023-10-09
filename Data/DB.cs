@@ -15,7 +15,7 @@ namespace INFOsProject.Data
         #region Variable declaration
         //***Once the database is created you can find the correct connection string by using the Settings.Default object to select the correct connection string
         //private string strConn = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\dzivh\\Documents\\School 2023\\Semester 2\\INF2011S\\Phumla2\\DatabaseFiles\\HotelDatabase.mdf\";Integrated Security=True";
-            private string strConn =  "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\OneDrive\\OneDrive - University of Cape Town\\UCT2023\\SEM2\\INF2011\\Project\\files\\DatabaseFiles\\HotelDatabase.mdf\";TrustServerCertificate=True;Integrated Security=True";
+            private string strConn = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\OneDrive\\OneDrive - University of Cape Town\\UCT2023\\SEM2\\INF2011\\Project\\files\\INFOsProject\\DatabaseFiles\\HotelDatabase.mdf\";Integrated Security=True";
         
             protected SqlConnection cnMain;
             protected DataSet dsMain;

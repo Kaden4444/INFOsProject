@@ -102,16 +102,16 @@ namespace INFOsProject.Data
             param = new SqlParameter("@ID", SqlDbType.NVarChar, 5, "ID");
             daMain.InsertCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@Name", SqlDbType.NVarChar, 20, "Name");
+            param = new SqlParameter("@Name", SqlDbType.NVarChar, 30, "Name");
             daMain.InsertCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@StreetAddress", SqlDbType.NVarChar, 25, "StreetAddress");
+            param = new SqlParameter("@StreetAddress", SqlDbType.NVarChar, 30, "StreetAddress");
             daMain.InsertCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@Area", SqlDbType.NVarChar, 10, "Area");
+            param = new SqlParameter("@Area", SqlDbType.NVarChar, 15, "Area");
             daMain.InsertCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@Town", SqlDbType.NVarChar, 10, "Town");
+            param = new SqlParameter("@Town", SqlDbType.NVarChar, 15, "Town");
             daMain.InsertCommand.Parameters.Add(param);
 
             param = new SqlParameter("@PostalCode", SqlDbType.NVarChar, 5, "PostalCode");
@@ -125,19 +125,19 @@ namespace INFOsProject.Data
         private void Build_UPDATE_Parameters(Client aClient)
         {
             SqlParameter param = default(SqlParameter);
-            param = new SqlParameter("@Name", SqlDbType.NVarChar, 20, "Name");
+            param = new SqlParameter("@Name", SqlDbType.NVarChar, 30, "Name");
             param.SourceVersion = DataRowVersion.Current;
             daMain.UpdateCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@StreetAddress", SqlDbType.NVarChar, 25, "StreetAddress");
+            param = new SqlParameter("@StreetAddress", SqlDbType.NVarChar, 30, "StreetAddress");
             param.SourceVersion = DataRowVersion.Current;
             daMain.UpdateCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@Area", SqlDbType.NVarChar, 10, "Area");
+            param = new SqlParameter("@Area", SqlDbType.NVarChar, 15, "Area");
             param.SourceVersion = DataRowVersion.Current;
             daMain.UpdateCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@Town", SqlDbType.NVarChar, 10, "Town");
+            param = new SqlParameter("@Town", SqlDbType.NVarChar, 15, "Town");
             param.SourceVersion = DataRowVersion.Current;
             daMain.UpdateCommand.Parameters.Add(param);
 

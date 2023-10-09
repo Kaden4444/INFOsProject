@@ -64,14 +64,16 @@ namespace INFOsProject.Presentation
             this.Load += MainListView_Load;
             this.Activated += MainListView_Activated;
             setUpMainListView();
+            startDate.Value = new DateTime(2023, 12, 1);
+            endDate.Value = new DateTime(2023, 12, 31);
         }
         #endregion
 
         #region Important / initial 
         private void MainUI_Load(object sender, EventArgs e)
         {
-            ActiveControl = null;
-            timer1.Start();
+            startDate.Value = new DateTime(2023, 12, 1);
+            endDate.Value = new DateTime(2023, 12, 31);
             CreditPanel.Visible = false;
             HidePanels();
             switch (State_of_Form)
@@ -348,9 +350,9 @@ namespace INFOsProject.Presentation
         {
 
             if (ValidateCreditFields()) {
-                //string email = Interaction.InputBox("Enter your email address", "Email Address", "default@example.com");
+   
                 MessageBox.Show("Credit card details valid - reservation made.");
-              //  ConfirmationEmail(email,reservation.StartDate.ToString(), reservation.EndDate.ToString(), reservation.Total);
+             
                 reservation.Deposit = true;
                 reservationController.DataMaintenance(reservation, DB.DBOperation.Edit);
                 reservationController.FinalizeChanges(reservation);
@@ -388,8 +390,8 @@ namespace INFOsProject.Presentation
         #region Reservation methods
         private void ReservationSubmit_Click(object sender, EventArgs e)
         {
-            
-                if (addRadioGroup.Checked)
+
+            if (addRadioGroup.Checked)
                 {
                 if (ValidateReservationFields())
                 {
@@ -432,7 +434,9 @@ namespace INFOsProject.Presentation
             ResetLabels();
             getLatestID();
             resetTextboxColours();
-            }
+            startDate.Value = new DateTime(2023, 12, 1);
+            endDate.Value = new DateTime(2023, 12, 31);
+        }
 
             
         
@@ -619,6 +623,8 @@ namespace INFOsProject.Presentation
             {
                 int index = i;
                 clients[i].getID = index.ToString();
+                clientsController.DataMaintenance(clients[i], DB.DBOperation.Edit);
+                clientsController.FinalizeChanges(clients[i]);
             }
         }
 
@@ -628,6 +634,9 @@ namespace INFOsProject.Presentation
             {
                 int index = i;
                 rooms[i].RoomID = index.ToString();
+                roomController.DataMaintenance(rooms[i], DB.DBOperation.Edit);
+                roomController.FinalizeChanges(rooms[i]);
+
             }
         }
 
@@ -637,6 +646,8 @@ namespace INFOsProject.Presentation
             {
                 int index = i;
                 reservations[i].ReservationID = index.ToString();
+                reservationController.DataMaintenance(reservations[i], DB.DBOperation.Edit);
+                reservationController.FinalizeChanges(reservations[i]);
             }
         }
         private double CalculateTotal(DateTime CheckIn)
@@ -745,8 +756,9 @@ namespace INFOsProject.Presentation
             ReservationIDTextbox.Text = "";
             GuestTextbox.Text = "";
 
-            startDate.Text = "";
-            endDate.Text = "";
+            
+            startDate.Value = new DateTime(2023, 12, 1); 
+            endDate.Value = new DateTime(2023, 12, 31); 
 
             ReservationIDTextbox.BackColor = System.Drawing.SystemColors.Window;
             GuestTextbox.BackColor = System.Drawing.SystemColors.Window;
@@ -821,10 +833,10 @@ namespace INFOsProject.Presentation
                 case 0:
                     ClientPanel.Show();
                     MainListView.Columns.Insert(0, "ClientID", 50, HorizontalAlignment.Left);
-                    MainListView.Columns.Insert(1, "Name", 90, HorizontalAlignment.Left);
+                    MainListView.Columns.Insert(1, "Name", 140, HorizontalAlignment.Left);
                     MainListView.Columns.Insert(2, "Address", 140, HorizontalAlignment.Left);
-                    MainListView.Columns.Insert(3, "Area", 70, HorizontalAlignment.Left);
-                    MainListView.Columns.Insert(4, "Town", 50, HorizontalAlignment.Left);
+                    MainListView.Columns.Insert(3, "Area", 120, HorizontalAlignment.Left);
+                    MainListView.Columns.Insert(4, "Town", 120, HorizontalAlignment.Left);
                     MainListView.Columns.Insert(5, "Postal Code", 70, HorizontalAlignment.Left);
                     MainListView.Columns.Insert(6, "Reservation", 200, HorizontalAlignment.Left);
 
@@ -992,18 +1004,14 @@ namespace INFOsProject.Presentation
         private bool ValidateReservationFields()
         {
             bool valid = true;
-            // You can reset the background color to its default by setting it to 'SystemColors.Window'
-            // textBox1.BackColor = System.Drawing.SystemColors.Window;
-            // 
-            if (reservationController.RoomsAvailable(startDate.Value, endDate.Value).Count < 1)
+
+            if ((reservationController.RoomsAvailable(startDate.Value, endDate.Value).Count < 1))
             {
-                MessageBox.Show(reservationController.RoomsAvailable(startDate.Value, endDate.Value).Count+"");
+               // MessageBox.Show(reservationController.RoomsAvailable(startDate.Value, endDate.Value).Count+"");
                 MessageBox.Show("No room available from " + startDate.Text + " to " + endDate.Text);
                 valid = false;
             }
 
-            // bool t = (Clients[Convert.ToInt32(GuestTextbox.Text)].getID == Convert.ToInt32(GuestTextbox.Text)+"");
-            // MessageBox.Show(t+"");
             Collection<string> ID = new Collection<string>();
             foreach(Client client in clientsController.AllClients)
             {
@@ -1017,22 +1025,24 @@ namespace INFOsProject.Presentation
                 valid = false;
             }
 
-                
-
-
             DateTime startD = this.startDate.Value;
+            DateTime endD = this.endDate.Value;
+            DateTime minDate = new DateTime(2023, 11, 30);
+            DateTime maxDate = new DateTime(2024, 1, 1);
 
-            DateTime minDate = new DateTime(2023, 12, 1);
-            DateTime maxDate = new DateTime(2023, 12, 31);
+            if (!(startD > minDate && startD < maxDate && startD == endD))
+            { return true; }
 
-            if (!(startD >= minDate && startD <= maxDate))
+            if (!(startD > minDate && startD < maxDate))
             {
+                
                 MessageBox.Show("Please select a starting date between December 1, 2023, and December 31, 2023.");
                 this.startDate.BackColor = System.Drawing.Color.Red;
                 valid = false;
+
             }
 
-            DateTime endD = this.endDate.Value;
+           
 
             if (!(endD > minDate && endD < maxDate))
             {
@@ -1041,7 +1051,7 @@ namespace INFOsProject.Presentation
                 valid = false;
             }
 
-            if (!(endD > startD))
+            if ((endD < startD))
             {
                 MessageBox.Show("Check in date cannot be after check out date");
                 this.startDate.BackColor = System.Drawing.Color.Red;
@@ -1049,9 +1059,9 @@ namespace INFOsProject.Presentation
                 valid = false;
             }
 
+            
 
-
-            return valid; // All fields are valid
+                return valid; // All fields are valid
         }
 
         private bool ValidateRoomFields()
@@ -1105,8 +1115,8 @@ namespace INFOsProject.Presentation
                         MainListView.Columns.Insert(0, "ClientID", 50, HorizontalAlignment.Left);
                         MainListView.Columns.Insert(1, "Name", 90, HorizontalAlignment.Left);
                         MainListView.Columns.Insert(2, "Address", 140, HorizontalAlignment.Left);
-                        MainListView.Columns.Insert(3, "Area", 70, HorizontalAlignment.Left);
-                        MainListView.Columns.Insert(4, "Town", 50, HorizontalAlignment.Left);
+                        MainListView.Columns.Insert(3, "Area", 140, HorizontalAlignment.Left);
+                        MainListView.Columns.Insert(4, "Town", 140, HorizontalAlignment.Left);
                         MainListView.Columns.Insert(5, "Postal Code", 70, HorizontalAlignment.Left);
                         MainListView.Columns.Insert(6, "Reservation", 200, HorizontalAlignment.Left);
 
